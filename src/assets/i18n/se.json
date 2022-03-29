@@ -1,7 +1,9 @@
 {
     "LANG": {
-        "language": "svenska",
-        "city": "Helsingfors",
+        "language": "Språk",
+        "languagename": "svenska",
+        "city": "Stad",
+        "cityname": "Helsingfors",
         "home": "Hem",
         "places": "Platser",
         "events": "Evenemanger",

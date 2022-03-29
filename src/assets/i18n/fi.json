@@ -1,7 +1,9 @@
 {
     "LANG": {
-        "language": "suomi",
-        "city": "Helsinki",
+        "language": "Kieli",
+        "languagename": "suomi",
+        "city": "Kaupunki",
+        "cityname": "Helsinki",
         "home": "Koti",
         "places": "Paikat",
         "events": "Tapahtumat",
