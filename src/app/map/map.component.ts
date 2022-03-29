@@ -1,6 +1,7 @@
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -24,12 +25,14 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map: L.Map;
+  places: any;
+  closeResult: string = '';
 
-  constructor(private markerService: MarkerService) { }
+  constructor(private markerService: MarkerService, private modalService: NgbModal) { }
+  
 
   private initMap(): void {
     this.map = L.map('map', {
-     /*  center: [ 39.8282, -98.5795 ], */
       center: [60.16952, 24.93545 ],
       zoom: 3
     });
@@ -43,10 +46,35 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
-  
-
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalMarkers(this.map);
+    this.markerService.makePlaceMarkers(this.map);
   }
+
+
+  openModal() {
+    this.markerService.makeMapPopup;
+  }
+
+
+
+
+  // open(content:any) {
+  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  //     this.closeResult = `Closed with: ${result}`;
+  //   }, (reason) => {
+  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  //   });
+  // } 
+
+  // private getDismissReason(reason: any): string {
+  //   if (reason === ModalDismissReasons.ESC) {
+  //     return 'by pressing ESC';
+  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+  //     return 'by clicking on a backdrop';
+  //   } else {
+  //     return  `with: ${reason}`;
+  //   }
+  // }
+  
 }

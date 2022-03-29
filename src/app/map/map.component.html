@@ -2,4 +2,33 @@
     <div class="map-frame">
       <div id="map"></div>
     </div>
+</div>
+<div id="infomodul">
+  <p>Testi!</p>
+  <!-- <div *ngFor=" let data of places">
+    <div>Place: {{ data.name.fi }}</div>
+    <div>Address: {{ data.location.address.street_address }} {{ data.location.address.postal_code }} {{ data.location.address.locality }}
+    </div>
+    <div>Opening Hours: {{ data.opening_hours.hours[0].weekday_id }} {{ data.opening_hours.hours[0].opens }} {{ data.opening_hours.hours[0].closes }} {{ data.opening_hours.hours[0].open24h }}
+    </div>
+  </div> -->
+
+
+</div>
+   
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button> -->
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
   </div>
+  <div class="modal-body">
+    This is example from ItSolutionStuff.com
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
