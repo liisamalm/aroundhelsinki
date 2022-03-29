@@ -1,5 +1,5 @@
-[
-    {
+{
+    "LANG": {
         "language": "Finnish",
         "home": "Koti",
         "places": "Paikat",
@@ -11,4 +11,4 @@
         "about": "Tietoa meistä",
         "contact": "Yhteystiedot"
     }
-]
+}

@@ -1,5 +1,5 @@
-[
-    {
+{
+    "LANG": {
         "language": "English",
         "home": "Home",
         "places": "Places",
@@ -11,4 +11,4 @@
         "about": "About us",
         "contact": "Contact"
     }
-]
+}
