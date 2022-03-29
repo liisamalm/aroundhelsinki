@@ -1,0 +1,122 @@
+{
+    "id": "30",
+    "name": {
+      "fi": "Radisson Blu Seaside Hotel",
+      "en": "Radisson Blu Seaside Hotel",
+      "sv": "Radisson Blu Seaside Hotel",
+      "zh": "赫尔辛基丽笙海滨酒店"
+    },
+    "source_type": {
+      "id": 2,
+      "name": "Matko"
+    },
+    "info_url": "https://www.radissonhotels.com/fi-fi/hotellit/radisson-blu-helsinki-seaside",
+    "modified_at": "2021-05-27T08:35:17.000Z",
+    "location": {
+      "lat": 60.16197967529297,
+      "lon": 24.924484252929688,
+      "address": {
+        "street_address": "Ruoholahdenranta 3",
+        "postal_code": "00180",
+        "locality": "Helsinki",
+        "neighbourhood": null
+      }
+    },
+    "description": {
+      "intro": null,
+      "body": "Helsingissä vilkkaan sataman vieressä ja lähellä Jätkäsaaren ja Ruoholahden urbaaneja alueita sijaitseva Radisson Blu Seaside Hotel -hotelli on kunnianosoitus modernille suomalaiselle elämäntavalle.\r\n\r\nRaitiovaunulinjat vievät hotellin vieraat vain muutamassa minuutissa kaupungin keskustaan, ja autolla saapuvat vieraat voivat pysäköidä autonsa pysäköintihalliin lisämaksua vastaan.\r\n\r\nHotellin 349 hotellihuoneessa ja sviitissä on urbaani sisustus, jota on piristetty meren ja sataman innoittamilla yksityiskohdilla. Kaksikerroksisissa loft-huoneistoissa on suurkaupungin tunnelmaa ja upeat näkymät merelle. Elokuvien ystäville hotellista löytyy erityisiä elokuva- ja viihdehuoneita ja lemmikkiystävällisen huoneen saa pyydettäessä ja lisämaksusta.\r\n\r\nBistro Gimis-ravintolassa tarjoillaan aidosti helsinkiläiseen ruokailukokemukseen kuuluvia klassisia ruokalajeja sekä paikallisia kausiherkkuja. Kutsuvassa aulassa ja RO-RO-baarissa voi viettää aikaa ystävien kanssa ja jatkaa iltaa yhdessä saman pitkän pöydän ääressä.\r\n\r\nUusi huippuluokan kuntosali sekä vieraiden käytössä olevat saunat ovat avoinna kaikille innokkaille urheilijoille ympäri vuorokauden. Vieraat pääsevät myös nauttimaan upeista merenrantaa pitkin kulkevista lenkkipoluista, jotka alkavat aivan hotellin edustalta. \r\n\r\nAinutlaatuisessa aistiystävällisessä tapahtumatilassa on 15 kokoustilaa, joissa voi järjestää jopa 250 osanottajan konferensseja tai jopa 400 vieraan cocktail-vastaanottoja.",
+      "images": [
+        {
+          "url": "https://edit.myhelsinki.fi/sites/default/files/styles/api_1980x1020/public/2021-05/radisson_blu_seaside_hotel_seaside_double_king_room_c_radisson_blu_kaisu_jouppi_location_only.jpg?h=b28d2114&itok=czezluTE",
+          "copyright_holder": "Radisson Blu / Kaisu Jouppi",
+          "license_type": {
+            "id": 2,
+            "name": "MyHelsinki license type A"
+          },
+          "media_id": "01fdb44f-f71f-4a8c-bf8a-87f1cfe4f291"
+        }
+      ]
+    },
+    "tags": [
+      {
+        "id": "matko1:3",
+        "name": "BANQUET VENUES"
+      },
+      {
+        "id": "matko2:241",
+        "name": "Hotel"
+      },
+      {
+        "id": "matko2:18",
+        "name": "SaunaMeeting"
+      },
+      {
+        "id": "matko2:a-:AliPay",
+        "name": "AliPay"
+      },
+      {
+        "id": "matko1:2",
+        "name": "MEETING PLACES"
+      },
+      {
+        "id": "matko2:15",
+        "name": "Banquet"
+      },
+      {
+        "id": "matko1:1",
+        "name": "ACCOMMODATION"
+      },
+      {
+        "id": "matko2:164",
+        "name": "GreenKey"
+      }
+    ],
+    "opening_hours": {
+      "hours": [
+        {
+          "weekday_id": 1,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        },
+        {
+          "weekday_id": 2,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        },
+        {
+          "weekday_id": 3,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        },
+        {
+          "weekday_id": 4,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        },
+        {
+          "weekday_id": 5,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        },
+        {
+          "weekday_id": 6,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        },
+        {
+          "weekday_id": 7,
+          "opens": null,
+          "closes": null,
+          "open24h": false
+        }
+      ],
+      "openinghours_exception": ""
+    },
+    "extra_searchwords": null
+  }
