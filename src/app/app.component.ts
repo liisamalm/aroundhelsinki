@@ -7,13 +7,11 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'aroundhelsinki';
-  languages = ['en', 'fi', 'se'];
-
-  constructor(translate: TranslateService) {
+  constructor(public translate: TranslateService) {
+    translate.addLangs(['en', 'fi', 'se']);
     translate.setDefaultLang('en');
-    translate.use('en');
 
-    console.log(translate);
+    const browserLang = translate.getBrowserLang()!;
+    translate.use(browserLang.match(/en|fi|se/) ? browserLang : 'en');
   }
 }

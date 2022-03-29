@@ -1,5 +1,5 @@
-[
-    {
+{
+    "LANG": {
         "language": "Swedish",
         "home": "Hem",
         "places": "Platser",
@@ -11,4 +11,4 @@
         "about": "Information om oss",
         "contact": "Kontakt"
     }
-]
+}

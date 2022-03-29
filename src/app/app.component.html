@@ -1,3 +1,9 @@
-<ul *ngFor="let language of languages">
-  <li>{{ 'LANGUAGES.' + language | translate }}</li>
-</ul>
+<section>
+  <h2>{{ 'LANG.language' | translate }}</h2>
+  <label>
+    {{ 'LANG.places' | translate }}
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+    </select>
+  </label>
+</section>
