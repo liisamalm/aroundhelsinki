@@ -1,13 +1,16 @@
 {
     "LANG": {
-        "language": "English",
+        "language": "Language",
+        "languagename": "English",
+        "city": "City",
+        "cityname": "Helsinki",
         "home": "Home",
         "places": "Places",
         "events": "Events",
         "activities": "Activities",
         "search": "Search",
         "all": "All",
-        "privacy": "Privacy Policy",
+        "privacy": "Privacy policy",
         "about": "About us",
         "contact": "Contact"
     }
