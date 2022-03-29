@@ -14,15 +14,32 @@ export class MarkerService {
 
   makeCapitalMarkers(map: L.Map): void {
     this.http.get(this.capitals).subscribe((res: any) => {
-      for (const c of res.features) {
+      for (const c of res.data) {
         /* const lon = c.geometry.coordinates[0];
         const lat = c.geometry.coordinates[1]; */
-        const lon = c.data.location.lat;
-        const lat = c.data.location.lon;
+        const lon = c.location.lon;
+        const lat = c.location.lat;
         const marker = L.marker([lat, lon]);
         
         marker.addTo(map);
       }
     });
   }
+ 
 }
+
+/* 
+/*  makeCapitalMarkers(map: L.Map): void {
+    this.http.get(this.capitals).subscribe((res: any) => {
+      for (const c of res.features) {
+        /* const lon = c.geometry.coordinates[0];
+        const lat = c.geometry.coordinates[1]; 
+        const lon = c.data.location.lat;
+        const lat = c.data.location.lon;
+        const marker = L.marker([lat, lon]);
+          marker.addTo(map);
+      }
+    });
+  }
+       
+*/
