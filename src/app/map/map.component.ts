@@ -25,7 +25,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map: L.Map;
-  places: any;
+  places = this.markerService.makeMapPopup;
   closeResult: string = '';
 
   constructor(private markerService: MarkerService, private modalService: NgbModal) { }
@@ -53,7 +53,8 @@ export class MapComponent implements AfterViewInit {
 
 
   openModal() {
-    this.markerService.makeMapPopup;
+   this.places = this.markerService.makeMapPopup;
+    document.getElementById
   }
 
 
