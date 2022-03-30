@@ -1,7 +1,9 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from '../marker.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Modal } from './modal';
+import {TranslateService} from '@ngx-translate/core';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -25,7 +27,7 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MapComponent implements AfterViewInit {
   private map: L.Map;
-  places = this.markerService.makeMapPopup;
+
   closeResult: string = '';
 
   constructor(private markerService: MarkerService, private modalService: NgbModal) { }
@@ -51,31 +53,12 @@ export class MapComponent implements AfterViewInit {
     this.markerService.makePlaceMarkers(this.map);
   }
 
-
-  openModal() {
-   this.places = this.markerService.makeMapPopup;
-    document.getElementById
-  }
-
-
-
-
-  // open(content:any) {
-  //   this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  //     this.closeResult = `Closed with: ${result}`;
-  //   }, (reason) => {
-  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //   });
-  // } 
-
-  // private getDismissReason(reason: any): string {
-  //   if (reason === ModalDismissReasons.ESC) {
-  //     return 'by pressing ESC';
-  //   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-  //     return 'by clicking on a backdrop';
-  //   } else {
-  //     return  `with: ${reason}`;
-  //   }
-  // }
   
 }
+
+/*RUUAN JÄLKEEN
+- yksittäiset sanat ei kovakoodattuna moduulissa
+- viikonpäivät aukioloaikoihin ja päivät näkymään erikseen
+
+
+*/

@@ -7,12 +7,31 @@ import * as L from 'leaflet';
 })
 export class MarkerService {
   places: string = '/assets/data/places.json';
+  
 
   constructor(private http: HttpClient) {
   }
 
-  makeMapPopup(data: any): string { 
-    // return data;
+  makeMapPopup(data: any): string{ 
+
+    
+    // return  data.name.fi + "<br/>" + data.location.address.street_address + " " + data.location.address.postal_code + " " + data.location.address.locality + "<br/>" + data.opening_hours.hours[0].weekday_id + "<br/>" + data.opening_hours.hours[0].opens + "<br/>" + data.opening_hours.hours[0].closes + "<br/>" + data.opening_hours.hours[0].open24h;
+
+
+    
+  //   "weekday": {
+  //     "weekday_id[1]": hours.weekday.monday,
+
+  //     "tuesday": "Tiistai",
+  //     "wednesday": "Keskiviikko",
+  //     "thursday": "Torstai",
+  //     "friday": "Perjantai",
+  //     "saturday": "Lauantai",
+  //     "sunday": "Sunnuntai"
+  // }
+
+  /*pitää käydä läpi opening_hours hours lista ja eka on maanantai, toka tiistai jne. Ota vinkkiä tuoteluettelosta*/
+
     return `` +
       `<div>Place: ${ data.name.fi }</div>` +
       `<div>Address: ${ data.location.address.street_address } ${ data.location.address.postal_code } ${ data.location.address.locality } </div>` +
