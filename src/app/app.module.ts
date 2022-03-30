@@ -20,7 +20,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   declarations: [
     AppComponent,
     MapComponent,
-    NavigationComponent
+    NavigationComponent,
     FooterComponent
   ],
   providers: [
