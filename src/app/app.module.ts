@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -20,6 +21,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppComponent,
     MapComponent,
     NavigationComponent
+    FooterComponent
   ],
   providers: [
     MarkerService,
