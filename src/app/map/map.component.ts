@@ -29,6 +29,8 @@ export class MapComponent implements AfterViewInit {
   private map: L.Map;
 
   closeResult: string = '';
+  modalInfo : any;
+  modal: Modal[];
 
   constructor(private markerService: MarkerService, private modalService: NgbModal) { }
   
@@ -51,6 +53,19 @@ export class MapComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makePlaceMarkers(this.map);
+  }
+
+  ngOnInit(){
+    this.modal = this.modalInfo;
+    this.placeModal(this.modal);
+  }
+
+  placeModal(data: any){
+    this.markerService.makeMapPopup(data).subscribe((res: any) => {
+      this.modalInfo = res;
+      console.log(res);
+    })
+
   }
 
   
