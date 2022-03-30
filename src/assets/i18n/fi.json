@@ -12,15 +12,6 @@
         "all": "Kaikki",
         "privacy": "Tietosuojakäytännöt",
         "about": "Tietoa meistä",
-        "contact": "Yhteystiedot",
-        "weekday": {
-            "monday": "Maanantai",
-            "tuesday": "Tiistai",
-            "wednesday": "Keskiviikko",
-            "thursday": "Torstai",
-            "friday": "Perjantai",
-            "saturday": "Lauantai",
-            "sunday": "Sunnuntai"
-        }
+        "contact": "Yhteystiedot"
     }
 }
