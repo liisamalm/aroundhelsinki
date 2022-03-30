@@ -1,14 +1,17 @@
-[
-    {
-        "language": "Swedish",
+{
+    "LANG": {
+        "language": "Språk",
+        "languagename": "svenska",
+        "city": "Stad",
+        "cityname": "Helsingfors",
         "home": "Hem",
         "places": "Platser",
-        "events": "Evenemang",
+        "events": "Evenemanger",
         "activities": "Aktiviteter",
         "search": "Sök",
-        "all": "Allt",
+        "all": "Alla",
         "privacy": "Integritetspolicy",
         "about": "Information om oss",
-        "contact": "Kontakt"
+        "contact": "Kontakta"
     }
-]
+}

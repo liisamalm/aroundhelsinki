@@ -1,0 +1,19 @@
+* {
+  background-color: #F1F8F2;
+
+}
+
+.nav-link{
+  color: #680F3D !important;
+
+}
+
+.dropdown-toggle {
+  background-color: #680F3D !important;
+  color: #F1F8F2 !important;
+}
+
+.dropdown-item {
+  background-color: #680F3D !important;
+  color: #F1F8F2 !important;
+}
