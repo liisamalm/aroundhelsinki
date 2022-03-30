@@ -21,11 +21,11 @@ const iconDefault = L.icon({
 L.Marker.prototype.options.icon = iconDefault;
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class MapComponent implements AfterViewInit {
+export class MainComponent implements AfterViewInit {
   private map: L.Map;
 
   closeResult: string = '';
