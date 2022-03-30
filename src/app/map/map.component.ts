@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import { MarkerService } from '../marker.service';
+import { MarkerService } from './marker.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Modal } from './modal';
 import {TranslateService} from '@ngx-translate/core';

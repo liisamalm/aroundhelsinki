@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
-import { Modal } from './map/modal';
+import { Modal } from './modal';
 
 @Injectable({
   providedIn: 'root'
