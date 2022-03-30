@@ -55,18 +55,18 @@ export class MapComponent implements AfterViewInit {
     this.markerService.makePlaceMarkers(this.map);
   }
 
-  ngOnInit(){
-    this.modal = this.modalInfo;
-    this.placeModal(this.modal);
-  }
+  // ngOnInit(){
+  //   this.modal = this.modalInfo;
+  //   this.placeModal(this.modal);
+  // }
 
-  placeModal(data: any){
-    this.markerService.makeMapPopup(data).subscribe((res: any) => {
-      this.modalInfo = res;
-      console.log(res);
-    })
+  // placeModal(data: any){
+  //   this.markerService.makeMapPopup(data).subscribe((res: any) => {
+  //     this.modalInfo = res;
+  //     console.log(res);
+  //   })
 
-  }
+  // }
 
   
 }
