@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
-<<<<<<< HEAD
-import { Modal } from './modal';
-=======
->>>>>>> mainComponent
 
 @Injectable({
   providedIn: 'root'

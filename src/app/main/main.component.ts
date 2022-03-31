@@ -1,11 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from './marker.service';
-<<<<<<< HEAD
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Modal } from './modal';
-=======
->>>>>>> mainComponent
 import {TranslateService} from '@ngx-translate/core';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
