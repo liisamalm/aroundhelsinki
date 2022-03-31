@@ -16,6 +16,8 @@
         "about": "Tietoa meistä",
         "contact": "Yhteystiedot",
         "place": "Paikka",
+        "event": "Tapahtuma",
+        "activity": "Aktiviteetti",
         "address": "Osoite",
         "open": "Aukiolo",
         "weekday": {
@@ -35,6 +37,9 @@
             "friday": "Pe",
             "saturday": "La",
             "sunday": "Su"
-        }
+        },
+        "more": "Lisää",
+        "moreinfo": "Lisätietoja",
+        "description": "Kuvaus"
     }
 }
