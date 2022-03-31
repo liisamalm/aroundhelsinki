@@ -1,7 +1,7 @@
 {
     "LANG": {
         "language": "Kieli",
-        "languagename": "suomi",
+        "languagename": "Suomi",
         "city": "Kaupunki",
         "cityname": "Helsinki",
         "weather": "Sää",
@@ -15,6 +15,9 @@
         "privacy": "Tietosuojakäytännöt",
         "about": "Tietoa meistä",
         "contact": "Yhteystiedot",
+        "place": "Paikka",
+        "address": "Osoite",
+        "open": "Aukiolo",
         "weekday": {
             "monday": "Maanantai",
             "tuesday": "Tiistai",
@@ -23,6 +26,15 @@
             "friday": "Perjantai",
             "saturday": "Lauantai",
             "sunday": "Sunnuntai"
+        },
+        "weekdayshort": {
+            "monday": "Ma",
+            "tuesday": "Ti",
+            "wednesday": "Ke",
+            "thursday": "To",
+            "friday": "Pe",
+            "saturday": "La",
+            "sunday": "Su"
         }
     }
 }
