@@ -1,8 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from './marker.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Modal } from './modal';
 import {TranslateService} from '@ngx-translate/core';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -30,9 +28,8 @@ export class MainComponent implements AfterViewInit {
 
   closeResult: string = '';
   modalInfo : any;
-  modal: Modal[];
 
-  constructor(private markerService: MarkerService, private modalService: NgbModal) { }
+  constructor(private markerService: MarkerService) { }
   
 
   private initMap(): void {
@@ -54,26 +51,4 @@ export class MainComponent implements AfterViewInit {
     this.initMap();
     this.markerService.makePlaceMarkers(this.map);
   }
-
-  // ngOnInit(){
-  //   this.modal = this.modalInfo;
-  //   this.placeModal(this.modal);
-  // }
-
-  // placeModal(data: any){
-  //   this.markerService.makeMapPopup(data).subscribe((res: any) => {
-  //     this.modalInfo = res;
-  //     console.log(res);
-  //   })
-
-  // }
-
-  
 }
-
-/*RUUAN JÄLKEEN
-- yksittäiset sanat ei kovakoodattuna moduulissa
-- viikonpäivät aukioloaikoihin ja päivät näkymään erikseen
-
-
-*/
