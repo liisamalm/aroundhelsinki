@@ -1,7 +1,7 @@
 {
     "LANG": {
         "language": "Språk",
-        "languagename": "svenska",
+        "languagename": "Svenska",
         "city": "Stad",
         "cityname": "Helsingfors",
         "weather": "Väder",
@@ -14,6 +14,27 @@
         "all": "Alla",
         "privacy": "Integritetspolicy",
         "about": "Information om oss",
-        "contact": "Kontakta"
+        "contact": "Kontakta",
+        "place": "Plats",
+        "address": "Adress",
+        "open": "Öppettider",
+        "weekday": {
+            "monday": "Måndag",
+            "tuesday": "Tisdag",
+            "wednesday": "Onsdag",
+            "thursday": "Torsdag",
+            "friday": "Fredag",
+            "saturday": "Lördag",
+            "sunday": "Söndag"
+        },
+        "weekdayshort": {
+            "monday": "Må",
+            "tuesday": "Ti",
+            "wednesday": "On",
+            "thursday": "To",
+            "friday": "Fr",
+            "saturday": "Lö",
+            "sunday": "Sö"
+        }
     }
 }
