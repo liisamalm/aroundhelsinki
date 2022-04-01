@@ -16,6 +16,8 @@
         "about": "Information om oss",
         "contact": "Kontakta",
         "place": "Plats",
+        "event": "Evenmang",
+        "activity": "Aktivitet",
         "address": "Adress",
         "open": "Öppettider",
         "weekday": {
@@ -35,6 +37,9 @@
             "friday": "Fr",
             "saturday": "Lö",
             "sunday": "Sö"
-        }
+        },
+        "more": "Mer",
+        "moreinfo": "Mer info",
+        "description": "Beskrivning"
     }
 }
