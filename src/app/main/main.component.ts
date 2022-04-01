@@ -2,7 +2,7 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
-// import { Places } from './places';
+import { Places } from './places';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -27,7 +27,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
-  places: any;
+  places: Places[] = [];
   closeResult: string = '';
   modalInfo : any;
 
@@ -65,25 +65,25 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.getAllPlaces();
    }
 
-   getAllPlaces(): void{
+  //  getAllPlaces(): void{
 
-   this.places =  this.markerService.getAllPlaces().subscribe((res:any) => {
-    // this.places = JSON.parse(JSON.stringify(res));
-      this.places = res;
-      console.log(this.places);
-    });
-  }
-
-
-
-  // getAllPlaces(): void{
-  //   this.markerService.getAllPlaces().subscribe((res: Places) => {
-  //     this.places.push(res);
+  //  this.places =  this.markerService.getAllPlaces().subscribe((res:any) => {
+  //   this.places = JSON.parse(JSON.stringify(res));
   //     // this.places = res;
   //     console.log(this.places);
-
   //   });
   // }
+
+
+
+  getAllPlaces(): void{
+    this.markerService.getAllPlaces().subscribe((res: Places) => {
+      this.places.push(res);
+      // this.places = res;
+      console.log(this.places);
+
+    });
+  }
 
 
 }
