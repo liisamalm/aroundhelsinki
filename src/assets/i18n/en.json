@@ -16,6 +16,8 @@
         "about": "About us",
         "contact": "Contact",
         "place": "Place",
+        "event": "Event",
+        "activity": "Activity",
         "address": "Address",
         "open": "Opening hours",
         "weekday": {
@@ -35,6 +37,9 @@
             "friday": "Fri",
             "saturday": "Sat",
             "sunday": "Sun"
-        }
+        },
+        "more": "More",
+        "moreinfo": "More info",
+        "description": "Description"
     }
 }
