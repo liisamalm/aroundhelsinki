@@ -28,21 +28,21 @@ export class MainComponent implements OnInit{
   // AfterViewInit,
   
   private map: L.Map;
-  places: any[] = [];
+  places: any;
   closeResult: string = '';
   modalInfo : any;
 
   constructor(private markerService: MarkerService) { }
   
   ngOnInit(): void {
-
     this.getAllPlaces();
    }
 
    getAllPlaces(): void{
-   this.places =  this.markerService.getAllPlaces().subscribe((res: any[]) => {
-    this.places = JSON.parse(JSON.stringify(res));
-      // this.places = res;
+
+   this.places =  this.markerService.getAllPlaces().subscribe((res:any) => {
+    // this.places = JSON.parse(JSON.stringify(res));
+      this.places = res;
       console.log(this.places);
     });
   }
