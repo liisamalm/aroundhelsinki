@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
     label: 'Helsinki, Finland'
   };
 
+<<<<<<< HEAD
   ngOnInit() {
     this.initMap();
   }
@@ -71,7 +72,49 @@ export class MainComponent implements OnInit {
       //   .bindPopup(e.location.label)
       //   .openPopup();
     });
+=======
+  closeResult: string = '';
+  modalInfo : any;
+
+  constructor(private markerService: MarkerService, public translate: TranslateService) {
+    translate.addLangs(['en', 'fi', 'se']);
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang()!;
+    translate.use(browserLang.match(/en|fi|se/) ? browserLang : 'en');
   }
+  
+
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: [60.16952, 24.93545 ],
+      zoom: 3
+    });
+
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      minZoom: 3,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+
+    tiles.addTo(this.map);
+  }
+
+  /* refreshMap() {
+    if (this.map) {
+      this.map.invalidateSize();
+    } */
+  
+ 
+
+  ngAfterViewInit(): void {
+    this.initMap();
+    this.markerService.makePlaceMarkers(this.map);
+    
+>>>>>>> e0c0f674e94d2a1e38bcf0dba07db555f1de2a8b
+  }
+
+ 
 }
 
 
