@@ -1,5 +1,13 @@
-  <div class="map-container">
+  <div class="listOfPlaces">
+    <h1>All places</h1>
+    <section *ngFor="let place of places">
+      <p>{{ place.id }}</p>
+      <p>HEi!</p>
+    </section>
+  </div>
+  
+  <!-- <div class="map-container">
       <div class="map-frame">
         <div id="map"></div>
       </div>
-  </div>
+  </div> -->

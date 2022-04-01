@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
+import { Observable, of } from 'rxjs';
+import { Places } from './places';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +34,10 @@ export class MarkerService {
       }
     });
   }
+
+  getAllPlaces():Observable<Places> {
+    return this.http.get<Places>(this.places);
+  }
+
  
 }
