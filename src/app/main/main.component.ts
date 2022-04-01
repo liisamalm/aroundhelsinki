@@ -47,8 +47,18 @@ export class MainComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
 
+  /* refreshMap() {
+    if (this.map) {
+      this.map.invalidateSize();
+    } */
+  
+ 
+
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makePlaceMarkers(this.map);
+    
   }
+
+ 
 }
