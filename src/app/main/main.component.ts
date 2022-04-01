@@ -24,16 +24,43 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit{
-  // AfterViewInit,
+export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
   places: any;
   closeResult: string = '';
   modalInfo : any;
 
-  constructor(private markerService: MarkerService) { }
+  constructor(private markerService: MarkerService, public translate: TranslateService) { 
+    translate.addLangs(['en', 'fi', 'se']);
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang()!;
+    translate.use(browserLang.match(/en|fi|se/) ? browserLang : 'en');
+
+  }
   
+  private initMap(): void {
+    this.map = L.map('map', {
+      center: [60.16952, 24.93545 ],
+      zoom: 3
+    });
+
+    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      minZoom: 3,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+
+    tiles.addTo(this.map);
+  }
+
+  ngAfterViewInit(): void {
+    this.initMap();
+    this.markerService.makePlaceMarkers(this.map);
+  }
+
+
   ngOnInit(): void {
     this.getAllPlaces();
    }
@@ -47,28 +74,6 @@ export class MainComponent implements OnInit{
     });
   }
 
-
-
-
-  // private initMap(): void {
-  //   this.map = L.map('map', {
-  //     center: [60.16952, 24.93545 ],
-  //     zoom: 3
-  //   });
-
-  //   const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //     maxZoom: 18,
-  //     minZoom: 3,
-  //     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-  //   });
-
-  //   tiles.addTo(this.map);
-  // }
-
-  // ngAfterViewInit(): void {
-  //   this.initMap();
-  //   this.markerService.makePlaceMarkers(this.map);
-  // }
 
 
   // getAllPlaces(): void{
