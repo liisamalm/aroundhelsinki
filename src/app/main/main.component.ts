@@ -2,16 +2,17 @@ import { Component, OnInit } from "@angular/core";
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 
+
 @Component({
-  selector: 'my-app',
+  selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class AppComponent implements OnInit {
-  public location: any = {
-    x: 105.780128,
-    y: 21.029356,
-    label: '15 Phạm Hùng, Mỹ Đình 2, Nam Từ Liêm, Hà Nội'
+export class MainComponent implements OnInit {
+  public location = {
+    x: 24.945831,
+    y: 60.167059,
+    label: 'Helsinki, Finland'
   };
 
   ngOnInit() {
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
     // refresh map id
     document.getElementById(
       "contain-map"
-    )!.innerHTML = `<div id='map' style='width: 100%; height: 100%;'></div>`;
+    )!.innerHTML = `<div id='map' style='max-width: 1140px; height: 100%;'></div>`;
     // init map
     const map = L.map("map", {
       // Set latitude and longitude of the map center (required)
@@ -49,10 +50,7 @@ export class AppComponent implements OnInit {
 
     // add search control https://github.com/smeijer/leaflet-geosearch
     const provider = new OpenStreetMapProvider();
-    const searchControl = new GeoSearchControl({
-      provider: provider,
-      autoClose: true
-    });
+    const searchControl = new (GeoSearchControl as any)({provider: provider, autoClose: true}) ;
     map.addControl(searchControl);
 
     // popover
@@ -62,15 +60,16 @@ export class AppComponent implements OnInit {
       .openPopup();
 
     // handler
-    map.on("geosearch/showlocation", e => {
+    map.on("geosearch/showlocation", (e) => {
+      console.log(e);
       if (marker) {
         // check
         map.removeLayer(marker); // remove
       }
-      marker = new L.Marker([e.location.y, e.location.x])
-        .addTo(map)
-        .bindPopup(e.location.label)
-        .openPopup();
+      // marker = new L.Marker([e.location.y, e.location.x])
+      //   .addTo(map)
+      //   .bindPopup(e.location.label)
+      //   .openPopup();
     });
   }
 }
