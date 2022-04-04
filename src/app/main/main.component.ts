@@ -3,6 +3,7 @@ import * as L from 'leaflet';
 import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
 import { Places } from './places';
+import { Meta } from '@angular/platform-browser';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -27,7 +28,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
-  places: Places[] = [];
+  places: Places[];
   closeResult: string = '';
   modalInfo : any;
 
@@ -78,7 +79,9 @@ export class MainComponent implements AfterViewInit, OnInit{
 
   getAllPlaces(): void{
     this.markerService.getAllPlaces().subscribe((res: Places) => {
-      this.places.push(res);
+      
+      // const datum = res.meta;
+      this.places.push(res.data);
       // this.places = res;
       console.log(this.places);
 
