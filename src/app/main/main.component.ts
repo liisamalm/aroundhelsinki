@@ -49,7 +49,7 @@
 //     }).addTo(map);
 
 //     // add search control https://github.com/smeijer/leaflet-geosearch
-//     const provider = new OpenStreetMapProvider();
+    // const provider = new OpenStreetMapProvider();
 //     const searchControl = new (GeoSearchControl as any)({provider: provider, autoClose: true}) ;
 //     map.addControl(searchControl);
 
@@ -81,7 +81,8 @@ import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -109,6 +110,7 @@ export class MainComponent implements AfterViewInit {
   closeResult: string = '';
   modalInfo : any;
 
+
   constructor(private markerService: MarkerService) { }
 
 
@@ -117,7 +119,9 @@ export class MainComponent implements AfterViewInit {
       center: [60.16952, 24.93545 ],
       zoom: 3
     });
-
+    const provider = new OpenStreetMapProvider();
+    const searchControl = new (GeoSearchControl as any)({provider: provider, autoClose: true}) ;
+    this.map.addControl(searchControl);
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       minZoom: 3,
@@ -126,6 +130,8 @@ export class MainComponent implements AfterViewInit {
 
     tiles.addTo(this.map);
   }
+
+
 
   ngAfterViewInit(): void {
     this.initMap();
