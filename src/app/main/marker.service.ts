@@ -4,6 +4,7 @@ import * as L from 'leaflet';
 import { Observable, of } from 'rxjs';
 import { Places } from './places';
 
+
 @Injectable({
   providedIn: 'root'
 })

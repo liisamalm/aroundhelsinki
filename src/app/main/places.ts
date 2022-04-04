@@ -1,4 +1,13 @@
-export interface LatestBlock {
+// To parse this data:
+//
+//   import { Convert, Places } from "./file";
+//
+//   const places = Convert.toPlaces(json);
+//
+// These functions will throw an error if the JSON doesn't
+// match the expected interface, even if the JSON is valid.
+
+export interface Places {
     meta: Meta;
     data: Datum[];
     tags: { [key: string]: string };
@@ -117,12 +126,12 @@ export interface Meta {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-    public static toLatestBlock(json: string): LatestBlock {
-        return cast(JSON.parse(json), r("LatestBlock"));
+    public static toPlaces(json: string): Places {
+        return cast(JSON.parse(json), r("Places"));
     }
 
-    public static latestBlockToJson(value: LatestBlock): string {
-        return JSON.stringify(uncast(value, r("LatestBlock")), null, 2);
+    public static placesToJson(value: Places): string {
+        return JSON.stringify(uncast(value, r("Places")), null, 2);
     }
 }
 
@@ -259,7 +268,7 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-    "LatestBlock": o([
+    "Places": o([
         { json: "meta", js: "meta", typ: r("Meta") },
         { json: "data", js: "data", typ: a(r("Datum")) },
         { json: "tags", js: "tags", typ: m("") },
@@ -362,6 +371,7 @@ const typeMap: any = {
         "Vantaa",
     ],
 };
+
 
 // export interface Places {
 
