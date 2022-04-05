@@ -68,7 +68,7 @@ export class MainComponent implements AfterViewInit, OnInit{
 
   getAllPlaces(): void{
     this.markerService.getAllPlaces().subscribe((res: Places) => {
-     this.places.push(res);
+    this.places.push(res);
     });
   }
 }
