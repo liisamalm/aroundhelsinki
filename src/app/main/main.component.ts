@@ -28,7 +28,7 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
-  places: Places[];
+  places: Places[] = [];
   closeResult: string = '';
   modalInfo : any;
 

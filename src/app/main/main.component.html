@@ -1,9 +1,10 @@
   <div class="listOfPlaces">
     <h1>All places</h1>
     <section *ngFor="let place of places">
-      <p>Place: {{ place.data }}</p>
-      <p>HEi!</p>
-      
+        <ul *ngFor="let data of place.data">
+          <li>Name: {{ data.name.fi }}</li>
+          <li>Info: {{ data.info_url }}</li>
+        </ul>      
     </section>
   </div>
   
