@@ -36,12 +36,6 @@ export class MarkerService {
     });
   }
 
-  // getAllPlaces():any {
-  //   return this.http.get(this.places);
-  // }
-
-
-
   getAllPlaces():Observable<Places> {
     return this.http.get<Places>(this.places);
   }

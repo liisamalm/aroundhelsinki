@@ -66,27 +66,9 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.getAllPlaces();
    }
 
-  //  getAllPlaces(): void{
-
-  //  this.places =  this.markerService.getAllPlaces().subscribe((res:any) => {
-  //   this.places = JSON.parse(JSON.stringify(res));
-  //     // this.places = res;
-  //     console.log(this.places);
-  //   });
-  // }
-
-
-
   getAllPlaces(): void{
     this.markerService.getAllPlaces().subscribe((res: Places) => {
-     
-      // const datum = res.meta;
-      this.places.push(res);
-      // this.places = res;
-      console.log(this.places);
-
+     this.places.push(res);
     });
   }
-
-
 }

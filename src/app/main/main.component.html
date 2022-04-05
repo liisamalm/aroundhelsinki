@@ -3,6 +3,7 @@
     <section *ngFor="let place of places">
         <ul *ngFor="let data of place.data">
           <li>Name: {{ data.name.fi }}</li>
+          <li>Address: {{ data.location.address.street_address }} {{ data.location.address.postal_code }} {{ data.location.address.locality }}</li>
           <li>Info: {{ data.info_url }}</li>
         </ul>      
     </section>
