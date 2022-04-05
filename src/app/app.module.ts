@@ -13,6 +13,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
