@@ -3,7 +3,6 @@ import * as L from 'leaflet';
 import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
 import { Places } from './places';
-import { Meta } from '@angular/platform-browser';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
