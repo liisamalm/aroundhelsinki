@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { MarkerService } from './main/marker.service';
 import { TranslateModule , TranslateLoader } from '@ngx-translate/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,9 +24,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     NavigationComponent,
     FooterComponent
   ],
-  providers: [
-    // MarkerService,
-  ],
+  providers: [],
   imports: [
     BrowserModule,
     HttpClientModule,

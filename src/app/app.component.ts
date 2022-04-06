@@ -7,6 +7,9 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
   constructor(public translate: TranslateService) {
     translate.addLangs(['en', 'fi', 'se']);
     translate.setDefaultLang('en');
