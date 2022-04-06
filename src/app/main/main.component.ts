@@ -4,6 +4,7 @@ import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
 import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -31,6 +32,7 @@ export class MainComponent implements AfterViewInit, OnInit{
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
+  faLocationCrosshairs = faLocationCrosshairs;
 
   constructor(private markerService: MarkerService, public translate: TranslateService) { 
     translate.addLangs(['en', 'fi', 'se']);
