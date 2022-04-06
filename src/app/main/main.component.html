@@ -11,32 +11,6 @@
             {{ data.location.address.street_address }}, {{
             data.location.address.postal_code }} {{ data.location.address.locality }}
           </p>
-<!--           <small>
-            {{ 'LANG.open' | translate }}:
-            <div *ngFor="let weekday of data.opening_hours.hours">
-              <div *ngIf="weekday.weekday_id === 1">
-                {{ 'LANG.weekdayshort.monday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-              <div *ngIf="weekday.weekday_id === 2">
-                {{ 'LANG.weekdayshort.tuesday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-              <div *ngIf="weekday.weekday_id === 3">
-                {{ 'LANG.weekdayshort.wednesday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-              <div *ngIf="weekday.weekday_id === 4">
-                {{ 'LANG.weekdayshort.thursday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-              <div *ngIf="weekday.weekday_id === 5">
-                {{ 'LANG.weekdayshort.friday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-              <div *ngIf="weekday.weekday_id === 6">
-                {{ 'LANG.weekdayshort.saturday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-              <div *ngIf="weekday.weekday_id === 7">
-                {{ 'LANG.weekdayshort.sunday' | translate }}: {{ weekday.opens }} - {{ weekday.closes }}
-              </div>
-            </div>
-          </small> -->
           <small>
             <a href="#">{{ 'LANG.moreinfo' | translate }}</a>
           </small>
