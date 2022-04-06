@@ -29,6 +29,11 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
+  public location: any = {
+    x: 24.93545, 
+    y: 60.16952,
+    label: 'test marker'
+  };
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
@@ -63,6 +68,22 @@ export class MainComponent implements AfterViewInit, OnInit{
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }
     );
+
+    let marker = L.marker([this.location.y, this.location.x])
+      .addTo(this.map)
+      .bindPopup(this.location.label)
+      .openPopup();
+
+    this.map.on("geosearch/showlocation", e => {
+      if (marker) {
+        // check
+        this.map.removeLayer(marker); // remove
+      }
+      marker = new L.Marker([e.target.location.y, e.target.location.x])
+        .addTo(this.map)
+        .bindPopup(e.target.location.label)
+        .openPopup();
+    });
 
     tiles.addTo(this.map);
   }
