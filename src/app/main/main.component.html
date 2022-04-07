@@ -1,27 +1,33 @@
 <div class="d-flex w-100 justify-content-between">
-  <div class="listOfPlaces mb-1">
-    <section *ngFor="let place of places">
-      <div *ngFor="let data of place.data" class="list-group">
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{ data.name.fi }}</h5>
-            <small>2km</small>
-          </div>
-          <p class="mb-1">
-            {{ data.location.address.street_address }}, {{
-            data.location.address.postal_code }} {{ data.location.address.locality }}
-          </p>
-          <small>
-            <a href="#">{{ 'LANG.moreinfo' | translate }}</a>
-          </small>
-        </a>
-      </div>
-    </section>
-  </div>
-  
+
+
   <div class="map-container mb-1">
+
     <div class="map-frame">
       <div id="map"></div>
     </div>
+
+
+      <div class="listOfPlaces mb-1 list-group overflow-auto" style="height: 400px; width: 400px; border: 2px solid #680F3D ; position: absolute; left: 14px; top: 130px;" >
+        <div *ngFor="let place of places" >
+          <div *ngFor="let data of place.data"  >
+            <a href="#" class="list-group-item list-group-item-action" >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
+                <small>2km</small>
+              </div>
+              <p class="mb-1">
+                {{ data.location.address.street_address }}, {{
+                data.location.address.postal_code }} {{ data.location.address.locality }}
+              </p>
+              <small>
+                <a href="#">{{ 'LANG.moreinfo' | translate }}</a>
+              </small>
+            </a>
+          </div>
+        </div>
+      </div>
+
   </div>
+
 </div>

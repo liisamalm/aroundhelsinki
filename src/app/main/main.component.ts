@@ -1,9 +1,11 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import {LeafletEvent} from 'leaflet';
 import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
 import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -28,9 +30,15 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
+  public location: any = {
+    x: 24.93545, 
+    y: 60.16952,
+    label: 'test marker'
+  };
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
+  faLocationCrosshairs = faLocationCrosshairs;
 
   constructor(private markerService: MarkerService, public translate: TranslateService) { 
     translate.addLangs(['en', 'fi', 'se']);
@@ -42,16 +50,20 @@ export class MainComponent implements AfterViewInit, OnInit{
   }
   
   private initMap(): void {
+
     this.map = L.map('map', {
       center: [60.16952, 24.93545],
       zoom: 3,
     });
+
+
     const provider = new OpenStreetMapProvider();
     const searchControl = new (GeoSearchControl as any)({
       provider: provider,
       autoClose: true,
     });
     this.map.addControl(searchControl);
+
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -63,6 +75,12 @@ export class MainComponent implements AfterViewInit, OnInit{
     );
 
     tiles.addTo(this.map);
+
+    this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
+      console.log("Y: " + e.location.y + "X: " + e.location.x);
+    });
+    
+ 
   }
 
   ngAfterViewInit(): void {
