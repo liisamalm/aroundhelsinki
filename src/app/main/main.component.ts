@@ -40,6 +40,7 @@ export class MainComponent implements AfterViewInit, OnInit{
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
 
+
   constructor(private markerService: MarkerService, public translate: TranslateService) { 
     translate.addLangs(['en', 'fi', 'se']);
     translate.setDefaultLang('en');
@@ -75,12 +76,41 @@ export class MainComponent implements AfterViewInit, OnInit{
     );
 
     tiles.addTo(this.map);
-
-    this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
-      console.log("Y: " + e.location.y + "X: " + e.location.x);
-    });
+    this.getDistance();
     
  
+  }
+
+  //Etäisyys toimii, mutta näyttäminen ei toimi. Eli kun kokeilee netissä, se näyttää vain ensimmäisen kohdalla etäisyyden. Ja se minkä se näyttää on listan viimeisen.
+
+  getDistance(): void{
+    this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
+      const userY = e.location.y;
+      const userX = e.location.x;
+      let placeY = "";
+      let placeX = "";
+      this.markerService.getAllPlaces().subscribe((res: any) => {
+        for (const c of res.data) {
+          placeX = c.location.lon;
+          placeY = c.location.lat;
+          console.log("user locarion: " + userX + " " + userY);
+          console.log("placeX + placeY: " + placeX + " " + placeY);
+
+          let degrees = Math.PI/180;
+          let dLat = (parseFloat(placeY) - userY) * degrees;
+          var dLon = (parseFloat(placeX) - userX) * degrees;
+          var a = Math.pow(Math.sin(dLat/2.0), 2) + Math.cos(userY*degrees) * Math.cos(userX*degrees) * Math.pow(Math.sin(dLon/2.0), 2);
+          var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+          console.log(b + "km");
+          var getElement = document.getElementById("distance");
+          if(getElement){
+            getElement.innerHTML = (b.toFixed(2) + "km");
+          }
+        }  
+      });
+
+    });
+
   }
 
   ngAfterViewInit(): void {

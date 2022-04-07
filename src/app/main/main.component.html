@@ -1,12 +1,13 @@
 <div class="d-flex w-100 justify-content-between">
   <div class="listOfPlaces mb-1">
     <section *ngFor="let place of places">
-      <div *ngFor="let data of place.data" class="list-group">
+      <div *ngFor="let data of place.data" class="list-group onePlace">
         <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
+          <div class="d-flex w-100 justify-content-between" id="place">
             
             <h5 class="mb-1"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
-            <small>2km</small>
+            <div id="distance"></div>
+            <small id="distance"></small>
           </div>
           <p class="mb-1">
             {{ data.location.address.street_address }}, {{
