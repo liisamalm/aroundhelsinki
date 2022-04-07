@@ -21,8 +21,8 @@
         <div class="col-md-1 p-2" style="text-align: center;" >
 
           <img [src]="getIcon(weather.weather[0].icon)" alt="">
-          <p >{{ weather.main.temp.toFixed(0)  }}  °C</p>
-          <p>{{ 'LANG.cityname' | translate }}</p>
+          {{ weather.main.temp.toFixed(0) }}°C
+          <!-- <p>{{ 'LANG.cityname' | translate }}</p> -->
 
         </div>
     </div>
