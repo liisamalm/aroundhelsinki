@@ -51,7 +51,7 @@ export class MainComponent implements AfterViewInit, OnInit{
   private initMap(): void {
     this.map = L.map('map', {
       center: [60.16952, 24.93545],
-      zoom: 3,
+      zoom: 12,
     });
     const provider = new OpenStreetMapProvider();
     const searchControl = new (GeoSearchControl as any)({
@@ -75,6 +75,7 @@ export class MainComponent implements AfterViewInit, OnInit{
       .openPopup();
 
     this.map.on("geosearch/showlocation", e => {
+
       if (marker) {
         // check
         this.map.removeLayer(marker); // remove
@@ -82,7 +83,7 @@ export class MainComponent implements AfterViewInit, OnInit{
       marker = new L.Marker([e.target.location.y, e.target.location.x])
         .addTo(this.map)
         .bindPopup(e.target.location.label)
-        .openPopup();
+        .openPopup();        
     });
 
     tiles.addTo(this.map);
