@@ -1,5 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
+import {LeafletEvent} from 'leaflet';
 import { MarkerService } from './marker.service';
 import {TranslateService} from '@ngx-translate/core';
 import { Places } from './places';
@@ -73,21 +74,13 @@ export class MainComponent implements AfterViewInit, OnInit{
       }
     );
 
-    let marker = L.marker([this.location.y, this.location.x])
-      .addTo(this.map)
-      .bindPopup(this.location.label)
-      .openPopup();
-
-    this.map.on('geosearch/showlocation', e => {
-      if (marker) {
-        this.map.removeLayer(marker); 
-      }
-      const latlang = e.target.getLatLang();
-      e.
-      console.log(latlang);
-    });
-
     tiles.addTo(this.map);
+
+    this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
+      console.log("Y: " + e.location.y + "X: " + e.location.x);
+    });
+    
+ 
   }
 
   ngAfterViewInit(): void {
