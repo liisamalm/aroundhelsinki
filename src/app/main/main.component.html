@@ -8,9 +8,9 @@
     </div>
 
 
-      <div class="listOfPlaces mb-1 overflow-auto" class="list-group" style="height: 400px; width: 400px; border: 3px solid #680F3D ; position: absolute; left: 20px; top: 150px;" >
-        <section *ngFor="let place of places" >
-          <p *ngFor="let data of place.data"  >
+      <div class="listOfPlaces mb-1 list-group overflow-auto" style="height: 400px; width: 400px; border: 3px solid #680F3D ; position: absolute; left: 20px; top: 150px;" >
+        <div *ngFor="let place of places" >
+          <div *ngFor="let data of place.data"  >
             <a href="#" class="list-group-item list-group-item-action" >
               <div class="d-flex w-100 justify-content-between">
 
@@ -25,8 +25,8 @@
                 <a href="#">{{ 'LANG.moreinfo' | translate }}</a>
               </small>
             </a>
-          </p>
-        </section>
+          </div>
+        </div>
       </div>
 
   </div>
