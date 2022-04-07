@@ -49,16 +49,20 @@ export class MainComponent implements AfterViewInit, OnInit{
   }
   
   private initMap(): void {
+
     this.map = L.map('map', {
       center: [60.16952, 24.93545],
       zoom: 3,
     });
+
+
     const provider = new OpenStreetMapProvider();
     const searchControl = new (GeoSearchControl as any)({
       provider: provider,
       autoClose: true,
     });
     this.map.addControl(searchControl);
+
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -74,16 +78,13 @@ export class MainComponent implements AfterViewInit, OnInit{
       .bindPopup(this.location.label)
       .openPopup();
 
-    this.map.on("geosearch/showlocation", e => {
+    this.map.on('geosearch/showlocation', e => {
       if (marker) {
-        // check
-        this.map.removeLayer(marker); // remove
+        this.map.removeLayer(marker); 
       }
-      marker = new L.Marker([e.target.location.y, e.target.location.x])
-        .addTo(this.map)
-        .bindPopup(e.target.location.label)
-        .openPopup();
-        console.log("Hei!")
+      const latlang = e.target.getLatLang();
+      e.
+      console.log(latlang);
     });
 
     tiles.addTo(this.map);
