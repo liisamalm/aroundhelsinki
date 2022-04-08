@@ -14,13 +14,7 @@ export class NavigationComponent implements OnInit {
   iconLink: string = 'http://openweathermap.org/img/w/';
 
 
-  constructor(public translate: TranslateService, public weatherService: WeatherService) {
-    translate.addLangs(['en', 'fi', 'se']);
-    translate.setDefaultLang('en');
-
-    const browserLang = translate.getBrowserLang()!;
-    translate.use(browserLang.match(/en|fi|se/) ? browserLang : 'en');
-  }
+  constructor(public translate: TranslateService, public weatherService: WeatherService) { }
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit)
