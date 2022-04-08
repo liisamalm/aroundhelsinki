@@ -11,6 +11,7 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
+import { PlaceDetailComponent } from './place-detail/place-detail.component';
 
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -22,7 +23,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppComponent,
     MainComponent,
     NavigationComponent,
-    FooterComponent
+    FooterComponent,
+    PlaceDetailComponent
   ],
   providers: [],
   imports: [
