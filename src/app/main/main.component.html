@@ -14,7 +14,9 @@
             <a href="#" class="list-group-item list-group-item-action" >
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
-                <small id="distance"></small>
+                <small id="distance"> 
+                  <div> {{ distance.length }}</div>
+                </small>
               </div>
               <p class="mb-1">
                 {{ data.location.address.street_address }}, {{
