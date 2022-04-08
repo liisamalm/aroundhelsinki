@@ -65,7 +65,7 @@ export class MainComponent implements AfterViewInit, OnInit{
 
     this.map = L.map('map', {
       center: [60.16952, 24.93545],
-      zoom: 3,
+      zoom: 12,
     });
 
 
