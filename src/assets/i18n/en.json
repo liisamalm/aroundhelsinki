@@ -40,7 +40,6 @@
         },
         "more": "More",
         "moreinfo": "More info",
-        "description": "Description",
-        "dataname": "{{ data.name.en }}"
+        "description": "Description"
     }
 }
