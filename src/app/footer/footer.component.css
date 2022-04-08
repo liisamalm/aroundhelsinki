@@ -1,6 +1,7 @@
-* {
-  background-color: #F1F8F2;
-
+.container {
+  background-color: #c8e3cb;
+  color: #680F3D;
+  font-weight: bold;
 }
 
 .nav-link, .copyright {

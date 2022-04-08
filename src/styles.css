@@ -3,9 +3,18 @@ body {
   width: 1140px;
   margin: auto;
   font-family: 'Roboto', sans-serif;
+  /* font-size: 62.5%; */
 }
 
 
+h5{
+    color: #680F3D;
+}
+
+.link{
+	color: #2764ae;
+	font-size: 12px;
+}
 
 /*Control OSMGEocoder Css file*/
 
@@ -47,3 +56,19 @@ body {
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
 	padding: 5px;
 }
+
+
+a.reset{
+	color: #680F3D;
+}
+
+.leaflet-control-geosearch .results.active:after {
+	content: '';
+	display: block;
+	width: 0;
+	border-left: 2px solid rgba(0, 0, 0, .2);
+	position: relative;
+	left: -2px;
+	bottom: -2px;
+	top: 30px;
+  }
