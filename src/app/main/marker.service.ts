@@ -39,6 +39,4 @@ export class MarkerService {
   getAllPlaces():Observable<Places> {
     return this.http.get<Places>(this.places);
   }
-
- 
 }
