@@ -7,6 +7,8 @@ import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 import { Distance } from './distance';
+import { placements } from '@popperjs/core';
+import { getPopperClassPlacement } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -44,11 +46,12 @@ export class MainComponent implements AfterViewInit, OnInit{
 
   
   paikanEtaisyys: [] = [];
-  
-  /* distance: Distance = {
-    placeId: this.placeDistance,
-    length: 
-  }; */
+
+ 
+  distance: Distance = {
+    placeId: 0,
+    length: 0
+  };
 
   
 
@@ -125,9 +128,8 @@ export class MainComponent implements AfterViewInit, OnInit{
       });
 
     });
-
   }
-
+  
   ngAfterViewInit(): void {
     this.initMap();
     this.markerService.makePlaceMarkers(this.map);
