@@ -40,12 +40,17 @@ export class MainComponent implements AfterViewInit, OnInit{
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
-  
-  distance: Distance = {
-    length: 0
-  };
-  
   placeDistance: any;
+
+  
+  paikanEtaisyys: [] = [];
+  
+  /* distance: Distance = {
+    placeId: this.placeDistance,
+    length: 
+  }; */
+
+  
 
   constructor(private markerService: MarkerService, public translate: TranslateService) { 
     translate.addLangs(['en', 'fi', 'se']);
@@ -107,12 +112,16 @@ export class MainComponent implements AfterViewInit, OnInit{
           var dLon = (parseFloat(placeX) - userX) * degrees;
           var a = Math.pow(Math.sin(dLat/2.0), 2) + Math.cos(userY*degrees) * Math.cos(userX*degrees) * Math.pow(Math.sin(dLon/2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-          console.log(b + "km");
+          console.log("Etäisyys " + b + "km");
           var getElement = document.getElementById("distance");
           if(getElement){
             getElement.innerHTML = (b.toFixed(2) + "km");
-          }
+            this.placeDistance = b.toFixed(2);
+            console.log(this.placeDistance)
         }  
+          }
+          console.log(this.placeDistance)
+          
       });
 
     });
