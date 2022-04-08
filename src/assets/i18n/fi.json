@@ -40,7 +40,6 @@
         },
         "more": "Lisää",
         "moreinfo": "Lisätietoja",
-        "description": "Kuvaus",
-        "dataname": "{{ data.name.fi }}"
+        "description": "Kuvaus"
     }
 }

@@ -40,7 +40,6 @@
         },
         "more": "Mer",
         "moreinfo": "Mer info",
-        "description": "Beskrivning",
-        "dataname": "{{ data.name.se }}"
+        "description": "Beskrivning"
     }
 }
