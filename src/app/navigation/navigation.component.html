@@ -12,9 +12,9 @@
             <a class="nav-link" href="#">{{ 'LANG.activities' | translate }}</a>
         </div>
 
-        <div class="col-md-1 " style="text-align: center;">
+        <div class="col-md-1" style="text-align: center;">
           <label>
-            <select #langSelect (change)="translate.use(langSelect.value)">
+            <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
               <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
             </select>
           </label>

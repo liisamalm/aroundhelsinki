@@ -5,7 +5,13 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+h5{
+    color: #680F3D;
+}
 
+.link{
+	color: #2764ae;
+}
 
 /*Control OSMGEocoder Css file*/
 

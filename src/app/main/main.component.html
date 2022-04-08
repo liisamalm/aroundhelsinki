@@ -1,14 +1,11 @@
 <div class="d-flex w-100 justify-content-between">
 
-
-  <div class="map-container mb-1">
-
+  <div class="map-container">
     <div class="map-frame">
       <div id="map"></div>
     </div>
 
-
-      <div class="listOfPlaces mb-1 list-group overflow-auto" style="height: 400px; width: 400px; border: 2px solid #680F3D ; position: absolute; left: 14px; top: 130px;" >
+      <div class="listOfPlaces mb-1 list-group overflow-auto" style="height: 400px; width: 400px; border: 2px solid #680F3D; position: absolute; left: 14px; top: 130px;" >
         <div *ngFor="let place of places" >
           <div *ngFor="let data of place.data"  >
             <a href="#" class="list-group-item list-group-item-action" >
@@ -21,7 +18,7 @@
                 data.location.address.postal_code }} {{ data.location.address.locality }}
               </p>
               <small>
-                <a href="#">{{ 'LANG.moreinfo' | translate }}</a>
+                <a href="#" class="link">{{ 'LANG.moreinfo' | translate }}</a>
               </small>
             </a>
           </div>

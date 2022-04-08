@@ -1,11 +1,17 @@
-* {
-  background-color: #F1F8F2;
+.navbar{
+  background-color: #c8e3cb;
+  color: #680F3D;
+  font-weight: bold;
+}
 
+.lang{
+  background-color: #680F3D;
+  color: #F1F8F2;
 }
 
 .nav-link{
   color: #680F3D !important;
-
+  font-weight: bold;
 }
 
 .dropdown-toggle {
