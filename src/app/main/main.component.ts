@@ -42,6 +42,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
+  placesDists: Object;
 
   paikanEtaisyys: any[] = [];
   newDistances : any[] = [];
@@ -117,19 +118,25 @@ export class MainComponent implements AfterViewInit, OnInit {
           var getElement = document.getElementById('distance');
           if (getElement) {
             // getElement.innerHTML = b.toFixed(2) + 'km';
-            this.placeDistance = String(b.toFixed(2));
+            this.placeDistance = (b.toFixed(2));
             // console.log(this.placeDistance);
           }
           // this.paikanEtaisyys.push(this.placeDistance);
           this.paikanEtaisyys.push({
-            name: this.placeDistance
-          });
+            dist: this.placeDistance}
+          );
           // console.log(this.paikanEtaisyys);
 
           this.newDistances = this.paikanEtaisyys;
           console.log(this.newDistances);
-          console.log(this.newDistances[0].name);
+          // console.log(this.newDistances[0]);
 
+          var arrayToString = JSON.stringify(Object.assign({}, this.newDistances));  // convert array to string
+          var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
+
+          // console.log(stringToJsonObject);
+          this.placesDists = stringToJsonObject;
+          console.log(this.placesDists);
 
         }
 
