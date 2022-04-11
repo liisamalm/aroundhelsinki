@@ -1,36 +1,48 @@
 <div class="d-flex w-100 justify-content-between">
-
   <div class="map-container">
     <div class="map-frame">
       <div id="map"></div>
     </div>
 
-      <div class="listOfPlaces mb-1 list-group overflow-auto " style="height: 300px; width: 400px; border: 2px solid #680F3D; position: absolute; left: 14px; top: 285px;">
-        <div *ngFor="let place of places" >
-          <div *ngFor="let data of place.data"  >
-            <a href="#" class="list-group-item list-group-item-action" >
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 fs-6"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
-                <small id="distance"  >
-                  <div *ngFor="let distance of newDistances"> 
-                    <div>{{distance.placeId[0]}}</div>
-                    <div>hei</div>
-                    <div *ngIf="distance.placeId === data.id">{{ distance.length }}</div>
-                  </div>
-                </small>
+    <div
+      class="listOfPlaces mb-1 list-group overflow-auto"
+      style="
+        height: 300px;
+        width: 400px;
+        border: 2px solid #680f3d;
+        position: absolute;
+        left: 14px;
+        top: 285px;
+      "
+    >
+      <div *ngFor="let place of places">
+        <div *ngFor="let data of place.data">
+          <a href="#" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 fs-6">
+                <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+                {{ data.name.fi }}
+              </h5>
+              <p>{{data.location.placeKm}}</p>
+              <div *ngFor="let distance of newDistances">
+                <p>{{distance}}</p>
+                <p>{{distance.placeId}}</p>
+                <p>{{distance.placeKm}}</p>
+                <div *ngIf="distance.placeId === data.id">
+                  <small id="distance">{{ distance.placeKm }}</small>
+                </div>
               </div>
-              <p class="mb-1 ptext">
-                {{ data.location.address.street_address }}, {{
-                data.location.address.postal_code }} {{ data.location.address.locality }}
-              </p>
-              <small>
-                <a href="#" class="link">{{ 'LANG.moreinfo' | translate }}</a>
-              </small>
-            </a>
-          </div>
-        </div>
+            </div>
+            <p class="mb-1 ptext">
+              {{ data.location.address.street_address }},
+              {{ data.location.address.postal_code }}
+              {{ data.location.address.locality }}
+            </p>
+            <small>
+              <a href="#" class="link">{{ "LANG.moreinfo" | translate }}</a>
+            </small>
+          </a>
       </div>
-
+    </div>
   </div>
-
 </div>

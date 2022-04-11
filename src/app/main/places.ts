@@ -46,6 +46,7 @@ export interface Location {
     lat:     number;
     lon:     number;
     address: Address;
+    placeKm: number;
 }
 
 export interface Address {

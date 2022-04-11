@@ -1,4 +1,4 @@
 export interface Distance {
     placeId: string;
-    length: number;
+    placeKm: number;
 }

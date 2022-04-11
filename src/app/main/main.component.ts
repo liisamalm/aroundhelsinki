@@ -42,15 +42,17 @@ export class MainComponent implements AfterViewInit, OnInit {
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
-  // newDistances : Distance[] = [];
+  // newDistances: Array<Distance> = [];
+  // newDistances: Distance = {
+  //   placeId: '',
+  //   length: 0
+  // };
 
-  newDistances = [{
-    placeId: "",
-    length: 0}];
+  newDistances : Distance[];
 
-  // distance: Distance = {
-  //   placeId: 0,
-  //   length: 0,
+  // newDistances: Distance = {
+  //   placeId: "",
+  //   placeKm: 0
   // };
 
   constructor(
@@ -115,14 +117,20 @@ export class MainComponent implements AfterViewInit, OnInit {
               Math.pow(Math.sin(dLon / 2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
           this.placeDistance = (b.toFixed(2));
+          c.location.placeKm = this.placeDistance;
+          c.location.placeKm.push(this.placeDistance);
 
           // var getElement = document.getElementById('distance');
           // if (getElement) {
           //   this.placeDistance = (b.toFixed(2));
           // }
           // var distanceData: Distance = {placeId: c.id, length: this.placeDistance};
-          this.newDistances.push({placeId: c.id, length: this.placeDistance});  
-          console.log("plaveId + length: " + c.id + " " + this.placeDistance);
+          // this.newDistances.placeId = c.id;
+          // this.newDistances.placeKm = this.placeDistance;
+
+          // this.newDistances.push({placeId: c.id, placeKm: this.placeDistance});  
+          // console.log("plaveId + length: " + c.id + " " + this.placeDistance);
+
         }
 
       });
