@@ -11,8 +11,8 @@
             <a href="#" class="list-group-item list-group-item-action" >
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 fs-6"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
-                <small id="distance">
-                  <div> {{ placeDistance }}</div>
+                <small id="distance" *ngFor="let dist of newDistances; let i = index" >
+                  <div > {{ dist[i] }}</div>
                   <div> {{ "id " + data.id }}</div>
                 </small>
               </div>
