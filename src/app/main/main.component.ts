@@ -122,13 +122,14 @@ export class MainComponent implements AfterViewInit, OnInit {
             // console.log(this.placeDistance);
           }
           // this.paikanEtaisyys.push(this.placeDistance);
-          this.paikanEtaisyys.push({
-            dist: this.placeDistance}
+          this.paikanEtaisyys.push(
+             this.placeDistance
           );
           // console.log(this.paikanEtaisyys);
 
           this.newDistances = this.paikanEtaisyys;
           console.log(this.newDistances);
+          console.log(this.newDistances[0]);
           // console.log(this.newDistances[0]);
 
           var arrayToString = JSON.stringify(Object.assign({}, this.newDistances));  // convert array to string
