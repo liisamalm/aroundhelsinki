@@ -1,4 +1,4 @@
 export interface Distance {
-    placeId: String;
+    placeId: string;
     length: number;
 }

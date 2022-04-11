@@ -42,9 +42,6 @@ export class MainComponent implements AfterViewInit, OnInit {
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
-  placesDists: Object;
-
-  paikanEtaisyys: any[] = [];
   newDistances : Distance[] = [];
 
   // distance: Distance = {
@@ -101,8 +98,8 @@ export class MainComponent implements AfterViewInit, OnInit {
         for (const c of res.data) {
           placeX = c.location.lon;
           placeY = c.location.lat;
-          console.log('user locarion: ' + userX + ' ' + userY);
-          console.log('placeX + placeY: ' + placeX + ' ' + placeY);
+          // console.log('user locarion: ' + userX + ' ' + userY);
+          // console.log('placeX + placeY: ' + placeX + ' ' + placeY);
 
           let degrees = Math.PI / 180;
           let dLat = (parseFloat(placeY) - userY) * degrees;
@@ -117,43 +114,14 @@ export class MainComponent implements AfterViewInit, OnInit {
           var getElement = document.getElementById('distance');
           if (getElement) {
             this.placeDistance = (b.toFixed(2));
-            // console.log(this.placeDistance);
           }
-          this.paikanEtaisyys.push(
-             this.placeDistance
-          );
-          // console.log(this.paikanEtaisyys);
+          var distanceData: Distance = {placeId: c.id, length: this.placeDistance};
 
-          this.newDistances = this.paikanEtaisyys;
-          // console.log(this.newDistances);
-          // console.log(this.newDistances[0]);
-          // console.log(this.newDistances[0]);
-
-          var arrayToString = JSON.stringify(Object.assign({}, this.newDistances));  
-          var stringToJsonObject = JSON.parse(arrayToString); 
-
-          // console.log(stringToJsonObject);
-          this.placesDists = stringToJsonObject;
-          console.log(this.placesDists);
+          this.newDistances.push(distanceData);  
+          console.log("newDistances: " + this.newDistances);        
 
         }
 
-        // var newDistances : any[] = [];
-        // newDistances = this.paikanEtaisyys;
-
-        // console.log(newDistances);
-
-        // var getElement = document.getElementById('distance');
-        // for(let i = 0; i < newDistances.length; i++) {
-        //   this.placeDistance = newDistances[i];
-        //   console.log(this.placeDistance);
-        //   getElement!.innerHTML = newDistances[i]
-        // }
-
-
-
-
-        // console.log(typeof this.paikanEtaisyys);
       });
     });
   }
