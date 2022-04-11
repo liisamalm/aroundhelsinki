@@ -32,11 +32,11 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MainComponent implements AfterViewInit, OnInit {
   private map: L.Map;
-  public location: any = {
-    x: 24.93545,
-    y: 60.16952,
-    label: 'test marker',
-  };
+  // public location: any = {
+  //   x: 24.93545,
+  //   y: 60.16952,
+  //   label: 'test marker',
+  // };
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
@@ -45,12 +45,12 @@ export class MainComponent implements AfterViewInit, OnInit {
   placesDists: Object;
 
   paikanEtaisyys: any[] = [];
-  newDistances : any[] = [];
+  newDistances : Distance[] = [];
 
-  distance: Distance = {
-    placeId: 0,
-    length: 0,
-  };
+  // distance: Distance = {
+  //   placeId: 0,
+  //   length: 0,
+  // };
 
   constructor(
     private markerService: MarkerService,
@@ -90,7 +90,6 @@ export class MainComponent implements AfterViewInit, OnInit {
     this.getDistance();
   }
 
-  //Etäisyys toimii, mutta näyttäminen ei toimi. Eli kun kokeilee netissä, se näyttää vain ensimmäisen kohdalla etäisyyden. Ja se minkä se näyttää on listan viimeisen.
 
   getDistance(): void {
     this.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
@@ -114,26 +113,24 @@ export class MainComponent implements AfterViewInit, OnInit {
               Math.cos(userX * degrees) *
               Math.pow(Math.sin(dLon / 2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-          console.log('Etäisyys ' + b + 'km');
+          // console.log('Etäisyys ' + b + 'km');
           var getElement = document.getElementById('distance');
           if (getElement) {
-            // getElement.innerHTML = b.toFixed(2) + 'km';
             this.placeDistance = (b.toFixed(2));
             // console.log(this.placeDistance);
           }
-          // this.paikanEtaisyys.push(this.placeDistance);
           this.paikanEtaisyys.push(
              this.placeDistance
           );
           // console.log(this.paikanEtaisyys);
 
           this.newDistances = this.paikanEtaisyys;
-          console.log(this.newDistances);
-          console.log(this.newDistances[0]);
+          // console.log(this.newDistances);
+          // console.log(this.newDistances[0]);
           // console.log(this.newDistances[0]);
 
-          var arrayToString = JSON.stringify(Object.assign({}, this.newDistances));  // convert array to string
-          var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json object
+          var arrayToString = JSON.stringify(Object.assign({}, this.newDistances));  
+          var stringToJsonObject = JSON.parse(arrayToString); 
 
           // console.log(stringToJsonObject);
           this.placesDists = stringToJsonObject;
