@@ -42,7 +42,11 @@ export class MainComponent implements AfterViewInit, OnInit {
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
-  newDistances : Distance[] = [];
+  // newDistances : Distance[] = [];
+
+  newDistances = [{
+    placeId: "",
+    length: 0}];
 
   // distance: Distance = {
   //   placeId: 0,
@@ -110,16 +114,15 @@ export class MainComponent implements AfterViewInit, OnInit {
               Math.cos(userX * degrees) *
               Math.pow(Math.sin(dLon / 2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-          // console.log('Etäisyys ' + b + 'km');
-          var getElement = document.getElementById('distance');
-          if (getElement) {
-            this.placeDistance = (b.toFixed(2));
-          }
-          var distanceData: Distance = {placeId: c.id, length: this.placeDistance};
+          this.placeDistance = (b.toFixed(2));
 
-          this.newDistances.push(distanceData);  
-          console.log("newDistances: " + this.newDistances);        
-
+          // var getElement = document.getElementById('distance');
+          // if (getElement) {
+          //   this.placeDistance = (b.toFixed(2));
+          // }
+          // var distanceData: Distance = {placeId: c.id, length: this.placeDistance};
+          this.newDistances.push({placeId: c.id, length: this.placeDistance});  
+          console.log("plaveId + length: " + c.id + " " + this.placeDistance);
         }
 
       });

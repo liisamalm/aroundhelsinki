@@ -13,6 +13,8 @@
                 <h5 class="mb-1 fs-6"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
                 <small id="distance"  >
                   <div *ngFor="let distance of newDistances"> 
+                    <div>{{distance.placeId[0]}}</div>
+                    <div>hei</div>
                     <div *ngIf="distance.placeId === data.id">{{ distance.length }}</div>
                   </div>
                 </small>
