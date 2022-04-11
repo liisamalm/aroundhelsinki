@@ -43,7 +43,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
 
-  paikanEtaisyys: number[] = [];
+  paikanEtaisyys: any[] = [];
   newDistances : any[] = [];
 
   distance: Distance = {
@@ -118,14 +118,18 @@ export class MainComponent implements AfterViewInit, OnInit {
           if (getElement) {
             // getElement.innerHTML = b.toFixed(2) + 'km';
             this.placeDistance = String(b.toFixed(2));
-            console.log(this.placeDistance);
+            // console.log(this.placeDistance);
           }
-          this.paikanEtaisyys.push(this.placeDistance);
-          console.log(this.paikanEtaisyys);
+          // this.paikanEtaisyys.push(this.placeDistance);
+          this.paikanEtaisyys.push({
+            name: this.placeDistance
+          });
+          // console.log(this.paikanEtaisyys);
 
           this.newDistances = this.paikanEtaisyys;
           console.log(this.newDistances);
-          console.log(typeof(this.newDistances.forEach));
+          console.log(this.newDistances[0].name);
+
 
         }
 
