@@ -20,9 +20,11 @@ export class MarkerService {
   }
 
   makeMapPopup(data: any): any{ 
-    let markerPopup: any = this.compilePopup(PopupComponent, 
+    let markerPopupName: any = this.compilePopup(PopupComponent, 
       (c: { instance: { paikka: Places; }; }) => {c.instance.paikka = data.name.fi});
-    return markerPopup;
+   /*  let markerPopupAddress: any = this.compilePopup(PopupComponent, 
+      (c: { instance: { paikka: Places; }; }) => {c.instance.paikka = data.location.address.street_address}); */
+    return markerPopupName;
 
     /* (c: { instance: { customText: string; }; }) => {c.instance.customText = 'Jokaisen paikan tiedot'}); */
   }

@@ -13,4 +13,8 @@ An angular component rendered as a map popup.
                 </p>
    </div>
 </div> 
-<p>Place: {{paikka}}</p>
+Place: {{paikka}}
+<p *ngFor="let place of places">
+    
+    {{ place.data.toString }}
+</p>
