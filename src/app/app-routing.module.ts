@@ -5,7 +5,7 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
-  { path: 'detail/:id', component: PlaceDetailComponent },
+  { path: 'main/detail/:id', component: PlaceDetailComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' }
 ];
 

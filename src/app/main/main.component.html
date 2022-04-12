@@ -10,7 +10,7 @@
           <div *ngFor="let data of place.data"  >
             <a href="#" class="list-group-item list-group-item-action" >
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 fs-6"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ data.name.fi }}</h5>
+                <h5 class="mb-1 fs-6" ><fa-icon [icon]="faLocationCrosshairs"></fa-icon><a style="text-decoration: none; color: #680F3D!important;" routerLink = 'detail/:id'> {{ data.name.fi }}</a></h5>
                 <small id="distance"></small>
               </div>
               <p class="mb-1 ptext">
