@@ -21,7 +21,7 @@ export class MarkerService {
 
   makeMapPopup(data: any): any{ 
     let markerPopup: any = this.compilePopup(PopupComponent, 
-      (c: { instance: { paikka: Places; }; }) => {c.instance.paikka = data.location.address});
+      (c: { instance: { paikka: Places; }; }) => {c.instance.paikka = data.name.fi});
     return markerPopup;
 
     /* (c: { instance: { customText: string; }; }) => {c.instance.customText = 'Jokaisen paikan tiedot'}); */
