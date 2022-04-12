@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit, Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import * as L from 'leaflet';
 import {LeafletEvent} from 'leaflet';
 import { MarkerService } from './marker.service';
@@ -6,6 +6,7 @@ import {TranslateService} from '@ngx-translate/core';
 import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { PopupComponent } from '../popup/popup.component';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -30,18 +31,18 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
-  public location: any = {
+ /*  public location: any = {
     x: 24.93545, 
     y: 60.16952,
     label: 'test marker'
-  };
+  }; */
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
 
-
-  constructor(private markerService: MarkerService, public translate: TranslateService) { }
+  constructor(private markerService: MarkerService, 
+              public translate: TranslateService) { }
   
   private initMap(): void {
 
@@ -121,4 +122,7 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.places.push(res);
     });
   }
+
+ 
+  
 }
