@@ -1,7 +1,5 @@
 <h1>Custom Popup</h1>
-<p>
-An angular component rendered as a map popup.
-</p>
+
 <div *ngFor="let place of places">
     <div *ngFor="let data of place.data">
         <p>{{ data.name.fi }}</p>
@@ -10,11 +8,11 @@ An angular component rendered as a map popup.
             {{ data.location.address.street_address }},
             {{ data.location.address.postal_code }} 
             {{ data.location.address.locality }}
-                </p>
+        </p>
    </div>
 </div> 
-Place: {{paikka}}
-<p *ngFor="let place of places">
+ <p>Place: {{ place }}</p> 
+<p>Address: {{ address }}</p>
+<p *ngFor="let place of places"></p>
     
-    {{ place.data.toString }}
-</p>
+   
