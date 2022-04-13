@@ -38,7 +38,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
 
-  newDistances : Distance[] = [];
+  newDistances : Distance[];
 
 
   constructor(
@@ -103,6 +103,7 @@ export class MainComponent implements AfterViewInit, OnInit {
               Math.pow(Math.sin(dLon / 2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
           c.distance = b.toFixed(2);
+          // this.getAllDistances(c.id, c.distance);
           let distanceData: Distance = {
             placeId: c.id,
             placeKm: c.distance
@@ -124,6 +125,16 @@ export class MainComponent implements AfterViewInit, OnInit {
   ngOnInit(): void {
     this.getAllPlaces();
   }
+
+  // getAllDistances(placeId : any, placeKm: any): void{
+  //   let distanceData: Distance = {
+  //     placeId: placeId,
+  //     placeKm: placeKm
+  //   }
+  //   console.log(placeId + " " + placeKm);
+  //   this.newDistances.push(distanceData);
+
+  // }
 
   getAllPlaces(): void {
     this.markerService.getAllPlaces().subscribe((res: Places) => {

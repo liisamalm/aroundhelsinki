@@ -1,4 +1,11 @@
-<!-- <p>{{ newDistances.placeId}}</p> -->
+<div>
+  <p>Hei!</p>
+  <div *ngFor="let distance of newDistances">
+      <p>{{distance.placeId}}  {{distance.placeKm}}</p>
+      <p>Hei!</p>
+  </div>
+</div>
+
 <div class="d-flex w-100 justify-content-between">
   <div class="map-container">
     <div class="map-frame">
@@ -24,7 +31,9 @@
                 <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
                 {{ data.name.fi }}
               </h5>
-              <div id="divdistance" *ngFor="let distance of newDistances;" ><div *ngIf="data.id === distance.placeId"><small id="distance" >{{ distance.placeKm }} km</small></div></div>
+      <div *ngFor="let distance of newDistances">
+        <p>{{distance.placeId}}</p>
+        <div *ngIf="data.id === distance.placeId"><small id="distance" >{{ distance.placeKm }} km</small></div></div>
               <!-- <div *ngFor="let distance of newDistances">
                 <p>{{distance}}</p>
                 <p>{{distance.placeId}}</p>
