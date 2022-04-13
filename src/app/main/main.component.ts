@@ -30,18 +30,14 @@ L.Marker.prototype.options.icon = iconDefault;
 export class MainComponent implements AfterViewInit, OnInit{
   
   private map: L.Map;
-  public location: any = {
-    x: 24.93545, 
-    y: 60.16952,
-    label: 'test marker'
-  };
+ 
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
 
-
-  constructor(private markerService: MarkerService, public translate: TranslateService) { }
+  constructor(private markerService: MarkerService, 
+              public translate: TranslateService) { }
   
   private initMap(): void {
 
@@ -49,7 +45,6 @@ export class MainComponent implements AfterViewInit, OnInit{
       center: [60.16952, 24.93545],
       zoom: 12,
     });
-
 
     const provider = new OpenStreetMapProvider();
     const searchControl = new (GeoSearchControl as any)({
@@ -70,11 +65,7 @@ export class MainComponent implements AfterViewInit, OnInit{
 
     tiles.addTo(this.map);
     this.getDistance();
-    
- 
   }
-
-  //Etäisyys toimii, mutta näyttäminen ei toimi. Eli kun kokeilee netissä, se näyttää vain ensimmäisen kohdalla etäisyyden. Ja se minkä se näyttää on listan viimeisen.
 
   getDistance(): void{
     this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
@@ -101,9 +92,7 @@ export class MainComponent implements AfterViewInit, OnInit{
           }
         }  
       });
-
     });
-
   }
 
   ngAfterViewInit(): void {
@@ -111,13 +100,13 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.markerService.makePlaceMarkers(this.map);
   }
 
-
   ngOnInit(): void {
     this.getAllPlaces();
-   }
+  }
 
   getAllPlaces(): void{
-    this.markerService.getAllPlaces().subscribe((res: Places) => {
+    this.markerService.getAllPlaces()
+      .subscribe((res: Places) => {
     this.places.push(res);
     });
   }

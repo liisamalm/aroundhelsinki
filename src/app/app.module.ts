@@ -12,7 +12,7 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
-
+import { PopupComponent } from './popup/popup.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -24,7 +24,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MainComponent,
     NavigationComponent,
     FooterComponent,
-    PlaceDetailComponent
+    PlaceDetailComponent,
+    PopupComponent
   ],
   providers: [],
   imports: [
