@@ -103,24 +103,18 @@ export class MainComponent implements AfterViewInit, OnInit {
               Math.pow(Math.sin(dLon / 2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
           c.distance = b.toFixed(2);
-          console.log("distance " + c.distance);
-          this.newDistances.push(c.placeId, c.distance);
-          // this.addDistanceToList(c.placeId);
+          let distanceData: Distance = {
+            placeId: c.id,
+            placeKm: c.distance
+          }
+          // console.log(c.id + " " + c.distance);
+          this.newDistances.push(distanceData);
 
         }
 
       });
     });
   }
-
-  // addDistanceToList(placeId: any){
-  //   for(const c of this.newDistances){
-  //     var small = document.getElementById("distance");
-  //     if(small && c.placeId === placeId){
-  //       small.innerHTML = c.placeKm + "km";
-  //     }
-  //   }
-  // }
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -136,4 +130,5 @@ export class MainComponent implements AfterViewInit, OnInit {
       this.places.push(res);
     });
   }
+
 }
