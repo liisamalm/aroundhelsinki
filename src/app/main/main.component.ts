@@ -66,8 +66,6 @@ export class MainComponent implements AfterViewInit, OnInit{
 
     tiles.addTo(this.map);
     this.getDistance();
-    
- 
   }
 
   //Etäisyys toimii, mutta näyttäminen ei toimi. Eli kun kokeilee netissä, se näyttää vain ensimmäisen kohdalla etäisyyden. Ja se minkä se näyttää on listan viimeisen.
@@ -97,9 +95,7 @@ export class MainComponent implements AfterViewInit, OnInit{
           }
         }  
       });
-
     });
-
   }
 
   ngAfterViewInit(): void {
@@ -107,17 +103,14 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.markerService.makePlaceMarkers(this.map);
   }
 
-
   ngOnInit(): void {
     this.getAllPlaces();
-   }
+  }
 
   getAllPlaces(): void{
-    this.markerService.getAllPlaces().subscribe((res: Places) => {
+    this.markerService.getAllPlaces()
+      .subscribe((res: Places) => {
     this.places.push(res);
     });
   }
-
- 
-  
 }

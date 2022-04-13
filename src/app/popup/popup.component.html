@@ -1,18 +1,7 @@
 <h1>Custom Popup</h1>
 
-<div *ngFor="let place of places">
-    <div *ngFor="let data of place.data">
-        <p>{{ data.name.fi }}</p>
-    
-        <p>
-            {{ data.location.address.street_address }},
-            {{ data.location.address.postal_code }} 
-            {{ data.location.address.locality }}
-        </p>
-   </div>
-</div> 
- <p>Place: {{ place }}</p> 
-<p>Address: {{ address }}</p>
-<p *ngFor="let place of places"></p>
-    
+<p>Place: {{ place }}</p> 
+<p>Address: {{ address }}, {{ postalCode }} {{ locality }}</p>
+<p>Opening Hours: {{ openingHours }}</p>
+
    

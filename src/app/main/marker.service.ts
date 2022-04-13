@@ -6,7 +6,6 @@ import { Places } from './places';
 import { PopupComponent } from '../popup/popup.component';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,11 +19,14 @@ export class MarkerService {
   }
 
   makeMapPopup(data: any): any{ 
-    let markerPopup: any = this.compilePopup(PopupComponent, (c: { instance: { place: String; }; }) => {c.instance.place = data.name.fi});
-    let markerPopupAddress: any = this.compilePopup(PopupComponent, (c: { instance: { paikka: String; }; }) => {c.instance.paikka = data.location.address.street_address});
-    return markerPopup
-
-    /* (c: { instance: { customText: string; }; }) => {c.instance.customText = 'Jokaisen paikan tiedot'}); */
+    let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
+        (c.instance.place = data.name.fi),
+        (c.instance.address = data.location.address.street_address),
+        (c.instance.postalCode = data.location.address.postal_code),
+        (c.instance.locality = data.location.address.locality),
+        (c.instance.openi = data.location.address.locality)
+      });
+      return markerPopup;
   }
 
   makePlaceMarkers(map: L.Map): void {
@@ -35,7 +37,6 @@ export class MarkerService {
         const marker = L.marker([lat, lon]);
       
         marker.bindPopup(this.makeMapPopup(c));
-       
 
         marker.addTo(map);
       }

@@ -10,18 +10,18 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
-  places: Places[] = [];
- /* @Input() places: Places[] = []; */
-    @Input() place: String 
-    @Input() address: String;
-
   
-  
+  @Input() place: String; 
+  @Input() address: String;
+  @Input() postalCode: String; 
+  @Input() openingHours: String;
+  @Input() locality: String;
+   
 
   constructor(private markerService: MarkerService,
               public translate: TranslateService) { }
 
   ngOnInit(): void {
-   
+  
   }
 }
