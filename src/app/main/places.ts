@@ -2,6 +2,7 @@ export interface Places {
     meta: Meta;
     data: Datum[];
     tags: { [key: string]: string };
+
 }
 
 export interface Datum {
@@ -15,6 +16,8 @@ export interface Datum {
     tags:              Tag[];
     opening_hours:     OpeningHours;
     extra_searchwords: null;
+    distance:          string;
+
 }
 
 export interface Description {
@@ -46,7 +49,7 @@ export interface Location {
     lat:     number;
     lon:     number;
     address: Address;
-    placeKm: number;
+    distance: number;
 }
 
 export interface Address {

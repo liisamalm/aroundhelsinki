@@ -32,28 +32,14 @@ L.Marker.prototype.options.icon = iconDefault;
 })
 export class MainComponent implements AfterViewInit, OnInit {
   private map: L.Map;
-  // public location: any = {
-  //   x: 24.93545,
-  //   y: 60.16952,
-  //   label: 'test marker',
-  // };
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
-  // newDistances: Array<Distance> = [];
-  // newDistances: Distance = {
-  //   placeId: '',
-  //   length: 0
-  // };
 
-  newDistances : Distance[];
+  newDistances : Distance[] = [];
 
-  // newDistances: Distance = {
-  //   placeId: "",
-  //   placeKm: 0
-  // };
 
   constructor(
     private markerService: MarkerService,
@@ -116,26 +102,25 @@ export class MainComponent implements AfterViewInit, OnInit {
               Math.cos(userX * degrees) *
               Math.pow(Math.sin(dLon / 2.0), 2);
           var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-          this.placeDistance = (b.toFixed(2));
-          c.location.placeKm = this.placeDistance;
-          c.location.placeKm.push(this.placeDistance);
-
-          // var getElement = document.getElementById('distance');
-          // if (getElement) {
-          //   this.placeDistance = (b.toFixed(2));
-          // }
-          // var distanceData: Distance = {placeId: c.id, length: this.placeDistance};
-          // this.newDistances.placeId = c.id;
-          // this.newDistances.placeKm = this.placeDistance;
-
-          // this.newDistances.push({placeId: c.id, placeKm: this.placeDistance});  
-          // console.log("plaveId + length: " + c.id + " " + this.placeDistance);
+          c.distance = b.toFixed(2);
+          console.log("distance " + c.distance);
+          this.newDistances.push(c.placeId, c.distance);
+          // this.addDistanceToList(c.placeId);
 
         }
 
       });
     });
   }
+
+  // addDistanceToList(placeId: any){
+  //   for(const c of this.newDistances){
+  //     var small = document.getElementById("distance");
+  //     if(small && c.placeId === placeId){
+  //       small.innerHTML = c.placeKm + "km";
+  //     }
+  //   }
+  // }
 
   ngAfterViewInit(): void {
     this.initMap();
