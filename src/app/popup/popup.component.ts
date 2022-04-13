@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { Places } from '../main/places';
 import { MarkerService } from '../main/marker.service';
 import {TranslateService} from '@ngx-translate/core';
-
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-popup',
@@ -10,16 +9,17 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
-  
   @Input() place: String; 
   @Input() address: String;
   @Input() postalCode: String; 
   @Input() openingHours: String;
   @Input() locality: String;
+  @Input() placeUrl: String;
+
+  faLocationCrosshairs = faLocationCrosshairs;
    
 
-  constructor(private markerService: MarkerService,
-              public translate: TranslateService) { }
+  constructor(public translate: TranslateService) {}
 
   ngOnInit(): void {
   

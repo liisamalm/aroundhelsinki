@@ -1,7 +1,7 @@
-<h1>Custom Popup</h1>
-
-<p>Place: {{ place }}</p> 
-<p>Address: {{ address }}, {{ postalCode }} {{ locality }}</p>
-<p>Opening Hours: {{ openingHours }}</p>
-
-   
+<a href="{{ placeUrl }}">
+    <h5 class="mb-1 fs-6"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ place }}</h5>
+</a>
+    <p *ngIf="address">{{ 'LANG.address' | translate }}:  {{ address }}, {{ postalCode }} {{ locality }}</p>
+    <small>
+        <a href="#" class="link">{{ 'LANG.moreinfo' | translate }}</a>
+    </small>  
