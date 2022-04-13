@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { MarkerService } from '../main/marker.service';
 import {TranslateService} from '@ngx-translate/core';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
 
@@ -18,7 +17,6 @@ export class PopupComponent implements OnInit {
 
   faLocationCrosshairs = faLocationCrosshairs;
    
-
   constructor(public translate: TranslateService) {}
 
   ngOnInit(): void {

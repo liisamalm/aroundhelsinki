@@ -46,7 +46,6 @@ export class MainComponent implements AfterViewInit, OnInit{
       zoom: 12,
     });
 
-
     const provider = new OpenStreetMapProvider();
     const searchControl = new (GeoSearchControl as any)({
       provider: provider,
@@ -67,8 +66,6 @@ export class MainComponent implements AfterViewInit, OnInit{
     tiles.addTo(this.map);
     this.getDistance();
   }
-
-  //Etäisyys toimii, mutta näyttäminen ei toimi. Eli kun kokeilee netissä, se näyttää vain ensimmäisen kohdalla etäisyyden. Ja se minkä se näyttää on listan viimeisen.
 
   getDistance(): void{
     this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
