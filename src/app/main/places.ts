@@ -16,8 +16,13 @@ export interface Datum {
     tags:              Tag[];
     opening_hours:     OpeningHours;
     extra_searchwords: null;
-    distance:          string;
+    distance:          Distance;
 
+}
+
+export interface Distance {
+    placeId: string;
+    placeKm: number;
 }
 
 export interface Description {
