@@ -29,7 +29,7 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements AfterViewInit, OnInit {
+export class MainComponent implements OnInit, AfterViewInit {
   private map: L.Map;
   places: Places[] = [];
   closeResult: string = '';
@@ -40,10 +40,10 @@ export class MainComponent implements AfterViewInit, OnInit {
     y: 60.16952,
     x: 24.93545
   };
+  showDistance = false;
 
   constructor(private markerService: MarkerService, 
               public translate: TranslateService) { }
-  
 
   private initMap(): void {
     this.map = L.map('map', {
@@ -74,9 +74,9 @@ export class MainComponent implements AfterViewInit, OnInit {
 
 
   saveReferenceLocation(): void {
-
     this.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
       this.referenceLocation = e.location;
+      this.showDistance = true;
     });
   }
 
@@ -99,6 +99,13 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   }
 
+
+  getAllPlaces(): void {
+    this.markerService.getAllPlaces().subscribe((res: Places) => {
+      this.places.push(res);
+    });
+  }
+
   ngAfterViewInit(): void {
     this.initMap();
     this.saveReferenceLocation();
@@ -109,10 +116,5 @@ export class MainComponent implements AfterViewInit, OnInit {
     this.getAllPlaces();
   }
 
-  getAllPlaces(): void {
-    this.markerService.getAllPlaces().subscribe((res: Places) => {
-      this.places.push(res);
-    });
-  }
 
 }

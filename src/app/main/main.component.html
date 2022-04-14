@@ -28,9 +28,9 @@
                   {{ data.name.fi }}</a
                 >
               </h5>
-              <small id="distance">{{
+              <small id="distance" *ngIf="showDistance">{{
                 calculateDistance(data.location)
-              }}</small>
+              }}km</small>
             </div>
             <p class="mb-1 ptext">
               {{ data.location.address.street_address }},
