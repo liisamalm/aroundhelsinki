@@ -80,6 +80,9 @@ export class MainComponent implements OnInit, AfterViewInit {
     });
   }
 
+  sortByDistance(){
+  }
+
   calculateDistance(placeLocation : any){
     const userY = this.referenceLocation.y;
     const userX = this.referenceLocation.x;
@@ -95,15 +98,16 @@ export class MainComponent implements OnInit, AfterViewInit {
         Math.cos(userX * degrees) *
         Math.pow(Math.sin(dLon / 2.0), 2);
     var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return b.toFixed(2);
+    this.placeDistance = b.toFixed(2);
+    return this.placeDistance;
 
   }
-
 
   getAllPlaces(): void {
     this.markerService.getAllPlaces().subscribe((res: Places) => {
       this.places.push(res);
     });
+    
   }
 
   ngAfterViewInit(): void {
