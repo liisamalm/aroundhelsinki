@@ -6,7 +6,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
-import { Distance } from './distance';
 import { placements } from '@popperjs/core';
 import { getPopperClassPlacement } from '@ng-bootstrap/ng-bootstrap/util/positioning';
 
@@ -104,7 +103,7 @@ export class MainComponent implements AfterViewInit, OnInit {
         Math.cos(userX * degrees) *
         Math.pow(Math.sin(dLon / 2.0), 2);
     var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return b;
+    return b.toFixed(2);
 
   }
 

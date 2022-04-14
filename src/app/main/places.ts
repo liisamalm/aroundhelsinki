@@ -16,8 +16,6 @@ export interface Datum {
     tags:              Tag[];
     opening_hours:     OpeningHours;
     extra_searchwords: null;
-    distance:          Distance;
-
 }
 
 export interface Distance {
