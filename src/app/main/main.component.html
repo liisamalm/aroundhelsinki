@@ -20,10 +20,17 @@
           <a href="#" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1 fs-6">
-                <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-                {{ data.name.fi }}
+                <fa-icon [icon]="faLocationCrosshairs"></fa-icon
+                ><a
+                  style="text-decoration: none; color: #680f3d !important"
+                  routerLink="detail/:id"
+                >
+                  {{ data.name.fi }}</a
+                >
               </h5>
-              <small id="distance">{{calculateDistance(data.location)}}</small>
+              <small id="distance">{{
+                calculateDistance(data.location)
+              }}</small>
             </div>
             <p class="mb-1 ptext">
               {{ data.location.address.street_address }},
@@ -31,7 +38,12 @@
               {{ data.location.address.locality }}
             </p>
             <small>
-              <a href="#" class="link">{{ "LANG.moreinfo" | translate }}</a>
+              <a
+                routerLink="{{ '/detail/' + data.name.en }}"
+                href="#"
+                class="link"
+                >{{ "LANG.moreinfo" | translate }}</a
+              >
             </small>
           </a>
         </div>

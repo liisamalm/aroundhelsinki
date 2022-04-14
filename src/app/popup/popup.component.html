@@ -1,0 +1,7 @@
+<a href="{{ placeUrl }}">
+    <h5 class="mb-1 fs-6"><fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ place }}</h5>
+</a>
+    <p *ngIf="address">{{ 'LANG.address' | translate }}:  {{ address }}, {{ postalCode }} {{ locality }}</p>
+    <small>
+        <a href="#" class="link">{{ 'LANG.moreinfo' | translate }}</a>
+    </small>  
