@@ -17,8 +17,8 @@ export class MarkerService {
   makeMapPopup(data: any): any{ 
     return `` +
     `<div>${ data.name.fi }</div>` +
-    `<div>${ data.location.address.street_address } ${ data.location.address.postal_code } ${ data.location.address.locality } </div>` 
-    // `<div>${ data.opening_hours.hours[0].weekday_id } ${ data.opening_hours.hours[0].opens } ${ data.opening_hours.hours[0].closes } ${ data.opening_hours.hours[0].open24h }</div>`
+    // `<div>${ data.location.address.street_address } ${ data.location.address.postal_code } ${ data.location.address.locality } </div>` 
+    `<div>${ data.opening_hours.hours[0].weekday_id } ${ data.opening_hours.hours[0].opens } ${ data.opening_hours.hours[0].closes } ${ data.opening_hours.hours[0].open24h }</div>`
   }
 
 
@@ -29,9 +29,9 @@ export class MarkerService {
         const lat = c.location.lat;
         const marker = L.marker([lat, lon]);
       
-        // marker.bindPopup(this.makeMapPopup(c));
+        marker.bindPopup(this.makeMapPopup(c));
 
-        // marker.addTo(map);
+        marker.addTo(map);
       }
     });
   }

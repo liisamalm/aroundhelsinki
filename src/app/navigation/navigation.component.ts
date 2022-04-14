@@ -31,7 +31,6 @@ export class NavigationComponent implements OnInit {
       .getWeather(cityId,unit)
       .subscribe(res => {
         this.weather = res;
-        // console.log(res);
       },
       err =>
        console.log(err));
