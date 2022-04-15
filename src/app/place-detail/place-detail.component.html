@@ -6,7 +6,7 @@
         id="view-img"
         src="../../assets/images/logo.png"
         class=""
-        alt="..."
+        alt="image"
       />
       <div class="pt-5">
         <img width="120px" src="../../assets/images/logo.png" alt="" />
@@ -16,20 +16,21 @@
     <div class="col-sm-7 ">
       <div class="pt-5">
         <div>
-          <h1 class="">Place Name</h1>
+          <h1 class="">{{places.name.fi}} </h1>
+          <h1 class=""> </h1>
           <hr />
           <p class="" style="text-align: justify;">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi delectus sed, dicta error iure ullam dolore eligendi consectetur! Quos error repellendus itaque fuga accusamus sunt labore corporis omnis eaque ut veritatis reiciendis similique, dolorem neque cupiditate in fugit, facere corrupti illo expedita saepe. Vitae illum in sed magni sit rem iusto nihil dolorem laboriosam vel possimus illo, sint suscipit molestias totam? Alias velit, porro fugit labore earum doloremque unde veniam maiores. Tempora porro excepturi, consequatur sequi ullam quas ea praesentium commodi earum nesciunt! Ex, nulla! Quia blanditiis, quibusdam minus amet reprehenderit maiores perferendis? Voluptatem qui sequi nemo repellendus rerum commodi quidem error assumenda ducimus, rem eveniet iste voluptatibus a vero dolorum, vitae quae provident, ipsam consequuntur? Dolore natus ipsa provident. Id perspiciatis, atque nemo magni facere, sapiente esse minima dicta praesentium nulla aperiam numquam nostrum eligendi consequuntur architecto maxime, asperiores suscipit fugiat deserunt. Laboriosam illo natus, sed autem omnis quo voluptates iusto numquam quod vel ipsam iure minima tenetur aliquid consectetur at eum delectus fuga quos neque ipsa! Tempore deserunt beatae aliquam optio vitae natus hic accusamus provident, possimus dicta explicabo dolorum quas! Sapiente voluptas nobis molestiae accusantium unde assumenda ut, optio quaerat dolorem dolorum omnis iste dolores doloribus placeat.
+            {{places.description.body}}
           </p>
         </div>
         <hr />
         <div class="row">
           <span class="material-icons col-1">home</span>
-          <p class="col-11">Address</p>
+          <p class="col-11">{{places.location.address.street_address}} {{places.location.address.postal_code}} {{places.location.address.locality}}</p>
         </div>
         <div class="row">
           <span class="material-icons col-1">label</span>
-          <p class="col-11">Labels</p>
+          <p class="col-11"></p>
         </div>
       </div>
     </div>

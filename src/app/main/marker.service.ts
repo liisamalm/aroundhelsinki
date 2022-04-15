@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Places } from './places';
 import { PopupComponent } from '../popup/popup.component';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
@@ -18,7 +19,7 @@ export class MarkerService {
               private injector: Injector) {
   }
 
-  makeMapPopup(data: any): any{ 
+  makeMapPopup(data: any): any{
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
         (c.instance.place = data.name.fi),
         (c.instance.address = data.location.address.street_address),
@@ -35,16 +36,20 @@ export class MarkerService {
         const lon = c.location.lon;
         const lat = c.location.lat;
         const marker = L.marker([lat, lon]);
-      
+
         marker.bindPopup(this.makeMapPopup(c));
 
         marker.addTo(map);
       }
     });
   }
-  
+
   getAllPlaces():Observable<Places> {
     return this.http.get<Places>(this.places);
+  }
+
+  public getOnePlace(id:any):Observable<any>{
+    return this.http.get(this.places, id)
   }
 
 
@@ -52,13 +57,13 @@ export class MarkerService {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
     let compRef: any = compFactory.create(this.injector);
 
-    // onAttach allows you to assign 
+    // onAttach allows you to assign
     if (onAttach)
       onAttach(compRef);
 
     this.appRef.attachView(compRef.hostView);
     compRef.onDestroy(() => this.appRef.detachView(compRef.hostView));
-    
+
     let div = document.createElement('div');
     div.appendChild(compRef.location.nativeElement);
     return div;
