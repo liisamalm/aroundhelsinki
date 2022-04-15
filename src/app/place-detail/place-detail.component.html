@@ -4,7 +4,7 @@
       <img
         width="450px"
         id="view-img"
-        src="../../assets/images/logo.png"
+        src="{{places.description.body}}"
         class=""
         alt="image"
       />
@@ -27,8 +27,8 @@
         <div class="row">
           <span class="material-icons col-1">home</span>
           <p class="col-11">
-            {{ places.location.address.street_address }}
-            {{ places.location.address.postal_code }}
+            {{ places.location.address.street_address }},
+            {{ places.location.address.postal_code }} -
             {{ places.location.address.locality }}
           </p>
         </div>
@@ -74,7 +74,7 @@
 
           <div class="row">
             <span class="material-icons col-1">label</span>
-            <small class="col-11" *ngFor="let tag of places.tags">{{
+            <small class="col-2" *ngFor="let tag of places.tags">{{
               tag.name
             }}</small>
           </div>
