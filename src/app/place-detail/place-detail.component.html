@@ -29,8 +29,20 @@
           <p class="col-11">{{places.location.address.street_address}} {{places.location.address.postal_code}} {{places.location.address.locality}}</p>
         </div>
         <div class="row">
+          <span class="material-icons col-1">open_in_new</span>
+          <p class="col-11" ><a href="{{places.info_url}}">{{places.info_url}}</a></p>
+        </div>
+        <div class="row">
+        <div class="row">
+          <span class="material-icons col-1">today</span>
+          <p class="col-11" >Opening Hours</p>
+          <div>
+            <p class="col-11" *ngFor="let hour of places.opening_hours.hours" >{{hour.opens}} {{hour.closes}}</p>
+          </div>
+        </div>
+        <div class="row">
           <span class="material-icons col-1">label</span>
-          <p class="col-11"></p>
+          <small class="col-11" *ngFor="let tag of places.tags">{{tag.name}}</small>
         </div>
       </div>
     </div>

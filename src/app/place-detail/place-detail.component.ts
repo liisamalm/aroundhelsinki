@@ -3,6 +3,7 @@ import { MarkerService } from '../main/marker.service';
 import { ActivatedRoute } from '@angular/router';
 import { Places } from '../main/places';
 import { switchMap } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-place-detail',
@@ -13,6 +14,7 @@ export class PlaceDetailComponent implements OnInit {
   // places: Places[] = [];
   placeid:any;
   places: any;
+
 
   constructor(private markerService: MarkerService,
               private route: ActivatedRoute) { }
