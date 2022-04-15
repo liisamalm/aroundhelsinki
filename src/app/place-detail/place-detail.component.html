@@ -13,36 +13,71 @@
       </div>
     </div>
 
-    <div class="col-sm-7 ">
+    <div class="col-sm-7">
       <div class="pt-5">
         <div>
-          <h1 class="">{{places.name.fi}} </h1>
-          <h1 class=""> </h1>
+          <h1 class="">{{ places.name.fi }}</h1>
+          <h1 class=""></h1>
           <hr />
-          <p class="" style="text-align: justify;">
-            {{places.description.body}}
+          <p class="" style="text-align: justify">
+            {{ places.description.body }}
           </p>
         </div>
         <hr />
         <div class="row">
           <span class="material-icons col-1">home</span>
-          <p class="col-11">{{places.location.address.street_address}} {{places.location.address.postal_code}} {{places.location.address.locality}}</p>
+          <p class="col-11">
+            {{ places.location.address.street_address }}
+            {{ places.location.address.postal_code }}
+            {{ places.location.address.locality }}
+          </p>
         </div>
         <div class="row">
           <span class="material-icons col-1">open_in_new</span>
-          <p class="col-11" ><a href="{{places.info_url}}">{{places.info_url}}</a></p>
+          <p class="col-11">
+            <a href="{{ places.info_url }}">{{ places.info_url }}</a>
+          </p>
         </div>
         <div class="row">
-        <div class="row">
-          <span class="material-icons col-1">today</span>
-          <p class="col-11" >Opening Hours</p>
-          <div>
-            <p class="col-11" *ngFor="let hour of places.opening_hours.hours" >{{hour.opens}} {{hour.closes}}</p>
+          <div class="row">
+            <span class="material-icons col-1">today</span>
+            <p class="col-11">Openning Hours</p>
           </div>
-        </div>
-        <div class="row">
-          <span class="material-icons col-1">label</span>
-          <small class="col-11" *ngFor="let tag of places.tags">{{tag.name}}</small>
+          <div class="row">
+            <table class="table">
+              <tr>
+                <th>Day</th>
+                <th>Open</th>
+                <th>Close</th>
+                <th>24h Open</th>
+              </tr>
+
+              <tr *ngFor="let hour of places.opening_hours.hours">
+                <td *ngIf="hour.weekday_id == 1">Monday</td>
+                <td *ngIf="hour.weekday_id == 2">Tuesday</td>
+                <td *ngIf="hour.weekday_id == 3">Wednesday</td>
+                <td *ngIf="hour.weekday_id == 4">Thursday</td>
+                <td *ngIf="hour.weekday_id == 5">Friday</td>
+                <td *ngIf="hour.weekday_id == 6">Saturday</td>
+                <td *ngIf="hour.weekday_id == 7">Sunday</td>
+                <td>{{ hour.opens }}</td>
+                <td>{{ hour.closes }}</td>
+                <td *ngIf="hour.open24h == false">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </td>
+                <td *ngIf="hour.open24h == true">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="row">
+            <span class="material-icons col-1">label</span>
+            <small class="col-11" *ngFor="let tag of places.tags">{{
+              tag.name
+            }}</small>
+          </div>
         </div>
       </div>
     </div>

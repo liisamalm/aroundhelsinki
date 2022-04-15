@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Places } from '../main/places';
 import { switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { WeekDay } from '@angular/common';
+import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-place-detail',
@@ -11,9 +13,11 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./place-detail.component.css']
 })
 export class PlaceDetailComponent implements OnInit {
-  // places: Places[] = [];
   placeid:any;
   places: any;
+  date: Date = new Date();
+  faCheck = faCheck;
+  faTimes = faTimes;
 
 
   constructor(private markerService: MarkerService,
@@ -36,4 +40,6 @@ export class PlaceDetailComponent implements OnInit {
       console.log(this.places); // get selected data
     })
   }
+
+
 }
