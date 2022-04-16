@@ -1,11 +1,11 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import {LeafletEvent} from 'leaflet';
+import { LeafletEvent } from 'leaflet';
 import { MarkerService } from './marker.service';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -27,20 +27,20 @@ L.Marker.prototype.options.icon = iconDefault;
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
-export class MainComponent implements AfterViewInit, OnInit{
-  
+export class MainComponent implements AfterViewInit, OnInit {
   private map: L.Map;
- 
+
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
 
-  constructor(private markerService: MarkerService, 
-              public translate: TranslateService) { }
-  
-  private initMap(): void {
+  constructor(
+    private markerService: MarkerService,
+    public translate: TranslateService
+  ) {}
 
+  private initMap(): void {
     this.map = L.map('map', {
       center: [60.16952, 24.93545],
       zoom: 12,
@@ -67,30 +67,34 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.getDistance();
   }
 
-  getDistance(): void{
-    this.map.on('geosearch/showlocation', (e:  LeafletEvent|any) => {
+  getDistance(): void {
+    this.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
       const userY = e.location.y;
       const userX = e.location.x;
-      let placeY = "";
-      let placeX = "";
+      let placeY = '';
+      let placeX = '';
       this.markerService.getAllPlaces().subscribe((res: any) => {
         for (const c of res.data) {
           placeX = c.location.lon;
           placeY = c.location.lat;
-          console.log("user locarion: " + userX + " " + userY);
-          console.log("placeX + placeY: " + placeX + " " + placeY);
+          console.log('user locarion: ' + userX + ' ' + userY);
+          console.log('placeX + placeY: ' + placeX + ' ' + placeY);
 
-          let degrees = Math.PI/180;
+          let degrees = Math.PI / 180;
           let dLat = (parseFloat(placeY) - userY) * degrees;
           var dLon = (parseFloat(placeX) - userX) * degrees;
-          var a = Math.pow(Math.sin(dLat/2.0), 2) + Math.cos(userY*degrees) * Math.cos(userX*degrees) * Math.pow(Math.sin(dLon/2.0), 2);
-          var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-          console.log(b + "km");
-          var getElement = document.getElementById("distance");
-          if(getElement){
-            getElement.innerHTML = (b.toFixed(2) + "km");
+          var a =
+            Math.pow(Math.sin(dLat / 2.0), 2) +
+            Math.cos(userY * degrees) *
+              Math.cos(userX * degrees) *
+              Math.pow(Math.sin(dLon / 2.0), 2);
+          var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          console.log(b + 'km');
+          var getElement = document.getElementById('distance');
+          if (getElement) {
+            getElement.innerHTML = b.toFixed(2) + 'km';
           }
-        }  
+        }
       });
     });
   }
@@ -104,10 +108,9 @@ export class MainComponent implements AfterViewInit, OnInit{
     this.getAllPlaces();
   }
 
-  getAllPlaces(): void{
-    this.markerService.getAllPlaces()
-      .subscribe((res: Places) => {
-    this.places.push(res);
+  getAllPlaces(): void {
+    this.markerService.getAllPlaces().subscribe((res: Places) => {
+      this.places.push(res);
     });
   }
 }

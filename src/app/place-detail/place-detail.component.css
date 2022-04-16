@@ -5,3 +5,8 @@
 table {
   text-align: center;
 }
+
+small {
+  font-size: 12px;
+  text-align: start;
+}

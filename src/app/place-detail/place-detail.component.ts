@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { WeekDay } from '@angular/common';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import * as L from 'leaflet';
 
 @Component({
   selector: 'app-place-detail',
@@ -18,6 +19,7 @@ export class PlaceDetailComponent implements OnInit {
   date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
+
 
 
   constructor(private markerService: MarkerService,

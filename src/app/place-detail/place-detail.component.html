@@ -4,7 +4,7 @@
       <img
         width="450px"
         id="view-img"
-        src="{{places.description.body}}"
+        src="{{ places.description.body }}"
         class=""
         alt="image"
       />
@@ -35,7 +35,7 @@
         <div class="row">
           <span class="material-icons col-1">open_in_new</span>
           <p class="col-11">
-            <a href="{{ places.info_url }}">{{ places.info_url }}</a>
+            <a href="{{ places.info_url }}" target="_blank">{{ places.info_url }}</a>
           </p>
         </div>
         <div class="row">
@@ -44,7 +44,7 @@
             <p class="col-11">Openning Hours</p>
           </div>
           <div class="row">
-            <table class="table">
+            <table class="table ">
               <tr>
                 <th>Day</th>
                 <th>Open</th>
@@ -52,7 +52,7 @@
                 <th>24h Open</th>
               </tr>
 
-              <tr *ngFor="let hour of places.opening_hours.hours">
+              <tr *ngFor="let hour of places.opening_hours.hours" >
                 <td *ngIf="hour.weekday_id == 1">Monday</td>
                 <td *ngIf="hour.weekday_id == 2">Tuesday</td>
                 <td *ngIf="hour.weekday_id == 3">Wednesday</td>
@@ -60,8 +60,17 @@
                 <td *ngIf="hour.weekday_id == 5">Friday</td>
                 <td *ngIf="hour.weekday_id == 6">Saturday</td>
                 <td *ngIf="hour.weekday_id == 7">Sunday</td>
-                <td>{{ hour.opens }}</td>
-                <td>{{ hour.closes }}</td>
+                <td>
+                  <div *ngIf="hour.opens == null; else elseBlock1">---</div>
+
+                  <ng-template #elseBlock1>{{ hour.opens | slice:0:5 }}</ng-template>
+                </td>
+                <td>
+                  <div *ngIf="hour.opens == null; else elseBlock">Closed</div>
+
+                  <ng-template #elseBlock>{{ hour.closes | slice:0:5 }}</ng-template>
+                </td>
+
                 <td *ngIf="hour.open24h == false">
                   <fa-icon [icon]="faTimes"></fa-icon>
                 </td>
@@ -74,8 +83,15 @@
 
           <div class="row">
             <span class="material-icons col-1">label</span>
-            <small class="col-2" *ngFor="let tag of places.tags">{{
-              tag.name
+            <small class="col-3" *ngFor="let tag of places.tags">{{
+              tag.name | lowercase
+            }}</small>
+          </div>
+          <div class="row">
+            <span class="material-icons col-1">sync_alt</span>
+            <small class="col-3">Last update:</small>
+            <small class="col-3" >{{
+              places.modified_at | slice:0:10
             }}</small>
           </div>
         </div>
