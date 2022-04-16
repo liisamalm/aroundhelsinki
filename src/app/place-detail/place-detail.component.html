@@ -4,32 +4,96 @@
       <img
         width="450px"
         id="view-img"
-        src="../../assets/images/logo.png"
+        src="{{ places.description.body }}"
         class=""
-        alt="..."
+        alt="image"
       />
       <div class="pt-5">
         <img width="120px" src="../../assets/images/logo.png" alt="" />
       </div>
     </div>
 
-    <div class="col-sm-7 ">
+    <div class="col-sm-7">
       <div class="pt-5">
         <div>
-          <h1 class="">Place Name</h1>
+          <h1 class="">{{ places.name.fi }}</h1>
+          <h1 class=""></h1>
           <hr />
-          <p class="" style="text-align: justify;">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi delectus sed, dicta error iure ullam dolore eligendi consectetur! Quos error repellendus itaque fuga accusamus sunt labore corporis omnis eaque ut veritatis reiciendis similique, dolorem neque cupiditate in fugit, facere corrupti illo expedita saepe. Vitae illum in sed magni sit rem iusto nihil dolorem laboriosam vel possimus illo, sint suscipit molestias totam? Alias velit, porro fugit labore earum doloremque unde veniam maiores. Tempora porro excepturi, consequatur sequi ullam quas ea praesentium commodi earum nesciunt! Ex, nulla! Quia blanditiis, quibusdam minus amet reprehenderit maiores perferendis? Voluptatem qui sequi nemo repellendus rerum commodi quidem error assumenda ducimus, rem eveniet iste voluptatibus a vero dolorum, vitae quae provident, ipsam consequuntur? Dolore natus ipsa provident. Id perspiciatis, atque nemo magni facere, sapiente esse minima dicta praesentium nulla aperiam numquam nostrum eligendi consequuntur architecto maxime, asperiores suscipit fugiat deserunt. Laboriosam illo natus, sed autem omnis quo voluptates iusto numquam quod vel ipsam iure minima tenetur aliquid consectetur at eum delectus fuga quos neque ipsa! Tempore deserunt beatae aliquam optio vitae natus hic accusamus provident, possimus dicta explicabo dolorum quas! Sapiente voluptas nobis molestiae accusantium unde assumenda ut, optio quaerat dolorem dolorum omnis iste dolores doloribus placeat.
+          <p class="" style="text-align: justify">
+            {{ places.description.body }}
           </p>
         </div>
         <hr />
         <div class="row">
           <span class="material-icons col-1">home</span>
-          <p class="col-11">Address</p>
+          <p class="col-11">
+            {{ places.location.address.street_address }},
+            {{ places.location.address.postal_code }} -
+            {{ places.location.address.locality }}
+          </p>
         </div>
         <div class="row">
-          <span class="material-icons col-1">label</span>
-          <p class="col-11">Labels</p>
+          <span class="material-icons col-1">open_in_new</span>
+          <p class="col-11">
+            <a href="{{ places.info_url }}" target="_blank">{{ places.info_url }}</a>
+          </p>
+        </div>
+        <div class="row">
+          <div class="row">
+            <span class="material-icons col-1">today</span>
+            <p class="col-11">Openning Hours</p>
+          </div>
+          <div class="row">
+            <table class="table ">
+              <tr>
+                <th>Day</th>
+                <th>Open</th>
+                <th>Close</th>
+                <th>24h Open</th>
+              </tr>
+
+              <tr *ngFor="let hour of places.opening_hours.hours" >
+                <td *ngIf="hour.weekday_id == 1">Monday</td>
+                <td *ngIf="hour.weekday_id == 2">Tuesday</td>
+                <td *ngIf="hour.weekday_id == 3">Wednesday</td>
+                <td *ngIf="hour.weekday_id == 4">Thursday</td>
+                <td *ngIf="hour.weekday_id == 5">Friday</td>
+                <td *ngIf="hour.weekday_id == 6">Saturday</td>
+                <td *ngIf="hour.weekday_id == 7">Sunday</td>
+                <td>
+                  <div *ngIf="hour.opens == null; else elseBlock1">---</div>
+
+                  <ng-template #elseBlock1>{{ hour.opens | slice:0:5 }}</ng-template>
+                </td>
+                <td>
+                  <div *ngIf="hour.opens == null; else elseBlock">Closed</div>
+
+                  <ng-template #elseBlock>{{ hour.closes | slice:0:5 }}</ng-template>
+                </td>
+
+                <td *ngIf="hour.open24h == false">
+                  <fa-icon [icon]="faTimes"></fa-icon>
+                </td>
+                <td *ngIf="hour.open24h == true">
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="row">
+            <span class="material-icons col-1">label</span>
+            <small class="col-3" *ngFor="let tag of places.tags">{{
+              tag.name | lowercase
+            }}</small>
+          </div>
+          <div class="row">
+            <span class="material-icons col-1">sync_alt</span>
+            <small class="col-3">Last update:</small>
+            <small class="col-3" >{{
+              places.modified_at | slice:0:10
+            }}</small>
+          </div>
         </div>
       </div>
     </div>

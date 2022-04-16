@@ -17,20 +17,19 @@
     >
       <div *ngFor="let place of places">
         <div *ngFor="let data of place.data">
-          <a href="#" class="list-group-item list-group-item-action">
+          <a
+            href=""
+            class="list-group-item list-group-item-action"
+            routerLink="detail/{{ data.id }}"
+          >
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1 fs-6">
                 <fa-icon [icon]="faLocationCrosshairs"></fa-icon
-                ><a
-                  style="text-decoration: none; color: #680f3d !important"
-                  routerLink="detail/:id"
-                >
+                ><a style="text-decoration: none; color: #680f3d !important">
                   {{ data.name.fi }}</a
                 >
               </h5>
-              <small id="distance" *ngIf="showDistance">{{
-                calculateDistance(data.location)
-              }}km</small>
+              <small id="distance"></small>
             </div>
             <p class="mb-1 ptext">
               {{ data.location.address.street_address }},
@@ -38,12 +37,9 @@
               {{ data.location.address.locality }}
             </p>
             <small>
-              <a
-                routerLink="{{ '/detail/' + data.name.en }}"
-                href="#"
-                class="link"
-                >{{ "LANG.moreinfo" | translate }}</a
-              >
+              <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+                "LANG.moreinfo" | translate
+              }}</a>
             </small>
           </a>
         </div>
