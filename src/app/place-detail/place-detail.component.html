@@ -4,12 +4,25 @@
       <img
         width="450px"
         id="view-img"
-        src="{{ places.description.body }}"
-        class=""
+        src= "{{getImageUrl(places.id,places.description.images[0].media_id)}}"
+        class="mw-100 "
+        id="view-img"
         alt="image"
       />
-      <div class="pt-5">
-        <img width="120px" src="../../assets/images/logo.png" alt="" />
+      <div class="row ">
+        <section
+          class="show-images col-4 p-3"
+          *ngFor="let image of places.description.images"
+        >
+          <figure class="pointer">
+            <img
+            (click)="changeImg($event)"
+              src="{{getImageUrl(places.id,image.media_id)}}"
+              alt=""
+              class="pointer mw-100"
+            />
+          </figure>
+        </section>
       </div>
     </div>
 
@@ -19,6 +32,10 @@
           <h1 class="">{{ places.name.fi }}</h1>
           <h1 class=""></h1>
           <hr />
+          <p class="" style="text-align: justify">
+            {{ places.description.intro }}
+
+          </p>
           <p class="" style="text-align: justify">
             {{ places.description.body }}
           </p>
@@ -32,6 +49,7 @@
             {{ places.location.address.locality }}
           </p>
         </div>
+
         <div class="row">
           <span class="material-icons col-1">open_in_new</span>
           <p class="col-11">
@@ -43,6 +61,7 @@
             <span class="material-icons col-1">today</span>
             <p class="col-11">Openning Hours</p>
           </div>
+          <hr />
           <div class="row">
             <table class="table ">
               <tr>
@@ -80,6 +99,7 @@
               </tr>
             </table>
           </div>
+          <hr />
 
           <div class="row">
             <span class="material-icons col-1">label</span>

@@ -7,6 +7,8 @@ import { CommonModule } from '@angular/common';
 import { WeekDay } from '@angular/common';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-place-detail',
@@ -19,11 +21,16 @@ export class PlaceDetailComponent implements OnInit {
   date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
+  link: string = '';
+  newImageString: string = '';
 
 
 
   constructor(private markerService: MarkerService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              ) {
+                this.link = 'https://tprimages.blob.core.windows.net/public/';
+               }
 
   ngOnInit(): void {
     this.getOnePlace();
@@ -41,6 +48,17 @@ export class PlaceDetailComponent implements OnInit {
       this.places = reqObj;
       console.log(this.places); // get selected data
     })
+  }
+
+  getImageUrl(id: number,media_id: string){
+    var imglink = `${this.link}${id}/${media_id}.jpg`;
+    return imglink;
+  }
+
+  changeImg(event: any){
+    this.newImageString = event.target.getAttribute('src');
+    document.getElementById('view-img')?.setAttribute('src', this.newImageString);
+
   }
 
 
