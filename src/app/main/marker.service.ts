@@ -57,7 +57,6 @@ export class MarkerService {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
     let compRef: any = compFactory.create(this.injector);
 
-    // onAttach allows you to assign
     if (onAttach)
       onAttach(compRef);
 

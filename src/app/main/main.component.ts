@@ -68,46 +68,40 @@ export class MainComponent implements AfterViewInit, OnInit {
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }
     );
-    // this.saveReferenceLocation();
-
+    this.saveReferenceLocation();
     tiles.addTo(this.map);
   }
-
-  getDistance(): void {
+  
+  saveReferenceLocation(): void {
     this.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
-      const userY = e.location.y;
-      const userX = e.location.x;
-      let placeY = '';
-      let placeX = '';
-      this.markerService.getAllPlaces().subscribe((res: any) => {
-        for (const c of res.data) {
-          placeX = c.location.lon;
-          placeY = c.location.lat;
-          console.log('user locarion: ' + userX + ' ' + userY);
-          console.log('placeX + placeY: ' + placeX + ' ' + placeY);
-
-          let degrees = Math.PI / 180;
-          let dLat = (parseFloat(placeY) - userY) * degrees;
-          var dLon = (parseFloat(placeX) - userX) * degrees;
-          var a =
-            Math.pow(Math.sin(dLat / 2.0), 2) +
-            Math.cos(userY * degrees) *
-              Math.cos(userX * degrees) *
-              Math.pow(Math.sin(dLon / 2.0), 2);
-          var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-          console.log(b + 'km');
-          var getElement = document.getElementById('distance');
-          if (getElement) {
-            getElement.innerHTML = b.toFixed(2) + 'km';
-          }
-        }
-      });
+      this.referenceLocation = e.location;
+      this.showDistance = true;
     });
+  }
+
+  calculateDistance(placeLocation : any){
+    const userY = this.referenceLocation.y;
+    const userX = this.referenceLocation.x;
+    let placeX = placeLocation.lon;
+    let placeY = placeLocation.lat;
+
+    let degrees = Math.PI / 180;
+    let dLat = (parseFloat(placeY) - userY) * degrees;
+    var dLon = (parseFloat(placeX) - userX) * degrees;
+    var a =
+      Math.pow(Math.sin(dLat / 2.0), 2) +
+      Math.cos(userY * degrees) *
+        Math.cos(userX * degrees) *
+        Math.pow(Math.sin(dLon / 2.0), 2);
+    var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    this.placeDistance = b.toFixed(2);
+    return this.placeDistance;
+
   }
 
   ngAfterViewInit(): void {
     this.initMap();
-    // this.saveReferenceLocation();
+    this.saveReferenceLocation();
     this.markerService.makePlaceMarkers(this.map);
   }
 
