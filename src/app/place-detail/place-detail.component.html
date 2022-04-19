@@ -1,6 +1,6 @@
 <div class="container mb-3">
   <div class="row">
-    <div *ngIf="places.description.images.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
+    <div *ngIf="places?.description.images.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
       <div class=>
         <img
           width="450px"
@@ -22,22 +22,22 @@
           width="450px"
           id="view-img"
           src="{{
-            getImageUrl(places.id, places.description.images[0].media_id)
+            getImageUrl(places?.id, places?.description.images[0].media_id)
           }}"
           class="mw-100"
           id="view-img"
           alt="image"
-          title="{{places.name.fi}}"
+          title="{{places?.name.fi}}"
         />
         <div class="row">
           <section
             class="show-images col-4 p-3"
-            *ngFor="let image of places.description.images"
+            *ngFor="let image of places?.description.images"
           >
             <figure class="pointer">
               <img
                 (click)="changeImg($event)"
-                src="{{ getImageUrl(places.id, image.media_id) }}"
+                src="{{ getImageUrl(places?.id, image.media_id) }}"
                 alt=""
                 class="pointer mw-100"
               />
@@ -52,31 +52,31 @@
     <div class="col-sm-7">
       <div class="pt-5">
         <div>
-          <h1 class="">{{ places.name.fi }}</h1>
+          <h1 class="">{{ places?.name.fi }}</h1>
           <h1 class=""></h1>
           <hr />
           <p class="" style="text-align: justify">
-            {{ places.description.intro }}
+            {{ places?.description.intro }}
           </p>
           <p class="" style="text-align: justify">
-            {{ places.description.body }}
+            {{ places?.description.body }}
           </p>
         </div>
         <hr />
         <div class="row">
           <span class="material-icons col-1">home</span>
           <p class="col-11">
-            {{ places.location.address.street_address }},
-            {{ places.location.address.postal_code }} -
-            {{ places.location.address.locality }}
+            {{ places?.location.address.street_address }},
+            {{ places?.location.address.postal_code }} -
+            {{ places?.location.address.locality }}
           </p>
         </div>
 
         <div class="row">
           <span class="material-icons col-1">open_in_new</span>
           <p class="col-11">
-            <a href="{{ places.info_url }}" target="_blank">{{
-              places.info_url
+            <a href="{{ places?.info_url }}" target="_blank">{{
+              places?.info_url
             }}</a>
           </p>
         </div>
@@ -95,7 +95,7 @@
                 <th>24h Open</th>
               </tr>
 
-              <tr *ngFor="let hour of places.opening_hours.hours">
+              <tr *ngFor="let hour of places?.opening_hours.hours">
                 <td *ngIf="hour.weekday_id == 1">Monday</td>
                 <td *ngIf="hour.weekday_id == 2">Tuesday</td>
                 <td *ngIf="hour.weekday_id == 3">Wednesday</td>
@@ -131,14 +131,19 @@
 
           <div class="row">
             <span class="material-icons col-1">label</span>
-            <small class="col-2" *ngFor="let tag of places.tags">{{
+            <small class="col-2" *ngFor="let tag of places?.tags">{{
               tag.name | lowercase
             }}</small>
           </div>
           <div class="row">
             <span class="material-icons col-1">sync_alt</span>
             <small class="col-2">Last update:</small>
-            <small class="col-2">{{ places.modified_at | slice: 0:10 }}</small>
+            <small class="col-2">{{ places?.modified_at | slice: 0:10 }}</small>
+          </div>
+          <div class="row" >
+            <span class="material-icons col-1">copyright</span>
+            <small class="col-3">Photo copyright holder: </small>
+            <small class="col-8">{{ places?.description.images[0].copyright_holder }}</small>
           </div>
         </div>
       </div>
