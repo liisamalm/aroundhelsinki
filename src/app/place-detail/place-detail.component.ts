@@ -23,6 +23,7 @@ export class PlaceDetailComponent implements OnInit {
   faTimes = faTimes;
   link: string = '';
   newImageString: string = '';
+  place: any;
 
   constructor(private markerService: MarkerService,
               private route: ActivatedRoute,
@@ -34,16 +35,17 @@ export class PlaceDetailComponent implements OnInit {
     this.getOnePlace();
   }
 
-  getOnePlace(): void {
+  getPlaceId(): void {
     this.route.paramMap.pipe(switchMap(params => {
-      this.placeid = params.get('id');
+        this.placeid = params.get('id');
+        return this.placeid;
+    }));
+  }
 
-      return this.markerService.getOnePlace(this.placeid)
-    })
-    ).subscribe(data => {
-      const reqObj = data.data.find((item: { id: any; }) => item.id == this.placeid)
-      this.places = reqObj;
-    })
+  getOnePlace(){
+    this.markerService.getOnePlace(this.getPlaceId).subscribe(res => {
+      this.place = res;
+    }, err => console.log(err));
   }
 
   getImageUrl(id: number,media_id: string){
