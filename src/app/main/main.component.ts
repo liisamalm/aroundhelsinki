@@ -79,7 +79,7 @@ export class MainComponent implements AfterViewInit, OnInit {
       const userX = e.location.x;
       let placeY = '';
       let placeX = '';
-      this.markerService.getAllPlaces().subscribe((res: any) => {
+      this.markerService.getExternalAll().subscribe((res: any) => {
         for (const c of res.data) {
           placeX = c.location.lon;
           placeY = c.location.lat;
@@ -112,11 +112,19 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllPlaces();
+    // this.getAllPlaces();
+    this.getExternalAll();
   }
 
-  getAllPlaces(): void {
-    this.markerService.getAllPlaces().subscribe((res: Places) => {
+  // getAllPlaces(): void {
+  //   this.markerService.getAllPlaces().subscribe((res: Places) => {
+  //     this.places.push(res);
+  //   });
+  // }
+
+  getExternalAll(): void {
+    this.markerService.getExternalAll().subscribe((res: Places ) => {
+      console.log(res);
       this.places.push(res);
     });
   }

@@ -12,11 +12,13 @@ import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angul
 })
 export class MarkerService {
   places: string = '/assets/data/places.json';
+  private externalApi = 'http://localhost:8080/places';
 
   constructor(private http: HttpClient,
               private resolver: ComponentFactoryResolver,
               private appRef: ApplicationRef,
               private injector: Injector) {
+
   }
 
   makeMapPopup(data: any): any{
@@ -44,9 +46,16 @@ export class MarkerService {
     });
   }
 
-  getAllPlaces():Observable<Places> {
-    return this.http.get<Places>(this.places);
+  getExternalAll():Observable<any> {
+
+    console.log (this.http.get(`${this.externalApi}`));
+    return this.http.get(`${this.externalApi}`);
+
   }
+
+  // getAllPlaces():Observable<Places> {
+  //   return this.http.get<Places>(this.places);
+  // }
 
   public getOnePlace(id:any):Observable<any>{
     return this.http.get(this.places, id)
