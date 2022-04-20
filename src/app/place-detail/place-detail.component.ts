@@ -37,6 +37,7 @@ export class PlaceDetailComponent implements OnInit {
   getOnePlace(): void {
     this.route.paramMap.pipe(switchMap(params => {
       this.placeid = params.get('id');
+
       return this.markerService.getOnePlace(this.placeid)
     })
     ).subscribe(data => {

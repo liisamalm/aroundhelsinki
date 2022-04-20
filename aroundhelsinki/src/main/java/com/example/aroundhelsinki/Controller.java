@@ -17,7 +17,7 @@ public class Controller {
     return "hello";
   }
 
-  @GetMapping("/places")
+  @GetMapping("/")
   private String getPlaces() {
     String url = "https://open-api.myhelsinki.fi/v1/places/";
     RestTemplate restTemplate = new RestTemplate();

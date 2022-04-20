@@ -11,8 +11,8 @@ import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angul
   providedIn: 'root'
 })
 export class MarkerService {
-  private places = 'http://localhost:8080/place/{id}';
-  private externalApi = 'http://localhost:8080/places';
+  // places: string = '/assets/data/places.json';
+  private externalApi = 'http://localhost:8080';
 
   constructor(private http: HttpClient,
               private resolver: ComponentFactoryResolver,
@@ -33,7 +33,7 @@ export class MarkerService {
   }
 
   makePlaceMarkers(map: L.Map): void {
-    this.http.get(this.places).subscribe((res: any) => {
+    this.http.get(this.externalApi).subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
         const lat = c.location.lat;
@@ -59,7 +59,9 @@ export class MarkerService {
 
   public getOnePlace(id:any):Observable<any>{
 
-    return this.http.get(`${this.places}/${id}`);
+    console.log (this.http.get(`${this.externalApi}/place/${id}`));
+    return this.http.get(this.externalApi + "/place/" +  id);
+    // return this.http.get(`${this.externalApi}/place/${id}`);
   }
 
 
@@ -67,6 +69,7 @@ export class MarkerService {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
     let compRef: any = compFactory.create(this.injector);
 
+    // onAttach allows you to assign
     if (onAttach)
       onAttach(compRef);
 
