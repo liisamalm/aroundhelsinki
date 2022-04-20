@@ -19,7 +19,7 @@ public class Controller {
 
   @GetMapping("/")
   private String getPlaces() {
-    String url = "https://open-api.myhelsinki.fi/v1/places/";
+    String url = "https://open-api.myhelsinki.fi/v2/places/";
     RestTemplate restTemplate = new RestTemplate();
     String result = restTemplate.getForObject(url, String.class);
     return result;
@@ -27,7 +27,7 @@ public class Controller {
 
   @GetMapping("/place/{id}")
   private String getPlace(@PathVariable Long id) {
-    String url = "https://open-api.myhelsinki.fi/v1/place/"+ id;
+    String url = "https://open-api.myhelsinki.fi/v2/place/"+ id;
     RestTemplate restTemplate = new RestTemplate();
     String result = restTemplate.getForObject(url, String.class);
     return result;

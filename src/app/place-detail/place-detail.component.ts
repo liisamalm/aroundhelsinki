@@ -41,8 +41,14 @@ export class PlaceDetailComponent implements OnInit {
       return this.markerService.getOnePlace(this.placeid)
     })
     ).subscribe(data => {
-      const reqObj = data.data.find((item: { id: any; }) => item.id == this.placeid)
-      this.places = reqObj;
+      if (data.id == this.placeid) {
+
+        this.places = data;
+        console.log(this.places);
+      }
+
+      // const reqObj = data.get((item: { id: any; }) => item.id == this.placeid)
+      // this.places = reqObj;
     })
   }
 
