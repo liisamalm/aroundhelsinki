@@ -11,7 +11,7 @@ import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angul
   providedIn: 'root'
 })
 export class MarkerService {
-  places: string = '/assets/data/places.json';
+  private places = 'http://localhost:8080/place/{id}';
   private externalApi = 'http://localhost:8080/places';
 
   constructor(private http: HttpClient,
@@ -58,7 +58,8 @@ export class MarkerService {
   // }
 
   public getOnePlace(id:any):Observable<any>{
-    return this.http.get(this.places, id)
+
+    return this.http.get(`${this.places}/${id}`);
   }
 
 
