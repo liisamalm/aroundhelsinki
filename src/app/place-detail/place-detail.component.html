@@ -1,6 +1,6 @@
 <div class="container mb-3">
   <div class="row">
-    <div *ngIf="places?.description.images.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
+    <div *ngIf="places?.description.images.length <= 1; else elseBlock" class="col-sm-5 text-center mt-5">
       <div class=>
         <img
           width="450px"
@@ -22,7 +22,7 @@
           width="450px"
           id="view-img"
           src="{{
-            getImageUrl(places?.id, places?.description.images[0].media_id)
+            getImageUrl(places?.id, places?.description.images[0]?.media_id)
           }}"
           class="mw-100"
           id="view-img"
@@ -143,7 +143,7 @@
           <div class="row" >
             <span class="material-icons col-1">copyright</span>
             <small class="col-3">Photo copyright holder: </small>
-            <small class="col-8">{{ places?.description.images[0].copyright_holder }}</small>
+            <small class="col-8">{{ places?.description.images[0]?.copyright_holder }}</small>
           </div>
         </div>
       </div>
