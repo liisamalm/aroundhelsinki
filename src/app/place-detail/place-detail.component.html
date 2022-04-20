@@ -1,6 +1,6 @@
 <div class="container mb-3">
   <div class="row">
-    <div *ngIf="places?.description.images.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
+    <!-- <div *ngIf="places?.description.images.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
       <div class=>
         <img
           width="450px"
@@ -12,40 +12,39 @@
           alt="No image"
 
         />
-
       </div>
+    </div> -->
 
-    </div>
-    <ng-template #elseBlock>
-      <div class="col-sm-5 text-center mt-5">
+    <div class="col-sm-5 text-center mt-5">
+      <div >
         <img
           width="450px"
           id="view-img"
-          src="{{
-            getImageUrl(places?.id, places?.description.images[0].media_id)
-          }}"
+          [src]="
+            getImageUrl(places?.id, places?.description.images[0]?.media_id)"
           class="mw-100"
           id="view-img"
           alt="image"
           title="{{places?.name.fi}}"
         />
         <div class="row">
-          <section
-            class="show-images col-4 p-3"
-            *ngFor="let image of places?.description.images"
-          >
-            <figure class="pointer">
+          <div
+            class="show-images col-4 p-3" *ngFor="let image of places?.description.images">
+            <div class="pointer" >
+
               <img
-                (click)="changeImg($event)"
-                src="{{ getImageUrl(places?.id, image.media_id) }}"
+              (click)="changeImg($event)"
+              [src]="
+              getImageUrl(places.id, image.media_id)"
                 alt=""
                 class="pointer mw-100"
               />
-            </figure>
-          </section>
+
+            </div>
+          </div>
         </div>
       </div>
-    </ng-template>
+    </div>
 
 
 
@@ -53,7 +52,6 @@
       <div class="pt-5">
         <div>
           <h1 class="">{{ places?.name.fi }}</h1>
-          <h1 class=""></h1>
           <hr />
           <p class="" style="text-align: justify">
             {{ places?.description.intro }}
@@ -95,36 +93,7 @@
                 <th>24h Open</th>
               </tr>
 
-              <tr *ngFor="let hour of places?.opening_hours.hours">
-                <td *ngIf="hour.weekday_id == 1">Monday</td>
-                <td *ngIf="hour.weekday_id == 2">Tuesday</td>
-                <td *ngIf="hour.weekday_id == 3">Wednesday</td>
-                <td *ngIf="hour.weekday_id == 4">Thursday</td>
-                <td *ngIf="hour.weekday_id == 5">Friday</td>
-                <td *ngIf="hour.weekday_id == 6">Saturday</td>
-                <td *ngIf="hour.weekday_id == 7">Sunday</td>
-                <td>
-                  <div *ngIf="hour.opens == null; else elseBlock1">---</div>
 
-                  <ng-template #elseBlock1>{{
-                    hour.opens | slice: 0:5
-                  }}</ng-template>
-                </td>
-                <td>
-                  <div *ngIf="hour.opens == null; else elseBlock">---</div>
-
-                  <ng-template #elseBlock>{{
-                    hour.closes | slice: 0:5
-                  }}</ng-template>
-                </td>
-
-                <td *ngIf="hour.open24h == false">
-                  <fa-icon [icon]="faTimes"></fa-icon>
-                </td>
-                <td *ngIf="hour.open24h == true">
-                  <fa-icon [icon]="faCheck"></fa-icon>
-                </td>
-              </tr>
             </table>
           </div>
           <hr />
@@ -143,7 +112,7 @@
           <div class="row" >
             <span class="material-icons col-1">copyright</span>
             <small class="col-3">Photo copyright holder: </small>
-            <small class="col-8">{{ places?.description.images[0].copyright_holder }}</small>
+            <small class="col-8">{{ places?.description.images[0]?.copyright_holder }}</small>
           </div>
         </div>
       </div>

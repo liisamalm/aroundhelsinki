@@ -21,13 +21,13 @@ export class PlaceDetailComponent implements OnInit {
   date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
-  link: string = '';
+  link: string = 'https://tprimages.blob.core.windows.net/public';
   newImageString: string = '';
 
   constructor(private markerService: MarkerService,
-              private route: ActivatedRoute,
+              public route: ActivatedRoute,
               ) {
-                this.link = 'https://tprimages.blob.core.windows.net/public/';
+
                }
 
   ngOnInit(): void {
@@ -52,8 +52,13 @@ export class PlaceDetailComponent implements OnInit {
     })
   }
 
-  getImageUrl(id: number,media_id: string){
-    var imglink = `${this.link}${id}/${media_id}.jpg`;
+  getImageUrl(id: any,media_id: any){
+    const imglink: string = `${this.link}/${id}/${media_id}.jpg`;
+
+    // const imglink: any = this.link + "/" + id + "/" + media_id + ".jpg";
+    // console.log(imglink);
+    // console.log(id);
+    // console.log(media_id);
     return imglink;
   }
 
