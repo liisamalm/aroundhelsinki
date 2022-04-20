@@ -24,8 +24,6 @@ export class PlaceDetailComponent implements OnInit {
   link: string = '';
   newImageString: string = '';
 
-
-
   constructor(private markerService: MarkerService,
               private route: ActivatedRoute,
               ) {
@@ -34,19 +32,16 @@ export class PlaceDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOnePlace();
-
   }
 
   getOnePlace(): void {
     this.route.paramMap.pipe(switchMap(params => {
       this.placeid = params.get('id');
-      console.log(this.placeid); //get id
       return this.markerService.getOnePlace(this.placeid)
     })
     ).subscribe(data => {
       const reqObj = data.data.find((item: { id: any; }) => item.id == this.placeid)
       this.places = reqObj;
-      console.log(this.places); // get selected data
     })
   }
 
@@ -58,8 +53,5 @@ export class PlaceDetailComponent implements OnInit {
   changeImg(event: any){
     this.newImageString = event.target.getAttribute('src');
     document.getElementById('view-img')?.setAttribute('src', this.newImageString);
-
   }
-
-
 }
