@@ -106,19 +106,11 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    // this.getAllPlaces();
     this.getExternalAll();
   }
 
-  // getAllPlaces(): void {
-  //   this.markerService.getAllPlaces().subscribe((res: Places) => {
-  //     this.places.push(res);
-  //   });
-  // }
-
   getExternalAll(): void {
     this.markerService.getExternalAll().subscribe((res: Places ) => {
-      console.log(res);
       this.places.push(res);
     });
   }

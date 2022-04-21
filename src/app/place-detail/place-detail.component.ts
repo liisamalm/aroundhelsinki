@@ -1,14 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MarkerService } from '../main/marker.service';
 import { ActivatedRoute } from '@angular/router';
-import { Places } from '../main/places';
 import { switchMap } from 'rxjs/operators';
-import { CommonModule } from '@angular/common';
-import { WeekDay } from '@angular/common';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
-import * as L from 'leaflet';
-import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-place-detail',
@@ -44,11 +38,7 @@ export class PlaceDetailComponent implements OnInit {
       if (data.id == this.placeid) {
 
         this.places = data;
-        console.log(this.places);
       }
-
-      // const reqObj = data.get((item: { id: any; }) => item.id == this.placeid)
-      // this.places = reqObj;
     })
   }
 

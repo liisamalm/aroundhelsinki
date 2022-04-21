@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as L from 'leaflet';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Places } from './places';
 import { PopupComponent } from '../popup/popup.component';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 
@@ -11,7 +9,6 @@ import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angul
   providedIn: 'root'
 })
 export class MarkerService {
-  // places: string = '/assets/data/places.json';
   private externalApi = 'http://localhost:8080';
 
   constructor(private http: HttpClient,
@@ -48,20 +45,13 @@ export class MarkerService {
 
   getExternalAll():Observable<any> {
 
-    console.log (this.http.get(`${this.externalApi}`));
     return this.http.get(`${this.externalApi}`);
 
   }
 
-  // getAllPlaces():Observable<Places> {
-  //   return this.http.get<Places>(this.places);
-  // }
-
   public getOnePlace(id:any):Observable<any>{
 
-    console.log (this.http.get(`${this.externalApi}/place/${id}`));
     return this.http.get(this.externalApi + "/place/" +  id);
-    // return this.http.get(`${this.externalApi}/place/${id}`);
   }
 
 

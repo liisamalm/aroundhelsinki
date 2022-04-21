@@ -25,9 +25,7 @@ export class NavigationComponent implements OnInit {
       .getWeather(cityId,unit)
       .subscribe(res => {
         this.weather = res;
-      },
-      err =>
-       console.log(err));
+      });
   }
 
   getIcon(icon:string) {
