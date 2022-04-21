@@ -109,7 +109,8 @@ export class MainComponent implements AfterViewInit, OnInit {
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
-        (c.instance.placeUrl = data.info_url)
+        (c.instance.placeUrl = data.info_url),
+        (c.instance.ownPage = data.id)
       });
       return markerPopup;
   }
