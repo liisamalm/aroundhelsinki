@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
-import { WeatherService } from './navigation.service';
+import { WeatherService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-navigation',

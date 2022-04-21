@@ -1,9 +1,9 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { LeafletEvent } from 'leaflet';
-import { MarkerService } from './marker.service';
+import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Places } from './places';
+import { Places } from '../interfaces/places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
@@ -44,7 +44,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   showDistance = false;
 
   constructor(
-    private markerService: MarkerService,
+    private apiService: ApiService,
     public translate: TranslateService,
     private resolver: ComponentFactoryResolver,
               private appRef: ApplicationRef,
@@ -116,7 +116,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
   makePlaceMarkers(map: L.Map): void {
-    this.markerService.httpPlaceMarker().subscribe((res: any) => {
+    this.apiService.httpPlaceMarker().subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
         const lat = c.location.lat;
@@ -155,7 +155,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   }
 
   getExternalAll(): void {
-    this.markerService.getExternalAll().subscribe((res: Places ) => {
+    this.apiService.getExternalAll().subscribe((res: Places ) => {
       this.places.push(res);
     });
   }

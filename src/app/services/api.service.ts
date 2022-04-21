@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class MarkerService {
+export class ApiService {
   private externalApi = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MarkerService } from '../main/marker.service';
+import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ export class PlaceDetailComponent implements OnInit {
   link: string = '';
   newImageString: string = '';
 
-  constructor(private markerService: MarkerService,
+  constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               ) {
                 this.link = 'https://tprimages.blob.core.windows.net/public/';
@@ -32,7 +32,7 @@ export class PlaceDetailComponent implements OnInit {
     this.route.paramMap.pipe(switchMap(params => {
       this.placeid = params.get('id');
 
-      return this.markerService.getOnePlace(this.placeid)
+      return this.apiService.getOnePlace(this.placeid)
     })
     ).subscribe(data => {
       if (data.id == this.placeid) {
