@@ -6,6 +6,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Places } from './places';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
+import { PopupComponent } from '../popup/popup.component';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -43,7 +45,10 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   constructor(
     private markerService: MarkerService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private resolver: ComponentFactoryResolver,
+              private appRef: ApplicationRef,
+              private injector: Injector
   ) {}
 
   private initMap(): void {
@@ -96,13 +101,53 @@ export class MainComponent implements AfterViewInit, OnInit {
     var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     this.placeDistance = b.toFixed(2);
     return this.placeDistance;
+  }
 
+  makeMapPopup(data: any): any{
+    let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
+        (c.instance.place = data.name.fi),
+        (c.instance.address = data.location.address.street_address),
+        (c.instance.postalCode = data.location.address.postal_code),
+        (c.instance.locality = data.location.address.locality),
+        (c.instance.placeUrl = data.info_url)
+      });
+      return markerPopup;
+  }
+
+  makePlaceMarkers(map: L.Map): void {
+    this.markerService.httpPlaceMarker().subscribe((res: any) => {
+      for (const c of res.data) {
+        const lon = c.location.lon;
+        const lat = c.location.lat;
+        const marker = L.marker([lat, lon]);
+
+        marker.bindPopup(this.makeMapPopup(c));
+
+        marker.addTo(map);
+      }
+    });
+  }
+
+  private compilePopup(component: any, onAttach: any): any {
+    const compFactory: any = this.resolver.resolveComponentFactory(component);
+    let compRef: any = compFactory.create(this.injector);
+
+    // onAttach allows you to assign
+    if (onAttach)
+      onAttach(compRef);
+
+    this.appRef.attachView(compRef.hostView);
+    compRef.onDestroy(() => this.appRef.detachView(compRef.hostView));
+
+    let div = document.createElement('div');
+    div.appendChild(compRef.location.nativeElement);
+    return div;
   }
 
   ngAfterViewInit(): void {
     this.initMap();
     this.saveReferenceLocation();
-    this.markerService.makePlaceMarkers(this.map);
+    this.makePlaceMarkers(this.map);
   }
 
   ngOnInit(): void {
