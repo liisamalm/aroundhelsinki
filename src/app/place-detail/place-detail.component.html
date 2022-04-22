@@ -97,13 +97,13 @@
               </tr>
 
               <tr *ngFor="let hour of places?.opening_hours.hours">
-                <td *ngIf="hour.weekday_id == 1">Monday</td>
-                <td *ngIf="hour.weekday_id == 2">Tuesday</td>
-                <td *ngIf="hour.weekday_id == 3">Wednesday</td>
-                <td *ngIf="hour.weekday_id == 4">Thursday</td>
-                <td *ngIf="hour.weekday_id == 5">Friday</td>
-                <td *ngIf="hour.weekday_id == 6">Saturday</td>
-                <td *ngIf="hour.weekday_id == 7">Sunday</td>
+                <td *ngIf="hour.weekday_id == 1">{{ "LANG.weekday.monday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 2">{{ "LANG.weekday.tuesday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 3">{{ "LANG.weekday.wednesday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 4">{{ "LANG.weekday.thursday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 5">{{ "LANG.weekday.friday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 6">{{ "LANG.weekday.saturday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 7">{{ "LANG.weekday.sunday" | translate }}</td>
                 <td>
                   <div *ngIf="hour.opens == null; else elseBlock1">---</div>
 
