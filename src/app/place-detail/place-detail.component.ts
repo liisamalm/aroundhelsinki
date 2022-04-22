@@ -38,7 +38,7 @@ export class PlaceDetailComponent implements OnInit {
       if (data.id == this.placeid) {
 
         this.places = data;
-        console.log(this.places);
+
       }
     })
   }
