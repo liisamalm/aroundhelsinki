@@ -8,6 +8,7 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
+import { MapComponent } from '../map/map.component';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -52,10 +53,10 @@ export class MainComponent implements AfterViewInit, OnInit {
   ) {}
 
   private initMap(): void {
-    this.map = L.map('map', {
-      center: [60.16952, 24.93545],
-      zoom: 12,
-    });
+    // this.map = L.map('map', {
+    //   center: [60.16952, 24.93545],
+    //   zoom: 12,
+    // });
 
     const provider = new OpenStreetMapProvider();
     const searchControl = new (GeoSearchControl as any)({
@@ -64,17 +65,17 @@ export class MainComponent implements AfterViewInit, OnInit {
     });
     this.map.addControl(searchControl);
 
-    const tiles = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 18,
-        minZoom: 3,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }
-    );
+    // const tiles = L.tileLayer(
+    //   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    //   {
+    //     maxZoom: 18,
+    //     minZoom: 3,
+    //     attribution:
+    //       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    //   }
+    // );
     this.saveReferenceLocation();
-    tiles.addTo(this.map);
+    // tiles.addTo(this.map);
   }
 
   saveReferenceLocation(): void {
