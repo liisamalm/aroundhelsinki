@@ -90,20 +90,20 @@
           <div class="row">
             <table class="table">
               <tr>
-                <th>Day</th>
-                <th>Open</th>
-                <th>Close</th>
-                <th>24h Open</th>
+                <th>{{ "LANG.day" | translate }}</th>
+                <th>{{ "LANG.opens" | translate }}</th>
+                <th>{{ "LANG.closes" | translate }}</th>
+                <th>{{ "LANG.24h" | translate }}</th>
               </tr>
 
               <tr *ngFor="let hour of places?.opening_hours.hours">
-                <td *ngIf="hour.weekday_id == 1">Monday</td>
-                <td *ngIf="hour.weekday_id == 2">Tuesday</td>
-                <td *ngIf="hour.weekday_id == 3">Wednesday</td>
-                <td *ngIf="hour.weekday_id == 4">Thursday</td>
-                <td *ngIf="hour.weekday_id == 5">Friday</td>
-                <td *ngIf="hour.weekday_id == 6">Saturday</td>
-                <td *ngIf="hour.weekday_id == 7">Sunday</td>
+                <td *ngIf="hour.weekday_id == 1">{{ "LANG.weekday.monday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 2">{{ "LANG.weekday.tuesday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 3">{{ "LANG.weekday.wednesday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 4">{{ "LANG.weekday.thursday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 5">{{ "LANG.weekday.friday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 6">{{ "LANG.weekday.saturday" | translate }}</td>
+                <td *ngIf="hour.weekday_id == 7">{{ "LANG.weekday.sunday" | translate }}</td>
                 <td>
                   <div *ngIf="hour.opens == null; else elseBlock1">---</div>
 

@@ -20,6 +20,10 @@
         "activity": "Aktiviteetti",
         "address": "Osoite",
         "open": "Aukiolo",
+        "day": "Päivä",
+        "opens": "Aukeaa",
+        "closes": "Sulkeutuu",
+        "24h": "Avoinna 24h",
         "weekday": {
             "monday": "Maanantai",
             "tuesday": "Tiistai",
