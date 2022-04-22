@@ -21,7 +21,7 @@ export class PlaceDetailComponent implements OnInit {
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               ) {
-                this.link = 'https://tprimages.blob.core.windows.net/public/';
+                this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
                }
 
   ngOnInit(): void {
@@ -42,8 +42,8 @@ export class PlaceDetailComponent implements OnInit {
     })
   }
 
-  getImageUrl(id: number,media_id: string){
-    var imglink = `${this.link}${id}/${media_id}.jpg`;
+  getImageUrl(link2: string){
+    var imglink = `${this.link}/hero_image/${link2}`;
     return imglink;
   }
 

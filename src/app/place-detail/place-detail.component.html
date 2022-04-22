@@ -22,7 +22,7 @@
           width="450px"
           id="view-img"
           src="{{
-            getImageUrl(places?.id, places?.description.images[0]?.media_id)
+            getImageUrl(places?.description.images[0]?.media_id)
           }}"
           class="mw-100"
           id="view-img"
@@ -37,7 +37,7 @@
             <figure class="pointer">
               <img
                 (click)="changeImg($event)"
-                src="{{ getImageUrl(places?.id, image.media_id) }}"
+                src="{{ getImageUrl(image.media_id) }}"
                 alt=""
                 class="pointer mw-100"
               />
