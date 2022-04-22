@@ -44,7 +44,7 @@ export class PlaceDetailComponent implements OnInit {
   }
 
   getImageUrl(link2: string){
-    var linklast = link2.slice(68,1000);
+    var linklast = link2?.slice(68,1000);
     var imglink = `${this.link}/hero_image/${linklast}`;
     return imglink;
   }
