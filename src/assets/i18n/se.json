@@ -20,6 +20,10 @@
         "activity": "Aktivitet",
         "address": "Adress",
         "open": "Öppettider",
+        "day": "Dag",
+        "opens": "Öppnar",
+        "closes": "Stängs",
+        "24h": "Öppen 24h",
         "weekday": {
             "monday": "Måndag",
             "tuesday": "Tisdag",

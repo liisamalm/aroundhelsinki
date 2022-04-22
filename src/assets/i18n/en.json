@@ -20,6 +20,10 @@
         "activity": "Activity",
         "address": "Address",
         "open": "Opening hours",
+        "day": "Day",
+        "opens": "Opens",
+        "closes": "Closes",
+        "24h": "Open 24h",
         "weekday": {
             "monday": "Monday",
             "tuesday": "Tuesday",
