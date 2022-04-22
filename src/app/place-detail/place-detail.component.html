@@ -1,6 +1,6 @@
 <div class="container mb-3">
   <div class="row">
-    <div *ngIf="places?.description.images?.length <= 1 ||  places?.description.images == null; else elseBlock" class="col-sm-5 text-center mt-5">
+    <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
       <div class=>
         <img
           width="450px"
@@ -22,7 +22,7 @@
           width="450px"
           id="view-img"
           src="{{
-            getImageUrl(places?.description.images[0]?.media_id)
+            getImageUrl(places?.description.images[0]?.url)
           }}"
           class="mw-100"
           id="view-img"
@@ -37,7 +37,7 @@
             <figure class="pointer">
               <img
                 (click)="changeImg($event)"
-                src="{{ getImageUrl(image.media_id) }}"
+                src="{{ getImageUrl(image.url) }}"
                 alt=""
                 class="pointer mw-100"
               />
@@ -53,7 +53,8 @@
       <div class="pt-5">
         <div>
           <h1 class="">{{ places?.name.fi }}</h1>
-          <h1 class=""></h1>
+
+
           <hr />
           <p class="" style="text-align: justify">
             {{ places?.description.intro }}

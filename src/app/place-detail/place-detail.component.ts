@@ -38,12 +38,14 @@ export class PlaceDetailComponent implements OnInit {
       if (data.id == this.placeid) {
 
         this.places = data;
+        console.log(this.places);
       }
     })
   }
 
   getImageUrl(link2: string){
-    var imglink = `${this.link}/hero_image/${link2}`;
+    var linklast = link2.slice(68,134);
+    var imglink = `${this.link}/hero_image/${linklast}`;
     return imglink;
   }
 
