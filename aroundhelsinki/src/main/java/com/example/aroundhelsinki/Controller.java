@@ -55,6 +55,20 @@ public class Controller {
 
   //ACTIVITIES
 
+  @GetMapping("/v1/activities")
+  private String getActivities() {
+    String url = "https://open-api.myhelsinki.fi/v1/activities/";
+    RestTemplate restTemplate = new RestTemplate();
+    String result = restTemplate.getForObject(url, String.class);
+    return result;
+  }
 
+  @GetMapping("/activity/{id}")
+  private String getActivity(@PathVariable String id) {
+    String url = "https://open-api.myhelsinki.fi/v1/activity/"+ id;
+    RestTemplate restTemplate = new RestTemplate();
+    String result = restTemplate.getForObject(url, String.class);
+    return result;
+  }
 
 }
