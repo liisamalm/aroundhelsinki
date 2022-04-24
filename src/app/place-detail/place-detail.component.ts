@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
+import * as L from 'leaflet';
+import { LeafletEvent } from 'leaflet';
 
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
   styleUrls: ['./place-detail.component.css']
 })
-export class PlaceDetailComponent implements OnInit {
+export class PlaceDetailComponent implements OnInit, AfterViewInit{
   placeid:any;
   places: any;
   date: Date = new Date();
@@ -18,11 +20,46 @@ export class PlaceDetailComponent implements OnInit {
   link: string = '';
   newImageString: string = '';
 
+  private map: L.Map;
+  referenceLocation: any = {
+    y: 60.16952,
+    x: 24.93545
+  };
+  showDistance = false;
+
+  private initMap(): void {
+  //  this.map = this.getMap(this.places.location.lat, (this.places.location.lon));
+    this.map = L.map('map', {
+      center: [ 60.168922424316406, 24.94364356994629],
+      zoom: 16
+    });
+    const tiles = L.tileLayer(
+      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        maxZoom: 18,
+        minZoom: 3,
+        attribution:
+          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      }
+    );
+    L.marker([60.168922424316406, 24.94364356994629]).addTo(this.map).bindPopup('Place Name').openPopup();
+
+    tiles.addTo(this.map);
+  }
+
+
+
+
   constructor(private apiService: ApiService,
               private route: ActivatedRoute,
               ) {
                 this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
                }
+  ngAfterViewInit(): void {
+    this.initMap();
+
+
+  }
 
   ngOnInit(): void {
     this.getOnePlace();
@@ -40,6 +77,7 @@ export class PlaceDetailComponent implements OnInit {
         this.places = data;
 
       }
+      console.log(this.places);
     })
   }
 
@@ -53,4 +91,20 @@ export class PlaceDetailComponent implements OnInit {
     this.newImageString = event.target.getAttribute('src');
     document.getElementById('view-img')?.setAttribute('src', this.newImageString);
   }
+
+
+  getMap(placeLat: any, placeLon: any ){
+    var map = L.map('map', {
+      center: [ placeLat, placeLon],
+      zoom: 16
+    });
+    return map;
+
+  }
+
+
+
+
+
+
 }
