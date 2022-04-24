@@ -9,10 +9,10 @@ import { LeafletEvent } from 'leaflet';
 @Component({
   selector: 'app-place-detail',
   templateUrl: './place-detail.component.html',
-  styleUrls: ['./place-detail.component.css']
+  styleUrls: ['./place-detail.component.css'],
 })
-export class PlaceDetailComponent implements OnInit, AfterViewInit{
-  placeid:any;
+export class PlaceDetailComponent implements OnInit, AfterViewInit {
+  placeid: any;
   places: any;
   date: Date = new Date();
   faCheck = faCheck;
@@ -21,18 +21,14 @@ export class PlaceDetailComponent implements OnInit, AfterViewInit{
   newImageString: string = '';
 
   private map: L.Map;
-  referenceLocation: any = {
-    y: 60.16952,
-    x: 24.93545
-  };
-  showDistance = false;
+
 
   private initMap(): void {
-  //  this.map = this.getMap(this.places.location.lat, (this.places.location.lon));
     this.map = L.map('map', {
-      center: [ 60.168922424316406, 24.94364356994629],
-      zoom: 16
+      center: [60.168922424316406, 24.94364356994629],
+      zoom: 16,
     });
+
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -42,23 +38,19 @@ export class PlaceDetailComponent implements OnInit, AfterViewInit{
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }
     );
-    L.marker([60.168922424316406, 24.94364356994629]).addTo(this.map).bindPopup('Place Name').openPopup();
+    L.marker([60.168922424316406, 24.94364356994629])
+      .addTo(this.map)
+      .bindPopup('Place Name')
+      .openPopup();
 
     tiles.addTo(this.map);
   }
 
-
-
-
-  constructor(private apiService: ApiService,
-              private route: ActivatedRoute,
-              ) {
-                this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
-               }
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {
+    this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
+  }
   ngAfterViewInit(): void {
     this.initMap();
-
-
   }
 
   ngOnInit(): void {
@@ -66,45 +58,40 @@ export class PlaceDetailComponent implements OnInit, AfterViewInit{
   }
 
   getOnePlace(): void {
-    this.route.paramMap.pipe(switchMap(params => {
-      this.placeid = params.get('id');
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          this.placeid = params.get('id');
 
-      return this.apiService.getOnePlace(this.placeid)
-    })
-    ).subscribe(data => {
-      if (data.id == this.placeid) {
-
-        this.places = data;
-
-      }
-      console.log(this.places);
-    })
+          return this.apiService.getOnePlace(this.placeid);
+        })
+      )
+      .subscribe((data) => {
+        if (data.id == this.placeid) {
+          this.places = data;
+        }
+        this.getMap(this.places?.location.lat, this.places?.location.lon);
+      });
   }
 
-  getImageUrl(link2: string){
-    var linklast = link2?.slice(68,1000);
+  getImageUrl(link2: string) {
+    var linklast = link2?.slice(68, 1000);
     var imglink = `${this.link}/hero_image/${linklast}`;
     return imglink;
   }
 
-  changeImg(event: any){
+  changeImg(event: any) {
     this.newImageString = event.target.getAttribute('src');
-    document.getElementById('view-img')?.setAttribute('src', this.newImageString);
+    document
+      .getElementById('view-img')
+      ?.setAttribute('src', this.newImageString);
   }
 
-
-  getMap(placeLat: any, placeLon: any ){
-    var map = L.map('map', {
-      center: [ placeLat, placeLon],
-      zoom: 16
-    });
-    return map;
-
+  getMap(placeLat: any, placeLon: any) {
+    var coordinate = [];
+    coordinate.push(placeLat);
+    coordinate.push(placeLon);
+    console.log(coordinate);
+    return coordinate;
   }
-
-
-
-
-
-
 }
