@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import { LeafletEvent } from 'leaflet';
+import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
@@ -9,6 +9,8 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
 import 'leaflet.markercluster';
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+import 'leaflet/dist/leaflet.css';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -119,23 +121,28 @@ export class MainComponent implements AfterViewInit, OnInit {
 
 
 
-  makePlaceMarkers(map: L.Map): void {
+  makePlaceMarkers(map: L.Map) {
+    const markerCluster = new MarkerClusterGroup();
     this.apiService.httpPlaceMarker().subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
         const lat = c.location.lat;
 
-        const marker = L.marker([lat, lon]);
-        var markers = L.markerClusterGroup();
+        const marker = L.marker([lat, lon]).bindPopup(this.makeMapPopup(c));
 
-        marker.bindPopup(this.makeMapPopup(c));
-        markers.addLayer(marker);
 
-        map.addLayer(markers);
+
+
         marker.addTo(map);
+        markerCluster.addLayer(marker);
+
       }
+      map.addLayer(markerCluster);
+
     });
+
   }
+
 
   private compilePopup(component: any, onAttach: any): any {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
