@@ -10,7 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getExternalAll(): Observable<any> {
+  getExternalAllPlaces(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/places');
   }
 

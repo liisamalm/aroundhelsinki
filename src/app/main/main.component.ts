@@ -59,7 +59,7 @@ export class MainComponent implements OnInit {
   }
 
   getExternalAll(): void {
-    this.apiService.getExternalAll().subscribe((res: Places) => {
+    this.apiService.getExternalAllPlaces().subscribe((res: Places) => {
       this.places.push(res);
     });
   }
