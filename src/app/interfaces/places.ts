@@ -16,7 +16,6 @@ export interface Datum {
     tags:              Tag[];
     opening_hours:     OpeningHours;
     extra_searchwords: null;
-    eventDates:        EventDates;
 }
 
 export interface Distance {
@@ -120,23 +119,6 @@ export interface Tag {
 
 export interface Meta {
     count: string;
-}
-
-export interface EventDates {
-   dates: Dates[] | null;
-   additionalDescription: AdditionalDescription[];
-
-}
-
-export interface Dates {
-    startingDay: Date;
-    endingDay: Date;
-}
-
-// tarviiko tätä ollenkaan??
-export interface AdditionalDescription {
-    langCode: string;
-    text: string;
 }
 
 // Converts JSON strings to/from your types
@@ -342,11 +324,6 @@ const typeMap: any = {
         { json: "opens", js: "opens", typ: u(null, "") },
         { json: "closes", js: "closes", typ: u(null, "") },
         { json: "open24h", js: "open24h", typ: true },
-    ], false),
-    // events
-    "Dates": o([
-        { json: "startingDay", js: "startingDay", typ: u(a(r("StartingDay")), null) },
-        { json: "endingDay", js: "endingDay", typ: u(null, "") },//MIKÄ TÄMÄ ON???
     ], false),
     "Tag": o([
         { json: "id", js: "id", typ: "" },

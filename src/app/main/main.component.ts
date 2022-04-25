@@ -8,6 +8,7 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
+import { Events } from '../interfaces/events';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -33,7 +34,7 @@ export class MainComponent implements AfterViewInit, OnInit {
   private map: L.Map;
 
   places: Places[] = [];
-  events: Places[] = [];
+  events: Events[] = [];
  
   closeResult: string = '';
   modalInfo: any;
@@ -162,7 +163,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     });
   }
   getExternalAllEvents(): void {
-    this.apiService.getExternalAllEvents().subscribe((res: Places ) => {
+    this.apiService.getExternalAllEvents().subscribe((res: Events ) => {
       this.events.push(res);
     });
   }
