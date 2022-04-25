@@ -14,10 +14,11 @@ public class Controller {
   @RequestMapping("/")
   public String hello() {
 
-    return "hello";
+    return "Around Helsinki";
   }
 
-  @GetMapping("/")
+  //PLACES
+  @GetMapping("/v1/places")
   private String getPlaces() {
     String url = "https://open-api.myhelsinki.fi/v1/places/";
     RestTemplate restTemplate = new RestTemplate();
@@ -28,6 +29,43 @@ public class Controller {
   @GetMapping("/place/{id}")
   private String getPlace(@PathVariable Long id) {
     String url = "https://open-api.myhelsinki.fi/v1/place/"+ id;
+    RestTemplate restTemplate = new RestTemplate();
+    String result = restTemplate.getForObject(url, String.class);
+    return result;
+  }
+
+  //EVENTS
+
+  @GetMapping("/v1/events")
+  private String getEvents() {
+    String url = "https://open-api.myhelsinki.fi/v1/events/";
+    RestTemplate restTemplate = new RestTemplate();
+    String result = restTemplate.getForObject(url, String.class);
+    return result;
+  }
+
+  @GetMapping("/event/{id}")
+  private String getEvent(@PathVariable String id) {
+    String url = "https://open-api.myhelsinki.fi/v1/event/"+ id;
+    RestTemplate restTemplate = new RestTemplate();
+    String result = restTemplate.getForObject(url, String.class);
+    return result;
+  }
+
+
+  //ACTIVITIES
+
+  @GetMapping("/v1/activities")
+  private String getActivities() {
+    String url = "https://open-api.myhelsinki.fi/v1/activities/";
+    RestTemplate restTemplate = new RestTemplate();
+    String result = restTemplate.getForObject(url, String.class);
+    return result;
+  }
+
+  @GetMapping("/activity/{id}")
+  private String getActivity(@PathVariable String id) {
+    String url = "https://open-api.myhelsinki.fi/v1/activity/"+ id;
     RestTemplate restTemplate = new RestTemplate();
     String result = restTemplate.getForObject(url, String.class);
     return result;

@@ -11,7 +11,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   getExternalAll(): Observable<any> {
-    return this.http.get(`${this.externalApi}`);
+    return this.http.get(this.externalApi + '/v1/places');
   }
 
   public getOnePlace(id: any): Observable<any> {
@@ -19,6 +19,6 @@ export class ApiService {
   }
 
   httpPlaceMarker() {
-    return this.http.get(this.externalApi);
+    return this.http.get(this.externalApi + '/v1/places');
   }
 }
