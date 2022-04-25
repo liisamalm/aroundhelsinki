@@ -33,6 +33,8 @@ export class MainComponent implements AfterViewInit, OnInit {
   private map: L.Map;
 
   places: Places[] = [];
+  events: Places[] = [];
+ 
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
@@ -157,6 +159,11 @@ export class MainComponent implements AfterViewInit, OnInit {
   getExternalAll(): void {
     this.apiService.getExternalAll().subscribe((res: Places ) => {
       this.places.push(res);
+    });
+  }
+  getExternalAllEvents(): void {
+    this.apiService.getExternalAllEvents().subscribe((res: Places ) => {
+      this.events.push(res);
     });
   }
 }

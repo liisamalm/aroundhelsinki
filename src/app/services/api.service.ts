@@ -21,4 +21,13 @@ export class ApiService {
   httpPlaceMarker() {
     return this.http.get(this.externalApi + '/v1/places');
   }
+
+  getExternalAllEvents(): Observable<any> {
+    return this.http.get(this.externalApi + '/v1/events');
+  }
+
+  public getOneEvent(id: any): Observable<any> {
+    return this.http.get(this.externalApi + '/event/' + id);
+  }
+
 }
