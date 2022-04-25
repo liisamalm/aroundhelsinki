@@ -15,8 +15,8 @@
         top: 285px;
       "
     >
-      <div *ngFor="let place of places">
-        <div *ngFor="let data of place.data">
+      <div *ngFor="let place of places ">
+        <div *ngFor="let data of place.data | slice:0:10">
             <div class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 fs-6">
