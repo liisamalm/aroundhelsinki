@@ -4,11 +4,12 @@ import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
+import { Events } from '../interfaces/events';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
-import { Events } from '../interfaces/events';
+
 import 'leaflet.markercluster';
 
 
@@ -39,7 +40,6 @@ export class MainComponent implements AfterViewInit, OnInit {
   events: Events[] = [];
  
   closeResult: string = '';
-  modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
   placeDistance: any;
   referenceLocation: any = {
@@ -120,9 +120,6 @@ export class MainComponent implements AfterViewInit, OnInit {
       return markerPopup;
   }
 
-
-
-
   makePlaceMarkers(map: L.Map) {
     const markerCluster = new MarkerClusterGroup();
     this.apiService.httpPlaceMarker().subscribe((res: any) => {
@@ -132,17 +129,12 @@ export class MainComponent implements AfterViewInit, OnInit {
 
         const marker = L.marker([lat, lon],{icon: iconDefault}).bindPopup(this.makeMapPopup(c));
 
-
-
-
         // marker.addTo(map);
         markerCluster.addLayer(marker);
       }
       map.addLayer(markerCluster);
     });
-
   }
-
 
   private compilePopup(component: any, onAttach: any): any {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
@@ -167,6 +159,7 @@ export class MainComponent implements AfterViewInit, OnInit {
 
   ngOnInit(): void {
     this.getExternalAll();
+    this.getExternalAllEvents();
   }
 
   getExternalAll(): void {
