@@ -2,8 +2,11 @@
   color: #680F3D;
 }
 
-table {
-  text-align: center;
+ table td{
+  text-align: left;
+  border: 1px solid #ddd;
+
+ 
 }
 
 small {

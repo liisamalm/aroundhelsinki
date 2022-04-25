@@ -88,12 +88,11 @@
           </div>
           <hr />
           <div class="row">
-            <table class="table">
+            <table class="table table-striped">
               <tr>
                 <th>{{ "LANG.day" | translate }}</th>
                 <th>{{ "LANG.opens" | translate }}</th>
                 <th>{{ "LANG.closes" | translate }}</th>
-                <th>{{ "LANG.24h" | translate }}</th>
               </tr>
 
               <tr *ngFor="let hour of places?.opening_hours.hours">
@@ -117,13 +116,6 @@
                   <ng-template #elseBlock>{{
                     hour.closes | slice: 0:5
                   }}</ng-template>
-                </td>
-
-                <td *ngIf="hour.open24h == false">
-                  <fa-icon [icon]="faTimes"></fa-icon>
-                </td>
-                <td *ngIf="hour.open24h == true">
-                  <fa-icon [icon]="faCheck"></fa-icon>
                 </td>
               </tr>
             </table>
