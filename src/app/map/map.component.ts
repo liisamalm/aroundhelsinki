@@ -5,6 +5,9 @@ import { PopupComponent } from '../popup/popup.component';
 import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
+import { MainComponent } from '../main/main.component';
+import 'leaflet.markercluster';
+
 
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -30,9 +33,8 @@ const iconDefault = L.icon({
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
-  // static map: any;
 
-  constructor(public apiService: ApiService, private resolver: ComponentFactoryResolver,
+  constructor(public apiService: ApiService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector) { }
 
@@ -61,7 +63,7 @@ export class MapComponent implements OnInit {
       autoClose: true,
     });
     MapComponent.map.addControl(searchControl);
-
+    this.mainComponent.saveReferenceLocation();
   }
 
   makeMapPopup(data: any): any {
