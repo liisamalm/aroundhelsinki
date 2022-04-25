@@ -8,6 +8,7 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
+import 'leaflet.markercluster';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
@@ -115,15 +116,22 @@ export class MainComponent implements AfterViewInit, OnInit {
       return markerPopup;
   }
 
+
+
+
   makePlaceMarkers(map: L.Map): void {
     this.apiService.httpPlaceMarker().subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
         const lat = c.location.lat;
+
         const marker = L.marker([lat, lon]);
+        var markers = L.markerClusterGroup();
 
         marker.bindPopup(this.makeMapPopup(c));
+        markers.addLayer(marker);
 
+        map.addLayer(markers);
         marker.addTo(map);
       }
     });
