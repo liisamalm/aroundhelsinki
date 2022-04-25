@@ -33,7 +33,8 @@ const iconDefault = L.icon({
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements AfterViewInit, OnInit {
-  private map: L.Map;
+  // private map: L.Map;
+  private map = MapComponent.map;
 
   places: Places[] = [];
   closeResult: string = '';
@@ -51,8 +52,7 @@ export class MainComponent implements AfterViewInit, OnInit {
     public translate: TranslateService,
     private resolver: ComponentFactoryResolver,
               private appRef: ApplicationRef,
-              private injector: Injector
-  ) {}
+              private injector: Injector  ) {}
 
   private initMap(): void {
     // this.map = L.map('map', {

@@ -8,12 +8,13 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.css']
 })
 export class MapComponent implements OnInit {
-  private map: L.Map;
+  static map: L.Map;
+  // static map: any;
 
   constructor() { }
 
   mapInit(){
-    this.map = L.map('map', {
+    MapComponent.map = L.map('map', {
       center: [60.16952, 24.93545],
       zoom: 12,
     });
@@ -26,7 +27,7 @@ export class MapComponent implements OnInit {
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }
     );
-    tiles.addTo(this.map);
+    tiles.addTo(MapComponent.map);
   }
 
   ngOnInit(): void {
