@@ -9,7 +9,7 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
 import 'leaflet.markercluster';
-import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet/dist/leaflet.css';
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -25,7 +25,7 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41],
 });
-L.Marker.prototype.options.icon = iconDefault;
+// L.Marker.prototype.options.icon = iconDefault;
 
 @Component({
   selector: 'app-main',
@@ -128,17 +128,15 @@ export class MainComponent implements AfterViewInit, OnInit {
         const lon = c.location.lon;
         const lat = c.location.lat;
 
-        const marker = L.marker([lat, lon]).bindPopup(this.makeMapPopup(c));
+        const marker = L.marker([lat, lon],{icon: iconDefault}).bindPopup(this.makeMapPopup(c));
 
 
 
 
-        marker.addTo(map);
+        // marker.addTo(map);
         markerCluster.addLayer(marker);
-
       }
       map.addLayer(markerCluster);
-
     });
 
   }
