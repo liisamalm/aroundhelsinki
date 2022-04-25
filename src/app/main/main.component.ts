@@ -9,8 +9,7 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { PopupComponent } from '../popup/popup.component';
 import 'leaflet.markercluster';
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import 'leaflet/dist/leaflet.css';
+
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
