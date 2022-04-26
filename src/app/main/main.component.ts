@@ -4,6 +4,7 @@ import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
 import { Events } from '../interfaces/events';
+import { AllDTO, PlaceDTO, EventDTO } from '../interfaces/dtos';
 import { faLocationCrosshairs, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
@@ -17,6 +18,9 @@ export class MainComponent implements OnInit {
 
   places: Places[] = [];
   events: Events[] = [];
+  alldto: AllDTO[] = [];
+  placedto: PlaceDTO[] = [];
+  eventdto: EventDTO[] = [];
  
   closeResult: string = '';
   faLocationCrosshairs = faLocationCrosshairs;
@@ -79,6 +83,25 @@ export class MainComponent implements OnInit {
     this.apiService.getExternalAllEvents().subscribe((res: Events ) => {
       this.events.push(res);
     });
+  }
+
+  addPlacesToPlaceDTO(){
+
+  }
+
+  addPlacesToEventDTO(){
+    this.apiService.getExternalAllEvents().subscribe((res: Events ) => {
+      this.eventdto[0].id = res.data[0].id;
+      this.eventdto[0].name = res.data[0].name;
+      this.eventdto[0].address.street_address = res.data[0].location.address.street_address;
+      this.eventdto[0].address.postal_code = res.data[0].location.address.postal_code;
+      this.eventdto[0].address.locality = res.data[0].location.address.locality;
+      this.eventdto[0].name = res.data[0].name;
+      this.eventdto[0].name = res.data[0].name;
+      this.eventdto[0].name = res.data[0].name;
+
+    });
+
   }
 
   ngOnInit(): void {

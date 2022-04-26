@@ -1,15 +1,13 @@
 export interface AllDTO{
     place: PlaceDTO[];
     event: EventDTO[];
-    activity: ActivityDTO[];
+    // activity: ActivityDTO[];
 }
 
 export interface PlaceDTO {
     id: string;
     name:  NameClass;
-    street_address: string;
-    postal_code: string;
-    locality: Locality | null;
+    address: Address;
     lat: number;
     lon: number;
     distance: number;
@@ -18,27 +16,34 @@ export interface PlaceDTO {
 export interface EventDTO {
     id: string;
     name:  NameClass;
-    street_address: string;
-    postal_code: string;
-    locality: Locality | null;
+    address: Address;
     lat: number;
     lon: number;
     distance: number;
 
 }
 
-export interface ActivityDTO {
-    id: string;
-    name:  NameClass;
-    street_address: string;
-    postal_code: string;
-    locality: Locality | null;
-    lat: number;
-    lon: number;
-    distance: number;
+// export interface ActivityDTO {
+//     id: string;
+//     name:  NameClass;
+//     address: Address;
+//     lat: number;
+//     lon: number;
+//     distance: number;
+// }
 
+export interface NameClass {
+    fi: string;
+    en: null | string;
+    sv: null | string;
+    zh: null | string;
 }
 
+export interface Address {
+    street_address: null | string;
+    postal_code:    null | string;
+    locality:       Locality | null;
+}
 
 export enum Locality {
     Espoo = "Espoo",
@@ -70,11 +75,3 @@ export enum Locality {
     Vanda = "Vanda",
     Vantaa = "Vantaa",
 }
-
-export interface NameClass {
-    fi: string;
-    en: null | string;
-    sv: null | string;
-    zh: null | string;
-}
-
