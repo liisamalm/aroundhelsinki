@@ -32,14 +32,14 @@
       </div>
   
       <div *ngFor="let event of events">
-        <div *ngFor="let data of event.data | slice:0:10">
+        <div *ngFor="let data of event.data">
           
             <div class="list-group-item list-group-item-action">
               
               <div class="d-flex w-100 justify-content-between">
                 
                 <h5 class="mb-1 fs-6">
-                  <fa-icon [icon]="faLocationCrosshairs"></fa-icon
+                  <fa-icon [icon]="faCalendarCheck"></fa-icon
                   ><a style="text-decoration: none; color: #680f3d !important">
                     {{ data.name.fi }}</a
                   >

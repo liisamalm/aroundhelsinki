@@ -4,7 +4,7 @@ import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
 import { Events } from '../interfaces/events';
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import { faLocationCrosshairs, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 
@@ -20,6 +20,7 @@ export class MainComponent implements OnInit {
  
   closeResult: string = '';
   faLocationCrosshairs = faLocationCrosshairs;
+  faCalendarCheck = faCalendarCheck;
   placeDistance: any;
   referenceLocation: any = {
     y: 60.16952,
