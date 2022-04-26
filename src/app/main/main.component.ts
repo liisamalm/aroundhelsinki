@@ -52,8 +52,8 @@ export class MainComponent implements OnInit {
       Math.cos(userX * degrees) *
       Math.pow(Math.sin(dLon / 2.0), 2);
     var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    this.placeDistance = b.toFixed(2);
-    return this.placeDistance;
+    // this.placeDistance = b.toFixed(2);
+    return b.toFixed(2);
   }
 
   getExternalAll(): void {
