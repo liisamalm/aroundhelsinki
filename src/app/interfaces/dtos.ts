@@ -12,6 +12,7 @@ export interface PlaceDTO {
     locality: Locality | null;
     lat: number;
     lon: number;
+    distance: number;
 }
 
 export interface EventDTO {
@@ -22,6 +23,8 @@ export interface EventDTO {
     locality: Locality | null;
     lat: number;
     lon: number;
+    distance: number;
+
 }
 
 export interface ActivityDTO {
@@ -32,6 +35,8 @@ export interface ActivityDTO {
     locality: Locality | null;
     lat: number;
     lon: number;
+    distance: number;
+
 }
 
 
