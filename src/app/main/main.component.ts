@@ -109,10 +109,12 @@ export class MainComponent implements OnInit {
      }
     }
   }
-
+  
   ngOnInit(): void {
     this.getExternalAll();
-    this.getAllFromEventDTO();
+    this.addPlacesToEventDTO();
+    // this.getAllFromEventDTO();
+    // this.getAllFromEventDTO();
     // this.getExternalAllEvents();
   }
 }

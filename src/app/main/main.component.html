@@ -27,8 +27,7 @@
         </div>
       </div>
   
-      <div *ngFor="let event of events">
-        <div *ngFor="let data of event.data">
+        <div *ngFor="let data of events[0]?.data">
           
             <div class="list-group-item list-group-item-action">
               
@@ -41,7 +40,7 @@
                   >
                 </h5>
                 <small id="distance" *ngIf="showDistance">{{
-                  calculateDistance(data.location)
+                  calculateDistance(data.location).toFixed(2)
                 }}km</small>
               </div>
               <p class="mb-1 ptext">
@@ -56,7 +55,6 @@
               </small>
             </div>
         </div>
-      </div>
     </div>
 
 

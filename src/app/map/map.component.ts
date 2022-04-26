@@ -68,7 +68,7 @@ export class MapComponent implements OnInit {
 
   makeMapPopup(data: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
-      (c.instance.place = data.name.fi),
+        (c.instance.place = data.name.fi),
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
