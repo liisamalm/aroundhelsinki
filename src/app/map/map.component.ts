@@ -5,8 +5,8 @@ import { PopupComponent } from '../popup/popup.component';
 import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
-import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
+import { PlacesComponent } from '../places/places.component';
 
 
 
@@ -34,9 +34,10 @@ const iconDefault = L.icon({
 export class MapComponent implements OnInit {
   static map: L.Map;
 
-  constructor(public apiService: ApiService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
+  constructor(public apiService: ApiService, private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector) { }
+    private injector: Injector,
+    public placesComponent: PlacesComponent) { }
 
   mapInit() {
     MapComponent.map = L.map('map', {
@@ -63,7 +64,7 @@ export class MapComponent implements OnInit {
       autoClose: true,
     });
     MapComponent.map.addControl(searchControl);
-    this.mainComponent.saveReferenceLocation();
+    this.placesComponent.saveReferenceLocation();
   }
 
   makeMapPopup(data: any): any {
@@ -80,7 +81,7 @@ export class MapComponent implements OnInit {
 
   makePlaceMarkers(map: L.Map) {
     const markerCluster = new MarkerClusterGroup();
-    this.apiService.httpPlaceMarker().subscribe((res: any) => {
+    this.apiService.httpPlacesMarker().subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
         const lat = c.location.lat;

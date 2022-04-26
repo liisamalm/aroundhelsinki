@@ -8,11 +8,11 @@ import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'],
+  selector: 'app-places',
+  templateUrl: './places.component.html',
+  styleUrls: ['./places.component.css'],
 })
-export class MainComponent implements OnInit {
+export class PlacesComponent implements OnInit {
 
   places: Places[] = [];
   closeResult: string = '';
@@ -56,13 +56,13 @@ export class MainComponent implements OnInit {
     return this.placeDistance;
   }
 
-  getExternalAll(): void {
-    this.apiService.getExternalAll().subscribe((res: Places) => {
+  getPlacesAll(): void {
+    this.apiService.getPlacesAll().subscribe((res: Places) => {
       this.places.push(res);
     });
   }
 
   ngOnInit(): void {
-    this.getExternalAll();
+    this.getPlacesAll();
   }
 }

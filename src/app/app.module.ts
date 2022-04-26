@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MainComponent } from './main/main.component';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
@@ -14,6 +13,9 @@ import { FooterComponent } from './footer/footer.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { PopupComponent } from './popup/popup.component';
 import { MapComponent } from './map/map.component';
+import { ActivitiesComponent } from './activities/activities.component';
+import { EventsComponent } from './events/events.component';
+import { PlacesComponent } from './places/places.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -22,12 +24,14 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     NavigationComponent,
     FooterComponent,
     PlaceDetailComponent,
     PopupComponent,
-    MapComponent
+    MapComponent,
+    ActivitiesComponent,
+    EventsComponent,
+    PlacesComponent
   ],
   providers: [],
   imports: [
