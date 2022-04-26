@@ -12,8 +12,7 @@
         top: 285px;
       "
     >
-      <div *ngFor="let place of places ">
-        <div *ngFor="let data of place.data | slice:0:10">
+        <div *ngFor="let data of places[0]?.data">
             <div class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 fs-6">
@@ -23,7 +22,7 @@
                   >
                 </h5>
                 <small id="distance" *ngIf="showDistance">{{
-                  calculateDistance(data.location)
+                  data.distance.toFixed(2)
                 }}km</small>
               </div>
               <p class="mb-1 ptext">
@@ -38,7 +37,7 @@
               </small>
             </div>
         </div>
-      </div>
+      
     </div>
   </div>
 </div>
