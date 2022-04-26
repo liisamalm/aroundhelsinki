@@ -23,6 +23,7 @@ export interface Datum {
     description: Description;
     tags:        Tag[];
     event_dates: EventDates;
+    distance: number;
 }
 
 export interface Description {

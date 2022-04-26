@@ -89,23 +89,30 @@ export class MainComponent implements OnInit {
 
   }
 
+  getAllFromEventDTO(){
+    console.log("eventdto: " + this.eventdto);
+  }
+
+
   addPlacesToEventDTO(){
-    this.apiService.getExternalAllEvents().subscribe((res: Events ) => {
-      this.eventdto[0].id = res.data[0].id;
-      this.eventdto[0].name = res.data[0].name;
-      this.eventdto[0].address.street_address = res.data[0].location.address.street_address;
-      this.eventdto[0].address.postal_code = res.data[0].location.address.postal_code;
-      this.eventdto[0].address.locality = res.data[0].location.address.locality;
-      this.eventdto[0].name = res.data[0].name;
-      this.eventdto[0].name = res.data[0].name;
-      this.eventdto[0].name = res.data[0].name;
-
-    });
-
+    this.getExternalAllEvents();
+    for(const eventdto of this.eventdto){
+     for(const event of this.events[0].data){
+      this.eventdto[0].id = event.id;
+      this.eventdto[0].name = event.name;
+      this.eventdto[0].address.street_address = event.location.address.street_address;
+      this.eventdto[0].address.postal_code = event.location.address.postal_code;
+      // this.eventdto[0].address.locality = res.data[0].location.address.locality;
+      this.eventdto[0].lat = event.location.lat;
+      this.eventdto[0].lon = event.location.lon;
+      this.eventdto[0].distance = event.distance
+     }
+    }
   }
 
   ngOnInit(): void {
     this.getExternalAll();
-    this.getExternalAllEvents();
+    this.getAllFromEventDTO();
+    // this.getExternalAllEvents();
   }
 }

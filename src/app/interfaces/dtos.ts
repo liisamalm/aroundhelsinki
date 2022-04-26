@@ -7,7 +7,7 @@ export interface AllDTO{
 export interface PlaceDTO {
     id: string;
     name:  NameClass;
-    address: Address;
+    location: Location;
     lat: number;
     lon: number;
     distance: number;
