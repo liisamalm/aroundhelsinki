@@ -21,7 +21,6 @@ export class MainComponent implements OnInit {
   closeResult: string = '';
   faLocationCrosshairs = faLocationCrosshairs;
   faCalendarCheck = faCalendarCheck;
-  placeDistance: any;
   referenceLocation: any = {
     y: 60.16952,
     x: 24.93545
@@ -36,6 +35,8 @@ export class MainComponent implements OnInit {
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
       this.referenceLocation = e.location;
+      this.updateDistance();
+      this.sortByDistance();
       this.showDistance = true;
     });
   }
@@ -55,8 +56,17 @@ export class MainComponent implements OnInit {
       Math.cos(userX * degrees) *
       Math.pow(Math.sin(dLon / 2.0), 2);
     var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    this.placeDistance = b.toFixed(2);
-    return this.placeDistance;
+    return b;
+  }
+
+  updateDistance(){
+    for(const place of this.places[0].data){
+      place.distance = this.calculateDistance(place.location);
+    }
+  }
+
+  sortByDistance(){
+    this.places[0].data.sort((a,b) => a.distance - b.distance);
   }
 
   getExternalAll(): void {

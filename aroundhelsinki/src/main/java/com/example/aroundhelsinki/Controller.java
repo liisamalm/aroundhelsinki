@@ -34,8 +34,6 @@ public class Controller {
     return result;
   }
 
-  //EVENTS
-
   @GetMapping("/v1/events")
   private String getEvents() {
     String url = "https://open-api.myhelsinki.fi/v1/events/";
@@ -51,9 +49,6 @@ public class Controller {
     String result = restTemplate.getForObject(url, String.class);
     return result;
   }
-
-
-  //ACTIVITIES
 
   @GetMapping("/v1/activities")
   private String getActivities() {
