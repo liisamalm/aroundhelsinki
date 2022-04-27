@@ -14,6 +14,7 @@ export interface Datum {
     description:         Description;
     tags:                Tag[];
     where_when_duration: WhereWhenDuration;
+    distance: number;
 }
 
 export interface Description {

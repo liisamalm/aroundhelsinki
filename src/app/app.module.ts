@@ -1,3 +1,4 @@
+import { ApiService } from './services/api.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,7 @@ import { ActivitiesComponent } from './activities/activities.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -37,7 +39,9 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EventDetailComponent,
     ActivityDetailComponent
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
