@@ -45,8 +45,6 @@ export class PlaceDetailComponent implements OnInit {
   };
 
 
-  
-
   constructor(private apiService: ApiService,
               private route: ActivatedRoute
               ) {
@@ -80,7 +78,6 @@ export class PlaceDetailComponent implements OnInit {
   }
 
 
-
   getOnePlace(): void {
     this.route.paramMap.pipe(switchMap(params => {
       this.placeid = params.get('id');
@@ -90,8 +87,6 @@ export class PlaceDetailComponent implements OnInit {
       if (data.id == this.placeid) {
         this.places = data;
         this.placeLocation = this.places?.location;
-
-    
       }
       this.lat = this.places?.location.lat;
       this.lon = this.places?.location.lon;
@@ -100,10 +95,7 @@ export class PlaceDetailComponent implements OnInit {
       console.log("this.lat: " + this.lat);
     console.log("this.lon: " + this.lon);
     })
-
   }
-
-
 
   marker(map: L.Map){
     console.log("marker lon: " + this.placeLocation.y)
