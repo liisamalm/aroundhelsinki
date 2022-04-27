@@ -9,7 +9,6 @@ import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
 
 
-
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
 const iconUrl = 'assets/marker-icon.png';
 const shadowUrl = 'assets/marker-shadow.png';
@@ -24,7 +23,6 @@ const iconDefault = L.icon({
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41],
 });
-
 
 @Component({
   selector: 'app-map',
@@ -97,7 +95,6 @@ export class MapComponent implements OnInit {
       }
       map.addLayer(markerCluster);
     });
-
   }
 
   private compilePopup(component: any, onAttach: any): any {
@@ -119,5 +116,4 @@ export class MapComponent implements OnInit {
     this.mainPageMap();
     this.makePlaceMarkers(MapComponent.map);
   }
-
 }
