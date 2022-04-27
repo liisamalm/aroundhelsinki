@@ -4,20 +4,22 @@ import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { PopupComponent } from '../popup/popup.component';
 import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
-import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
+import {
+  Injector,
+  ApplicationRef,
+  ComponentFactoryResolver,
+  Type,
+} from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
 
+// const iconRetinaUrl = 'assets/marker-icon-2x.png';
+// const iconUrl = 'assets/marker-icon.png';
+// const shadowUrl = 'assets/marker-shadow.png';
 
-
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
-const shadowUrl = 'assets/marker-shadow.png';
-
-const iconDefault = L.icon({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
+const iconPlace = L.icon({
+  iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
+  shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -25,18 +27,41 @@ const iconDefault = L.icon({
   shadowSize: [41, 41],
 });
 
+const iconEvent = L.icon({
+  iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
+  shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41],
+});
+
+const iconActivity = L.icon({
+  iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-orange.png',
+  shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41],
+});
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
 
-  constructor(public apiService: ApiService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
+  constructor(
+    public apiService: ApiService,
+    public mainComponent: MainComponent,
+    private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector) { }
+    private injector: Injector
+  ) {}
 
   mapInit() {
     MapComponent.map = L.map('map', {
@@ -73,7 +98,7 @@ export class MapComponent implements OnInit {
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
         (c.instance.placeUrl = data.info_url),
-        (c.instance.ownPage = data.id)
+        (c.instance.ownPage = data.id);
     });
     return markerPopup;
   }
@@ -85,13 +110,14 @@ export class MapComponent implements OnInit {
         const lon = c.location.lon;
         const lat = c.location.lat;
 
-        const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
+        const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+          this.makeMapPopup(c)
+        );
 
         markerCluster.addLayer(marker);
       }
       map.addLayer(markerCluster);
     });
-
   }
 
   makeActivityMarkers(map: L.Map) {
@@ -101,13 +127,14 @@ export class MapComponent implements OnInit {
         const lon = c.location.lon;
         const lat = c.location.lat;
 
-        const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
+        const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+          this.makeMapPopup(c)
+        );
 
         markerCluster.addLayer(marker);
       }
       map.addLayer(markerCluster);
     });
-
   }
 
   makeEventMarkers(map: L.Map) {
@@ -117,21 +144,21 @@ export class MapComponent implements OnInit {
         const lon = c.location.lon;
         const lat = c.location.lat;
 
-        const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
+        const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+          this.makeMapPopup(c)
+        );
 
         markerCluster.addLayer(marker);
       }
       map.addLayer(markerCluster);
     });
-
   }
 
   private compilePopup(component: any, onAttach: any): any {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
     let compRef: any = compFactory.create(this.injector);
 
-    if (onAttach)
-      onAttach(compRef);
+    if (onAttach) onAttach(compRef);
 
     this.appRef.attachView(compRef.hostView);
     compRef.onDestroy(() => this.appRef.detachView(compRef.hostView));
@@ -147,5 +174,4 @@ export class MapComponent implements OnInit {
     this.makeActivityMarkers(MapComponent.map);
     this.makeEventMarkers(MapComponent.map);
   }
-
 }
