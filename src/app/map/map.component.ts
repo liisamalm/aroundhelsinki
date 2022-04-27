@@ -42,7 +42,12 @@ export class MapComponent implements OnInit {
     MapComponent.map = L.map('map', {
       center: [60.16952, 24.93545],
       zoom: 12,
+      zoomControl: false
     });
+
+    L.control.zoom({
+      position: 'topright'
+  }).addTo(MapComponent.map);
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -61,6 +66,7 @@ export class MapComponent implements OnInit {
     const searchControl = new (GeoSearchControl as any)({
       provider: provider,
       autoClose: true,
+      
     });
     MapComponent.map.addControl(searchControl);
     this.mainComponent.saveReferenceLocation();
