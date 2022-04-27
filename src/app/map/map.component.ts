@@ -7,10 +7,7 @@ import { ApiService } from '../services/api.service';
 import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
-import { PlaceDetailComponent } from '../place-detail/place-detail.component';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
-import { faMapPin } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -36,9 +33,6 @@ const iconDefault = L.icon({
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
-  placeid:any;
-  places: any;
-  faMapPin = faMapPin;
 
 
   constructor(public apiService: ApiService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
@@ -71,27 +65,6 @@ export class MapComponent implements OnInit {
     });
     MapComponent.map.addControl(searchControl);
     this.mainComponent.saveReferenceLocation();
-  }
-
-  placeMap(){
-    this.mapInit();
-    this.makeOnePlaceMarker(MapComponent.map);
-  }
-
-  makeOnePlaceMarker(map: L.Map){
-    this.route.paramMap.pipe(switchMap(params => {
-      this.placeid = params.get('id');
-      return this.apiService.getOnePlace(this.placeid)
-    })
-    ).subscribe(data => {
-      if (data.id == this.placeid) {
-        this.places = data;
-      }
-    })
-    const lon = this.places.location.lon;
-    const lat = this.places.location.lat;
-    const marker = L.marker([lat, lon], { icon: iconDefault })
-    marker.addTo(map);
   }
 
   makeMapPopup(data: any): any {

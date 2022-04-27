@@ -36,6 +36,16 @@ export class PlaceDetailComponent implements OnInit {
   link: string = '';
   newImageString: string = '';
   private map: L.Map;
+  lon: any;
+  lat: any;
+
+  placeLocation: any = {
+    y: 0.0,
+    x: 0.0
+  };
+
+
+  
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute
@@ -46,7 +56,7 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getOnePlace();
     this.mapInit();
-    this.marker();
+    this.marker(this.map);
   }
 
   mapInit() {
@@ -64,16 +74,12 @@ export class PlaceDetailComponent implements OnInit {
       }
     );
     tiles.addTo(this.map);
-  }
-
-  marker(){
-    let lon = this.places?.location.lon;
-    let lat = this.places?.location.lat;
-
-    const marker = L.marker([lat, lon], { icon: iconDefault });
-    marker.addTo(this.map);
+    console.log("mapInit latmap: " + this.lat)
+    console.log("mapInit lonmap: " + this.lon)
 
   }
+
+
 
   getOnePlace(): void {
     this.route.paramMap.pipe(switchMap(params => {
@@ -83,10 +89,28 @@ export class PlaceDetailComponent implements OnInit {
     ).subscribe(data => {
       if (data.id == this.placeid) {
         this.places = data;
+        this.placeLocation = this.places?.location;
+
+    
       }
+      this.lat = this.places?.location.lat;
+      this.lon = this.places?.location.lon;
+      console.log("lat: " + this.places?.location.lat);
+      console.log("lon: " + this.places?.location.lon);
+      console.log("this.lat: " + this.lat);
+    console.log("this.lon: " + this.lon);
     })
 
   }
+
+
+
+  marker(map: L.Map){
+    console.log("marker lon: " + this.placeLocation.y)
+    const marker = L.marker([this.placeLocation.y, this.placeLocation.x], { icon: iconDefault });
+    marker.addTo(map);
+  }
+
 
   getImageUrl(link2: string){
     var linklast = link2?.slice(68,1000);
