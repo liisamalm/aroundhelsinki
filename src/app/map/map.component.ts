@@ -94,6 +94,38 @@ export class MapComponent implements OnInit {
 
   }
 
+  makeActivityMarkers(map: L.Map) {
+    const markerCluster = new MarkerClusterGroup();
+    this.apiService.httpActivityMarker().subscribe((res: any) => {
+      for (const c of res.data) {
+        const lon = c.location.lon;
+        const lat = c.location.lat;
+
+        const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
+
+        markerCluster.addLayer(marker);
+      }
+      map.addLayer(markerCluster);
+    });
+
+  }
+
+  makeEventMarkers(map: L.Map) {
+    const markerCluster = new MarkerClusterGroup();
+    this.apiService.httpEventMarker().subscribe((res: any) => {
+      for (const c of res.data) {
+        const lon = c.location.lon;
+        const lat = c.location.lat;
+
+        const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
+
+        markerCluster.addLayer(marker);
+      }
+      map.addLayer(markerCluster);
+    });
+
+  }
+
   private compilePopup(component: any, onAttach: any): any {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
     let compRef: any = compFactory.create(this.injector);
@@ -112,6 +144,8 @@ export class MapComponent implements OnInit {
   ngOnInit(): void {
     this.mainPageMap();
     this.makePlaceMarkers(MapComponent.map);
+    this.makeActivityMarkers(MapComponent.map);
+    this.makeEventMarkers(MapComponent.map);
   }
 
 }
