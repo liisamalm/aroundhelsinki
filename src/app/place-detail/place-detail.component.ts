@@ -52,7 +52,7 @@ export class PlaceDetailComponent implements OnInit {
   mapInit() {
     this.map = L.map('map', {
       center: [60.16952, 24.93545],
-      zoom: 12,
+      zoom: 16,
     });
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
