@@ -11,9 +11,7 @@ export class PopupComponent implements OnInit {
   @Input() place: String; 
   @Input() address: String;
   @Input() postalCode: String; 
-  @Input() openingHours: String;
   @Input() locality: String;
-  @Input() placeUrl: String;
   @Input() ownPage: String;
 
   faLocationCrosshairs = faLocationCrosshairs;
