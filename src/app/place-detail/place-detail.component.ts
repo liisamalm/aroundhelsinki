@@ -7,21 +7,16 @@ import * as L from 'leaflet';
 
 
 
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
-const shadowUrl = 'assets/marker-shadow.png';
 
-const iconDefault = L.icon({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
+const iconPlace = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
   tooltipAnchor: [16, -28],
   shadowSize: [41, 41],
 });
-
 
 @Component({
   selector: 'app-place-detail',
@@ -36,14 +31,6 @@ export class PlaceDetailComponent implements OnInit {
   link: string = '';
   newImageString: string = '';
   private map: L.Map;
-  lon: any;
-  lat: any;
-
-  placeLocation: any = {
-    y: 0.0,
-    x: 0.0
-  };
-
 
   constructor(private apiService: ApiService,
               private route: ActivatedRoute
@@ -54,29 +41,30 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getOnePlace();
     this.mapInit();
-    this.marker(this.map);
   }
 
   mapInit() {
-    this.map = L.map('map', {
-      center: [60.16952, 24.93545],
-      zoom: 16,
+    this.apiService.getOnePlace(this.placeid).subscribe(data => {      
+      if(data.id == this.placeid){
+        this.map = L.map('map', {
+          center: [this.places?.location.lat, this.places?.location.lon],
+          zoom: 16,
+        });
+        const tiles = L.tileLayer(
+          'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          {
+            maxZoom: 18,
+            minZoom: 3,
+            attribution:
+              '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+          }
+        );
+        tiles.addTo(this.map);
+        const marker = L.marker([this.places?.location.lat, this.places?.location.lon], { icon: iconPlace });
+        marker.addTo(this.map);    
+    }
     });
-    const tiles = L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 18,
-        minZoom: 3,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }
-    );
-    tiles.addTo(this.map);
-    console.log("mapInit latmap: " + this.lat)
-    console.log("mapInit lonmap: " + this.lon)
-
   }
-
 
   getOnePlace(): void {
     this.route.paramMap.pipe(switchMap(params => {
@@ -86,21 +74,8 @@ export class PlaceDetailComponent implements OnInit {
     ).subscribe(data => {
       if (data.id == this.placeid) {
         this.places = data;
-        this.placeLocation = this.places?.location;
       }
-      this.lat = this.places?.location.lat;
-      this.lon = this.places?.location.lon;
-      console.log("lat: " + this.places?.location.lat);
-      console.log("lon: " + this.places?.location.lon);
-      console.log("this.lat: " + this.lat);
-    console.log("this.lon: " + this.lon);
     })
-  }
-
-  marker(map: L.Map){
-    console.log("marker lon: " + this.placeLocation.y)
-    const marker = L.marker([this.placeLocation.y, this.placeLocation.x], { icon: iconDefault });
-    marker.addTo(map);
   }
 
   getImageUrl(link2: string){
