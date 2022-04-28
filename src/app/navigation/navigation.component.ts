@@ -13,6 +13,10 @@ export class NavigationComponent implements OnInit {
   weather: any;
   iconLink: string = 'http://openweathermap.org/img/w/';
 
+  showPlaces = true;
+  showEvents = true;
+  showActivities = true;
+
 
   constructor(public translate: TranslateService, public weatherService: WeatherService) { }
 
