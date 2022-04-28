@@ -8,6 +8,7 @@ import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angul
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 const iconRetinaUrl = 'assets/marker-icon-2x.png';
@@ -34,9 +35,8 @@ export class MapComponent implements OnInit {
   static map: L.Map;
 
 
-  constructor(public apiService: ApiService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
-    private appRef: ApplicationRef,
-    private injector: Injector, private route: ActivatedRoute) { }
+  constructor(public apiService: ApiService, public translate: TranslateService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
+    private appRef: ApplicationRef, private injector: Injector, private route: ActivatedRoute) { }
 
   mapInit() {
     MapComponent.map = L.map('map', {
@@ -72,9 +72,14 @@ export class MapComponent implements OnInit {
     this.mainComponent.saveReferenceLocation();
   }
 
+  tranlateName(name: any){
+    return 
+  }
+
   makeMapPopup(data: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
-      (c.instance.place = data.name.fi),
+      let name = this.translate.currentLang === 'en' ? data.name.en : (this.translate.currentLang === 'fi' ? data.name.fi : data.name.sv);
+        (c.instance.place = name),
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
