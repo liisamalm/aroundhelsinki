@@ -1,9 +1,12 @@
 <div class="container mb-3">
   <div class="row">
+
     <!-- sivun vasen puoli alkaa -->
+    
+
     <div class="col-sm-5">
       <div class="row">     <!-- eka osuus alkaa -->
-        <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
+        <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
           <div class=>
             <img
               width="450px"
@@ -16,15 +19,16 @@
             />
           </div>
         </div>
+
+      <!-- <div class="col-sm-5 mt-5"> -->
         <ng-template #elseBlock>
-          <div class="col-sm-5 text-center mt-5">
             <img
               width="450px"
               id="view-img"
               src="{{
                 getImageUrl(places?.description.images[0]?.url)
               }}"
-              class="mw-100"
+              class="mw-100, uusiClass"
               id="view-img"
               alt="image"
               title="{{places?.name.fi}}"
@@ -44,10 +48,12 @@
                 </figure>
               </section>
             </div>
-          </div>
         </ng-template>
+      <!-- </div> -->
       </div>
+
       <!-- eka osuus loppuu, toka osuus alkaa -->
+
       <div class="row text-center">
         <div class="map-container">
           <div class="map-frame">
