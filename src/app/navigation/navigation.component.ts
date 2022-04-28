@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 
@@ -13,8 +13,11 @@ export class NavigationComponent implements OnInit {
   weather: any;
   iconLink: string = 'http://openweathermap.org/img/w/';
 
+  @Input()
   showPlaces = true;
+  @Input()
   showEvents = true;
+  @Input()
   showActivities = true;
 
 

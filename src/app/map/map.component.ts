@@ -134,7 +134,7 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
-    } else if (this.showActivities = this.showActivities) {
+    } else if (this.showActivities =! this.showActivities) {
       this.apiService.httpActivityMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
