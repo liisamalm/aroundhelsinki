@@ -72,14 +72,10 @@ export class MapComponent implements OnInit {
     this.mainComponent.saveReferenceLocation();
   }
 
-  tranlateName(name: any){
-    return 
-  }
 
   makeMapPopup(data: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
-      let name = this.translate.currentLang === 'en' ? data.name.en : (this.translate.currentLang === 'fi' ? data.name.fi : data.name.sv);
-        (c.instance.place = name),
+        (c.instance.place = data.name.fi),
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
@@ -95,7 +91,6 @@ export class MapComponent implements OnInit {
       for (const c of res.data) {
         const lon = c.location.lon;
         const lat = c.location.lat;
-
         const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
 
         markerCluster.addLayer(marker);
