@@ -1,59 +1,63 @@
 <div class="container mb-3">
   <div class="row">
-    <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
-      <div class=>
-        <img
-          width="450px"
-          id="view-img"
-          src="../../assets/images/logo.png"
-          class="mw-100"
-          id="view-img"
-          title="No image"
-          alt="No image"
-
-        />
-
+    <!-- sivun vasen puoli alkaa -->
+    <div class="col-sm-5">
+      <div class="row">     <!-- eka osuus alkaa -->
+        <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
+          <div class=>
+            <img
+              width="450px"
+              id="view-img"
+              src="../../assets/images/logo.png"
+              class="mw-100"
+              id="view-img"
+              title="No image"
+              alt="No image"
+            />
+          </div>
+        </div>
+        <ng-template #elseBlock>
+          <div class="col-sm-5 text-center mt-5">
+            <img
+              width="450px"
+              id="view-img"
+              src="{{
+                getImageUrl(places?.description.images[0]?.url)
+              }}"
+              class="mw-100"
+              id="view-img"
+              alt="image"
+              title="{{places?.name.fi}}"
+            />
+            <div class="row">
+              <section
+                class="show-images col-4 p-3"
+                *ngFor="let image of places?.description.images"
+              >
+                <figure class="pointer">
+                  <img
+                    (click)="changeImg($event)"
+                    src="{{ getImageUrl(image.url) }}"
+                    alt=""
+                    class="pointer mw-100"
+                  />
+                </figure>
+              </section>
+            </div>
+          </div>
+        </ng-template>
       </div>
-
-    </div>
-    <ng-template #elseBlock>
-      <div class="col-sm-5 text-center mt-5">
-        <img
-          width="450px"
-          id="view-img"
-          src="{{
-            getImageUrl(places?.description.images[0]?.url)
-          }}"
-          class="mw-100"
-          id="view-img"
-          alt="image"
-          title="{{places?.name.fi}}"
-        />
-        <div class="row">
-          <section
-            class="show-images col-4 p-3"
-            *ngFor="let image of places?.description.images"
-          >
-            <figure class="pointer">
-              <img
-                (click)="changeImg($event)"
-                src="{{ getImageUrl(image.url) }}"
-                alt=""
-                class="pointer mw-100"
-              />
-            </figure>
-          </section>
+      <!-- eka osuus loppuu, toka osuus alkaa -->
+      <div class="row text-center">
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
-    </ng-template>
-
-    <div class="col-sm-5 mt-5">
-      <div class="map-container">
-        <div class="map-frame">
-          <div id="map"></div>
-        </div>
-      </div>
-    </div>
+  
+    </div> 
+    <!-- vasen puoli loppuu -->
 
     <div class="col-sm-7">
       <div class="pt-5">
@@ -147,5 +151,7 @@
         </div>
       </div>
     </div>
+
+
   </div>
 </div>
