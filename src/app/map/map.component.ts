@@ -13,13 +13,10 @@ import {
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
 
-// const iconRetinaUrl = 'assets/marker-icon-2x.png';
-// const iconUrl = 'assets/marker-icon.png';
-// const shadowUrl = 'assets/marker-shadow.png';
-
+// https://github.com/pointhi/leaflet-color-markers
 const iconPlace = L.icon({
-  iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',
-  shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -28,8 +25,8 @@ const iconPlace = L.icon({
 });
 
 const iconEvent = L.icon({
-  iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-red.png',
-  shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -38,8 +35,8 @@ const iconEvent = L.icon({
 });
 
 const iconActivity = L.icon({
-  iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-orange.png',
-  shadowUrl: 'https://leafletjs.com/examples/custom-icons/leaf-shadow.png',
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
