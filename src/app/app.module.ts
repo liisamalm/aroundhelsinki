@@ -15,8 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { PopupComponent } from './popup/popup.component';
 import { MapComponent } from './map/map.component';
-import { EventsComponent } from './events/events.component';
-import { ActivitiesComponent } from './activities/activities.component';
+
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 
@@ -34,8 +33,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     PlaceDetailComponent,
     PopupComponent,
     MapComponent,
-    EventsComponent,
-    ActivitiesComponent,
+
     EventDetailComponent,
     ActivityDetailComponent
   ],
