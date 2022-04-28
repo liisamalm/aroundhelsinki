@@ -100,7 +100,7 @@ export class MapComponent implements OnInit {
     return markerPopup;
   }
 
-  makePlaceMarkers(map: L.Map) {
+  makeAllMarkers(map: L.Map){
     const markerCluster = new MarkerClusterGroup();
     this.apiService.httpPlaceMarker().subscribe((res: any) => {
       for (const c of res.data) {
@@ -115,10 +115,6 @@ export class MapComponent implements OnInit {
       }
       map.addLayer(markerCluster);
     });
-  }
-
-  makeActivityMarkers(map: L.Map) {
-    const markerCluster = new MarkerClusterGroup();
     this.apiService.httpActivityMarker().subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
@@ -132,10 +128,6 @@ export class MapComponent implements OnInit {
       }
       map.addLayer(markerCluster);
     });
-  }
-
-  makeEventMarkers(map: L.Map) {
-    const markerCluster = new MarkerClusterGroup();
     this.apiService.httpEventMarker().subscribe((res: any) => {
       for (const c of res.data) {
         const lon = c.location.lon;
@@ -149,7 +141,59 @@ export class MapComponent implements OnInit {
       }
       map.addLayer(markerCluster);
     });
+
   }
+
+  // makePlaceMarkers(map: L.Map) {
+  //   const markerCluster = new MarkerClusterGroup();
+  //   this.apiService.httpPlaceMarker().subscribe((res: any) => {
+  //     for (const c of res.data) {
+  //       const lon = c.location.lon;
+  //       const lat = c.location.lat;
+
+  //       const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+  //         this.makeMapPopup(c)
+  //       );
+
+  //       markerCluster.addLayer(marker);
+  //     }
+  //     map.addLayer(markerCluster);
+  //   });
+  // }
+
+  // makeActivityMarkers(map: L.Map) {
+  //   const markerCluster = new MarkerClusterGroup();
+  //   this.apiService.httpActivityMarker().subscribe((res: any) => {
+  //     for (const c of res.data) {
+  //       const lon = c.location.lon;
+  //       const lat = c.location.lat;
+
+  //       const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+  //         this.makeMapPopup(c)
+  //       );
+
+  //       markerCluster.addLayer(marker);
+  //     }
+  //     map.addLayer(markerCluster);
+  //   });
+  // }
+
+  // makeEventMarkers(map: L.Map) {
+  //   const markerCluster = new MarkerClusterGroup();
+  //   this.apiService.httpEventMarker().subscribe((res: any) => {
+  //     for (const c of res.data) {
+  //       const lon = c.location.lon;
+  //       const lat = c.location.lat;
+
+  //       const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+  //         this.makeMapPopup(c)
+  //       );
+
+  //       markerCluster.addLayer(marker);
+  //     }
+  //     map.addLayer(markerCluster);
+  //   });
+  // }
 
   private compilePopup(component: any, onAttach: any): any {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
@@ -167,8 +211,10 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.mainPageMap();
-    this.makePlaceMarkers(MapComponent.map);
-    this.makeActivityMarkers(MapComponent.map);
-    this.makeEventMarkers(MapComponent.map);
+    this.makeAllMarkers(MapComponent.map);
+    // this.makePlaceMarkers(MapComponent.map);
+    // this.makeActivityMarkers(MapComponent.map);
+    // this.makeEventMarkers(MapComponent.map);
+
   }
 }
