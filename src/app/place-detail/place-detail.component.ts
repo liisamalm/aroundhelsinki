@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -33,6 +34,7 @@ export class PlaceDetailComponent implements OnInit {
   private map: L.Map;
 
   constructor(private apiService: ApiService,
+              public translate: TranslateService,
               private route: ActivatedRoute
               ) {
                 this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
