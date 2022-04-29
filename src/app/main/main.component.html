@@ -9,40 +9,12 @@
         left: 14px;
         top: 285px;
       ">
-<<<<<<< HEAD
-      <div *ngFor="let data of places[0]?.data">
-        <div class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1 fs-6">
-              <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-              <a
-                style="text-decoration: none; color: #680f3d !important">
-                {{ data.name.fi }}</a>
-            </h5>
-            <small id="distance" *ngIf="showDistance">{{
-              data.distance.toFixed(2)
-              }}km</small>
-          </div>
-          <p class="mb-1 ptext">
-            {{ data.location.address.street_address }},
-            {{ data.location.address.postal_code }}
-            {{ data.location.address.locality }}
-          </p>
-          <small>
-            <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
-              "LANG.moreinfo" | translate
-              }}</a>
-          </small>
-        </div>
-      </div>
-
-=======
         <div *ngFor="let data of places[0]?.data">
             <div class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 fs-6">
                     <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-                    <a style="text-decoration: none; color: #680f3d !important">{{ translate.currentLang === 'en' ? data.name.en : (translate.currentLang === 'fi' ? data.name.fi : data.name.sv)}}</a>                  
+                    <a style="text-decoration: none; color: #680f3d !important">{{ translate.currentLang === 'en' ? data.name.en : (translate.currentLang === 'fi' ? data.name.fi : data.name.sv)}}</a>
                 </h5>
                 <small id="distance" *ngIf="showDistance">{{
                   data.distance.toFixed(2)
@@ -60,7 +32,6 @@
               </small>
             </div>
         </div>
->>>>>>> 97eafaa5b60604e61fe4d970d55938d3945e9521
     </div>
   </div>
 </div>
