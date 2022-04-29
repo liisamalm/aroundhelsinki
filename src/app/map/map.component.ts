@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { PopupComponent } from '../popup/popup.component';
@@ -12,6 +13,9 @@ import {
 } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
+import { NavigationComponent } from '../navigation/navigation.component';
+import { ShareService } from '../services/share.service';
+
 
 // https://github.com/pointhi/leaflet-color-markers
 const iconPlace = L.icon({
@@ -51,16 +55,23 @@ const iconActivity = L.icon({
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
-  showPlaces = false;
-  showEvents = false;
-  showActivities = false;
+
+
+  showPlaces:boolean =false;
+
+ showEvents:boolean = false;
+
+ showActivities:boolean = false;
+
 
   constructor(
     public apiService: ApiService,
     public mainComponent: MainComponent,
     private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector
+    private injector: Injector,
+    private shareService: ShareService
+
   ) {}
 
   mapInit() {
@@ -103,10 +114,40 @@ export class MapComponent implements OnInit {
     return markerPopup;
   }
 
+
+
+
+
+  private compilePopup(component: any, onAttach: any): any {
+    const compFactory: any = this.resolver.resolveComponentFactory(component);
+    let compRef: any = compFactory.create(this.injector);
+
+    if (onAttach) onAttach(compRef);
+
+    this.appRef.attachView(compRef.hostView);
+    compRef.onDestroy(() => this.appRef.detachView(compRef.hostView));
+
+    let div = document.createElement('div');
+    div.appendChild(compRef.location.nativeElement);
+    return div;
+  }
+
+  ngOnInit() {
+    this.mainPageMap();
+    this.makeAllMarkers(MapComponent.map);
+  //   this.showPlaces = this.shareService.getPlace();
+  //   console.log(this.showPlaces);
+  //   console.log(this.showEvents);
+  //   console.log(this.showActivities);
+  }
+
+
   makeAllMarkers(map: L.Map){
     const markerCluster = new MarkerClusterGroup();
+    this.showPlaces = this.shareService.getPlace();
 
-    if(this.showPlaces = this.showPlaces){
+
+    if(this.showPlaces == true){
       this.apiService.httpPlaceMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -120,7 +161,7 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
-    } else if(this.showEvents = this.showEvents) {
+    } else if(this.showEvents) {
       this.apiService.httpEventMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -134,7 +175,7 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
-    } else if (this.showActivities =! this.showActivities) {
+    } else if (this.showActivities) {
       this.apiService.httpActivityMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -190,29 +231,6 @@ export class MapComponent implements OnInit {
       });
 
     }
-
-  }
-
-
-
-  private compilePopup(component: any, onAttach: any): any {
-    const compFactory: any = this.resolver.resolveComponentFactory(component);
-    let compRef: any = compFactory.create(this.injector);
-
-    if (onAttach) onAttach(compRef);
-
-    this.appRef.attachView(compRef.hostView);
-    compRef.onDestroy(() => this.appRef.detachView(compRef.hostView));
-
-    let div = document.createElement('div');
-    div.appendChild(compRef.location.nativeElement);
-    return div;
-  }
-
-  ngOnInit(): void {
-    this.mainPageMap();
-    this.makeAllMarkers(MapComponent.map);
-
 
   }
 }

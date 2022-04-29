@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { MapComponent } from './../map/map.component';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
+import { ShareService } from '../services/share.service';
 
 @Component({
   selector: 'app-navigation',
@@ -13,18 +15,20 @@ export class NavigationComponent implements OnInit {
   weather: any;
   iconLink: string = 'http://openweathermap.org/img/w/';
 
-  @Input()
-  showPlaces = true;
-  @Input()
-  showEvents = true;
-  @Input()
-  showActivities = true;
 
 
-  constructor(public translate: TranslateService, public weatherService: WeatherService) { }
+  showPlace = false;
+
+  showEvent = false;
+
+  showActivity = false;
+
+
+  constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService) { }
 
   ngOnInit() {
-    this.getWeather(this.location.cityId, this.location.unit)
+    this.getWeather(this.location.cityId, this.location.unit);
+    this.shareService.setPlace(this.showPlace);
   }
 
   getWeather(cityId: any, unit: string) {
@@ -39,6 +43,20 @@ export class NavigationComponent implements OnInit {
 
 
     return `${this.iconLink}${icon}.png`;
+  }
+
+  sendPlace(){
+    console.log(this.showPlace);
+    this.showPlace = true;
+    return this.showPlace;
+  }
+  sendEvent(){
+
+   return this.showEvent;
+  }
+  sendActivity(){
+
+    return this.showActivity;
   }
 
 
