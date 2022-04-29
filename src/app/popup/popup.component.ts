@@ -8,7 +8,6 @@ import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
   styleUrls: ['./popup.component.css']
 })
 export class PopupComponent implements OnInit {
-  @Input() place: String; 
   @Input() placeFi: String; 
   @Input() placeEn: String; 
   @Input() placeSv: String; 

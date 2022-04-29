@@ -75,7 +75,6 @@ export class MapComponent implements OnInit {
   makeMapPopup(data: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
     
-        /* (c.instance.place = (this.translate.currentLang == 'en' ? data.name.en : (this.translate.currentLang == 'fi' ? data.name.fi : data.name.sv))), */
         (c.instance.placeEn = data.name.en),
         (c.instance.placeSv = data.name.sv),
         (c.instance.placeFi = data.name.fi),
@@ -87,14 +86,6 @@ export class MapComponent implements OnInit {
     });
     return markerPopup;
   }
-
-  
-
-   /*  console.log("kieli "+ document.getElementById("translate")?.textContent); */
-        /* (c.instance.place = this.translate.instant(this.translate.currentLang === 'en' ? data.name.en : (this.translate.currentLang === 'fi' ? data.name.fi : data.name.sv))), */
-       /*  (c.instance.place = (this.translate.currentLang === 'en' ? data.name.en : (this.translate.currentLang === 'fi' ? data.name.fi : data.name.sv))), */
-  
-/*  tämän hetkinen koodi ottaa sen kielen, mikä on valittuna ekana ja puskee sen siihen popup ikkunaan. Kun vaihtaa kieltä, niin se koodi ei tällä hetkellä muuta sitä kieltä automaattisesti, koska sitä funktioa mihin koodi on kirjotettu, ei ajeta uudelleen, kun uusi kieli valitaan. Eli idea on oikein, mutta toteutustapa puutteellinen. */
 
   makePlaceMarkers(map: L.Map) {
     const markerCluster = new MarkerClusterGroup();
