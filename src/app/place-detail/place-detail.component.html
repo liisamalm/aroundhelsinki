@@ -1,60 +1,61 @@
 <div class="container mb-3">
   <div class="row">
-    <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col-sm-5 text-center mt-5">
-      <div class=>
-        <img
-          width="450px"
-          id="view-img"
-          src="../../assets/images/logo.png"
-          class="mw-100"
-          id="view-img"
-          title="No image"
-          alt="No image"
-
-        />
-
+    <div class="col-sm-5">
+      <div class="row">
+        <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
+          <div class=>
+            <img
+              width="450px"
+              id="view-img"
+              src="../../assets/images/logo.png"
+              class="mw-100"
+              id="view-img"
+              title="No image"
+              alt="No image"
+            />
+          </div>
+        </div>
+        <ng-template #elseBlock>
+            <img
+              width="450px"
+              id="view-img"
+              src="{{
+                getImageUrl(places?.description.images[0]?.url)
+              }}"
+              class="mw-100, uusiClass"
+              id="view-img"
+              alt="image"
+              title="{{translate.currentLang === 'en' ? places?.name.en : (translate.currentLang === 'fi' ? places?.name.fi : places?.name.sv)}}"
+            />
+            <div class="row">
+              <section
+                class="show-images col-4 p-3"
+                *ngFor="let image of places?.description.images">
+                <figure class="pointer">
+                  <img
+                    (click)="changeImg($event)"
+                    src="{{ getImageUrl(image.url) }}"
+                    alt=""
+                    class="pointer mw-100"
+                  />
+                </figure>
+              </section>
+            </div>
+        </ng-template>
+      <!-- </div> -->
       </div>
-
-    </div>
-    <ng-template #elseBlock>
-      <div class="col-sm-5 text-center mt-5">
-        <img
-          width="450px"
-          id="view-img"
-          src="{{
-            getImageUrl(places?.description.images[0]?.url)
-          }}"
-          class="mw-100"
-          id="view-img"
-          alt="image"
-          title="{{places?.name.fi}}"
-        />
-        <div class="row">
-          <section
-            class="show-images col-4 p-3"
-            *ngFor="let image of places?.description.images"
-          >
-            <figure class="pointer">
-              <img
-                (click)="changeImg($event)"
-                src="{{ getImageUrl(image.url) }}"
-                alt=""
-                class="pointer mw-100"
-              />
-            </figure>
-          </section>
+      <div class="row text-center">
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
-    </ng-template>
-
-
-
-    <div class="col-sm-7">
+    </div> 
+    <div class="col-sm-7 ml-5">
       <div class="pt-5">
-        <div>
-          <h1 class="">{{ places?.name.fi }}</h1>
-
-
+        <div>              
+          <h1 class="">{{  translate.currentLang === 'en' ? places?.name.en : (translate.currentLang === 'fi' ? places?.name.fi : places?.name.sv) }}</h1>
           <hr />
           <p class="" style="text-align: justify">
             {{ places?.description.intro }}
@@ -72,7 +73,6 @@
             {{ places?.location.address.locality }}
           </p>
         </div>
-
         <div class="row">
           <span class="material-icons col-1">open_in_new</span>
           <p class="col-11">
@@ -86,7 +86,6 @@
             <span class="material-icons col-1">today</span>
             <p class="col-11">{{ "LANG.open" | translate }}</p>
           </div>
-          <hr />
           <div class="row">
             <table class="table">
               <thead>
@@ -96,7 +95,6 @@
                   <th>{{ "LANG.closes" | translate }}</th>
                 </tr>
               </thead>
-
               <tbody>
                 <tr *ngFor="let hour of places?.opening_hours.hours">
                   <td *ngIf="hour.weekday_id == 1">{{ "LANG.weekday.monday" | translate }}</td>
@@ -122,8 +120,9 @@
               </tbody>
             </table>
           </div>
+          <div class="pt-5">
           <hr />
-
+        </div>
           <div class="row">
             <span class="material-icons col-1">label</span>
             <small class="col-2" *ngFor="let tag of places?.tags">{{

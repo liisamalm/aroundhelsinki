@@ -15,6 +15,8 @@ import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
 import { NavigationComponent } from '../navigation/navigation.component';
 import { ShareService } from '../services/share.service';
+import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 
 // https://github.com/pointhi/leaflet-color-markers
@@ -70,9 +72,12 @@ export class MapComponent implements OnInit {
     private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
     private injector: Injector,
-    private shareService: ShareService
+    private shareService: ShareService,
+    public translate: TranslateService,
+    private route: ActivatedRoute
 
   ) {}
+
 
   mapInit() {
     MapComponent.map = L.map('map', {
@@ -108,9 +113,10 @@ export class MapComponent implements OnInit {
     this.mainComponent.saveReferenceLocation();
   }
 
+
   makeMapPopup(data: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
-      (c.instance.place = data.name.fi),
+        (c.instance.place = data.name.fi),
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
@@ -119,7 +125,6 @@ export class MapComponent implements OnInit {
     });
     return markerPopup;
   }
-
 
 
 
