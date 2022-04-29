@@ -10,7 +10,8 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getExternalAll(): Observable<any> {
+  //Places
+  getPlacesAll(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/places');
   }
 
@@ -20,5 +21,30 @@ export class ApiService {
 
   httpPlaceMarker() {
     return this.http.get(this.externalApi + '/v1/places');
+  }
+
+  //Events
+  getEventsAll(): Observable<any> {
+    return this.http.get(this.externalApi + '/v1/events');
+  }
+
+  public getOneEvent(id: any): Observable<any> {
+    return this.http.get(this.externalApi + '/event/' + id);
+  }
+
+  httpEventMarker() {
+    return this.http.get(this.externalApi + '/v1/events');
+  }
+  //Activities
+  getActivitiesAll(): Observable<any> {
+    return this.http.get(this.externalApi + '/v1/activities');
+  }
+
+  public getOneActivity(id: any): Observable<any> {
+    return this.http.get(this.externalApi + '/activity/' + id);
+  }
+
+  httpActivityMarker() {
+    return this.http.get(this.externalApi + '/v1/activities');
   }
 }

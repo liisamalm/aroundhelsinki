@@ -1,3 +1,4 @@
+import { ApiService } from './services/api.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,9 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { PopupComponent } from './popup/popup.component';
 import { MapComponent } from './map/map.component';
 
+
+
+
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
 }
@@ -27,9 +31,13 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FooterComponent,
     PlaceDetailComponent,
     PopupComponent,
-    MapComponent
+    MapComponent,
+
+
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,

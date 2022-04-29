@@ -1,22 +1,46 @@
-import { Component, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { PopupComponent } from '../popup/popup.component';
 import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
-import { Injector, ApplicationRef, ComponentFactoryResolver, Type } from '@angular/core';
+import {
+  Injector,
+  ApplicationRef,
+  ComponentFactoryResolver,
+  Type,
+} from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
+import { NavigationComponent } from '../navigation/navigation.component';
+import { ShareService } from '../services/share.service';
 
 
-const iconRetinaUrl = 'assets/marker-icon-2x.png';
-const iconUrl = 'assets/marker-icon.png';
-const shadowUrl = 'assets/marker-shadow.png';
+// https://github.com/pointhi/leaflet-color-markers
+const iconPlace = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41],
+});
 
-const iconDefault = L.icon({
-  iconRetinaUrl,
-  iconUrl,
-  shadowUrl,
+const iconEvent = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41],
+});
+
+const iconActivity = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -27,14 +51,28 @@ const iconDefault = L.icon({
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.css']
+  styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
 
-  constructor(public apiService: ApiService, public mainComponent: MainComponent, private resolver: ComponentFactoryResolver,
+
+  showPlaces:boolean =false;
+
+ showEvents:boolean = false;
+
+ showActivities:boolean = false;
+
+
+  constructor(
+    public apiService: ApiService,
+    public mainComponent: MainComponent,
+    private resolver: ComponentFactoryResolver,
     private appRef: ApplicationRef,
-    private injector: Injector) { }
+    private injector: Injector,
+    private shareService: ShareService
+
+  ) {}
 
   mapInit() {
     MapComponent.map = L.map('map', {
@@ -64,7 +102,7 @@ export class MapComponent implements OnInit {
     const searchControl = new (GeoSearchControl as any)({
       provider: provider,
       autoClose: true,
-      
+
     });
     MapComponent.map.addControl(searchControl);
     this.mainComponent.saveReferenceLocation();
@@ -77,32 +115,19 @@ export class MapComponent implements OnInit {
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
         (c.instance.placeUrl = data.info_url),
-        (c.instance.ownPage = data.id)
+        (c.instance.ownPage = data.id);
     });
     return markerPopup;
   }
 
-  makePlaceMarkers(map: L.Map) {
-    const markerCluster = new MarkerClusterGroup();
-    this.apiService.httpPlaceMarker().subscribe((res: any) => {
-      for (const c of res.data) {
-        const lon = c.location.lon;
-        const lat = c.location.lat;
 
-        const marker = L.marker([lat, lon], { icon: iconDefault }).bindPopup(this.makeMapPopup(c));
 
-        markerCluster.addLayer(marker);
-      }
-      map.addLayer(markerCluster);
-    });
-  }
 
   private compilePopup(component: any, onAttach: any): any {
     const compFactory: any = this.resolver.resolveComponentFactory(component);
     let compRef: any = compFactory.create(this.injector);
 
-    if (onAttach)
-      onAttach(compRef);
+    if (onAttach) onAttach(compRef);
 
     this.appRef.attachView(compRef.hostView);
     compRef.onDestroy(() => this.appRef.detachView(compRef.hostView));
@@ -112,8 +137,104 @@ export class MapComponent implements OnInit {
     return div;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.mainPageMap();
-    this.makePlaceMarkers(MapComponent.map);
+    this.makeAllMarkers(MapComponent.map);
+
+  }
+
+
+  makeAllMarkers(map: L.Map){
+    const markerCluster = new MarkerClusterGroup();
+    this.showPlaces = this.shareService.getPlace();
+    this.showEvents = this.shareService.getEvent();
+    this.showActivities = this.shareService.getActivity();
+
+
+    if(this.showPlaces == true){
+      this.apiService.httpPlaceMarker().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
+
+          const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+            this.makeMapPopup(c)
+          );
+
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+    } else if(this.showEvents) {
+      this.apiService.httpEventMarker().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
+
+          const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+            this.makeMapPopup(c)
+          );
+
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+    } else if (this.showActivities) {
+      this.apiService.httpActivityMarker().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
+
+          const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+            this.makeMapPopup(c)
+          );
+
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+    } else {
+      this.apiService.httpPlaceMarker().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
+
+          const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+            this.makeMapPopup(c)
+          );
+
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+      this.apiService.httpActivityMarker().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
+
+          const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+            this.makeMapPopup(c)
+          );
+
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+      this.apiService.httpEventMarker().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
+
+          const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+            this.makeMapPopup(c)
+          );
+
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+
+    }
+
   }
 }

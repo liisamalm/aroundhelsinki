@@ -66,13 +66,13 @@ export class MainComponent implements OnInit {
     this.places[0].data.sort((a,b) => a.distance - b.distance);
   }
 
-  getExternalAll(): void {
-    this.apiService.getExternalAll().subscribe((res: Places) => {
+  getPlacesAll(): void {
+    this.apiService.getPlacesAll().subscribe((res: Places) => {
       this.places.push(res);
     });
   }
 
   ngOnInit(): void {
-    this.getExternalAll();
+    this.getPlacesAll();
   }
 }
