@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LeafletEvent} from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Places, Datum } from '../interfaces/places';
+import { Places } from '../interfaces/places';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
