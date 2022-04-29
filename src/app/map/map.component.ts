@@ -135,16 +135,15 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.mainPageMap();
     this.makeAllMarkers(MapComponent.map);
-  //   this.showPlaces = this.shareService.getPlace();
-  //   console.log(this.showPlaces);
-  //   console.log(this.showEvents);
-  //   console.log(this.showActivities);
+
   }
 
 
   makeAllMarkers(map: L.Map){
     const markerCluster = new MarkerClusterGroup();
     this.showPlaces = this.shareService.getPlace();
+    this.showEvents = this.shareService.getEvent();
+    this.showActivities = this.shareService.getActivity();
 
 
     if(this.showPlaces == true){

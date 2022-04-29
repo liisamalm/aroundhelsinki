@@ -28,7 +28,9 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit);
-    this.shareService.setPlace(this.showPlace);
+    // this.shareService.setPlace(this.showPlace);
+    // this.shareService.setEvent(this.showEvent);
+    // this.shareService.setActivity(this.showActivity);
   }
 
   getWeather(cityId: any, unit: string) {
@@ -46,15 +48,21 @@ export class NavigationComponent implements OnInit {
   }
 
   sendPlace(){
-    console.log(this.showPlace);
+    // console.log(this.showPlace);
     this.showPlace = true;
+    this.shareService.setPlace(this.showPlace);
+
     return this.showPlace;
   }
   sendEvent(){
+    this.showEvent = true;
+    this.shareService.setEvent(this.showEvent);
 
    return this.showEvent;
   }
   sendActivity(){
+    this.showActivity = true;
+    this.shareService.setActivity(this.showActivity);
 
     return this.showActivity;
   }
