@@ -1,3 +1,4 @@
+import { ApiService } from './services/api.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -27,9 +28,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FooterComponent,
     PlaceDetailComponent,
     PopupComponent,
-    MapComponent
+    MapComponent,
+
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   imports: [
     BrowserModule,
     HttpClientModule,
