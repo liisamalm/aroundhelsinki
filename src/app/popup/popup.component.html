@@ -1,5 +1,5 @@
 <h5 class="mb-1 fs-6">
-    <fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ place }}
+    <fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ translate.currentLang === 'en' ? placeEn : (translate.currentLang === 'fi' ? placeFi : placeSv) }}
 </h5>
 
 <p *ngIf="address">{{ 'LANG.address' | translate }}: {{ address }}, {{ postalCode }} {{ locality }}</p>
