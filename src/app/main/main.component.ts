@@ -1,3 +1,4 @@
+import { Activities } from './../interfaces/activities';
 import { Component, OnInit } from '@angular/core';
 import { LeafletEvent} from 'leaflet';
 import { ApiService } from '../services/api.service';
@@ -6,6 +7,7 @@ import { Places, Datum } from '../interfaces/places';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
+import { Events } from '../interfaces/events';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +16,9 @@ import 'leaflet.markercluster';
 })
 export class MainComponent implements OnInit {
 
+  events: Events[] = [];
   places: Places[] = [];
+  activities: Activities[] = [];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
@@ -23,6 +27,7 @@ export class MainComponent implements OnInit {
     x: 24.93545
   };
   showDistance = false;
+  p: number = 1;
 
   constructor(
     private apiService: ApiService,
@@ -71,8 +76,22 @@ export class MainComponent implements OnInit {
       this.places.push(res);
     });
   }
+  getEventsAll(): void{
+    this.apiService.getEventsAll().subscribe((res: Events) => {
+      this.events.push(res);
+    })
+  }
+
+  getActivitiesAll(): void{
+    this.apiService.getActivitiesAll().subscribe((res: Activities) => {
+
+      this.activities.push(res);
+    })
+  }
 
   ngOnInit(): void {
     this.getPlacesAll();
+    this.getEventsAll();
+    this.getActivitiesAll();
   }
 }

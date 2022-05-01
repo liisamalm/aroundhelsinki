@@ -28,9 +28,7 @@ export class NavigationComponent implements OnInit {
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit);
-    // this.shareService.setPlace(this.showPlace);
-    // this.shareService.setEvent(this.showEvent);
-    // this.shareService.setActivity(this.showActivity);
+
   }
 
   getWeather(cityId: any, unit: string) {

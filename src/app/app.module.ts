@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { PopupComponent } from './popup/popup.component';
 import { MapComponent } from './map/map.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    NgxPaginationModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,

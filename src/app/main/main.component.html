@@ -9,7 +9,9 @@
         left: 14px;
         top: 285px;
       ">
-        <div *ngFor="let data of places[0]?.data">
+
+      <!-- Places -->
+        <div *ngFor="let data of places[0].data | paginate: { itemsPerPage: 5, currentPage: p }">
             <div class="list-group-item list-group-item-action">
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 fs-6">
@@ -32,6 +34,58 @@
               </small>
             </div>
         </div>
+        <pagination-controls previousLabel="Prev" nextLabel="Next"  style="background-color: white; font-size: 11px; text-align: center;" (pageChange)="p = $event" ></pagination-controls>
+
+
+      <!-- Events -->
+        <div *ngFor="let data of events[0].data | paginate: { itemsPerPage: 5, currentPage: p }">
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 fs-6">
+                    <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+                    <a style="text-decoration: none; color: #680f3d !important">{{ data.name.fi }}</a>
+                </h5>
+                <small id="distance" *ngIf="showDistance"></small>
+              </div>
+              <p class="mb-1 ptext">
+                {{ data.location.address.street_address }},
+                {{ data.location.address.postal_code }}
+                {{ data.location.address.locality }}
+              </p>
+              <small>
+                <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+                  "LANG.moreinfo" | translate
+                }}</a>
+              </small>
+            </div>
+        </div>
+        <pagination-controls previousLabel="Prev" nextLabel="Next"  style="background-color: white; font-size: 11px; text-align: center;" (pageChange)="p = $event" ></pagination-controls>
+
+
+
+        <!-- Activities -->
+        <div  *ngFor="let data of activities[0].data | paginate: { itemsPerPage: 5, currentPage: p }">
+          <div class="list-group-item list-group-item-action" >
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 fs-6">
+                  <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+                  <a style="text-decoration: none; color: #680f3d !important">{{ data.name.fi }}</a>
+              </h5>
+              <small id="distance" *ngIf="showDistance"></small>
+            </div>
+            <p class="mb-1 ptext">
+              {{ data.location.address.street_address }},
+              {{ data.location.address.postal_code }}
+              {{ data.location.address.locality }}
+            </p>
+            <small>
+              <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+                "LANG.moreinfo" | translate
+              }}</a>
+            </small>
+          </div>
+      </div>
+      <pagination-controls previousLabel="Prev" nextLabel="Next"  style="background-color: white; font-size: 11px; text-align: center;" (pageChange)="p = $event" ></pagination-controls>
     </div>
   </div>
 </div>
