@@ -149,11 +149,12 @@ export class MapComponent implements OnInit {
 
   makeAllMarkers(map: L.Map){
     const markerCluster = new MarkerClusterGroup();
-    this.showPlaces = this.shareService.getPlace();
-    this.showEvents = this.shareService.getEvent();
-    this.showActivities = this.shareService.getActivity();
+    this.showPlaces = this.shareService.getPlace().showPlace;
+    this.showEvents = this.shareService.getPlace().showEvent;
+    this.showActivities = this.shareService.getPlace().showActivity;
+    console.log(this.showActivities);
 
-    if(this.showPlaces == true){
+    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
       this.apiService.httpPlaceMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -166,8 +167,11 @@ export class MapComponent implements OnInit {
           markerCluster.addLayer(marker);
         }
         map.addLayer(markerCluster);
+
+
+
       });
-    } else if(this.showEvents) {
+    } else if(this.showPlaces == false && this.showEvents == true && this.showActivities == false) {
       this.apiService.httpEventMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -180,8 +184,10 @@ export class MapComponent implements OnInit {
           markerCluster.addLayer(marker);
         }
         map.addLayer(markerCluster);
+
+
       });
-    } else if (this.showActivities) {
+    } else if (this.showPlaces == false && this.showEvents == false && this.showActivities == true) {
       this.apiService.httpActivityMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -194,47 +200,49 @@ export class MapComponent implements OnInit {
           markerCluster.addLayer(marker);
         }
         map.addLayer(markerCluster);
+
+
       });
     } else {
-      this.apiService.httpPlaceMarker().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
+      // this.apiService.httpPlaceMarker().subscribe((res: any) => {
+      //   for (const c of res.data) {
+      //     const lon = c.location.lon;
+      //     const lat = c.location.lat;
 
-          const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-            this.makeMapPopup(c)
-          );
+      //     const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+      //       this.makeMapPopup(c)
+      //     );
 
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-      });
-      this.apiService.httpActivityMarker().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
+      //     markerCluster.addLayer(marker);
+      //   }
+      //   map.addLayer(markerCluster);
+      // });
+      // this.apiService.httpActivityMarker().subscribe((res: any) => {
+      //   for (const c of res.data) {
+      //     const lon = c.location.lon;
+      //     const lat = c.location.lat;
 
-          const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-            this.makeMapPopup(c)
-          );
+      //     const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+      //       this.makeMapPopup(c)
+      //     );
 
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-      });
-      this.apiService.httpEventMarker().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
+      //     markerCluster.addLayer(marker);
+      //   }
+      //   map.addLayer(markerCluster);
+      // });
+      // this.apiService.httpEventMarker().subscribe((res: any) => {
+      //   for (const c of res.data) {
+      //     const lon = c.location.lon;
+      //     const lat = c.location.lat;
 
-          const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-            this.makeMapPopup(c)
-          );
+      //     const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+      //       this.makeMapPopup(c)
+      //     );
 
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-      });
+      //     markerCluster.addLayer(marker);
+      //   }
+      //   map.addLayer(markerCluster);
+      // });
     }
   }
 }

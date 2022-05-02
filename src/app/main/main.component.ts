@@ -6,6 +6,8 @@ import { Places } from '../interfaces/places';
 import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
+import { Events } from '../interfaces/events';
+import { Activities } from '../interfaces/activities';
 
 @Component({
   selector: 'app-main',
@@ -15,6 +17,10 @@ import 'leaflet.markercluster';
 export class MainComponent implements OnInit {
 
   places: Places[] = [];
+  events: Events[] = [];
+  activities: Activities[] = [];
+  all: any[] = []
+  list: any[];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs;
@@ -38,6 +44,7 @@ export class MainComponent implements OnInit {
     });
   }
 
+  //Places
   calculateDistance(placeLocation: any) {
     const userY = this.referenceLocation.y;
     const userX = this.referenceLocation.x;
@@ -72,7 +79,56 @@ export class MainComponent implements OnInit {
     });
   }
 
+  //Events
+
+  getEventsAll(): void {
+    this.apiService.getEventsAll().subscribe((res: Events) => {
+      this.events.push(res);
+    })
+  }
+
+  //Activities
+  getActivitiesAll(): void {
+    this.apiService.getActivitiesAll().subscribe((res: Activities) => {
+      this.activities.push(res);
+    })
+  }
+  result(item: any) {
+    this.list.forEach(val => {
+      if(val.id == item.data.source_type.id) {
+        return item;
+      } else
+      return item;
+    })
+
+  }
+
+  getAllApi() {
+
+  }
+
+
   ngOnInit(): void {
     this.getPlacesAll();
+    this.getEventsAll();
+    this.getActivitiesAll();
+    this.list = [
+      {
+        id: 2,
+        title: 'Places',
+        checked: true,
+      },
+      {
+        id: 1,
+        title: 'Events',
+        checked: false,
+      },
+      {
+        id: 3,
+        title: 'Activities',
+        checked: false,
+      },
+
+    ]
   }
 }

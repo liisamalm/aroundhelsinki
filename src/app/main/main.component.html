@@ -1,55 +1,162 @@
 <div class="d-flex w-100 justify-content-between">
   <div class="map-container">
-    <app-map ></app-map>
-    <div class="listOfPlaces mb-1 list-group overflow-auto" style="
+    <app-map></app-map>
+    <div
+      class="listOfPlaces mb-1 list-group overflow-auto"
+      style="
         height: 300px;
         width: 400px;
         border: 2px solid #680f3d;
         position: absolute;
         left: 14px;
         top: 285px;
-      ">
-      <div class="checkbox" style="background-color: white;">
+      "
+    >
+
+    <!-- Chechboxes -->
+      <!-- <div class="checkbox" style="background-color: white">
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox1"
+            value="option1"
+          />
           <label class="form-check-label" for="inlineCheckbox1">View all</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox2"
+            value="option2"
+          />
           <label class="form-check-label" for="inlineCheckbox2">Places</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox3"
+            value="option3"
+          />
           <label class="form-check-label" for="inlineCheckbox3">Events</label>
         </div>
         <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4">
-          <label class="form-check-label" for="inlineCheckbox3">Activities</label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="inlineCheckbox4"
+            value="option4"
+          />
+          <label class="form-check-label" for="inlineCheckbox3"
+            >Activities</label
+          >
         </div>
+      </div> -->
+
+      <div class="checkbox" style="background-color: white">
+        <ul >
+          <li *ngFor="let item of list" class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" [(ngModel)]="item.checked">{{item.title}}
+          </li>
+        </ul>
       </div>
-        <div *ngFor="let data of places[0]?.data">
-            <div class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 fs-6">
-                    <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-                    <a style="text-decoration: none; color: #680f3d !important">{{ translate.currentLang === 'en' ? data.name.en : (translate.currentLang === 'fi' ? data.name.fi : data.name.sv)}}</a>
-                </h5>
-                <small id="distance" *ngIf="showDistance">{{
-                  data.distance.toFixed(2)
-                }}km</small>
-              </div>
-              <p class="mb-1 ptext">
-                {{ data.location.address.street_address }},
-                {{ data.location.address.postal_code }}
-                {{ data.location.address.locality }}
-              </p>
-              <small>
-                <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
-                  "LANG.moreinfo" | translate
-                }}</a>
-              </small>
-            </div>
+
+      <!-- Places -->
+      <!-- <div *ngFor="let data of places[0]?.data">
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1 fs-6">
+              <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+              <a style="text-decoration: none; color: #680f3d !important">{{
+                translate.currentLang === "en"
+                  ? data.name.en
+                  : translate.currentLang === "fi"
+                  ? data.name.fi
+                  : data.name.sv
+              }}</a>
+            </h5>
+            <small id="distance" *ngIf="showDistance"
+              >{{ data.distance.toFixed(2) }}km</small
+            >
+          </div>
+          <p class="mb-1 ptext">
+            {{ data.location.address.street_address }},
+            {{ data.location.address.postal_code }}
+            {{ data.location.address.locality }}
+          </p>
+          <small>
+            <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+          </small>
         </div>
+      </div> -->
+
+
+      <!-- Events -->
+      <!-- <div *ngFor="let data of events[0]?.data">
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1 fs-6">
+              <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+              <a style="text-decoration: none; color: #680f3d !important">{{
+                translate.currentLang === "en"
+                  ? data.name.en
+                  : translate.currentLang === "fi"
+                  ? data.name.fi
+                  : data.name.sv
+              }}</a>
+            </h5>
+            <small id="distance" *ngIf="showDistance"
+              >km</small
+            >
+          </div>
+          <p class="mb-1 ptext">
+            {{ data.location.address.street_address }},
+            {{ data.location.address.postal_code }}
+            {{ data.location.address.locality }}
+          </p>
+          <small>
+            <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+          </small>
+        </div>
+      </div> -->
+
+
+      <!-- Activities -->
+      <!-- <div *ngFor="let data of activities[0]?.data">
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1 fs-6">
+              <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+              <a style="text-decoration: none; color: #680f3d !important">{{
+                translate.currentLang === "en"
+                  ? data.name.en
+                  : translate.currentLang === "fi"
+                  ? data.name.fi
+                  : data.name.sv
+              }}</a>
+            </h5>
+            <small id="distance" *ngIf="showDistance"
+              >km</small
+            >
+          </div>
+          <p class="mb-1 ptext">
+            {{ data.location.address.street_address }},
+            {{ data.location.address.postal_code }}
+            {{ data.location.address.locality }}
+          </p>
+          <small>
+            <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+          </small>
+        </div>
+      </div> -->
     </div>
   </div>
 </div>

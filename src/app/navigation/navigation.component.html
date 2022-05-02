@@ -7,7 +7,7 @@
         </div>
         <div class="navbar col-md-5 text-uppercase">
             <a class="nav-link fs-6"  href="">{{ 'LANG.home' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
+            <a class="nav-link fs-6" routerLink="places" (click)="sendPlace(true,false,false)"  href="">{{ 'LANG.places' | translate }}</a>
             <a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a>
             <a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a>
         </div>

@@ -47,10 +47,15 @@ export class NavigationComponent implements OnInit {
     return `${this.iconLink}${icon}.png`;
   }
 
-  sendPlace(){
+  sendPlace(place:any, event:any, activity:any){
     // console.log(this.showPlace);
     this.showPlace = true;
-    this.shareService.setPlace(this.showPlace);
+    place = this.showPlace;
+    this.showEvent = false;
+    event = this.showEvent;
+    this.showActivity = false;
+    activity = this.showActivity;
+    this.shareService.setPlace(place,event,activity);
 
     return this.showPlace;
   }
