@@ -19,7 +19,10 @@ export class MainComponent implements OnInit {
   places: Places[] = [];
   events: Events[] = [];
   activities: Activities[] = [];
-  all: any[] = []
+  listPlaces: Places[] = [];
+  listEvents: Events[] = [];
+  listActivities: Activities[] = [];
+  all: any;
   list: any[];
   closeResult: string = '';
   modalInfo: any;
@@ -93,22 +96,28 @@ export class MainComponent implements OnInit {
       this.activities.push(res);
     })
   }
-  result(item: any) {
-    this.list.forEach(val => {
-      if(val.id == item.data.source_type.id) {
-        return item;
-      } else
-      return item;
-    })
+
+
+
+
+  getAll() {
+
+    this.apiService.getAll().subscribe((res: any) => {
+      this.listPlaces = res[0];
+      this.listEvents = res[1];
+      this.listActivities = res[2];
+      this.all  = {listPlaces: this.listPlaces, listEvents: this.listEvents, listActivities: this.listActivities};
+      console.log(this.all);
+    });
 
   }
 
-  getAllApi() {
 
-  }
+
 
 
   ngOnInit(): void {
+    this.getAll();
     this.getPlacesAll();
     this.getEventsAll();
     this.getActivitiesAll();
