@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'places', component: MainComponent },
   { path: 'events', component: MainComponent },
   { path: 'activities', component: MainComponent },
+  { path: 'all', component: MainComponent},
   { path: 'main/detail/:id', component: PlaceDetailComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
