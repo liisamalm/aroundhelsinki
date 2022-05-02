@@ -1,4 +1,3 @@
-
 import { Component, Input, OnInit, Output } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
@@ -18,11 +17,11 @@ import { ShareService } from '../services/share.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-
 // https://github.com/pointhi/leaflet-color-markers
 const iconPlace = L.icon({
   iconUrl: '../assets/images/marker_place.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -32,7 +31,8 @@ const iconPlace = L.icon({
 
 const iconEvent = L.icon({
   iconUrl: '../assets/images/marker_event.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -42,7 +42,8 @@ const iconEvent = L.icon({
 
 const iconActivity = L.icon({
   iconUrl: '../assets/images/marker_activity.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -58,13 +59,11 @@ const iconActivity = L.icon({
 export class MapComponent implements OnInit {
   static map: L.Map;
 
+  showPlaces: boolean = false;
 
-  showPlaces:boolean =false;
+  showEvents: boolean = false;
 
- showEvents:boolean = false;
-
- showActivities:boolean = false;
-
+  showActivities: boolean = false;
 
   constructor(
     public apiService: ApiService,
@@ -75,20 +74,20 @@ export class MapComponent implements OnInit {
     private shareService: ShareService,
     public translate: TranslateService,
     private route: ActivatedRoute
-
   ) {}
-
 
   mapInit() {
     MapComponent.map = L.map('map', {
       center: [60.16952, 24.93545],
       zoom: 12,
-      zoomControl: false
+      zoomControl: false,
     });
 
-    L.control.zoom({
-      position: 'topright'
-  }).addTo(MapComponent.map);
+    L.control
+      .zoom({
+        position: 'topright',
+      })
+      .addTo(MapComponent.map);
     const tiles = L.tileLayer(
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
@@ -107,7 +106,6 @@ export class MapComponent implements OnInit {
     const searchControl = new (GeoSearchControl as any)({
       provider: provider,
       autoClose: true,
-
     });
     MapComponent.map.addControl(searchControl);
     this.mainComponent.saveReferenceLocation();
@@ -115,7 +113,7 @@ export class MapComponent implements OnInit {
 
   makeMapPopup(data: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
-        (c.instance.placeEn = data.name.en),
+      (c.instance.placeEn = data.name.en),
         (c.instance.placeSv = data.name.sv),
         (c.instance.placeFi = data.name.fi),
         (c.instance.address = data.location.address.street_address),
@@ -144,16 +142,15 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.mainPageMap();
     this.makeAllMarkers(MapComponent.map);
-
   }
 
-  makeAllMarkers(map: L.Map){
+  makeAllMarkers(map: L.Map) {
     const markerCluster = new MarkerClusterGroup();
     this.showPlaces = this.shareService.getPlace();
     this.showEvents = this.shareService.getEvent();
     this.showActivities = this.shareService.getActivity();
 
-    if(this.showPlaces == true){
+    if (this.showPlaces == true) {
       this.apiService.httpPlaceMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -167,7 +164,7 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
-    } else if(this.showEvents) {
+    } else if (this.showEvents) {
       this.apiService.httpEventMarker().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
