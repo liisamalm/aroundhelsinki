@@ -14,7 +14,7 @@
               <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 fs-6">
                     <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-                    <a style="text-decoration: none; color: #680f3d !important">{{ translate.currentLang === 'en' ? data.name.en : (translate.currentLang === 'fi' ? data.name.fi : data.name.sv)}}</a>
+                    <a style="text-decoration: none; color: #680f3d !important">{{ translate.currentLang === 'en'  ? data.name.en : (translate.currentLang === 'sv' ? data.name.sv : (translate.currentLang === 'en' && data.name.en === null ? data.name.fi : ( translate.currentLang === 'sv' && data.name.sv === null ? data.name.fi : data.name.fi))) }}</a>
                 </h5>
                 <small id="distance" *ngIf="showDistance">{{
                   data.distance.toFixed(2)
