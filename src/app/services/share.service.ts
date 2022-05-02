@@ -11,13 +11,13 @@ export class ShareService {
 
   constructor() {}
 
-  setPlace(place: any, event:any, activity:any) {
+  setData(place: any, event:any, activity:any) {
     this.showPlace = place;
     this.showEvent = event;
     this.showActivity = activity;
     // console.log(this.showPlace);
   }
-  getPlace() {
+  getData() {
     // console.log(this.showPlace);
     return {
       'showPlace': this.showPlace,
@@ -27,21 +27,5 @@ export class ShareService {
   }
 
 
-  setEvent(data: any) {
-    this.showEvent = data;
-    // console.log(this.showPlace);
-  }
-  getEvent() {
-    // console.log(this.showPlace);
-    return this.showEvent;
-  }
 
-  setActivity(data: any) {
-    this.showActivity = data;
-    // console.log(this.showPlace);
-  }
-  getActivity() {
-    // console.log(this.showPlace);
-    return this.showActivity;
-  }
 }

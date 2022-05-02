@@ -149,10 +149,10 @@ export class MapComponent implements OnInit {
 
   makeAllMarkers(map: L.Map){
     const markerCluster = new MarkerClusterGroup();
-    this.showPlaces = this.shareService.getPlace().showPlace;
-    this.showEvents = this.shareService.getPlace().showEvent;
-    this.showActivities = this.shareService.getPlace().showActivity;
-    console.log(this.showActivities);
+    this.showPlaces = this.shareService.getData().showPlace;
+    this.showEvents = this.shareService.getData().showEvent;
+    this.showActivities = this.shareService.getData().showActivity;
+
 
     if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
       this.apiService.httpPlaceMarker().subscribe((res: any) => {

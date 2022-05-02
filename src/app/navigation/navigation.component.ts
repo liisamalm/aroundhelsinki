@@ -55,7 +55,7 @@ export class NavigationComponent implements OnInit {
     event = this.showEvent;
     this.showActivity = false;
     activity = this.showActivity;
-    this.shareService.setPlace(place,event,activity);
+    this.shareService.setData(place,event,activity);
 
     return {
       'showPlace': this.showPlace,
@@ -70,7 +70,7 @@ export class NavigationComponent implements OnInit {
     event = this.showEvent;
     this.showActivity = false;
     activity = this.showActivity;
-    this.shareService.setPlace(place,event,activity);
+    this.shareService.setData(place,event,activity);
 
    return {
     'showPlace': this.showPlace,
@@ -85,7 +85,7 @@ export class NavigationComponent implements OnInit {
     event = this.showEvent;
     this.showActivity = true;
     activity = this.showActivity;
-    this.shareService.setPlace(place,event,activity);
+    this.shareService.setData(place,event,activity);
 
     return {
       'showPlace': this.showPlace,
