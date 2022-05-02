@@ -3,7 +3,7 @@ import { LeafletEvent} from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import { faLocationCrosshairs, faPersonWalking, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 
@@ -17,7 +17,9 @@ export class MainComponent implements OnInit {
   places: Places[] = [];
   closeResult: string = '';
   modalInfo: any;
-  faLocationCrosshairs = faLocationCrosshairs;
+  faLocationCrosshairs = faLocationCrosshairs; // place
+  faPersonWalking = faPersonWalking; // activity
+  faCalendarCheck = faCalendarCheck; // event
   referenceLocation: any = {
     y: 60.16952,
     x: 24.93545
