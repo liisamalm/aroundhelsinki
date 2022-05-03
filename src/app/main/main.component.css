@@ -11,3 +11,9 @@
 .ptext{
   font-size: 13px;
 }
+
+.checkbox {
+  background-color: white;
+  text-align: center;
+  padding-top: 10px;
+}
