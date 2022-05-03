@@ -111,10 +111,10 @@ export class MainComponent implements OnInit {
       this.listPlaces = res[0];
       this.listEvents = res[1];
       this.listActivities = res[2];
-      // this.all  = {listPlaces: this.listPlaces, listEvents: this.listEvents, listActivities: this.listActivities};
+
       this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
       this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
-      // console.log(this.all);
+
     });
 
   }
@@ -122,8 +122,7 @@ export class MainComponent implements OnInit {
   onChange(event: any) {
 
     if(event.target.checked) {
-      // console.log(event.target.value);
-      // console.log(this.list);
+
       this.tempArray = this.arrays.filter((e:any) => e.data[0].source_type.id == event.target.value);
       this.all = [];
       this.newArray.push(this.tempArray);
@@ -132,7 +131,6 @@ export class MainComponent implements OnInit {
         for(let i=0; i<firstArray.length; i++){
           var obj = firstArray[i];
           this.all.push(obj);
-          // console.log(this.all);
         }
       }
     } else {
@@ -145,14 +143,9 @@ export class MainComponent implements OnInit {
         for(let i=0; i<firstArray.length; i++){
           var obj = firstArray[i];
           this.all.push(obj);
-          // console.log(this.all);
         }
       }
-
     }
-
-    // console.log(event.target.checked);
-
   }
 
 
