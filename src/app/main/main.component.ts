@@ -22,6 +22,11 @@ export class MainComponent implements OnInit {
   listPlaces: Places[] = [];
   listEvents: Events[] = [];
   listActivities: Activities[] = [];
+
+  arrays: any = [];
+  tempArray: any = [];
+  newArray: any = [];
+
   all: any;
   list: any[];
   closeResult: string = '';
@@ -106,9 +111,47 @@ export class MainComponent implements OnInit {
       this.listPlaces = res[0];
       this.listEvents = res[1];
       this.listActivities = res[2];
-      this.all  = {listPlaces: this.listPlaces, listEvents: this.listEvents, listActivities: this.listActivities};
-      console.log(this.all);
+      // this.all  = {listPlaces: this.listPlaces, listEvents: this.listEvents, listActivities: this.listActivities};
+      this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
+      this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
+      // console.log(this.all);
     });
+
+  }
+
+  onChange(event: any) {
+
+    if(event.target.checked) {
+      // console.log(event.target.value);
+      // console.log(this.list);
+      this.tempArray = this.arrays.filter((e:any) => e.data[0].source_type.id == event.target.value);
+      this.all = [];
+      this.newArray.push(this.tempArray);
+      for(let i=0; i<this.newArray.length; i++) {
+        var firstArray = this.newArray[i];
+        for(let i=0; i<firstArray.length; i++){
+          var obj = firstArray[i];
+          this.all.push(obj);
+          // console.log(this.all);
+        }
+      }
+    } else {
+      this.tempArray = this.all.filter((e:any) => e.data[0].source_type.id != event.target.value);
+      this.newArray = [];
+      this.all = [];
+      this.newArray.push(this.tempArray);
+      for(let i=0; i<this.newArray.length; i++) {
+        var firstArray = this.newArray[i];
+        for(let i=0; i<firstArray.length; i++){
+          var obj = firstArray[i];
+          this.all.push(obj);
+          // console.log(this.all);
+        }
+      }
+
+    }
+
+    // console.log(event.target.checked);
 
   }
 
@@ -130,12 +173,12 @@ export class MainComponent implements OnInit {
       {
         id: 1,
         title: 'Events',
-        checked: false,
+        checked: true,
       },
       {
         id: 3,
         title: 'Activities',
-        checked: false,
+        checked: true,
       },
 
     ]

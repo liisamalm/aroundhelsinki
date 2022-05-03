@@ -12,48 +12,50 @@
         top: 285px;
       "
     >
-
-    <!-- Chechboxes -->
+      <!-- Chechboxes -->
 
       <div class="checkbox" style="background-color: white">
-        <ul >
+        <ul>
           <li *ngFor="let item of list" class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" [(ngModel)]="item.checked">{{item.title}}
+            <input
+              class="form-check-input"
+              type="checkbox" (change)="onChange($event)" value="{{item.id}}"
+              [(ngModel)]="item.checked"
+            />{{ item.title }}
           </li>
         </ul>
       </div>
 
-
-      <div>
-        <div *ngFor="let data of all?.listPlaces.data">
-        <div class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1 fs-6">
-              <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-              <a style="text-decoration: none; color: #680f3d !important">{{
-                translate.currentLang === "en"
-                  ? data.name.en
-                  : translate.currentLang === "fi"
-                  ? data.name.fi
-                  : data.name.sv
+      <div *ngFor="let item of all">
+        <div *ngFor="let data of item.data" >
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 fs-6">
+                <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+                <a style="text-decoration: none; color: #680f3d !important">{{
+                  translate.currentLang === "en"
+                    ? data.name.en
+                    : translate.currentLang === "fi"
+                    ? data.name.fi
+                    : data.name.sv
+                }}</a>
+              </h5>
+              <small id="distance" *ngIf="showDistance"
+                >{{ data.distance.toFixed(2) }}km</small
+              >
+            </div>
+            <p class="mb-1 ptext">
+              {{ data.location.address.street_address }},
+              {{ data.location.address.postal_code }}
+              {{ data.location.address.locality }}
+            </p>
+            <small>
+              <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
+                "LANG.moreinfo" | translate
               }}</a>
-            </h5>
-            <small id="distance" *ngIf="showDistance"
-              >{{ data.distance.toFixed(2) }}km</small
-            >
+            </small>
           </div>
-          <p class="mb-1 ptext">
-            {{ data.location.address.street_address }},
-            {{ data.location.address.postal_code }}
-            {{ data.location.address.locality }}
-          </p>
-          <small>
-            <a routerLink="detail/{{ data.id }}" href="#" class="link">{{
-              "LANG.moreinfo" | translate
-            }}</a>
-          </small>
         </div>
-      </div>
       </div>
 
       <!-- Places -->
@@ -86,7 +88,6 @@
           </small>
         </div>
       </div> -->
-
 
       <!-- Events -->
       <!-- <div *ngFor="let data of events[0]?.data">
