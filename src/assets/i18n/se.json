@@ -45,6 +45,8 @@
         "more": "Mer",
         "moreinfo": "Mer info",
         "description": "Beskrivning",
-        "student": "Studerande"
+        "student": "Studerande",
+        "people": "Människor",
+        "description-text": "Detta är ett textexempel"
     }
 }

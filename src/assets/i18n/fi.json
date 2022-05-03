@@ -45,6 +45,8 @@
         "more": "Lisää",
         "moreinfo": "Lisätietoja",
         "description": "Kuvaus",
-        "student": "Oppilas"
+        "student": "Oppilas",
+        "people": "Ihmiset",
+        "description-text": "Tämä on esimerkkiteksti"
     }
 }

@@ -45,6 +45,8 @@
         "more": "More",
         "moreinfo": "More info",
         "description": "Description",
-        "student": "Student"
+        "student": "Student",
+        "people": "People",
+        "description-text": "This is a text example"
         }
 }
