@@ -5,6 +5,8 @@ import { switchMap } from 'rxjs/operators';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
 import { TranslateService } from '@ngx-translate/core';
+import * as moment from 'moment';
+
 const iconEvent = L.icon({
   iconUrl: '../assets/images/marker_event.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
@@ -90,6 +92,10 @@ export class EventDetailComponent implements OnInit {
   changeImg(event: any){
     this.newImageString = event.target.getAttribute('src');
     document.getElementById('view-img')?.setAttribute('src', this.newImageString);
+  }
+
+  formatDate(date: any){
+    return moment.utc(date).format('DD/MM/YYYY');
   }
 
 
