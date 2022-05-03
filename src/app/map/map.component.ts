@@ -154,7 +154,7 @@ export class MapComponent implements OnInit {
     this.showActivities = this.shareService.getActivity();
 
     if(this.showPlaces == true){
-      this.apiService.httpPlaceMarker().subscribe((res: any) => {
+      this.apiService.getPlacesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
@@ -168,7 +168,7 @@ export class MapComponent implements OnInit {
         map.addLayer(markerCluster);
       });
     } else if(this.showEvents) {
-      this.apiService.httpEventMarker().subscribe((res: any) => {
+      this.apiService.getEventsAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
@@ -182,7 +182,7 @@ export class MapComponent implements OnInit {
         map.addLayer(markerCluster);
       });
     } else if (this.showActivities) {
-      this.apiService.httpActivityMarker().subscribe((res: any) => {
+      this.apiService.getActivitiesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
@@ -196,7 +196,7 @@ export class MapComponent implements OnInit {
         map.addLayer(markerCluster);
       });
     } else {
-      this.apiService.httpPlaceMarker().subscribe((res: any) => {
+      this.apiService.getPlacesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
@@ -209,7 +209,7 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
-      this.apiService.httpActivityMarker().subscribe((res: any) => {
+      this.apiService.getActivitiesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
@@ -222,7 +222,7 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
-      this.apiService.httpEventMarker().subscribe((res: any) => {
+      this.apiService.getEventsAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
