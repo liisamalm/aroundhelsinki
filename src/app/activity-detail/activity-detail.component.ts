@@ -6,8 +6,8 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
 import { TranslateService } from '@ngx-translate/core';
 
-const iconPlace = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+const iconActivity = L.icon({
+  iconUrl: '../assets/images/marker_activity.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -36,11 +36,12 @@ export class ActivityDetailComponent implements OnInit {
     private route: ActivatedRoute) {  this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';}
 
   ngOnInit(): void {
+    this.getOneActivity();
     this.mapInit();
   }
 
   mapInit() {
-    this.apiService.getOnePlace(this.activityid).subscribe(data => {      
+    this.apiService.getOneActivity(this.activityid).subscribe(data => {      
       if(data.id == this.activityid){
         this.map = L.map('map', {
           center: [this.activities?.location.lat, this.activities?.location.lon],
@@ -56,7 +57,7 @@ export class ActivityDetailComponent implements OnInit {
           }
         );
         tiles.addTo(this.map);
-        const marker = L.marker([this.activities?.location.lat, this.activities?.location.lon], { icon: iconPlace });
+        const marker = L.marker([this.activities?.location.lat, this.activities?.location.lon], { icon: iconActivity });
         marker.addTo(this.map);    
     }
     });
@@ -65,7 +66,7 @@ export class ActivityDetailComponent implements OnInit {
   getOneActivity(): void {
     this.route.paramMap.pipe(switchMap(params => {
       this.activityid = params.get('id');
-      return this.apiService.getOnePlace(this.activityid)
+      return this.apiService.getOneActivity(this.activityid)
     })
     ).subscribe(data => {
       if (data.id == this.activityid) {
