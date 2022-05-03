@@ -30,7 +30,6 @@ export class EventDetailComponent implements OnInit {
   date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
-  link: string = '';
   newImageString: string = '';
   private map: L.Map;
 
@@ -39,7 +38,6 @@ export class EventDetailComponent implements OnInit {
     public translate: TranslateService,
     private route: ActivatedRoute
     ) { 
-      this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
 
     }
 
@@ -83,12 +81,6 @@ export class EventDetailComponent implements OnInit {
     })
   }
 
-  getImageUrl(link2: string){
-    var linklast = link2?.slice(68,1000);
-    var imglink = `${this.link}/hero_image/${linklast}`;
-    return imglink;
-  }
-
   changeImg(event: any){
     this.newImageString = event.target.getAttribute('src');
     document.getElementById('view-img')?.setAttribute('src', this.newImageString);
@@ -97,6 +89,5 @@ export class EventDetailComponent implements OnInit {
   formatDate(date: any){
     return moment.utc(date).format('DD/MM/YYYY');
   }
-
 
 }
