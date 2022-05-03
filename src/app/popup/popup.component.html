@@ -1,8 +1,8 @@
 <h5 class="mb-1 fs-6">
-    <fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ translate.currentLang === 'en' && placeEn !== null ? placeEn : (translate.currentLang === 'se' && placeSv !== null ? placeSv  : placeFi) }}
+    <fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ translate.currentLang === 'en' && nameEn !== null ? nameEn : (translate.currentLang === 'se' && nameSv !== null ? nameSv  : nameFi) }}
 </h5>
 
 <p *ngIf="address">{{ 'LANG.address' | translate }}: {{ address }}, {{ postalCode }} {{ locality }}</p>
 <small>
-    <a routerLink="detail/{{ ownPage }}" class="link">{{ 'LANG.moreinfo' | translate }}</a>
+    <a routerLink="place/{{ ownPage }}" class="link">{{ 'LANG.moreinfo' | translate }}</a>
 </small>

@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'places', component: MainComponent },
   { path: 'events', component: MainComponent },
   { path: 'activities', component: MainComponent },
-  { path: 'main/detail/:id', component: EventDetailComponent },
+  { path: 'main/place/:id', component: PlaceDetailComponent },
   { path: 'main/event/:id', component: EventDetailComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
 
