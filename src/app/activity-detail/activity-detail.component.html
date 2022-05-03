@@ -1,0 +1,148 @@
+<p>activity-detail works!</p>
+<div class="container mb-3">
+    <div class="row">
+      <div class="col-sm-5">
+        <div class="row">
+          <div *ngIf="activities?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
+            <div class=>
+              <img
+                width="450px"
+                id="view-img"
+                src="../../assets/images/logo.png"
+                class="mw-100"
+                id="view-img"
+                title="No image"
+                alt="No image"
+              />
+            </div>
+          </div>
+          <ng-template #elseBlock>
+              <img
+                width="450px"
+                id="view-img"
+                src="{{
+                  getImageUrl(activities?.description.images[0]?.url)
+                }}"
+                class="mw-100, uusiClass"
+                id="view-img"
+                alt="image"
+                title="{{translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'fi' ? activities?.name.fi :activities?.name.sv)}}"
+              />
+              <div class="row">
+                <section
+                  class="show-images col-4 p-3"
+                  *ngFor="let image of activities?.description.images">
+                  <figure class="pointer">
+                    <img
+                      (click)="changeImg($event)"
+                      src="{{ getImageUrl(image.url) }}"
+                      alt=""
+                      class="pointer mw-100"
+                    />
+                  </figure>
+                </section>
+              </div>
+          </ng-template>
+        <!-- </div> -->
+        </div>
+        <div class="row text-center">
+          <div class="map-container">
+            <div class="map-frame">
+              <div id="map"></div>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="col-sm-7 ml-5">
+        <div class="pt-5">
+          <div>              
+            <h1 class="">{{  translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'fi' ?activities?.name.fi : activities?.name.sv) }}</h1>
+            <hr />
+            <p class="" style="text-align: justify">
+              {{ activities?.description.intro }}
+            </p>
+            <p class="" style="text-align: justify">
+              {{ activities?.description.body }}
+            </p>
+          </div>
+          <hr />
+          <div class="row">
+            <span class="material-icons col-1">home</span>
+            <p class="col-11">
+              {{ activities?.location.address.street_address }},
+              {{ activities?.location.address.postal_code }} -
+              {{ activities?.location.address.locality }}
+            </p>
+          </div>
+          <div class="row">
+            <span class="material-icons col-1">open_in_new</span>
+            <p class="col-11">
+              <a href="{{ activities?.info_url }}" target="_blank">{{
+                activities?.info_url
+              }}</a>
+            </p>
+          </div>
+          <div class="row">
+            <div class="row">
+              <span class="material-icons col-1">today</span>
+              <p class="col-11">{{ "LANG.open" | translate }}</p>
+            </div>
+            <div class="row">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>{{ "LANG.day" | translate }}</th>
+                    <th>{{ "LANG.opens" | translate }}</th>
+                    <th>{{ "LANG.closes" | translate }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hour of activities?.opening_hours.hours">
+                    <td *ngIf="hour.weekday_id == 1">{{ "LANG.weekday.monday" | translate }}</td>
+                    <td *ngIf="hour.weekday_id == 2">{{ "LANG.weekday.tuesday" | translate }}</td>
+                    <td *ngIf="hour.weekday_id == 3">{{ "LANG.weekday.wednesday" | translate }}</td>
+                    <td *ngIf="hour.weekday_id == 4">{{ "LANG.weekday.thursday" | translate }}</td>
+                    <td *ngIf="hour.weekday_id == 5">{{ "LANG.weekday.friday" | translate }}</td>
+                    <td *ngIf="hour.weekday_id == 6">{{ "LANG.weekday.saturday" | translate }}</td>
+                    <td *ngIf="hour.weekday_id == 7">{{ "LANG.weekday.sunday" | translate }}</td>
+                    <td>
+                      <div *ngIf="hour.opens == null; else elseBlock1">---</div>
+                      <ng-template #elseBlock1>{{
+                        hour.opens | slice: 0:5
+                      }}</ng-template>
+                    </td>
+                    <td>
+                      <div *ngIf="hour.opens == null; else elseBlock">---</div>
+                      <ng-template #elseBlock>{{
+                        hour.closes | slice: 0:5
+                      }}</ng-template>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pt-5">
+            <hr />
+          </div>
+            <div class="row">
+              <span class="material-icons col-1">label</span>
+              <small class="col-2" *ngFor="let tag of activities?.tags">{{
+                tag.name | lowercase
+              }}</small>
+            </div>
+            <div class="row">
+              <span class="material-icons col-1">sync_alt</span>
+              <small class="col-2">Last update:</small>
+              <small class="col-2">{{ activities?.modified_at | slice: 0:10 }}</small>
+            </div>
+            <div class="row" >
+              <span class="material-icons col-1">copyright</span>
+              <small class="col-3">Photo copyright holder: </small>
+              <small class="col-8" *ngIf="activities?.description.images != null">{{ activities?.description?.images[0]?.copyright_holder }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

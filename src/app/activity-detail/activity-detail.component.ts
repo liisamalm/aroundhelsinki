@@ -17,12 +17,13 @@ const iconPlace = L.icon({
 });
 
 @Component({
-  selector: 'app-place-detail',
-  templateUrl: './place-detail.component.html',
-  styleUrls: ['./place-detail.component.css']})
-export class PlaceDetailComponent implements OnInit {
-  placeid:any;
-  places: any;
+  selector: 'app-activity-detail',
+  templateUrl: './activity-detail.component.html',
+  styleUrls: ['./activity-detail.component.css']
+})
+export class ActivityDetailComponent implements OnInit {
+  activityid:any;
+  activities: any;
   date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
@@ -31,22 +32,18 @@ export class PlaceDetailComponent implements OnInit {
   private map: L.Map;
 
   constructor(private apiService: ApiService,
-              public translate: TranslateService,
-              private route: ActivatedRoute
-              ) {
-                this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
-               }
+    public translate: TranslateService,
+    private route: ActivatedRoute) {  this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';}
 
   ngOnInit(): void {
-    this.getOnePlace();
     this.mapInit();
   }
 
   mapInit() {
-    this.apiService.getOnePlace(this.placeid).subscribe(data => {      
-      if(data.id == this.placeid){
+    this.apiService.getOnePlace(this.activityid).subscribe(data => {      
+      if(data.id == this.activityid){
         this.map = L.map('map', {
-          center: [this.places?.location.lat, this.places?.location.lon],
+          center: [this.activities?.location.lat, this.activities?.location.lon],
           zoom: 16,
         });
         const tiles = L.tileLayer(
@@ -59,20 +56,20 @@ export class PlaceDetailComponent implements OnInit {
           }
         );
         tiles.addTo(this.map);
-        const marker = L.marker([this.places?.location.lat, this.places?.location.lon], { icon: iconPlace });
+        const marker = L.marker([this.activities?.location.lat, this.activities?.location.lon], { icon: iconPlace });
         marker.addTo(this.map);    
     }
     });
   }
 
-  getOnePlace(): void {
+  getOneActivity(): void {
     this.route.paramMap.pipe(switchMap(params => {
-      this.placeid = params.get('id');
-      return this.apiService.getOnePlace(this.placeid)
+      this.activityid = params.get('id');
+      return this.apiService.getOnePlace(this.activityid)
     })
     ).subscribe(data => {
-      if (data.id == this.placeid) {
-        this.places = data;
+      if (data.id == this.activityid) {
+        this.activities = data;
       }
     })
   }
