@@ -42,8 +42,12 @@
             "saturday": "Sat",
             "sunday": "Sun"
         },
+        "eventdates" : "Event Dates",
+        "startingday" : "Starting day",
+        "endingday" : "Ending day",
         "more": "More",
         "moreinfo": "More info",
-        "description": "Description"
+        "description": "Description",
+        "additionalDescription": "Additional description"
         }
 }

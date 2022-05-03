@@ -16,6 +16,7 @@ import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { PopupComponent } from './popup/popup.component';
 import { MapComponent } from './map/map.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
+import { EventDetailComponent } from './event-detail/event-detail.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     PopupComponent,
     MapComponent,
     ActivityDetailComponent,
+    EventDetailComponent,
 
   ],
   providers: [
