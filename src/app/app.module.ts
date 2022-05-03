@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
 import { PopupComponent } from './popup/popup.component';
 import { MapComponent } from './map/map.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -29,6 +30,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     PlaceDetailComponent,
     PopupComponent,
     MapComponent,
+    AboutusComponent,
 
   ],
   providers: [
