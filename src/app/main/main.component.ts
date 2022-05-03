@@ -72,14 +72,20 @@ export class MainComponent implements OnInit {
   }
 
   updateDistance(){
-    for(const place of this.places[0].data){
-      place.distance = this.calculateDistance(place.location);
+    for(let i=0; i<this.all.length; i++) {
+
+
+      for(const place of this.all[i].data){
+        place.distance = this.calculateDistance(place.location);
+      }
     }
   }
 
   sortByDistance(){
-    this.places[0].data.sort((a,b) => a.distance - b.distance);
+    for(let i=0; i<this.all.length; i++) {
+    this.all[i].data.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
   }
+}
 
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: Places) => {
@@ -103,7 +109,7 @@ export class MainComponent implements OnInit {
   }
 
 
-
+  //Get all API in one
 
   getAll() {
 
@@ -119,6 +125,7 @@ export class MainComponent implements OnInit {
 
   }
 
+  // Checkbox function
   onChange(event: any) {
 
     if(event.target.checked) {
