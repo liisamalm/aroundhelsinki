@@ -113,7 +113,7 @@ export class MapComponent implements OnInit {
     this.mainComponent.saveReferenceLocation();
   }
 
-  makeMapPopup(data: any): any {
+  makeMapPopup(data: any, type: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
         (c.instance.nameEn = data.name.en),
         (c.instance.nameSv = data.name.sv),
@@ -122,6 +122,7 @@ export class MapComponent implements OnInit {
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
         (c.instance.ownPage = data.id);
+        (c.instance.type = type);
     });
     return markerPopup;
   }
@@ -159,7 +160,7 @@ export class MapComponent implements OnInit {
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "place")
           );
 
           markerCluster.addLayer(marker);
@@ -173,7 +174,7 @@ export class MapComponent implements OnInit {
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "event")
           );
 
           markerCluster.addLayer(marker);
@@ -187,7 +188,7 @@ export class MapComponent implements OnInit {
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "activity")
           );
 
           markerCluster.addLayer(marker);
@@ -201,7 +202,7 @@ export class MapComponent implements OnInit {
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "place")
           );
 
           markerCluster.addLayer(marker);
@@ -214,7 +215,7 @@ export class MapComponent implements OnInit {
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "activity")
           );
 
           markerCluster.addLayer(marker);
@@ -227,7 +228,7 @@ export class MapComponent implements OnInit {
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "event")
           );
 
           markerCluster.addLayer(marker);

@@ -4,5 +4,5 @@
 
 <p *ngIf="address">{{ 'LANG.address' | translate }}: {{ address }}, {{ postalCode }} {{ locality }}</p>
 <small>
-    <a routerLink="place/{{ ownPage }}" class="link">{{ 'LANG.moreinfo' | translate }}</a>
+    <a routerLink="{{ type }}/{{ ownPage }}" class="link">{{ 'LANG.moreinfo' | translate }}</a>
 </small>

@@ -15,6 +15,7 @@ export class PopupComponent implements OnInit {
   @Input() postalCode: String; 
   @Input() locality: String;
   @Input() ownPage: String;
+  @Input() type: String;
 
   faLocationCrosshairs = faLocationCrosshairs;
    
