@@ -1,59 +1,71 @@
 <h2>{{ 'LANG.description' | translate }}</h2>
 
-<p>{{ 'LANG.description-text' | translate }}</p>
+<p>{{ 'LANG.text.description' | translate }}</p>
+<h4>{{ 'LANG.text.additional' | translate }}</h4>
+<ul>
+    <li>{{ 'LANG.text.feature1' | translate }}</li>
+    <li>{{ 'LANG.text.feature2' | translate }}</li>
+    <li>{{ 'LANG.text.feature3' | translate }}</li>
+    <li>{{ 'LANG.text.feature4' | translate }}</li>
+    <li>{{ 'LANG.text.feature5' | translate }}</li>
+</ul>
+<p>{{ 'LANG.text.api' | translate }}</p>
+<p>{{ 'LANG.text.purpose' | translate }}</p>
+<p>{{ 'LANG.text.duration' | translate }}</p>
+<p>{{ 'LANG.text.assignment' | translate }}</p>
 
 <h2>{{ 'LANG.people' | translate }}</h2>
 
-<div class="people-grid">
-    <article class="people grid-item">
-        <div class="flex">
+<div class="row">
+    <article class="col-sm-6">
+        <div class="card" style="width: 18rem;">
             <div>
-                <img src="../../assets/images/tummeli.jpg" width="150" alt="tummeli ruonakoski">
+                <img src="../../assets/images/tummeli.jpg" class="card-img-top" alt="tummeli ruonakoski">
             </div>
-            <div>
-                <h2 class="">Tummeli Ruonakoski</h2>
-                <p class="">{{ 'LANG.student' | translate }}</p>
-                <a href="https://github.com/TummeliRuonakoski"><fa-icon [icon]="faGithub"></fa-icon></a>
-                <a href="https://fi.linkedin.com/in/tummeli-ruonakoski"><fa-icon [icon]="faLinkedin"></fa-icon></a>
-            </div>
-        </div>
-    </article>
-    <article class="people grid-item">
-        <div class="flex">
-            <div>
-                <img src="../../assets/images/metin.jpg" width="150" alt="metin gerçek">
-            </div>
-            <div>
-                <h2 class="">Metin Gerçek</h2>
-                <p class="">{{ 'LANG.student' | translate }}</p>
-                <a href="https://github.com/metin-gercek"><fa-icon [icon]="faGithub"></fa-icon></a>
-                <a href="https://fi.linkedin.com/in/metingercek"><fa-icon [icon]="faLinkedin"></fa-icon></a>
+            <div class="card-body">
+                <h3 class="card-title">Tummeli Ruonakoski</h3>
+                <p class="card-text">{{ 'LANG.student' | translate }}</p>
+                <a href="https://github.com/TummeliRuonakoski" class="card-link"><fa-icon [icon]="faGithub"></fa-icon></a>
+                <a href="https://fi.linkedin.com/in/tummeli-ruonakoski" class="card-link"><fa-icon [icon]="faLinkedin"></fa-icon></a>
             </div>
         </div>
     </article>
-    <article class="people grid-item">
-        <div class="flex">
+    <article class="col-sm-6">
+        <div class="card" style="width: 18rem;">
             <div>
-                <img src="../../assets/images/liisa.png" width="150" alt="liisa malm">
+                <img src="../../assets/images/metin.jpg" class="card-img-top" alt="metin gerçek">
             </div>
-            <div>
-                <h2 class="">Liisa Malm</h2>
-                <p class="">{{ 'LANG.student' | translate }}</p>
-                <a href="https://github.com/liisamalm"><fa-icon [icon]="faGithub"></fa-icon></a>
-                <a href="https://fi.linkedin.com/in/liisa-malm-668172bb"><fa-icon [icon]="faLinkedin"></fa-icon></a>
+            <div class="card-body">
+                <h3 class="card-title">Metin Gerçek</h3>
+                <p class="card-text">{{ 'LANG.student' | translate }}</p>
+                <a href="https://github.com/metin-gercek" class="card-link"><fa-icon [icon]="faGithub"></fa-icon></a>
+                <a href="https://fi.linkedin.com/in/metingercek" class="card-link"><fa-icon [icon]="faLinkedin"></fa-icon></a>
             </div>
         </div>
     </article>
-    <article class="people grid-item">
-        <div class="flex">
+    <article class="col-sm-6">
+        <div class="card" style="width: 18rem;">
             <div>
-                <img src="../../assets/images/peter.jpg" width="150" alt="peter knutas">
+                <img src="../../assets/images/liisa.png" class="card-img-top" alt="liisa malm">
             </div>
+            <div class="card-body">
+                <h3 class="card-title">Liisa Malm</h3>
+                <p class="card-text">{{ 'LANG.student' | translate }}</p>
+                <a href="https://github.com/liisamalm" class="card-link"><fa-icon [icon]="faGithub"></fa-icon></a>
+                <a href="https://fi.linkedin.com/in/liisa-malm-668172bb" class="card-link"><fa-icon [icon]="faLinkedin"></fa-icon></a>
+            </div>
+        </div>
+    </article>
+    <article class="col-sm-6">
+        <div class="card" style="width: 18rem;">
             <div>
-                <h2 class="">Peter Knutas</h2>
-                <p class="">{{ 'LANG.student' | translate }}</p>
-                <a href="https://github.com/s2100637"><fa-icon [icon]="faGit"></fa-icon></a>
-                <a href="#"><fa-icon [icon]="faLinkedin"></fa-icon></a>
+                <img src="../../assets/images/peter.jpg" class="card-img-top" alt="peter knutas">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Peter Knutas</h3>
+                <p class="card-text">{{ 'LANG.student' | translate }}</p>
+                <a href="https://github.com/s2100637" class="card-link"><fa-icon [icon]="faGit"></fa-icon></a>
+                <a href="#" class="card-link"><fa-icon [icon]="faLinkedin"></fa-icon></a>
             </div>
         </div>
     </article>
