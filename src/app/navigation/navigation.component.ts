@@ -63,6 +63,22 @@ export class NavigationComponent implements OnInit {
     'showActivity': this.showActivity
     };
   }
+  sendAll(place:any, event:any, activity:any){
+    // console.log(this.showPlace);
+    this.showPlace = true;
+    place = this.showPlace;
+    this.showEvent = true;
+    event = this.showEvent;
+    this.showActivity = true;
+    activity = this.showActivity;
+    this.shareService.setData(place,event,activity);
+
+    return {
+      'showPlace': this.showPlace,
+    'showEvent': this.showEvent,
+    'showActivity': this.showActivity
+    };
+  }
   sendEvent(place:any, event:any, activity:any){
     this.showPlace = false;
     place = this.showPlace;
