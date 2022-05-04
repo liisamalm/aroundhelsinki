@@ -51,8 +51,14 @@
               {{ data.location.address.postal_code }}
               {{ data.location.address.locality }}
             </p>
-            <small>
-              <a routerLink="place/{{ data.id }}" href="#" class="link">{{
+            <small>              
+              <a *ngIf="data.source_type.id == 1" routerLink="event/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+            <a *ngIf="data.source_type.id == 2" routerLink="place/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+              <a *ngIf="data.source_type.id == 3" routerLink="activity/{{ data.id }}" href="#" class="link">{{
                 "LANG.moreinfo" | translate
               }}</a>
             </small>

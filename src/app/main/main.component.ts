@@ -39,6 +39,7 @@ export class MainComponent implements OnInit {
     x: 24.93545
   };
   showDistance = false;
+  type: any = [];
 
   constructor(
     private apiService: ApiService,
@@ -113,7 +114,6 @@ export class MainComponent implements OnInit {
 
       this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
       this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
-
     });
   }
 
