@@ -204,45 +204,45 @@ export class MapComponent implements OnInit {
 
       });
     } else {
-      // this.apiService.httpPlaceMarker().subscribe((res: any) => {
-      //   for (const c of res.data) {
-      //     const lon = c.location.lon;
-      //     const lat = c.location.lat;
+      this.apiService.getPlacesAll().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
 
-      //     const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-      //       this.makeMapPopup(c)
-      //     );
+          const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+            this.makeMapPopup(c, "place")
+          );
 
-      //     markerCluster.addLayer(marker);
-      //   }
-      //   map.addLayer(markerCluster);
-      // });
-      // this.apiService.httpActivityMarker().subscribe((res: any) => {
-      //   for (const c of res.data) {
-      //     const lon = c.location.lon;
-      //     const lat = c.location.lat;
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+      this.apiService.getActivitiesAll().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
 
-      //     const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-      //       this.makeMapPopup(c)
-      //     );
+          const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+            this.makeMapPopup(c, "activity")
+          );
 
-      //     markerCluster.addLayer(marker);
-      //   }
-      //   map.addLayer(markerCluster);
-      // });
-      // this.apiService.httpEventMarker().subscribe((res: any) => {
-      //   for (const c of res.data) {
-      //     const lon = c.location.lon;
-      //     const lat = c.location.lat;
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
+      this.apiService.getEventsAll().subscribe((res: any) => {
+        for (const c of res.data) {
+          const lon = c.location.lon;
+          const lat = c.location.lat;
 
-      //     const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-      //       this.makeMapPopup(c)
-      //     );
+          const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+            this.makeMapPopup(c, "event")
+          );
 
-      //     markerCluster.addLayer(marker);
-      //   }
-      //   map.addLayer(markerCluster);
-      // });
+          markerCluster.addLayer(marker);
+        }
+        map.addLayer(markerCluster);
+      });
     }
   }
 }

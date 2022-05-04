@@ -31,7 +31,9 @@
           <div class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1 fs-6">
-                <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
+                <fa-icon *ngIf="data.source_type.id == 2" [icon]="faLocationCrosshairs"></fa-icon>
+                <fa-icon *ngIf="data.source_type.id == 1" [icon]="faCalendarCheck"></fa-icon>
+                <fa-icon *ngIf="data.source_type.id == 3" [icon]="faPersonWalking"></fa-icon>
                 <a style="text-decoration: none; color: #680f3d !important">{{
                   translate.currentLang === "en" && data.name.en !== null
                     ? data.name.en
