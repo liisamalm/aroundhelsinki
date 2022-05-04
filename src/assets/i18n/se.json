@@ -42,8 +42,13 @@
             "saturday": "Lö",
             "sunday": "Sö"
         },
+        "eventdates" : "Evenemangsdatum",
+        "startingday" : "Startdag",
+        "endingday" : "Slutdagen",
         "more": "Mer",
         "moreinfo": "Mer info",
-        "description": "Beskrivning"
+        "description": "Beskrivning",
+        "additionalDescription": "Ytterligare beskriving"
+
     }
 }

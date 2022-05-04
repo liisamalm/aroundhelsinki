@@ -42,8 +42,12 @@
             "saturday": "La",
             "sunday": "Su"
         },
+        "eventdates" : "Tapahtumapäivät",
+        "startingday" : "Aloituspäivä",
+        "endingday" : "Lopetuspäivä",
         "more": "Lisää",
         "moreinfo": "Lisätietoja",
-        "description": "Kuvaus"
+        "description": "Kuvaus",
+        "additionalDescription": "Lisäkuvaus"
     }
 }

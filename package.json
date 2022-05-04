@@ -37,6 +37,7 @@
     "leaflet": "^1.7.1",
     "leaflet-geosearch": "^3.6.0",
     "leaflet.markercluster": "^1.5.3",
+    "moment": "^2.29.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

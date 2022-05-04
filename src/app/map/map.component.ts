@@ -21,7 +21,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 // https://github.com/pointhi/leaflet-color-markers
 const iconPlace = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  iconUrl: '../assets/images/marker_place.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -31,7 +31,7 @@ const iconPlace = L.icon({
 });
 
 const iconEvent = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  iconUrl: '../assets/images/marker_event.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -41,7 +41,7 @@ const iconEvent = L.icon({
 });
 
 const iconActivity = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+  iconUrl: '../assets/images/marker_activity.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -113,16 +113,16 @@ export class MapComponent implements OnInit {
     this.mainComponent.saveReferenceLocation();
   }
 
-  makeMapPopup(data: any): any {
+  makeMapPopup(data: any, type: any): any {
     let markerPopup: any = this.compilePopup(PopupComponent, (c: any) => {
-        (c.instance.placeEn = data.name.en),
-        (c.instance.placeSv = data.name.sv),
-        (c.instance.placeFi = data.name.fi),
+        (c.instance.nameEn = data.name.en),
+        (c.instance.nameSv = data.name.sv),
+        (c.instance.nameFi = data.name.fi),
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
-        (c.instance.placeUrl = data.info_url),
         (c.instance.ownPage = data.id);
+        (c.instance.type = type);
     });
     return markerPopup;
   }
@@ -155,13 +155,13 @@ export class MapComponent implements OnInit {
 
 
     if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
-      this.apiService.httpPlaceMarker().subscribe((res: any) => {
+      this.apiService.getPlacesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "place")
           );
 
           markerCluster.addLayer(marker);
@@ -172,13 +172,13 @@ export class MapComponent implements OnInit {
 
       });
     } else if(this.showPlaces == false && this.showEvents == true && this.showActivities == false) {
-      this.apiService.httpEventMarker().subscribe((res: any) => {
+      this.apiService.getEventsAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "event")
           );
 
           markerCluster.addLayer(marker);
@@ -188,13 +188,13 @@ export class MapComponent implements OnInit {
 
       });
     } else if (this.showPlaces == false && this.showEvents == false && this.showActivities == true) {
-      this.apiService.httpActivityMarker().subscribe((res: any) => {
+      this.apiService.getActivitiesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
           const lat = c.location.lat;
 
           const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-            this.makeMapPopup(c)
+            this.makeMapPopup(c, "activity")
           );
 
           markerCluster.addLayer(marker);

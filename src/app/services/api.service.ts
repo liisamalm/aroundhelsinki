@@ -21,10 +21,6 @@ export class ApiService {
     return this.http.get(this.externalApi + '/place/' + id);
   }
 
-  httpPlaceMarker() {
-    return this.http.get(this.externalApi + '/v1/places');
-  }
-
   //Events
   getEventsAll(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/events');
@@ -34,9 +30,6 @@ export class ApiService {
     return this.http.get(this.externalApi + '/event/' + id);
   }
 
-  httpEventMarker() {
-    return this.http.get(this.externalApi + '/v1/events');
-  }
   //Activities
   getActivitiesAll(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/activities');
@@ -46,9 +39,7 @@ export class ApiService {
     return this.http.get(this.externalApi + '/activity/' + id);
   }
 
-  httpActivityMarker() {
-    return this.http.get(this.externalApi + '/v1/activities');
-  }
+
 
   // All in one
 
