@@ -42,6 +42,9 @@
             "saturday": "Lö",
             "sunday": "Sö"
         },
+        "eventdates" : "Evenemangsdatum",
+        "startingday" : "Startdag",
+        "endingday" : "Slutdagen",
         "more": "Mer",
         "moreinfo": "Mer info",
         "description": "Beskrivning",
@@ -59,6 +62,7 @@
             "purpose": "Syftet med projektet var förutom kodning att öva på användningen av Scrum, Git och Microsoft Azure CI/CD rörledningar eller något liknande",
             "duration": "Hela projektets längd var åtta veckor som hade delats upp i fyra tvåveckorssprintar",
             "assignment": "Projektet var en skoluppgift i Business College Helsinki"
-        }
+        },
+        "additionalDescription": "Ytterligare beskriving"
     }
 }

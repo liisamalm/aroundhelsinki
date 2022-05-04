@@ -6,6 +6,8 @@ import { Places } from '../interfaces/places';
 import { faLocationCrosshairs, faPersonWalking, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
+import { Events } from '../interfaces/events';
+import { Activities } from '../interfaces/activities';
 
 @Component({
   selector: 'app-main',
@@ -15,6 +17,18 @@ import 'leaflet.markercluster';
 export class MainComponent implements OnInit {
 
   places: Places[] = [];
+  events: Events[] = [];
+  activities: Activities[] = [];
+  listPlaces: Places[] = [];
+  listEvents: Events[] = [];
+  listActivities: Activities[] = [];
+
+  arrays: any = [];
+  tempArray: any = [];
+  newArray: any = [];
+
+  all: any;
+  list: any[];
   closeResult: string = '';
   modalInfo: any;
   faLocationCrosshairs = faLocationCrosshairs; // place
@@ -40,6 +54,7 @@ export class MainComponent implements OnInit {
     });
   }
 
+  //Places
   calculateDistance(placeLocation: any) {
     const userY = this.referenceLocation.y;
     const userX = this.referenceLocation.x;
@@ -59,14 +74,20 @@ export class MainComponent implements OnInit {
   }
 
   updateDistance(){
-    for(const place of this.places[0].data){
-      place.distance = this.calculateDistance(place.location);
+    for(let i=0; i<this.all.length; i++) {
+
+
+      for(const place of this.all[i].data){
+        place.distance = this.calculateDistance(place.location);
+      }
     }
   }
 
   sortByDistance(){
-    this.places[0].data.sort((a,b) => a.distance - b.distance);
+    for(let i=0; i<this.all.length; i++) {
+    this.all[i].data.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
   }
+}
 
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: Places) => {
@@ -74,7 +95,94 @@ export class MainComponent implements OnInit {
     });
   }
 
+  //Events
+
+  getEventsAll(): void {
+    this.apiService.getEventsAll().subscribe((res: Events) => {
+      this.events.push(res);
+    })
+  }
+
+  //Activities
+  getActivitiesAll(): void {
+    this.apiService.getActivitiesAll().subscribe((res: Activities) => {
+      this.activities.push(res);
+    })
+  }
+
+
+  //Get all API in one
+
+  getAll() {
+
+    this.apiService.getAll().subscribe((res: any) => {
+      this.listPlaces = res[0];
+      this.listEvents = res[1];
+      this.listActivities = res[2];
+
+      this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
+      this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
+
+    });
+
+  }
+
+  // Checkbox function
+  onChange(event: any) {
+
+    if(event.target.checked) {
+
+      this.tempArray = this.arrays.filter((e:any) => e.data[0].source_type.id == event.target.value);
+      this.all = [];
+      this.newArray.push(this.tempArray);
+      for(let i=0; i<this.newArray.length; i++) {
+        var firstArray = this.newArray[i];
+        for(let i=0; i<firstArray.length; i++){
+          var obj = firstArray[i];
+          this.all.push(obj);
+        }
+      }
+    } else {
+      this.tempArray = this.all.filter((e:any) => e.data[0].source_type.id != event.target.value);
+      this.newArray = [];
+      this.all = [];
+      this.newArray.push(this.tempArray);
+      for(let i=0; i<this.newArray.length; i++) {
+        var firstArray = this.newArray[i];
+        for(let i=0; i<firstArray.length; i++){
+          var obj = firstArray[i];
+          this.all.push(obj);
+        }
+      }
+    }
+  }
+
+
+
+
+
   ngOnInit(): void {
+    this.getAll();
     this.getPlacesAll();
+    this.getEventsAll();
+    this.getActivitiesAll();
+    this.list = [
+      {
+        id: 2,
+        title: 'Places',
+        checked: true,
+      },
+      {
+        id: 1,
+        title: 'Events',
+        checked: true,
+      },
+      {
+        id: 3,
+        title: 'Activities',
+        checked: true,
+      },
+
+    ]
   }
 }

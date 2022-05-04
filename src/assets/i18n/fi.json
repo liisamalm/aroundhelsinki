@@ -42,6 +42,9 @@
             "saturday": "La",
             "sunday": "Su"
         },
+        "eventdates" : "Tapahtumapäivät",
+        "startingday" : "Aloituspäivä",
+        "endingday" : "Lopetuspäivä",
         "more": "Lisää",
         "moreinfo": "Lisätietoja",
         "description": "Kuvaus",
@@ -59,6 +62,7 @@
             "purpose": "Projektissa oli tarkoitus harjoitella koodaamisen lisäksi Scrum:in, Git:in sekä Microsoft Azure CI/CD putken tai vastaavan käyttöä",
             "duration": "Projektin kesto oli kahdeksan viikkoa joka oli jaettu kahden viikon sprintteihin",
             "assignment": "Projekti tehtiin harjoitustyönä Business College Helsingissä"
-        }
+        },
+        "additionalDescription": "Lisäkuvaus"
     }
 }

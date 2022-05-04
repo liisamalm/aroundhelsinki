@@ -42,6 +42,9 @@
             "saturday": "Sat",
             "sunday": "Sun"
         },
+        "eventdates" : "Event Dates",
+        "startingday" : "Starting day",
+        "endingday" : "Ending day",
         "more": "More",
         "moreinfo": "More info",
         "description": "Description",
@@ -59,6 +62,7 @@
             "purpose": "In addition to coding, the purpose of the project was to practice the use of Scrum, Git and Microsoft Azure CI/CD pipelines or something similar",
             "duration": "The whole project duration was eight weeks that had been divided into four two-week sprints",
             "assignment": "The project was a school assignment in Business College Helsinki"
-        }
+        },
+        "additionalDescription": "Additional description"
     }
 }

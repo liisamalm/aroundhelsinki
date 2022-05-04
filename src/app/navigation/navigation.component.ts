@@ -47,24 +47,51 @@ export class NavigationComponent implements OnInit {
     return `${this.iconLink}${icon}.png`;
   }
 
-  sendPlace(){
+  sendPlace(place:any, event:any, activity:any){
     // console.log(this.showPlace);
     this.showPlace = true;
-    this.shareService.setPlace(this.showPlace);
+    place = this.showPlace;
+    this.showEvent = false;
+    event = this.showEvent;
+    this.showActivity = false;
+    activity = this.showActivity;
+    this.shareService.setData(place,event,activity);
 
-    return this.showPlace;
+    return {
+      'showPlace': this.showPlace,
+    'showEvent': this.showEvent,
+    'showActivity': this.showActivity
+    };
   }
-  sendEvent(){
+  sendEvent(place:any, event:any, activity:any){
+    this.showPlace = false;
+    place = this.showPlace;
     this.showEvent = true;
-    this.shareService.setEvent(this.showEvent);
+    event = this.showEvent;
+    this.showActivity = false;
+    activity = this.showActivity;
+    this.shareService.setData(place,event,activity);
 
-   return this.showEvent;
+   return {
+    'showPlace': this.showPlace,
+  'showEvent': this.showEvent,
+  'showActivity': this.showActivity
+  };
   }
-  sendActivity(){
+  sendActivity(place:any, event:any, activity:any){
+    this.showPlace = false;
+    place = this.showPlace;
+    this.showEvent = false;
+    event = this.showEvent;
     this.showActivity = true;
-    this.shareService.setActivity(this.showActivity);
+    activity = this.showActivity;
+    this.shareService.setData(place,event,activity);
 
-    return this.showActivity;
+    return {
+      'showPlace': this.showPlace,
+    'showEvent': this.showEvent,
+    'showActivity': this.showActivity
+    };
   }
 
 
