@@ -24,8 +24,8 @@
               }}"
               class="mw-100, uusiClass"
               id="view-img"
-              alt="image"
-              title="{{translate.currentLang === 'en' ? places?.name.en : (translate.currentLang === 'fi' ? places?.name.fi : places?.name.sv)}}"
+              alt="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
+              title="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
             />
             <div class="row">
               <section
@@ -35,14 +35,13 @@
                   <img
                     (click)="changeImg($event)"
                     src="{{ getImageUrl(image.url) }}"
-                    alt=""
+                    alt="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
                     class="pointer mw-100"
                   />
                 </figure>
               </section>
             </div>
         </ng-template>
-      <!-- </div> -->
       </div>
       <div class="row text-center">
         <div class="map-container">
@@ -55,7 +54,7 @@
     <div class="col-sm-7 ml-5">
       <div class="pt-5">
         <div>              
-          <h1 class="">{{  translate.currentLang === 'en' ? places?.name.en : (translate.currentLang === 'fi' ? places?.name.fi : places?.name.sv) }}</h1>
+          <h1 class="">{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}</h1>
           <hr />
           <p class="" style="text-align: justify">
             {{ places?.description.intro }}

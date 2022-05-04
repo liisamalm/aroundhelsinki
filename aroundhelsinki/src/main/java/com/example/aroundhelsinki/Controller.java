@@ -17,7 +17,6 @@ public class Controller {
     return "Around Helsinki";
   }
 
-  //PLACES
   @GetMapping("/v1/places")
   private String getPlaces() {
     String url = "https://open-api.myhelsinki.fi/v1/places/";

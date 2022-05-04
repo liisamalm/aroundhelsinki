@@ -149,11 +149,12 @@ export class MapComponent implements OnInit {
 
   makeAllMarkers(map: L.Map){
     const markerCluster = new MarkerClusterGroup();
-    this.showPlaces = this.shareService.getPlace();
-    this.showEvents = this.shareService.getEvent();
-    this.showActivities = this.shareService.getActivity();
+    this.showPlaces = this.shareService.getData().showPlace;
+    this.showEvents = this.shareService.getData().showEvent;
+    this.showActivities = this.shareService.getData().showActivity;
 
-    if(this.showPlaces == true){
+
+    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
       this.apiService.getPlacesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -166,8 +167,11 @@ export class MapComponent implements OnInit {
           markerCluster.addLayer(marker);
         }
         map.addLayer(markerCluster);
+
+
+
       });
-    } else if(this.showEvents) {
+    } else if(this.showPlaces == false && this.showEvents == true && this.showActivities == false) {
       this.apiService.getEventsAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -180,8 +184,10 @@ export class MapComponent implements OnInit {
           markerCluster.addLayer(marker);
         }
         map.addLayer(markerCluster);
+
+
       });
-    } else if (this.showActivities) {
+    } else if (this.showPlaces == false && this.showEvents == false && this.showActivities == true) {
       this.apiService.getActivitiesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -194,6 +200,8 @@ export class MapComponent implements OnInit {
           markerCluster.addLayer(marker);
         }
         map.addLayer(markerCluster);
+
+
       });
     } else {
       this.apiService.getPlacesAll().subscribe((res: any) => {

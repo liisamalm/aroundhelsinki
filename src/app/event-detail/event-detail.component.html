@@ -19,13 +19,11 @@
               <img
                 width="450px"
                 id="view-img"
-                src="{{
-                  getImageUrl(events?.description.images[0]?.url)
+                src="{{events?.description.images[0]?.url
                 }}"
                 class="mw-100, uusiClass"
                 id="view-img"
-                alt="image"
-                title="{{translate.currentLang === 'en' ? events?.name.en : (translate.currentLang === 'fi' ? events?.name.fi : events?.name.sv)}}"
+                alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}"
               />
               <div class="row">
                 <section
@@ -34,8 +32,8 @@
                   <figure class="pointer">
                     <img
                       (click)="changeImg($event)"
-                      src="{{ getImageUrl(image.url) }}"
-                      alt=""
+                      src="{{ image.url }}"
+                      alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}"
                       class="pointer mw-100"
                     />
                   </figure>
@@ -54,22 +52,19 @@
       <div class="col-sm-7 ml-5">
         <div class="pt-5">
           <div>              
-            <h1 class="">{{  translate.currentLang === 'en' ? events?.name.en : (translate.currentLang === 'fi' ? events?.name.fi : events?.name.sv) }}</h1>
+            <h1 class="">{{  translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi }}</h1>
             <hr />
-            <p class="" style="text-align: justify">
+            <strong class="" style="text-align: justify">
               {{ events?.description.intro }}
-            </p>
-            <p class="" style="text-align: justify">
-              {{ events?.description.body }}
-            </p>
+            </strong>
+            <p class="" style="text-align: justify" [innerHTML]="events?.description.body"></p>
           </div>
           <hr />
           <div class="row">
             <span class="material-icons col-1">home</span>
             <p class="col-11">
-                {{ events.id }}   
-              {{ events?.location.address.street_address }},
-              {{ events?.location.address.postal_code }} -
+              {{ events?.location.address.street_address }}
+              {{ events?.location.address.postal_code }} 
               {{ events?.location.address.locality }}
             </p>
           </div>
@@ -96,10 +91,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let dates of events?.event_dates">
-                      <td>{{ dates.starting_day }}</td>
-                      <td>{{ dates.ending_day }}</td>
-                      <td>{{ dates.additional_description }}</td>
+                  <tr>
+                      <td>{{ formatDate(events?.event_dates.starting_day) }}</td>
+                      <td>{{ formatDate(events?.event_dates.ending_day) }}</td>
+                      <td>{{ events?.event_dates.additional_description }}</td>
                   </tr>
                 </tbody>
               </table>

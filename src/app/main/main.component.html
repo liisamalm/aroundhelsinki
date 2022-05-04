@@ -1,37 +1,64 @@
 <div class="d-flex w-100 justify-content-between">
   <div class="map-container">
-    <app-map ></app-map>
-    <div class="listOfPlaces mb-1 list-group overflow-auto" style="
+    <app-map></app-map>
+    <div
+      class="listOfPlaces mb-1 list-group overflow-auto"
+      style="
         height: 300px;
         width: 400px;
         border: 2px solid #680f3d;
         position: absolute;
         left: 14px;
         top: 285px;
-      ">
-        <div *ngFor="let data of places[0]?.data">
-            <div class="list-group-item list-group-item-action">
-              <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1 fs-6">
-                    <fa-icon [icon]="faLocationCrosshairs"></fa-icon>
-                    <a style="text-decoration: none; color: #680f3d !important">{{ translate.currentLang === 'en' && data.name.en !== null ? data.name.en : translate.currentLang === 'se' && data.name.sv !== null ? data.name.sv : data.name.fi }}</a>
-                </h5>
-                <small id="distance" *ngIf="showDistance">{{
-                  data.distance.toFixed(2)
-                }}km</small>
-              </div>
-              <p class="mb-1 ptext">
-                {{ data.location.address.street_address }},
-                {{ data.location.address.postal_code }}
-                {{ data.location.address.locality }}
-              </p>
-              <small>
-                <a routerLink="place/{{ data.id }}" href="#" class="link">{{
-                  "LANG.moreinfo" | translate
+      "
+    >
+      <div class="checkbox">
+        <ul>
+          <li *ngFor="let item of list" class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              (change)="onChange($event)"
+              value="{{ item.id }}"
+              [(ngModel)]="item.checked"
+            />{{ item.title }}
+          </li>
+        </ul>
+      </div>
+
+      <div *ngFor="let item of all">
+        <div *ngFor="let data of item.data">
+          <div class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 fs-6">
+                <fa-icon *ngIf="data.source_type.id == 2" [icon]="faLocationCrosshairs"></fa-icon>
+                <fa-icon *ngIf="data.source_type.id == 1" [icon]="faCalendarCheck"></fa-icon>
+                <fa-icon *ngIf="data.source_type.id == 3" [icon]="faPersonWalking"></fa-icon>
+                <a style="text-decoration: none; color: #680f3d !important">{{
+                  translate.currentLang === "en" && data.name.en !== null
+                    ? data.name.en
+                    : translate.currentLang === "se" && data.name.sv !== null
+                    ? data.name.sv
+                    : data.name.fi
                 }}</a>
-              </small>
+              </h5>
+              <small id="distance" *ngIf="showDistance"
+                >{{ data.distance.toFixed(2) }}km</small
+              >
             </div>
+            <p class="mb-1 ptext">
+              {{ data.location.address.street_address }},
+              {{ data.location.address.postal_code }}
+              {{ data.location.address.locality }}
+            </p>
+            <small>
+              <a routerLink="place/{{ data.id }}" href="#" class="link">{{
+                "LANG.moreinfo" | translate
+              }}</a>
+            </small>
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>

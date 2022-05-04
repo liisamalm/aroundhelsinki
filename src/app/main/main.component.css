@@ -11,3 +11,13 @@
 .ptext{
   font-size: 13px;
 }
+
+.checkbox {
+  background-color: white;
+  text-align: center;
+  padding-top: 10px;
+}
+
+fa-icon{
+  padding-right: 5px;
+}
