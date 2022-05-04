@@ -6,8 +6,8 @@ import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
 import { TranslateService } from '@ngx-translate/core';
 
-const iconPlace = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+const iconActivity = L.icon({
+  iconUrl: '../assets/images/marker_activity.png',
   shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -17,12 +17,13 @@ const iconPlace = L.icon({
 });
 
 @Component({
-  selector: 'app-place-detail',
-  templateUrl: './place-detail.component.html',
-  styleUrls: ['./place-detail.component.css']})
-export class PlaceDetailComponent implements OnInit {
-  placeid:any;
-  places: any;
+  selector: 'app-activity-detail',
+  templateUrl: './activity-detail.component.html',
+  styleUrls: ['./activity-detail.component.css']
+})
+export class ActivityDetailComponent implements OnInit {
+  activityid:any;
+  activities: any;
   date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
@@ -31,22 +32,19 @@ export class PlaceDetailComponent implements OnInit {
   private map: L.Map;
 
   constructor(private apiService: ApiService,
-              public translate: TranslateService,
-              private route: ActivatedRoute
-              ) {
-                this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
-               }
+    public translate: TranslateService,
+    private route: ActivatedRoute) {  this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';}
 
   ngOnInit(): void {
-    this.getOnePlace();
+    this.getOneActivity();
     this.mapInit();
   }
 
   mapInit() {
-    this.apiService.getOnePlace(this.placeid).subscribe(data => {      
-      if(data.id == this.placeid){
+    this.apiService.getOneActivity(this.activityid).subscribe(data => {      
+      if(data.id == this.activityid){
         this.map = L.map('map', {
-          center: [this.places?.location.lat, this.places?.location.lon],
+          center: [this.activities?.location.lat, this.activities?.location.lon],
           zoom: 16,
         });
         const tiles = L.tileLayer(
@@ -59,28 +57,22 @@ export class PlaceDetailComponent implements OnInit {
           }
         );
         tiles.addTo(this.map);
-        const marker = L.marker([this.places?.location.lat, this.places?.location.lon], { icon: iconPlace });
+        const marker = L.marker([this.activities?.location.lat, this.activities?.location.lon], { icon: iconActivity });
         marker.addTo(this.map);    
     }
     });
   }
 
-  getOnePlace(): void {
+  getOneActivity(): void {
     this.route.paramMap.pipe(switchMap(params => {
-      this.placeid = params.get('id');
-      return this.apiService.getOnePlace(this.placeid)
+      this.activityid = params.get('id');
+      return this.apiService.getOneActivity(this.activityid)
     })
     ).subscribe(data => {
-      if (data.id == this.placeid) {
-        this.places = data;
+      if (data.id == this.activityid) {
+        this.activities = data;
       }
     })
-  }
-
-  getImageUrl(link2: string){
-    var linklast = link2?.slice(68,1000);
-    var imglink = `${this.link}/hero_image/${linklast}`;
-    return imglink;
   }
 
   changeImg(event: any){

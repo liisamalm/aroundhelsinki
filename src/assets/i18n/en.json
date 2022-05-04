@@ -24,6 +24,9 @@
         "opens": "Opens",
         "closes": "Closes",
         "24h": "Open 24h",
+        "where_when_duration": "Timetable",
+        "where_and_when": "Where and when",
+        "duration": "Duration",
         "weekday": {
             "monday": "Monday",
             "tuesday": "Tuesday",
@@ -49,5 +52,5 @@
         "moreinfo": "More info",
         "description": "Description",
         "additionalDescription": "Additional description"
-        }
+    }
 }
