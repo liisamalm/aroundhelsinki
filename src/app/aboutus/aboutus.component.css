@@ -1,0 +1,11 @@
+.card {
+    transition: transform 500ms ease;
+}
+.card-colors {
+    background-color: #c8e3cb;
+    color: #680F3D;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
