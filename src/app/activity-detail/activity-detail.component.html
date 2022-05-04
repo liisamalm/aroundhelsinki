@@ -19,13 +19,12 @@
               <img
                 width="450px"
                 id="view-img"
-                src="{{
-                  getImageUrl(activities?.description.images[0]?.url)
+                src="{{ activities?.description.images[0]?.url
                 }}"
                 class="mw-100, uusiClass"
                 id="view-img"
-                alt="image"
-                title="{{translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'fi' ? activities?.name.fi :activities?.name.sv)}}"
+                alt="{{translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'se' && activities?.name.sv !== null ? activities?.name.sv : activities?.name.fi)}}"
+                title="{{translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'se' && activities?.name.sv !== null ? activities?.name.sv : activities?.name.fi)}}"
               />
               <div class="row">
                 <section
@@ -34,7 +33,7 @@
                   <figure class="pointer">
                     <img
                       (click)="changeImg($event)"
-                      src="{{ getImageUrl(image.url) }}"
+                      src="{{ image.url }}"
                       alt=""
                       class="pointer mw-100"
                     />
@@ -42,7 +41,6 @@
                 </section>
               </div>
           </ng-template>
-        <!-- </div> -->
         </div>
         <div class="row text-center">
           <div class="map-container">
@@ -55,14 +53,12 @@
       <div class="col-sm-7 ml-5">
         <div class="pt-5">
           <div>              
-            <h1 class="">{{  translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'fi' ?activities?.name.fi : activities?.name.sv) }}</h1>
+            <h1 class="">{{ translate.currentLang === 'en' ? activities?.name.en : (translate.currentLang === 'se' && activities?.name.sv !== null ? activities?.name.sv : activities?.name.fi) }}</h1>
             <hr />
-            <p class="" style="text-align: justify">
+            <strong class="" style="text-align: justify">
               {{ activities?.description.intro }}
-            </p>
-            <p class="" style="text-align: justify">
-              {{ activities?.description.body }}
-            </p>
+            </strong>
+            <p class="" style="text-align: justify"[innerHTML]="activities?.description.body"></p>
           </div>
           <hr />
           <div class="row">
@@ -95,13 +91,10 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let time of activities?.where_and_when">
+                  <tr>
                     <td>
-                     {{ time.where_and_when }}
-                    </td>
-                    {{ time.duration }}
-                    <td>
-
+                     {{  activities?.where_when_duration.where_and_when }}</td>
+                    <td>{{ activities?.where_when_duration.duration }}
                     </td>
                   </tr>
                 </tbody>

@@ -75,12 +75,6 @@ export class ActivityDetailComponent implements OnInit {
     })
   }
 
-  getImageUrl(link2: string){
-    var linklast = link2?.slice(68,1000);
-    var imglink = `${this.link}/hero_image/${linklast}`;
-    return imglink;
-  }
-
   changeImg(event: any){
     this.newImageString = event.target.getAttribute('src');
     document.getElementById('view-img')?.setAttribute('src', this.newImageString);
