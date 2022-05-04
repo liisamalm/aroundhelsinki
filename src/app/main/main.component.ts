@@ -26,6 +26,7 @@ export class MainComponent implements OnInit {
   arrays: any = [];
   tempArray: any = [];
   newArray: any = [];
+  sort: any = [];
 
   all: any;
   list: any[];
@@ -114,7 +115,13 @@ export class MainComponent implements OnInit {
 
       this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
       this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
+
     });
+
+
+  }
+  sortByAsc(){
+    this.all[0].data[0].sort((a: any, b: any)=> a.name.fi.localeCompare(b.name.fi));
   }
 
   onChange(event: any) {
@@ -149,6 +156,7 @@ export class MainComponent implements OnInit {
     this.getPlacesAll();
     this.getEventsAll();
     this.getActivitiesAll();
+    this.sortByAsc();
     this.list = [
       {
         id: 2,
