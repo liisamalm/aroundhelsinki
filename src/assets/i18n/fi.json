@@ -24,6 +24,9 @@
         "opens": "Aukeaa",
         "closes": "Sulkeutuu",
         "24h": "Avoinna 24h",
+        "where_when_duration": "Aikataulu",
+        "where_and_when": "Missä ja milloin",
+        "duration": "Kesto",
         "weekday": {
             "monday": "Maanantai",
             "tuesday": "Tiistai",
@@ -64,5 +67,5 @@
             "assignment": "Projekti tehtiin harjoitustyönä Business College Helsingissä"
         },
         "additionalDescription": "Lisäkuvaus"
-    }
+        }
 }

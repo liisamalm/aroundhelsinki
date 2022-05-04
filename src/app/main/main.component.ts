@@ -39,6 +39,7 @@ export class MainComponent implements OnInit {
     x: 24.93545
   };
   showDistance = false;
+  type: any = [];
 
   constructor(
     private apiService: ApiService,
@@ -54,7 +55,6 @@ export class MainComponent implements OnInit {
     });
   }
 
-  //Places
   calculateDistance(placeLocation: any) {
     const userY = this.referenceLocation.y;
     const userX = this.referenceLocation.x;
@@ -75,8 +75,6 @@ export class MainComponent implements OnInit {
 
   updateDistance(){
     for(let i=0; i<this.all.length; i++) {
-
-
       for(const place of this.all[i].data){
         place.distance = this.calculateDistance(place.location);
       }
@@ -95,23 +93,17 @@ export class MainComponent implements OnInit {
     });
   }
 
-  //Events
-
   getEventsAll(): void {
     this.apiService.getEventsAll().subscribe((res: Events) => {
       this.events.push(res);
     })
   }
 
-  //Activities
   getActivitiesAll(): void {
     this.apiService.getActivitiesAll().subscribe((res: Activities) => {
       this.activities.push(res);
     })
   }
-
-
-  //Get all API in one
 
   getAll() {
 
@@ -122,16 +114,11 @@ export class MainComponent implements OnInit {
 
       this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
       this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
-
     });
-
   }
 
-  // Checkbox function
   onChange(event: any) {
-
     if(event.target.checked) {
-
       this.tempArray = this.arrays.filter((e:any) => e.data[0].source_type.id == event.target.value);
       this.all = [];
       this.newArray.push(this.tempArray);
@@ -156,10 +143,6 @@ export class MainComponent implements OnInit {
       }
     }
   }
-
-
-
-
 
   ngOnInit(): void {
     this.getAll();

@@ -24,6 +24,9 @@
         "opens": "Öppnar",
         "closes": "Stängs",
         "24h": "Öppen 24h",
+        "where_when_duration": "Tidtabell",
+        "where_and_when": "Var och när",
+        "duration": "Varaktighet",
         "weekday": {
             "monday": "Måndag",
             "tuesday": "Tisdag",

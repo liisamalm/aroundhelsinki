@@ -2,11 +2,13 @@
   <div class="map-container">
     <app-map></app-map>
     <div
+
       class="listOfPlaces mb-1 list-group overflow-auto"
       style="
         height: 300px;
         width: 400px;
         border: 2px solid #680f3d;
+        background-color: white;
         position: absolute;
         left: 14px;
         top: 285px;
@@ -26,7 +28,7 @@
         </ul>
       </div>
 
-      <div *ngFor="let item of all">
+      <div *ngFor="let item of all" >
         <div *ngFor="let data of item.data">
           <div class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
@@ -51,8 +53,14 @@
               {{ data.location.address.postal_code }}
               {{ data.location.address.locality }}
             </p>
-            <small>
-              <a routerLink="place/{{ data.id }}" href="#" class="link">{{
+            <small>              
+              <a *ngIf="data.source_type.id == 1" routerLink="event/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+            <a *ngIf="data.source_type.id == 2" routerLink="place/{{ data.id }}" href="#" class="link">{{
+              "LANG.moreinfo" | translate
+            }}</a>
+              <a *ngIf="data.source_type.id == 3" routerLink="activity/{{ data.id }}" href="#" class="link">{{
                 "LANG.moreinfo" | translate
               }}</a>
             </small>

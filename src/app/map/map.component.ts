@@ -203,7 +203,7 @@ export class MapComponent implements OnInit {
 
 
       });
-    } else {
+    } else if (this.showPlaces == true && this.showEvents == true && this.showActivities == true) {
       this.apiService.getPlacesAll().subscribe((res: any) => {
         for (const c of res.data) {
           const lon = c.location.lon;
@@ -243,6 +243,8 @@ export class MapComponent implements OnInit {
         }
         map.addLayer(markerCluster);
       });
+    } else {
+
     }
   }
 }

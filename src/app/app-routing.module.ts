@@ -4,17 +4,32 @@ import { AboutusComponent } from './aboutus/aboutus.component';
 
 import { MainComponent } from './main/main.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
+import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 
 const routes: Routes = [
-  { path: 'main', component: MainComponent },
+  { path: '', component: MainComponent },
+  { path: 'all', component: MainComponent },
   { path: 'places', component: MainComponent },
   { path: 'events', component: MainComponent },
+  { path: 'event/:id', component: EventDetailComponent },
   { path: 'activities', component: MainComponent },
-  { path: 'main/place/:id', component: PlaceDetailComponent },
-  { path: 'main/event/:id', component: EventDetailComponent },
+  { path: 'activity/:id', component: ActivityDetailComponent },
+  { path: 'place/:id', component: PlaceDetailComponent },
+  { path: 'places/place/:id', component: PlaceDetailComponent },
+  { path: 'events/place/:id', component: PlaceDetailComponent },
+  { path: 'activities/place/:id', component: PlaceDetailComponent },
+  { path: 'all/place/:id', component: PlaceDetailComponent },
+  { path: 'places/event/:id', component: EventDetailComponent  },
+  { path: 'events/event/:id', component: EventDetailComponent  },
+  { path: 'activities/event/:id', component: EventDetailComponent  },
+  { path: 'all/event/:id', component: EventDetailComponent  },
+  { path: 'places/activity/:id', component: ActivityDetailComponent },
+  { path: 'events/activity/:id', component: ActivityDetailComponent },
+  { path: 'activities/activity/:id', component: ActivityDetailComponent },
+  { path: 'all/activity/:id', component: ActivityDetailComponent },
   { path: 'aboutus', component: AboutusComponent},
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
 
 ];
 
