@@ -1,6 +1,6 @@
 # Aroundhelsinki
 <!--Mikä tämä ohjelma on ja mitä tällä voi tehdä-->
-This is a Web application that uses the user's location and shows a list of places of interest near by.
+This is a Web application that uses a given location and shows a list of places of interest near by.
 ### Additional features
 - The user will see additional information about places of interest when the place is selected
 
