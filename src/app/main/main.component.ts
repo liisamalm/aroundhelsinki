@@ -156,7 +156,6 @@ export class MainComponent implements OnInit {
     this.getPlacesAll();
     this.getEventsAll();
     this.getActivitiesAll();
-    this.sortByAsc();
     this.list = [
       {
         id: 2,
