@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './main/main.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import { HttpClientModule, HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
@@ -18,6 +18,7 @@ import { MapComponent } from './map/map.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -34,9 +35,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MapComponent,
     AboutusComponent,
     ActivityDetailComponent,
-    EventDetailComponent,
-
-  ],
+    EventDetailComponent
+    ],
   providers: [
     ApiService
   ],
@@ -53,7 +53,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    OrderModule
   ],
   bootstrap: [AppComponent]
 })

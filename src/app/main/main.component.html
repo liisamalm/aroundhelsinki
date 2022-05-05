@@ -28,45 +28,45 @@
         </ul>
       </div>
 
-      <div *ngFor="let item of all" >
-        <div *ngFor="let data of item.data">
-          <div class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1 fs-6">
-                <fa-icon *ngIf="data.source_type.id == 2" [icon]="faLocationCrosshairs"></fa-icon>
-                <fa-icon *ngIf="data.source_type.id == 1" [icon]="faCalendarCheck"></fa-icon>
-                <fa-icon *ngIf="data.source_type.id == 3" [icon]="faPersonWalking"></fa-icon>
-                <a style="text-decoration: none; color: #680f3d !important">{{
-                  translate.currentLang === "en" && data.name.en !== null
-                    ? data.name.en
-                    : translate.currentLang === "se" && data.name.sv !== null
-                    ? data.name.sv
-                    : data.name.fi
-                }}</a>
-              </h5>
-              <small id="distance" *ngIf="showDistance"
-                >{{ data.distance.toFixed(2) }}km</small
-              >
-            </div>
-            <p class="mb-1 ptext">
-              {{ data.location.address.street_address }},
-              {{ data.location.address.postal_code }}
-              {{ data.location.address.locality }}
-            </p>
-            <small>              
-              <a *ngIf="data.source_type.id == 1" routerLink="event/{{ data.id }}" href="#" class="link">{{
-              "LANG.moreinfo" | translate
-            }}</a>
-            <a *ngIf="data.source_type.id == 2" routerLink="place/{{ data.id }}" href="#" class="link">{{
-              "LANG.moreinfo" | translate
-            }}</a>
-              <a *ngIf="data.source_type.id == 3" routerLink="activity/{{ data.id }}" href="#" class="link">{{
+      <!-- <div *ngFor="let item of all" > -->
+        <div *ngFor="let data of sortListByAsc">
+            <div class="list-group-item list-group-item-action">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1 fs-6">
+                  <fa-icon *ngIf="data.source_type.id == 2" [icon]="faLocationCrosshairs"></fa-icon>
+                  <fa-icon *ngIf="data.source_type.id == 1" [icon]="faCalendarCheck"></fa-icon>
+                  <fa-icon *ngIf="data.source_type.id == 3" [icon]="faPersonWalking"></fa-icon>
+                  <a style="text-decoration: none; color: #680f3d !important">{{
+                    translate.currentLang === "en" && data.name.en !== null
+                      ? data.name.en
+                      : translate.currentLang === "se" && data.name.sv !== null
+                      ? data.name.sv
+                      : data.name.fi
+                  }}</a>
+                </h5>
+                <small id="distance" *ngIf="showDistance"
+                  >{{ data.distance.toFixed(2) }}km</small
+                >
+              </div>
+              <p class="mb-1 ptext">
+                {{ data.location.address.street_address }},
+                {{ data.location.address.postal_code }}
+                {{ data.location.address.locality }}
+              </p>
+              <small>
+                <a *ngIf="data.source_type.id == 1" routerLink="event/{{ data.id }}" href="#" class="link">{{
                 "LANG.moreinfo" | translate
               }}</a>
-            </small>
+              <a *ngIf="data.source_type.id == 2" routerLink="place/{{ data.id }}" href="#" class="link">{{
+                "LANG.moreinfo" | translate
+              }}</a>
+                <a *ngIf="data.source_type.id == 3" routerLink="activity/{{ data.id }}" href="#" class="link">{{
+                  "LANG.moreinfo" | translate
+                }}</a>
+              </small>
+            </div>
           </div>
-        </div>
-      </div>
+      <!-- </div> -->
     </div>
   </div>
 </div>

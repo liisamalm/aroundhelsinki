@@ -8,6 +8,7 @@ import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
+import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-main',
@@ -26,7 +27,7 @@ export class MainComponent implements OnInit {
   arrays: any = [];
   tempArray: any = [];
   newArray: any = [];
-  sort: any = [];
+  sortListByAsc: any = [];
 
   all: any;
   list: any[];
@@ -41,10 +42,11 @@ export class MainComponent implements OnInit {
   };
   showDistance = false;
   type: any = [];
+  typeName: "name.fi";
 
   constructor(
     private apiService: ApiService,
-    public translate: TranslateService) { }
+    public translate: TranslateService, private orderPipe: OrderPipe) { }
 
 
   saveReferenceLocation(): void {
@@ -75,18 +77,19 @@ export class MainComponent implements OnInit {
   }
 
   updateDistance(){
-    for(let i=0; i<this.all.length; i++) {
-      for(const place of this.all[i].data){
-        place.distance = this.calculateDistance(place.location);
-      }
+      for(const type of this.sortListByAsc){
+        type.distance = this.calculateDistance(type.location);
     }
   }
 
   sortByDistance(){
-    for(let i=0; i<this.all.length; i++) {
-    this.all[i].data.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
-  }
+    this.sortListByAsc.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
 }
+
+  sortByAsc(){
+    this.sortListByAsc.sort((a: { name: any; },b: { name: any; }) => a.name.fi - b.name.fi);
+
+  }
 
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: Places) => {
@@ -107,22 +110,21 @@ export class MainComponent implements OnInit {
   }
 
   getAll() {
-
     this.apiService.getAll().subscribe((res: any) => {
       this.listPlaces = res[0];
       this.listEvents = res[1];
       this.listActivities = res[2];
-
       this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
       this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
-
+      for(let i=0; i<this.all.length; i++) {
+          for(const type of this.all[i].data){
+            this.sortListByAsc.push(type);
+            // this.typeName = sortListByAsc.name.fi;
+          }
+      }
     });
-
-
   }
-  sortByAsc(){
-    this.all[0].data[0].sort((a: any, b: any)=> a.name.fi.localeCompare(b.name.fi));
-  }
+
 
   onChange(event: any) {
     if(event.target.checked) {
