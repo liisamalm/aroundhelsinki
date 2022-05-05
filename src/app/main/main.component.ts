@@ -42,11 +42,13 @@ export class MainComponent implements OnInit {
   };
   showDistance = false;
   type: any = [];
-  typeName: "name.fi";
+  sortedCollection: any[];
+  typeName: any = [];
 
   constructor(
     private apiService: ApiService,
-    public translate: TranslateService, private orderPipe: OrderPipe) { }
+    public translate: TranslateService, private orderPipe: OrderPipe) { 
+    }
 
 
   saveReferenceLocation(): void {
@@ -88,7 +90,6 @@ export class MainComponent implements OnInit {
 
   sortByAsc(){
     this.sortListByAsc.sort((a: { name: any; },b: { name: any; }) => a.name.fi - b.name.fi);
-
   }
 
   getPlacesAll(): void {
@@ -119,7 +120,6 @@ export class MainComponent implements OnInit {
       for(let i=0; i<this.all.length; i++) {
           for(const type of this.all[i].data){
             this.sortListByAsc.push(type);
-            // this.typeName = sortListByAsc.name.fi;
           }
       }
     });
