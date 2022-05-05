@@ -8,7 +8,6 @@ import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
-import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-main',
@@ -47,7 +46,7 @@ export class MainComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    public translate: TranslateService, private orderPipe: OrderPipe) { 
+    public translate: TranslateService) { 
     }
 
 
