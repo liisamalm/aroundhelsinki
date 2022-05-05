@@ -26,6 +26,7 @@ export class MainComponent implements OnInit {
   arrays: any = [];
   tempArray: any = [];
   newArray: any = [];
+  sortListByAsc: any = [];
 
   all: any;
   list: any[];
@@ -40,10 +41,13 @@ export class MainComponent implements OnInit {
   };
   showDistance = false;
   type: any = [];
+  sortedCollection: any[];
+  typeName: any = [];
 
   constructor(
     private apiService: ApiService,
-    public translate: TranslateService) { }
+    public translate: TranslateService) { 
+    }
 
 
   saveReferenceLocation(): void {
@@ -74,18 +78,18 @@ export class MainComponent implements OnInit {
   }
 
   updateDistance(){
-    for(let i=0; i<this.all.length; i++) {
-      for(const place of this.all[i].data){
-        place.distance = this.calculateDistance(place.location);
-      }
+      for(const type of this.sortListByAsc){
+        type.distance = this.calculateDistance(type.location);
     }
   }
 
   sortByDistance(){
-    for(let i=0; i<this.all.length; i++) {
-    this.all[i].data.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
-  }
+    this.sortListByAsc.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
 }
+
+  sortByAsc(){
+    this.sortListByAsc.sort((a: { name: any; },b: { name: any; }) => a.name.fi - b.name.fi);
+  }
 
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: Places) => {
@@ -106,16 +110,20 @@ export class MainComponent implements OnInit {
   }
 
   getAll() {
-
     this.apiService.getAll().subscribe((res: any) => {
       this.listPlaces = res[0];
       this.listEvents = res[1];
       this.listActivities = res[2];
-
       this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
       this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
+      for(let i=0; i<this.all.length; i++) {
+          for(const type of this.all[i].data){
+            this.sortListByAsc.push(type);
+          }
+      }
     });
   }
+
 
   onChange(event: any) {
     if(event.target.checked) {

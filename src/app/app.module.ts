@@ -8,8 +8,8 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './main/main.component';
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient} from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
@@ -34,9 +34,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MapComponent,
     AboutusComponent,
     ActivityDetailComponent,
-    EventDetailComponent,
-
-  ],
+    EventDetailComponent
+    ],
   providers: [
     ApiService
   ],
