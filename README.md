@@ -3,9 +3,17 @@
 This is a Web application that uses the user's location and shows a list of places of interest near by.
 ## Additional features
 -The user will see additional information about places of interest when the place is selected
+
+
 -The user can view the places of interest in a map
+
+
 -The user can see a weather forecast for the next 3 hours
+
+
 -The user can also view activities and events
+
+
 -The user can filter places / activities / events
 
 [Computer view prototype](https://xd.adobe.com/view/05531c53-b475-4c4f-8233-4a99dd1d40f1-5000/?fullscreen)
@@ -21,10 +29,20 @@ This is a Web application that uses the user's location and shows a list of plac
 
 ### Angular modules used
 @types/leaflet
+
+
 leaflet-geosearch
+
+
 @ngx-translate/core
+
+
 @ngx-translate/http-loader
+
+
 leaflet.markercluster
+
+
 moment
 
 <!--mitä pitää olla asennettuna, jotta koodi toimii omalla koneella
