@@ -51,6 +51,21 @@
         "more": "More",
         "moreinfo": "More info",
         "description": "Description",
+        "student": "Student",
+        "people": "People",
+        "text": {
+            "description": "Our assignment was to create a Web application, which uses the user's location and shows a list of places of interest near by. The user interface should look good and be intuitive (UX)",        
+            "additional": "Additional features",
+            "feature1": "The user will see additional information about places of interest when the place is selected",
+            "feature2": "The user can view the places of interest in a map",
+            "feature3": "The user can see a weather forecast for the next 3 hours",
+            "feature4": "The user can also view activities and events",
+            "feature5": "The user can filter places / activities / events",
+            "api": "The data used in the Web application will be accessed through the MyHelsinki Open API https://open-api.myhelsinki.fi",
+            "purpose": "In addition to coding, the purpose of the project was to practice the use of Scrum, Git and Microsoft Azure CI/CD pipelines or something similar",
+            "duration": "The whole project duration was eight weeks that had been divided into four two-week sprints",
+            "assignment": "The project was a school assignment in Business College Helsinki"
+        },
         "additionalDescription": "Additional description"
     }
 }

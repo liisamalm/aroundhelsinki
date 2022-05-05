@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 import { MainComponent } from './main/main.component';
 import { PlaceDetailComponent } from './place-detail/place-detail.component';
@@ -15,7 +16,6 @@ const routes: Routes = [
   { path: 'activities', component: MainComponent },
   { path: 'activity/:id', component: ActivityDetailComponent },
   { path: 'place/:id', component: PlaceDetailComponent },
-
   { path: 'places/place/:id', component: PlaceDetailComponent },
   { path: 'events/place/:id', component: PlaceDetailComponent },
   { path: 'activities/place/:id', component: PlaceDetailComponent },
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'events/activity/:id', component: ActivityDetailComponent },
   { path: 'activities/activity/:id', component: ActivityDetailComponent },
   { path: 'all/activity/:id', component: ActivityDetailComponent },
-
+  { path: 'aboutus', component: AboutusComponent},
   { path: '', redirectTo: '/', pathMatch: 'full' },
 
 ];

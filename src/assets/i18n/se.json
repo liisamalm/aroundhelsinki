@@ -51,6 +51,21 @@
         "more": "Mer",
         "moreinfo": "Mer info",
         "description": "Beskrivning",
+        "student": "Studerande",
+        "people": "Människor",
+        "text": {
+            "description": "Vårt uppdrag var att skapa en webbapplikation som använder användarens plats och visar en lista över intressanta platser i närheten. Användargränssnittet ska se bra ut och vara intuitivt (UX)",        
+            "additional": "Ytterligare egenskaper",
+            "feature1": "Användaren kommer att se ytterligare information om platser av intresse när platsen väljs",
+            "feature2": "Användaren kan se platser av intresse på en karta",
+            "feature3": "Användaren kan se en väderprognos för de kommande 3 timmarna",
+            "feature4": "Användaren kan också se aktiviteter och evenemang",
+            "feature5": "Användaren kan filtrera platser / aktiviteter / evenemang",
+            "api": "De data som används i webbapplikationen kommer att nås via MyHelsinki Open API https://open-api.myhelsinki.fi",
+            "purpose": "Syftet med projektet var förutom kodning att öva på användningen av Scrum, Git och Microsoft Azure CI/CD rörledningar eller något liknande",
+            "duration": "Hela projektets längd var åtta veckor som hade delats upp i fyra tvåveckorssprintar",
+            "assignment": "Projektet var en skoluppgift i Business College Helsinki"
+        },
         "additionalDescription": "Ytterligare beskriving"
     }
 }

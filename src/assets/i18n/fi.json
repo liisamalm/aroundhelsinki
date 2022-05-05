@@ -51,6 +51,21 @@
         "more": "Lisää",
         "moreinfo": "Lisätietoja",
         "description": "Kuvaus",
+        "student": "Oppilas",
+        "people": "Ihmiset",
+        "text": {
+            "description": "Tehtävänämme oli luoda Web sovellus joka käyttää käyttäjän sijaintia ja näyttää listan lähellä sijaitsevista kiinnostavista paikoista. Käyttöliittymän pitäisi näyttää hyvältä ja olla intuitiivinen (UX)",        
+            "additional": "Lisäominaisuudet",
+            "feature1": "Käyttäjä näkee lisätietoja kiinnostavista paikoista kun paikan valitsee",
+            "feature2": "Käyttäjä näkee kiinnostavien paikkonen sijainnit kartalla",
+            "feature3": "Käyttäjä näkee seuraavan kolmen tunnin säätiedot",
+            "feature4": "Käyttäjä voi paikkojen lisäksi nähdä myös aktiviteetteja sekä tapahtumia",
+            "feature5": "Käyttäjä voi rajata pelkästään paikat / aktiviteetit / tapahtumat",
+            "api": "Web sovelluksessa käytettävä data haetaan MyHelsinki Open API:sta https://open-api.myhelsinki.fi",
+            "purpose": "Projektissa oli tarkoitus harjoitella koodaamisen lisäksi Scrum:in, Git:in sekä Microsoft Azure CI/CD putken tai vastaavan käyttöä",
+            "duration": "Projektin kesto oli kahdeksan viikkoa joka oli jaettu kahden viikon sprintteihin",
+            "assignment": "Projekti tehtiin harjoitustyönä Business College Helsingissä"
+        },
         "additionalDescription": "Lisäkuvaus"
         }
 }
