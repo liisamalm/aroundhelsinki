@@ -1,20 +1,20 @@
 # Aroundhelsinki
 <!--Mikä tämä ohjelma on ja mitä tällä voi tehdä-->
 This is a Web application that uses the user's location and shows a list of places of interest near by.
-## Additional features
--The user will see additional information about places of interest when the place is selected
+### Additional features
+- The user will see additional information about places of interest when the place is selected
 
 
--The user can view the places of interest in a map
+- The user can view the places of interest in a map
 
 
--The user can see a weather forecast for the next 3 hours
+- The user can see a weather forecast for the next 3 hours
 
 
--The user can also view activities and events
+- The user can also view activities and events
 
 
--The user can filter places / activities / events
+- The user can filter places / activities / events
 
 [Computer view prototype](https://xd.adobe.com/view/05531c53-b475-4c4f-8233-4a99dd1d40f1-5000/?fullscreen)
 
