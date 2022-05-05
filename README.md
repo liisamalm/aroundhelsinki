@@ -51,8 +51,8 @@ moment
 <!--miten ohjelman saa käyntiin-->
 Clone the repository `git clone https://github.com/liisamalm/aroundhelsinki`
 
-Install modules by running `npm install` or `npm i @types/leaflet leaflet-geosearch @ngx-translate/core @ngx-translate/http-loader leaflet.markercluster moment --save`
+Install modules by running `npm install` or `npm i @types/leaflet leaflet-geosearch @ngx-translate/core @ngx-translate/http-loader leaflet.markercluster moment --save` in the project folder.
 
 Run `mvn spring-boot:run` in the aroundhelsinki/aroundhelsinki folder.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `ng serve` in the project folder for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
