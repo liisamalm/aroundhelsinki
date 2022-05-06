@@ -23,7 +23,9 @@
               (change)="onChange($event)"
               value="{{ item.id }}"
               [(ngModel)]="item.checked"
-            />{{ item.title }}
+            />
+            {{ translate.currentLang === 'en' ? item.titleEn :
+             (translate.currentLang === 'se' ? item.titleSv  : item.titleFi) }}
           </li>
         </ul>
       </div>

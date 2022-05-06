@@ -160,17 +160,23 @@ export class MainComponent implements OnInit {
     this.list = [
       {
         id: 2,
-        title: 'Places',
+        titleEn: 'Places',
+        titleSv: 'Platser',
+        titleFi: 'Paikat',
         checked: true,
       },
       {
         id: 1,
-        title: 'Events',
+        titleEn: 'Events',
+        titleSv: 'Evenemanger',
+        titleFi: 'Tapahtumat',
         checked: true,
       },
       {
         id: 3,
-        title: 'Activities',
+        titleEn: 'Activities',
+        titleSv: 'Aktiviteter',
+        titleFi: 'Aktiviteetit',
         checked: true,
       },
 
