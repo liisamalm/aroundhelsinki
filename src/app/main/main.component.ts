@@ -114,41 +114,35 @@ export class MainComponent implements OnInit {
       this.listPlaces = res[0];
       this.listEvents = res[1];
       this.listActivities = res[2];
-      this.sortListByAsc  = [this.listPlaces, this.listEvents,  this.listActivities];
-      this.arrays = [this.listPlaces, this.listEvents,  this.listActivities];
-      for(let i=0; i<this.sortListByAsc.length; i++) {
+      this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
+      for(let i=0; i<this.all.length; i++) {
           for(const type of this.all[i].data){
             this.sortListByAsc.push(type);
+            this.arrays.push(type);
           }
       }
     });
   }
-
-
   onChange(event: any) {
     if(event.target.checked) {
-      this.tempArray = this.arrays.filter((e:any) => e.data[0].source_type.id == event.target.value);
+      this.tempArray = this.arrays.filter((e:any) => e?.source_type.id == event.target.value);
       this.sortListByAsc = [];
       this.newArray.push(this.tempArray);
       for(let i=0; i<this.newArray.length; i++) {
-        var firstArray = this.newArray[i];
-        for(let i=0; i<firstArray.length; i++){
-          var obj = firstArray[i];
-          this.sortListByAsc.push(obj);
-        }
+      for(const type of this.newArray[i]){
+        this.sortListByAsc.push(type);
+      }
       }
     } else {
-      this.tempArray = this.sortListByAsc.filter((e:any) => e.data[0].source_type.id != event.target.value);
-      this.newArray = [];
+      this.tempArray = this.sortListByAsc.filter((e:any) => e?.source_type.id != event.target.value);
       this.sortListByAsc = [];
+      this.newArray = [];
       this.newArray.push(this.tempArray);
       for(let i=0; i<this.newArray.length; i++) {
-        var firstArray = this.newArray[i];
-        for(let i=0; i<firstArray.length; i++){
-          var obj = firstArray[i];
-          this.sortListByAsc.push(obj);
-        }
+      for(const type of this.newArray[i]){
+        this.sortListByAsc.push(type);
       }
+    }
     }
   }
 
