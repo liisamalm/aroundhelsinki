@@ -2,11 +2,6 @@
 <!--Mikä tämä ohjelma on ja mitä tällä voi tehdä-->
 This is a Web application that uses a given location and shows a list of places of interest near by.
 
-### APIs
-- [MyHelsinki Open API](https://open-api.myhelsinki.fi/doc#/) version 1
-- [OpenStreetMap API](https://wiki.openstreetmap.org/wiki/API_v0.6) version 0.6
-- [OpenWeatherMap API](https://openweathermap.org/api)
-
 ### Additional features
 - The user will see additional information about places of interest when the place is selected
 - The user can view the places of interest in a map
@@ -37,6 +32,11 @@ This is a Web application that uses a given location and shows a list of places 
 - [@ngx-translate/core](https://github.com/ngx-translate/core) version 14.0.0
 - [@ngx-translate/http-loader](https://github.com/ngx-translate/core) 14.0.0
 - [moment](https://github.com/moment/moment)
+
+### APIs used
+- [MyHelsinki Open API](https://open-api.myhelsinki.fi/doc#/) version 1
+- [OpenStreetMap API](https://wiki.openstreetmap.org/wiki/API_v0.6) version 0.6
+- [OpenWeatherMap API](https://openweathermap.org/api)
 
 <!--mitä pitää olla asennettuna, jotta koodi toimii omalla koneella
  -->
