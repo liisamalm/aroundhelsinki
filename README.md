@@ -1,6 +1,12 @@
 # Aroundhelsinki
 <!--Mikä tämä ohjelma on ja mitä tällä voi tehdä-->
 This is a Web application that uses a given location and shows a list of places of interest near by.
+
+### APIs
+[MyHelsinki Open API](https://open-api.myhelsinki.fi/doc#/) version 1
+[OpenStreetMap API](https://wiki.openstreetmap.org/wiki/API_v0.6) version 0.6
+[OpenWeatherMap API](https://openweathermap.org/api)
+
 ### Additional features
 - The user will see additional information about places of interest when the place is selected
 
@@ -28,23 +34,17 @@ This is a Web application that uses a given location and shows a list of places 
 [OpenJDK](https://jdk.java.net/archive/) version 11.0.12
 [Node](https://nodejs.org/en/) version 16.14.2
 
-### Angular modules used
-@types/leaflet
+### Modules, components & add-ons used
 
-
-leaflet-geosearch
-
-
-@ngx-translate/core
-
-
-@ngx-translate/http-loader
-
-
-leaflet.markercluster
-
-
-moment
+[@fortawesome/angular-fontawesome](https://github.com/FortAwesome/angular-fontawesome) version 0.10.x
+[@ng-bootstrap/ng-bootstrap](https://ng-bootstrap.github.io/#/home) version 12.1.1
+[@popperjs/core ngx-popperjs](https://github.com/MrFrankel/ngx-popper/)
+[@types/leaflet](https://github.com/Leaflet/Leaflet) version 1.8.0
+[leaflet-geosearch](https://github.com/smeijer/leaflet-geosearch) version 3.6.0
+[leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
+[@ngx-translate/core](https://github.com/ngx-translate/core) version 14.0.0
+[@ngx-translate/http-loader](https://github.com/ngx-translate/core) 14.0.0
+[moment](https://github.com/moment/moment)
 
 <!--mitä pitää olla asennettuna, jotta koodi toimii omalla koneella
  -->
@@ -52,7 +52,7 @@ moment
 <!--miten ohjelman saa käyntiin-->
 Clone the repository `git clone https://github.com/liisamalm/aroundhelsinki`
 
-Install modules by running `npm install` or `npm i @types/leaflet leaflet-geosearch @ngx-translate/core @ngx-translate/http-loader leaflet.markercluster moment --save` in the project folder.
+Install modules by running `npm i @types/leaflet leaflet-geosearch @ngx-translate/core @ngx-translate/http-loader leaflet.markercluster moment --save` in the project folder.
 
 Run `mvn spring-boot:run` in the aroundhelsinki/aroundhelsinki folder.
 
