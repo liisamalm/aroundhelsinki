@@ -26,6 +26,7 @@ This is a Web application that uses a given location and shows a list of places 
 [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0
 [SpringBoot](https://spring.io/projects/spring-boot) version 2.6.7
 [OpenJDK](https://jdk.java.net/archive/) version 11.0.12
+[Node](https://nodejs.org/en/) version 16.14.2
 
 ### Angular modules used
 @types/leaflet
