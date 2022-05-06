@@ -54,6 +54,7 @@ export class MainComponent implements OnInit {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
       this.referenceLocation = e.location;
       this.updateDistance();
+      this.getAfterAddress();
       this.sortByDistance();
       this.showDistance = true;
     });
@@ -123,6 +124,18 @@ export class MainComponent implements OnInit {
       }
     });
   }
+
+  getAfterAddress(){
+    this.tempArray = this.sortListByAsc.filter((e:any) => e?.distance <= 2.5);
+    this.sortListByAsc = [];
+    this.newArray.push(this.tempArray);
+    for(let i=0; i<this.newArray.length; i++) {
+      for(const type of this.newArray[i]){
+        this.sortListByAsc.push(type);
+      }
+    }
+  }
+
   onChange(event: any) {
     if(event.target.checked) {
       this.tempArray = this.arrays.filter((e:any) => e?.source_type.id == event.target.value);
