@@ -8,6 +8,7 @@ import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
+import { ShareService } from '../services/share.service';
 
 @Component({
   selector: 'app-main',
@@ -28,7 +29,11 @@ export class MainComponent implements OnInit {
   newArray: any = [];
   sortListByAsc: any = [];
   allList: any = [];
-  testList: any = [];
+
+  showPlaces:boolean =false;
+  showEvents:boolean = false;
+  showActivities:boolean = false;
+ 
 
   all: any;
   list: any[];
@@ -49,7 +54,8 @@ export class MainComponent implements OnInit {
 
   constructor(
     private apiService: ApiService,
-    public translate: TranslateService) {
+    public translate: TranslateService, private shareService: ShareService,
+    ) {
     }
 
 
@@ -116,19 +122,50 @@ export class MainComponent implements OnInit {
   }
 
   getAll() {
-    this.apiService.getAll().subscribe((res: any) => {
-      this.listPlaces = res[0];
-      this.listEvents = res[1];
-      this.listActivities = res[2];
-      this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
-      for(let i=0; i<this.all.length; i++) {
-          for(const type of this.all[i].data){
-            this.sortListByAsc.push(type);
-            this.arrays.push(type);
-            this.allList.push(type);
-          }
-      }
-    });
+    this.showPlaces = this.shareService.getData().showPlace;
+    this.showEvents = this.shareService.getData().showEvent;
+    this.showActivities = this.shareService.getData().showActivity;
+    if(this.showPlaces == true && this.showEvents == true && this.showActivities == true){
+      this.sortListByAsc = [];
+      this.apiService.getAll().subscribe((res: any) => {
+        this.listPlaces = res[0];
+        this.listEvents = res[1];
+        this.listActivities = res[2];
+        this.all  = [this.listPlaces, this.listEvents,  this.listActivities];
+        for(let i=0; i<this.all.length; i++) {
+            for(const type of this.all[i].data){
+              this.sortListByAsc.push(type);
+              this.arrays.push(type);
+              this.allList.push(type);
+            }
+        }
+      });
+    }
+    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
+      this.sortListByAsc = [];
+      this.apiService.getPlacesAll().subscribe((res: Places) => {
+        for(const type of res.data){
+          this.sortListByAsc.push(type);
+        }
+      });
+    }
+    if(this.showPlaces == false && this.showEvents == true && this.showActivities == false){
+      this.sortListByAsc = [];
+
+      this.apiService.getEventsAll().subscribe((res: any) => {
+        for(const type of res.data){
+          this.sortListByAsc.push(type);
+        }
+      });
+    }
+    if(this.showPlaces == false && this.showEvents == false && this.showActivities == true){
+      this.sortListByAsc = [];
+      this.apiService.getActivitiesAll().subscribe((res: any) => {
+        for(const type of res.data){
+          this.sortListByAsc.push(type);
+        }
+      });
+    }
   }
 
   getAfterAddress(){

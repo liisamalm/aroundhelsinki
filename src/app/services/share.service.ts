@@ -15,10 +15,8 @@ export class ShareService {
     this.showPlace = place;
     this.showEvent = event;
     this.showActivity = activity;
-    // console.log(this.showPlace);
   }
   getData() {
-    // console.log(this.showPlace);
     return {
       'showPlace': this.showPlace,
     'showEvent': this.showEvent,
