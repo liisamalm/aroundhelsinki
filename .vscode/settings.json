@@ -1,4 +1,5 @@
 {
     "editor.foldingMaximumRegions": 65000,
-    "json.maxItemsComputed": 65000
+    "json.maxItemsComputed": 65000,
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
