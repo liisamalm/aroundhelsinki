@@ -3,7 +3,7 @@ import { LeafletEvent} from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
-import { faLocationCrosshairs, faPersonWalking, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
+import { faLocationCrosshairs, faPersonWalking, faCalendarCheck, faClone } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
 import { Events } from '../interfaces/events';
@@ -27,6 +27,8 @@ export class MainComponent implements OnInit {
   tempArray: any = [];
   newArray: any = [];
   sortListByAsc: any = [];
+  allList: any = [];
+  testList: any = [];
 
   all: any;
   list: any[];
@@ -40,6 +42,7 @@ export class MainComponent implements OnInit {
     x: 24.93545
   };
   showDistance = false;
+  userAddress = false;
   type: any = [];
   sortedCollection: any[];
   typeName: any = [];
@@ -53,9 +56,11 @@ export class MainComponent implements OnInit {
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
       this.referenceLocation = e.location;
+      this.sortListByAsc = this.allList;
       this.updateDistance();
       this.getAfterAddress();
       this.sortByDistance();
+      this.userAddress = true;
       this.showDistance = true;
     });
   }
@@ -120,14 +125,16 @@ export class MainComponent implements OnInit {
           for(const type of this.all[i].data){
             this.sortListByAsc.push(type);
             this.arrays.push(type);
+            this.allList.push(type);
           }
       }
     });
   }
 
   getAfterAddress(){
-    this.tempArray = this.sortListByAsc.filter((e:any) => e?.distance <= 2.5);
+    this.tempArray = this.allList.filter((e:any) => e?.distance <= 2.5);
     this.sortListByAsc = [];
+    this.newArray = [];
     this.newArray.push(this.tempArray);
     for(let i=0; i<this.newArray.length; i++) {
       for(const type of this.newArray[i]){
@@ -137,25 +144,35 @@ export class MainComponent implements OnInit {
   }
 
   onChange(event: any) {
-    if(event.target.checked) {
+    if(event.target.checked && this.userAddress == false) {
       this.tempArray = this.arrays.filter((e:any) => e?.source_type.id == event.target.value);
       this.sortListByAsc = [];
       this.newArray.push(this.tempArray);
       for(let i=0; i<this.newArray.length; i++) {
-      for(const type of this.newArray[i]){
-        this.sortListByAsc.push(type);
+        for(const type of this.newArray[i]){
+          this.sortListByAsc.push(type);
+        }
       }
+    }else if(event.target.checked && this.userAddress == true) {
+      this.tempArray = this.arrays.filter((e:any) => e?.source_type.id == event.target.value && e?.distance <= 2.5);
+      this.sortListByAsc = [];
+      this.newArray.push(this.tempArray);
+      for(let i=0; i<this.newArray.length; i++) {
+        for(const type of this.newArray[i]){
+          this.sortListByAsc.push(type);
+        }
       }
-    } else {
+      this.sortByDistance();
+    }else {
       this.tempArray = this.sortListByAsc.filter((e:any) => e?.source_type.id != event.target.value);
       this.sortListByAsc = [];
       this.newArray = [];
       this.newArray.push(this.tempArray);
       for(let i=0; i<this.newArray.length; i++) {
-      for(const type of this.newArray[i]){
-        this.sortListByAsc.push(type);
+        for(const type of this.newArray[i]){
+          this.sortListByAsc.push(type);
+        }
       }
-    }
     }
   }
 
