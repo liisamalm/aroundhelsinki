@@ -18,6 +18,7 @@ import { MapComponent } from './map/map.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { OrderByPipe } from './order-by.pipe';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -34,7 +35,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     MapComponent,
     AboutusComponent,
     ActivityDetailComponent,
-    EventDetailComponent
+    EventDetailComponent,
+    OrderByPipe
     ],
   providers: [
     ApiService

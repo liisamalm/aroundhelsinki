@@ -27,6 +27,7 @@ export class MainComponent implements OnInit {
   tempArray: any = [];
   newArray: any = [];
   sortListByAsc: any = [];
+  order = '';
 
   all: any;
   list: any[];
@@ -87,9 +88,10 @@ export class MainComponent implements OnInit {
     this.sortListByAsc.sort((a: { distance: number; },b: { distance: number; }) => a.distance - b.distance);
 }
 
-  sortByAsc(){
-    this.sortListByAsc.sort((a: { name: any; },b: { name: any; }) => a.name.fi - b.name.fi);
+  sortByAsc() {
+    
   }
+ 
 
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: Places) => {
@@ -119,6 +121,7 @@ export class MainComponent implements OnInit {
           for(const type of this.all[i].data){
             this.sortListByAsc.push(type);
             this.arrays.push(type);
+            
           }
       }
     });
@@ -139,10 +142,10 @@ export class MainComponent implements OnInit {
       this.newArray = [];
       this.newArray.push(this.tempArray);
       for(let i=0; i<this.newArray.length; i++) {
-      for(const type of this.newArray[i]){
-        this.sortListByAsc.push(type);
+        for(const type of this.newArray[i]){
+          this.sortListByAsc.push(type);
+        }
       }
-    }
     }
   }
 
@@ -151,6 +154,7 @@ export class MainComponent implements OnInit {
     this.getPlacesAll();
     this.getEventsAll();
     this.getActivitiesAll();
+   
     this.list = [
       {
         id: 2,
@@ -175,5 +179,6 @@ export class MainComponent implements OnInit {
       },
 
     ]
+    
   }
 }
