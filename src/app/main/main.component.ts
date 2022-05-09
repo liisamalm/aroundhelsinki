@@ -146,6 +146,8 @@ export class MainComponent implements OnInit {
       this.apiService.getPlacesAll().subscribe((res: Places) => {
         for(const type of res.data){
           this.sortListByAsc.push(type);
+          this.arrays.push(type);
+          this.allList.push(type);
         }
       });
     }
@@ -155,6 +157,8 @@ export class MainComponent implements OnInit {
       this.apiService.getEventsAll().subscribe((res: any) => {
         for(const type of res.data){
           this.sortListByAsc.push(type);
+          this.arrays.push(type);
+          this.allList.push(type);
         }
       });
     }
@@ -163,6 +167,8 @@ export class MainComponent implements OnInit {
       this.apiService.getActivitiesAll().subscribe((res: any) => {
         for(const type of res.data){
           this.sortListByAsc.push(type);
+          this.arrays.push(type);
+          this.allList.push(type);
         }
       });
     }
