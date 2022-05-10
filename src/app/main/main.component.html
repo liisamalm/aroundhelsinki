@@ -14,7 +14,7 @@
         top: 285px;
       "
     >
-      <div class="checkbox">
+      <div class="checkbox" *ngIf="showCheckbox">
         <ul>
           <li *ngFor="let item of list" class="form-check form-check-inline">
             <input

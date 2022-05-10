@@ -47,6 +47,7 @@ export class MainComponent implements OnInit {
     x: 24.93545
   };
   showDistance = false;
+  showCheckbox = false;
   userAddress = false;
   type: any = [];
   sortedCollection: any[];
@@ -125,7 +126,9 @@ export class MainComponent implements OnInit {
     this.showPlaces = this.shareService.getData().showPlace;
     this.showEvents = this.shareService.getData().showEvent;
     this.showActivities = this.shareService.getData().showActivity;
+    this.showCheckbox = false;
     if(this.showPlaces == true && this.showEvents == true && this.showActivities == true){
+      this.showCheckbox = true;
       this.sortListByAsc = [];
       this.apiService.getAll().subscribe((res: any) => {
         this.listPlaces = res[0];
