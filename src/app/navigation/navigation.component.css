@@ -2,6 +2,7 @@
   background-color: #c8e3cb;
   color: #680F3D;
   font-weight: bold;
+
 }
 
 .lang{
@@ -30,3 +31,10 @@
     background-color: lightblue;
   }
 } */
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+mat-sidenav {
+  background-color: #c8e3cb;
+}

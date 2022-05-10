@@ -18,6 +18,17 @@ import { MapComponent } from './map/map.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
+
+
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -41,6 +52,14 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatToolbarModule,
+    MatNativeDateModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    FlexLayoutModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
@@ -52,7 +71,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
