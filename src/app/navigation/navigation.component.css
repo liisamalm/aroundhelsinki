@@ -23,3 +23,10 @@
   background-color: #680F3D !important;
   color: #F1F8F2 !important;
 }
+
+
+/* @media only screen and (max-width: 425px) {
+  .navbar {
+    background-color: lightblue;
+  }
+} */
