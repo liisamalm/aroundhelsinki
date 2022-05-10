@@ -56,15 +56,12 @@ const iconActivity = L.icon({
   styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
+  
   static map: L.Map;
-
-
   showPlaces:boolean =false;
-
  showEvents:boolean = false;
-
  showActivities:boolean = false;
-
+  markerCluster = new MarkerClusterGroup();
 
   constructor(
     public apiService: ApiService,
@@ -75,8 +72,8 @@ export class MapComponent implements OnInit {
     private shareService: ShareService,
     public translate: TranslateService,
     private route: ActivatedRoute
-
-  ) {}
+  ) {
+  }
 
 
   mapInit() {
@@ -93,7 +90,7 @@ export class MapComponent implements OnInit {
       'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
       {
         maxZoom: 18,
-        minZoom: 3,
+        minZoom: 5,
         attribution:
           '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
       }
@@ -141,110 +138,68 @@ export class MapComponent implements OnInit {
     return div;
   }
 
-  ngOnInit() {
-    this.mainPageMap();
-    this.makeAllMarkers(MapComponent.map);
+  makePlaceMarkers(map: any){
+    this.apiService.getPlacesAll().subscribe((res: any) => {
+      for (const c of res.data) {
+        const lon = c.location.lon;
+        const lat = c.location.lat;
+        const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
+          this.makeMapPopup(c, "place")
+        );
+        this.markerCluster.addLayer(marker);
+      }
+      map.addLayer(this.markerCluster);
+    });
+  }
 
+  makeEventMarkers(map: any){
+    this.apiService.getEventsAll().subscribe((res: any) => {
+      for (const c of res.data) {
+        const lon = c.location.lon;
+        const lat = c.location.lat;
+        const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
+          this.makeMapPopup(c, "event")
+        );
+        this.markerCluster.addLayer(marker);
+      }
+      map.addLayer(this.markerCluster);
+    });
+  }
+
+  makeActivityMarkers(map: any){
+    this.apiService.getActivitiesAll().subscribe((res: any) => {
+      for (const c of res.data) {
+        const lon = c.location.lon;
+        const lat = c.location.lat;
+        const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
+          this.makeMapPopup(c, "activity")
+        );
+        this.markerCluster.addLayer(marker);
+      }
+      map.addLayer(this.markerCluster);
+    });
   }
 
   makeAllMarkers(map: L.Map){
-    const markerCluster = new MarkerClusterGroup();
     this.showPlaces = this.shareService.getData().showPlace;
     this.showEvents = this.shareService.getData().showEvent;
     this.showActivities = this.shareService.getData().showActivity;
 
-
     if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
-      this.apiService.getPlacesAll().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
-
-          const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-            this.makeMapPopup(c, "place")
-          );
-
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-
-
-
-      });
-    } else if(this.showPlaces == false && this.showEvents == true && this.showActivities == false) {
-      this.apiService.getEventsAll().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
-
-          const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-            this.makeMapPopup(c, "event")
-          );
-
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-
-
-      });
-    } else if (this.showPlaces == false && this.showEvents == false && this.showActivities == true) {
-      this.apiService.getActivitiesAll().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
-
-          const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-            this.makeMapPopup(c, "activity")
-          );
-
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-
-
-      });
-    } else if (this.showPlaces == true && this.showEvents == true && this.showActivities == true) {
-      this.apiService.getPlacesAll().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
-
-          const marker = L.marker([lat, lon], { icon: iconPlace }).bindPopup(
-            this.makeMapPopup(c, "place")
-          );
-
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-      });
-      this.apiService.getActivitiesAll().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
-
-          const marker = L.marker([lat, lon], { icon: iconActivity }).bindPopup(
-            this.makeMapPopup(c, "activity")
-          );
-
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-      });
-      this.apiService.getEventsAll().subscribe((res: any) => {
-        for (const c of res.data) {
-          const lon = c.location.lon;
-          const lat = c.location.lat;
-
-          const marker = L.marker([lat, lon], { icon: iconEvent }).bindPopup(
-            this.makeMapPopup(c, "event")
-          );
-
-          markerCluster.addLayer(marker);
-        }
-        map.addLayer(markerCluster);
-      });
-    } else {
-
+      this.makePlaceMarkers(map);
+    }if(this.showPlaces == false && this.showEvents == true && this.showActivities == false) {
+      this.makeEventMarkers(map);
+    } if (this.showPlaces == false && this.showEvents == false && this.showActivities == true) {
+      this.makeActivityMarkers(map);
+    } if (this.showPlaces == true && this.showEvents == true && this.showActivities == true) {
+      this.makePlaceMarkers(map);
+      this.makeEventMarkers(map);
+      this.makeActivityMarkers(map);
     }
+  }
+
+  ngOnInit() {
+    this.mainPageMap();
+    this.makeAllMarkers(MapComponent.map);
   }
 }

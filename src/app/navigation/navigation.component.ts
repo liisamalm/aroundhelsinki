@@ -48,7 +48,6 @@ export class NavigationComponent implements OnInit {
   }
 
   sendPlace(place:any, event:any, activity:any){
-    // console.log(this.showPlace);
     this.showPlace = true;
     place = this.showPlace;
     this.showEvent = false;

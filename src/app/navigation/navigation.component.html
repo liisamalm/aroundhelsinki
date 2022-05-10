@@ -1,13 +1,13 @@
 <nav class="navbar ">
     <div class="container">
         <div class="col-md-4">
-          <a class="navbar-brand" href="">
+          <a class="navbar-brand" routerLink="" (click)="sendAll(true,true,true)" href="">
               <img src="../../assets/images/logo.png" alt="logo" width="130px">
           </a>
         </div>
         <div class="navbar col-md-6 text-uppercase">
-            <a class="nav-link fs-6" routerLink="" (click)="sendAll(true,true,true)" href="">{{ 'LANG.home' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="all" (click)="sendAll(true,true,true)"  href="">{{ 'LANG.all' | translate }}</a>
+            <a class="nav-link fs-6" routerLink="" (click)="sendAll(true,true,true)" href="">{{ 'LANG.all' | translate }}</a>
+            <!-- <a class="nav-link fs-6" routerLink="all" (click)="sendAll(true,true,true)"  href="">{{ 'LANG.all' | translate }}</a> -->
             <a class="nav-link fs-6" routerLink="places" (click)="sendPlace(true,false,false)"  href="">{{ 'LANG.places' | translate }}</a>
             <a class="nav-link fs-6" routerLink="events" (click)="sendEvent(false,true,false)" href="#">{{ 'LANG.events' | translate }}</a>
             <a class="nav-link fs-6" routerLink="activities" (click)="sendActivity(false,false,true)" href="#">{{ 'LANG.activities' | translate }}</a>

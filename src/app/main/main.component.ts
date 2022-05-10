@@ -106,21 +106,33 @@ export class MainComponent implements OnInit {
 
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: Places) => {
-      this.places.push(res);
+      for(const type of res.data){
+        this.sortListByAsc.push(type);
+        this.arrays.push(type);
+        this.allList.push(type);
+      }
     });
   }
 
   getEventsAll(): void {
-    this.apiService.getEventsAll().subscribe((res: Events) => {
-      this.events.push(res);
-    })
-  }
+    this.apiService.getEventsAll().subscribe((res: any) => {
+      for(const type of res.data){
+        this.sortListByAsc.push(type);
+        this.arrays.push(type);
+        this.allList.push(type);
+      }
+    });
+}
 
   getActivitiesAll(): void {
-    this.apiService.getActivitiesAll().subscribe((res: Activities) => {
-      this.activities.push(res);
-    })
-  }
+    this.apiService.getActivitiesAll().subscribe((res: any) => {
+      for(const type of res.data){
+        this.sortListByAsc.push(type);
+        this.arrays.push(type);
+        this.allList.push(type);
+      }
+    });
+}
 
   getAll() {
     this.showPlaces = this.shareService.getData().showPlace;
@@ -146,34 +158,15 @@ export class MainComponent implements OnInit {
     }
     if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
       this.sortListByAsc = [];
-      this.apiService.getPlacesAll().subscribe((res: Places) => {
-        for(const type of res.data){
-          this.sortListByAsc.push(type);
-          this.arrays.push(type);
-          this.allList.push(type);
-        }
-      });
+      this.getPlacesAll();
     }
     if(this.showPlaces == false && this.showEvents == true && this.showActivities == false){
       this.sortListByAsc = [];
-
-      this.apiService.getEventsAll().subscribe((res: any) => {
-        for(const type of res.data){
-          this.sortListByAsc.push(type);
-          this.arrays.push(type);
-          this.allList.push(type);
-        }
-      });
+      this.getEventsAll();
     }
     if(this.showPlaces == false && this.showEvents == false && this.showActivities == true){
       this.sortListByAsc = [];
-      this.apiService.getActivitiesAll().subscribe((res: any) => {
-        for(const type of res.data){
-          this.sortListByAsc.push(type);
-          this.arrays.push(type);
-          this.allList.push(type);
-        }
-      });
+      this.getActivitiesAll();
     }
   }
 
@@ -224,9 +217,6 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    this.getPlacesAll();
-    this.getEventsAll();
-    this.getActivitiesAll();
     this.list = [
       {
         id: 2,
