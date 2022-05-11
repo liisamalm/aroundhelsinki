@@ -13,7 +13,6 @@ import {
 } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
-import { NavigationComponent } from '../navigation/navigation.component';
 import { ShareService } from '../services/share.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -187,13 +186,13 @@ export class MapComponent implements OnInit {
     this.showEvents = this.shareService.getData().showEvent;
     this.showActivities = this.shareService.getData().showActivity;
 
-    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false){
+    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false || this.route.snapshot.url[0] == null || this.route.snapshot.url[0].path === "/"){
       this.makePlaceMarkers(map);
-    }if(this.showPlaces == false && this.showEvents == true && this.showActivities == false) {
+    }if(this.showPlaces == false && this.showEvents == true && this.showActivities == false || this.route.snapshot.url[0].path === "places") {
       this.makeEventMarkers(map);
-    } if (this.showPlaces == false && this.showEvents == false && this.showActivities == true) {
+    } if (this.showPlaces == false && this.showEvents == false && this.showActivities == true || this.route.snapshot.url[0].path === "events") {
       this.makeActivityMarkers(map);
-    } if (this.showPlaces == true && this.showEvents == true && this.showActivities == true) {
+    } if (this.showPlaces == true && this.showEvents == true && this.showActivities == true || this.route.snapshot.url[0].path === "activities") {
       this.makePlaceMarkers(map);
       this.makeEventMarkers(map);
       this.makeActivityMarkers(map);
