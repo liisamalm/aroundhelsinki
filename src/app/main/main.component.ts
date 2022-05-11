@@ -9,8 +9,7 @@ import 'leaflet.markercluster';
 import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
 import { ShareService } from '../services/share.service';
-import { ActivatedRoute, NavigationEnd } from '@angular/router';
-import { isNull } from '@angular/compiler/src/output/output_ast';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -62,11 +61,6 @@ export class MainComponent implements OnInit {
     ) {
     }
 
-  getCurrentRoute(){
-    // return this.route.events.filter(e => e instanceof NavigationEnd).subscribe(e => {
-    //   this.currentRoute = e.url;
-    // })
-  }
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
@@ -113,7 +107,7 @@ export class MainComponent implements OnInit {
   }
 
   getPlacesAll(): void {
-    this.apiService.getPlacesAll().subscribe((res: Places) => {
+    this.apiService.getPlacesAll().subscribe((res: any) => {
       for(const type of res.data){
         this.sortListByAsc.push(type);
         this.arrays.push(type);
@@ -183,8 +177,12 @@ export class MainComponent implements OnInit {
     this.sortListByAsc = [];
     this.newArray = [];
     this.newArray.push(this.tempArray);
-    for(let i=0; i<this.newArray.length; i++) {
-      for(const type of this.newArray[i]){
+    this.pushToList(this.newArray);
+  }
+
+  pushToList(list: any){
+    for(let i=0; i<list.length; i++) {
+      for(const type of list[i]){
         this.sortListByAsc.push(type);
       }
     }
@@ -195,39 +193,24 @@ export class MainComponent implements OnInit {
       this.tempArray = this.arrays.filter((e:any) => e?.source_type.id == event.target.value);
       this.sortListByAsc = [];
       this.newArray.push(this.tempArray);
-      for(let i=0; i<this.newArray.length; i++) {
-        for(const type of this.newArray[i]){
-          this.sortListByAsc.push(type);
-        }
-      }
+      this.pushToList(this.newArray);
     }else if(event.target.checked && this.userAddress == true) {
       this.tempArray = this.arrays.filter((e:any) => e?.source_type.id == event.target.value && e?.distance <= 2.5);
       this.sortListByAsc = [];
       this.newArray.push(this.tempArray);
-      for(let i=0; i<this.newArray.length; i++) {
-        for(const type of this.newArray[i]){
-          this.sortListByAsc.push(type);
-        }
-      }
+      this.pushToList(this.newArray);
       this.sortByDistance();
     }else {
       this.tempArray = this.sortListByAsc.filter((e:any) => e?.source_type.id != event.target.value);
       this.sortListByAsc = [];
       this.newArray = [];
       this.newArray.push(this.tempArray);
-      for(let i=0; i<this.newArray.length; i++) {
-        for(const type of this.newArray[i]){
-          this.sortListByAsc.push(type);
-        }
-      }
+      this.pushToList(this.newArray);
     }
   }
 
   ngOnInit(): void {
     this.getAll();
-    console.log("route " + this.route);
-    console.log("route.url " +this.route.url);
-    console.log("this.route.snapshot.url[0].path " +this.route.snapshot.url[0]?.path);
     this.list = [
       {
         id: 2,
@@ -250,7 +233,6 @@ export class MainComponent implements OnInit {
         titleFi: 'Aktiviteetit',
         checked: true,
       },
-
     ]
   }
 }
