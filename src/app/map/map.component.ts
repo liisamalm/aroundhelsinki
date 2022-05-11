@@ -186,13 +186,13 @@ export class MapComponent implements OnInit {
     this.showEvents = this.shareService.getData().showEvent;
     this.showActivities = this.shareService.getData().showActivity;
 
-    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false || this.route.snapshot.url[0] == null || this.route.snapshot.url[0].path === "/"){
+    if(this.showPlaces == false && this.showEvents == true && this.showActivities == false || this.route.snapshot.url[0]?.path === "places"){
       this.makePlaceMarkers(map);
-    }if(this.showPlaces == false && this.showEvents == true && this.showActivities == false || this.route.snapshot.url[0].path === "places") {
+    }if(this.showPlaces == false && this.showEvents == true && this.showActivities == false || this.route.snapshot.url[0]?.path === "events") {
       this.makeEventMarkers(map);
-    } if (this.showPlaces == false && this.showEvents == false && this.showActivities == true || this.route.snapshot.url[0].path === "events") {
+    } if (this.showPlaces == false && this.showEvents == false && this.showActivities == true || this.route.snapshot.url[0]?.path === "activities") {
       this.makeActivityMarkers(map);
-    } if (this.showPlaces == true && this.showEvents == true && this.showActivities == true || this.route.snapshot.url[0].path === "activities") {
+    } if (this.showPlaces == true && this.showEvents == true && this.showActivities == true || this.route.snapshot.url[0]?.path === "home" ) {
       this.makePlaceMarkers(map);
       this.makeEventMarkers(map);
       this.makeActivityMarkers(map);
@@ -202,6 +202,5 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.mainPageMap();
     this.makeAllMarkers(MapComponent.map);
-    MapComponent.router = this.route.snapshot.url;
   }
 }

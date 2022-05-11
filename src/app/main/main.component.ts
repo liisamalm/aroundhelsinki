@@ -10,6 +10,7 @@ import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
 import { ShareService } from '../services/share.service';
 import { ActivatedRoute, NavigationEnd } from '@angular/router';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-main',
@@ -146,7 +147,7 @@ export class MainComponent implements OnInit {
     this.showEvents = this.shareService.getData().showEvent;
     this.showActivities = this.shareService.getData().showActivity;
     this.showCheckbox = false;
-    if(this.showPlaces == true && this.showEvents == true && this.showActivities == true || this.route.snapshot.url[0] == null){
+    if(this.showPlaces == true && this.showEvents == true && this.showActivities == true || this.route.snapshot.url[0]?.path === "home" ){
       this.showCheckbox = true;
       this.sortListByAsc = [];
       this.apiService.getAll().subscribe((res: any) => {
@@ -163,15 +164,15 @@ export class MainComponent implements OnInit {
         }
       });
     }
-    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false || this.route.snapshot.url[0].path === "places"){
+    if(this.showPlaces == true && this.showEvents == false && this.showActivities == false || this.route.snapshot.url[0]?.path === "places"){
       this.sortListByAsc = [];
       this.getPlacesAll();
     }
-    if(this.showPlaces == false && this.showEvents == true && this.showActivities == false || this.route.snapshot.url[0].path === "events"){
+    if(this.showPlaces == false && this.showEvents == true && this.showActivities == false || this.route.snapshot.url[0]?.path === "events"){
       this.sortListByAsc = [];
       this.getEventsAll();
     }
-    if(this.showPlaces == false && this.showEvents == false && this.showActivities == true || this.route.snapshot.url[0].path === "activities"){
+    if(this.showPlaces == false && this.showEvents == false && this.showActivities == true || this.route.snapshot.url[0]?.path === "activities"){
       this.sortListByAsc = [];
       this.getActivitiesAll();
     }
@@ -224,7 +225,9 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    console.log(this.route.snapshot.url[0].path);
+    console.log("route " + this.route);
+    console.log("route.url " +this.route.url);
+    console.log("this.route.snapshot.url[0].path " +this.route.snapshot.url[0]?.path);
     this.list = [
       {
         id: 2,
