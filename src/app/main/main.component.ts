@@ -30,9 +30,9 @@ export class MainComponent implements OnInit {
   sortListByAsc: any = [];
   allList: any = [];
 
-  showPlaces:boolean =false;
-  showEvents:boolean = false;
-  showActivities:boolean = false;
+  showPlaces:boolean = true;
+  showEvents:boolean = true;
+  showActivities:boolean = true;
  
 
   all: any;

@@ -9,7 +9,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 
 const routes: Routes = [
   { path: '', component: MainComponent },
-  // { path: 'all', component: MainComponent },
+  { path: 'all', component: MainComponent },
   { path: 'places', component: MainComponent },
   { path: 'events', component: MainComponent },
   { path: 'event/:id', component: EventDetailComponent },
@@ -19,18 +19,17 @@ const routes: Routes = [
   { path: 'places/place/:id', component: PlaceDetailComponent },
   { path: 'events/place/:id', component: PlaceDetailComponent },
   { path: 'activities/place/:id', component: PlaceDetailComponent },
-  // { path: 'all/place/:id', component: PlaceDetailComponent },
+  { path: 'all/place/:id', component: PlaceDetailComponent },
   { path: 'places/event/:id', component: EventDetailComponent  },
   { path: 'events/event/:id', component: EventDetailComponent  },
   { path: 'activities/event/:id', component: EventDetailComponent  },
-  // { path: 'all/event/:id', component: EventDetailComponent  },
+  { path: 'all/event/:id', component: EventDetailComponent  },
   { path: 'places/activity/:id', component: ActivityDetailComponent },
   { path: 'events/activity/:id', component: ActivityDetailComponent },
   { path: 'activities/activity/:id', component: ActivityDetailComponent },
-  // { path: 'all/activity/:id', component: ActivityDetailComponent },
+  { path: 'all/activity/:id', component: ActivityDetailComponent },
   { path: 'aboutus', component: AboutusComponent},
   { path: '', redirectTo: '/', pathMatch: 'full' },
-
 ];
 
 @NgModule({

@@ -58,9 +58,11 @@ const iconActivity = L.icon({
 export class MapComponent implements OnInit {
   
   static map: L.Map;
-  showPlaces:boolean =false;
- showEvents:boolean = false;
- showActivities:boolean = false;
+  static router: any;
+  route2: any;
+  showPlaces:boolean = true;
+  showEvents:boolean = true;
+  showActivities:boolean = true;
   markerCluster = new MarkerClusterGroup();
 
   constructor(
@@ -201,5 +203,6 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.mainPageMap();
     this.makeAllMarkers(MapComponent.map);
+    MapComponent.router = this.route.snapshot.url;
   }
 }
