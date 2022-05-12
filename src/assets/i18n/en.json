@@ -61,7 +61,7 @@
             "feature3": "The user can see a weather forecast for the next 3 hours",
             "feature4": "The user can also view activities and events",
             "feature5": "The user can filter places / activities / events",
-            "api": "The data used in the Web application will be accessed through the MyHelsinki Open API https://open-api.myhelsinki.fi",
+            "api": "The data used in the Web application will be accessed through the MyHelsinki Open API",
             "purpose": "In addition to coding, the purpose of the project was to practice the use of Scrum, Git and Microsoft Azure CI/CD pipelines or something similar",
             "duration": "The whole project duration was eight weeks that had been divided into four two-week sprints",
             "assignment": "The project was a school assignment in Business College Helsinki"
