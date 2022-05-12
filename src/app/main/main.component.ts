@@ -35,7 +35,7 @@ export class MainComponent implements OnInit {
   showPlaces:boolean = true;
   showEvents:boolean = true;
   showActivities:boolean = true;
- 
+
 
   all: any;
   list: any[];
@@ -225,9 +225,7 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-    console.log("route " + this.route);
-    console.log("route.url " +this.route.url);
-    console.log("this.route.snapshot.url[0].path " +this.route.snapshot.url[0]?.path);
+
     this.list = [
       {
         id: 2,

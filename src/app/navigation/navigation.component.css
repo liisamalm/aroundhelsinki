@@ -23,3 +23,44 @@
   background-color: #680F3D !important;
   color: #F1F8F2 !important;
 }
+
+
+div#navi[data-active="false"] fa-icon.faTimes {
+  display: none;
+}
+
+/* If Menu not opend */
+
+div#navi[data-active="false"] div[role="list-menu"] {
+  display: none;
+}
+
+/* IF menu is active */
+
+div#navi[data-active="true"] {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  /* background-color: var(--bg-color); */
+  z-index: 1000000;
+}
+
+/* div#navi[data-active="true"] div img {
+  margin-left: 0;
+} */
+
+nav#navi[data-active="true"] fa-icon.faTimes {
+  display: block;
+}
+
+nav#navi[data-active="true"] fa-icon.faBars {
+  display: none;
+}
+
+div#navi div[role="list-menu"] a {
+  font-size: 26px;
+  padding: 10px 0;
+}

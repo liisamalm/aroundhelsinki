@@ -5,12 +5,22 @@
               <img src="../../assets/images/logo.png" alt="logo" width="130px">
           </a>
         </div>
-        <div class="navbar col-md-6 text-uppercase">
-            <a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a>
+
+
+        <div id="navi" data-active="false" class="navbar col-md-6 text-uppercase">
+          <div>
+            <fa-icon class="faBars"  [icon]="faBars"></fa-icon>
+            <fa-icon class="faTimes" [icon]="faTimes"></fa-icon>
+          </div>
+          <div role="list-menu">
+              <a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a>
+              <a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
+              <a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a>
+              <a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a>
+          </div>
         </div>
+
+
 
         <div class="col-md-1" style="text-align: center;">
           <label>
