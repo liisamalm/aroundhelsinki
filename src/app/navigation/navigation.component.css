@@ -81,7 +81,7 @@ nav .inside-menu{
     flex-direction: row;
     flex-wrap: nowrap;
     align-content: stretch;
-    justify-content: space-evenly;
+    justify-content: space-around;
     align-items: center;
     margin-right: 20px;
 }
