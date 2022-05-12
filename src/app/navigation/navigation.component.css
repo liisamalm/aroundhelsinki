@@ -76,9 +76,29 @@ nav .inside-menu{
   color: #F1F8F2;
 }
 
+.right-side {
+  display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 20px;
+}
+
 
 
 @media all and (max-width: 426px){
+
+  .right-side {
+    display: flex;
+    margin-right: 20px;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    margin-bottom: 15px;
+  }
   nav .burger-menu{
       flex-direction: column;
       justify-content: center;
@@ -140,4 +160,5 @@ nav .inside-menu{
       font-size: 1.4rem;
       width: 100%;
   }
+
 }
