@@ -45,16 +45,16 @@
             "saturday": "La",
             "sunday": "Su"
         },
-        "eventdates" : "Tapahtumapäivät",
-        "startingday" : "Aloituspäivä",
-        "endingday" : "Lopetuspäivä",
+        "eventdates": "Tapahtumapäivät",
+        "startingday": "Aloituspäivä",
+        "endingday": "Lopetuspäivä",
         "more": "Lisää",
         "moreinfo": "Lisätietoja",
         "description": "Kuvaus",
         "student": "Oppilas",
         "people": "Ihmiset",
         "text": {
-            "description": "Tehtävänämme oli luoda Web sovellus joka käyttää käyttäjän sijaintia ja näyttää listan lähellä sijaitsevista kiinnostavista paikoista. Käyttöliittymän pitäisi näyttää hyvältä ja olla intuitiivinen (UX)",        
+            "description": "Tehtävänämme oli luoda Web sovellus joka käyttää käyttäjän sijaintia ja näyttää listan lähellä sijaitsevista kiinnostavista paikoista. Käyttöliittymän pitäisi näyttää hyvältä ja olla intuitiivinen (UX)",
             "additional": "Lisäominaisuudet",
             "feature1": "Käyttäjä näkee lisätietoja kiinnostavista paikoista kun paikan valitsee",
             "feature2": "Käyttäjä näkee kiinnostavien paikkonen sijainnit kartalla",
@@ -67,5 +67,5 @@
             "assignment": "Projekti tehtiin harjoitustyönä Business College Helsingissä"
         },
         "additionalDescription": "Lisäkuvaus"
-        }
+    }
 }

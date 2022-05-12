@@ -6,15 +6,12 @@ import { ShareService } from '../services/share.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.css']
+  styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
-
   location = { cityId: 658225, unit: 'metric' };
   weather: any;
   iconLink: string = 'http://openweathermap.org/img/w/';
-
-
 
   showPlace = false;
 
@@ -22,24 +19,23 @@ export class NavigationComponent implements OnInit {
 
   showActivity = false;
 
-
-  constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService) { }
+  constructor(
+    public translate: TranslateService,
+    public weatherService: WeatherService,
+    private shareService: ShareService
+  ) {}
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit);
   }
 
   getWeather(cityId: any, unit: string) {
-    this.weatherService
-      .getWeather(cityId, unit)
-      .subscribe(res => {
-        this.weather = res;
-      });
+    this.weatherService.getWeather(cityId, unit).subscribe((res) => {
+      this.weather = res;
+    });
   }
 
   getIcon(icon: string) {
-
-
     return `${this.iconLink}${icon}.png`;
   }
 
@@ -47,50 +43,64 @@ export class NavigationComponent implements OnInit {
     this.showPlace = true;
     this.showEvent = false;
     this.showActivity = false;
-    this.shareService.setData(this.showPlace, this.showEvent, this.showActivity);
+    this.shareService.setData(
+      this.showPlace,
+      this.showEvent,
+      this.showActivity
+    );
 
     return {
-      'showPlace': this.showPlace,
-      'showEvent': this.showEvent,
-      'showActivity': this.showActivity
+      showPlace: this.showPlace,
+      showEvent: this.showEvent,
+      showActivity: this.showActivity,
     };
   }
   sendAll() {
     this.showPlace = true;
     this.showEvent = true;
     this.showActivity = true;
-    this.shareService.setData(this.showPlace, this.showEvent, this.showActivity);
+    this.shareService.setData(
+      this.showPlace,
+      this.showEvent,
+      this.showActivity
+    );
 
     return {
-      'showPlace': this.showPlace,
-      'showEvent': this.showEvent,
-      'showActivity': this.showActivity
+      showPlace: this.showPlace,
+      showEvent: this.showEvent,
+      showActivity: this.showActivity,
     };
   }
   sendEvent() {
     this.showPlace = false;
     this.showEvent = true;
     this.showActivity = false;
-    this.shareService.setData(this.showPlace, this.showEvent, this.showActivity);
+    this.shareService.setData(
+      this.showPlace,
+      this.showEvent,
+      this.showActivity
+    );
 
     return {
-      'showPlace': this.showPlace,
-      'showEvent': this.showEvent,
-      'showActivity': this.showActivity
+      showPlace: this.showPlace,
+      showEvent: this.showEvent,
+      showActivity: this.showActivity,
     };
   }
   sendActivity() {
     this.showPlace = false;
     this.showEvent = false;
     this.showActivity = true;
-    this.shareService.setData(this.showPlace, this.showEvent, this.showActivity);
+    this.shareService.setData(
+      this.showPlace,
+      this.showEvent,
+      this.showActivity
+    );
 
     return {
-      'showPlace': this.showPlace,
-      'showEvent': this.showEvent,
-      'showActivity': this.showActivity
+      showPlace: this.showPlace,
+      showEvent: this.showEvent,
+      showActivity: this.showActivity,
     };
   }
-
-
 }

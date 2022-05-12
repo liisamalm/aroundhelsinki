@@ -1,9 +1,10 @@
 .container {
   background-color: #c8e3cb;
-  color: #680F3D;
+  color: #680f3d;
   font-weight: bold;
 }
 
-.nav-link, .copyright {
-  color: #680F3D !important;
+.nav-link,
+.copyright {
+  color: #680f3d !important;
 }

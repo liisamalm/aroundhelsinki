@@ -1,25 +1,25 @@
-.navbar{
+.navbar {
   background-color: #c8e3cb;
-  color: #680F3D;
+  color: #680f3d;
   font-weight: bold;
 }
 
-.lang{
-  background-color: #680F3D;
-  color: #F1F8F2;
+.lang {
+  background-color: #680f3d;
+  color: #f1f8f2;
 }
 
-.nav-link{
-  color: #680F3D !important;
+.nav-link {
+  color: #680f3d !important;
   font-weight: bold;
 }
 
 .dropdown-toggle {
-  background-color: #680F3D !important;
-  color: #F1F8F2 !important;
+  background-color: #680f3d !important;
+  color: #f1f8f2 !important;
 }
 
 .dropdown-item {
-  background-color: #680F3D !important;
-  color: #F1F8F2 !important;
+  background-color: #680f3d !important;
+  color: #f1f8f2 !important;
 }
