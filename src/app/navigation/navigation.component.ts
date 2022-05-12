@@ -39,6 +39,7 @@ export class NavigationComponent implements OnInit {
     this.hamMenu();
   }
   hamMenu(){
+    console.log(this.openMenuIcon);
     this.openMenuIcon?.addEventListener("click", () => {
       this.burgerMenu?.classList.toggle('active');
   });
