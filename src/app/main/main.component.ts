@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LeafletEvent } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -58,6 +58,22 @@ export class MainComponent implements OnInit {
   typeName: any = [];
   currentRoute: any;
 
+  isShow: boolean;
+  topPosToStartShowing = 100;
+
+  @HostListener('window:scroll')
+  checkScroll(){
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+    console.log('[scroll]', scrollPosition);
+    
+    if (scrollPosition >= this.topPosToStartShowing) {
+      this.isShow = true;
+    } else {
+      this.isShow = false;
+    }
+  
+  }
   constructor(
     private apiService: ApiService,
     public translate: TranslateService,
@@ -74,6 +90,8 @@ export class MainComponent implements OnInit {
       this.sortByDistance();
       this.userAddress = true;
       this.showDistance = true;
+     /*  this.isShow = false;
+      this.gotoTop(); */
     });
   }
 
@@ -142,6 +160,16 @@ export class MainComponent implements OnInit {
         this.allList.push(type);
       }
     });
+  }
+
+  gotoTop() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  
+    console.log("skrollaa ylös kun tämä tapahtuu");
   }
 
   getAll() {

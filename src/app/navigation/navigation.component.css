@@ -1,4 +1,5 @@
 .navbar {
+  
   background-color: #c8e3cb;
   color: #680f3d;
   font-weight: bold;
@@ -20,7 +21,7 @@
 }
 
 .dropdown-item {
-  background-color: #680f3d !important;
+  background-color: white !important;
   color: #f1f8f2 !important;
 }
 
