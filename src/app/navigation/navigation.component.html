@@ -1,28 +1,34 @@
-<nav class="navbar ">
-    <div class="container">
-        <div class="col-md-4">
-          <a class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
-              <img src="../../assets/images/logo.png" alt="logo" width="130px">
-          </a>
-        </div>
-        <div class="navbar col-md-6 text-uppercase">
-            <a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a>
-            <a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a>
-        </div>
+<nav>
+  <div class="logo col-md-6">
+    <a class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
+      <img src="../../assets/images/logo.png" alt="logo" width="130px">
+  </a>
+          <!-- <fa-icon class="faBars"  [icon]="faBars"></fa-icon>
+          <fa-icon class="faTimes" [icon]="faTimes"></fa-icon> -->
+  </div>
+  <div class="open-menu"><i class="fas fa-bars"></i></div>
 
-        <div class="col-md-1" style="text-align: center;">
-          <label>
-            <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
-              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
-            </select>
-          </label>
-        </div>
+  <div class="navbar col-md-4 text-uppercase">
+    <ul class="burger-menu">
+        <li class="acasa"><a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a></li>
+        <li class="despre"><a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
+        </li>
+        <li class="galerie"><a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a></li>
+        <li class="servicii"><a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a></li>
+    </ul>
+  </div>
 
-        <div class="col-md-1 p-2" style="text-align: center;" >
-          <img [src]="getIcon(weather?.weather[0].icon)" alt="">
-          {{ weather?.main.temp.toFixed(0) }}°C
-        </div>
-    </div>
+  <div class="col-md-1" style="text-align: center;">
+    <label>
+      <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="col-md-1 p-2" style="text-align: center;" >
+    <img [src]="getIcon(weather?.weather[0].icon)" alt="">
+    {{ weather?.main.temp.toFixed(0) }}°C
+  </div>
+
 </nav>

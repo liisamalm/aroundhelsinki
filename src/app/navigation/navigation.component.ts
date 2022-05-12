@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 import { ShareService } from '../services/share.service';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-navigation',
@@ -14,20 +17,38 @@ export class NavigationComponent implements OnInit {
   weather: any;
   iconLink: string = 'http://openweathermap.org/img/w/';
 
-
+  faBars = faBars;
+  faTimes = faTimes;
 
   showPlace = false;
 
   showEvent = false;
 
   showActivity = false;
+  openMenuIcon = document.querySelector(".open-menu");
+  burgerMenu = document.querySelector(".burger-menu")
+  closeMenuIcon = document.querySelector(".close-menu");
+
+
 
 
   constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService) { }
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit);
+    this.hamMenu();
   }
+  hamMenu(){
+    this.openMenuIcon?.addEventListener("click", () => {
+      this.burgerMenu?.classList.toggle('active');
+  });
+
+  this.closeMenuIcon?.addEventListener("click", () => {
+      this.burgerMenu?.classList.toggle('active');
+  });
+  }
+
+
 
   getWeather(cityId: any, unit: string) {
     this.weatherService
