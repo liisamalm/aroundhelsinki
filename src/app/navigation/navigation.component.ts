@@ -25,9 +25,7 @@ export class NavigationComponent implements OnInit {
   showEvent = false;
 
   showActivity = false;
-  openMenuIcon = document.querySelector(".open-menu");
-  burgerMenu = document.querySelector(".burger-menu")
-  closeMenuIcon = document.querySelector(".close-menu");
+
 
 
 
@@ -39,13 +37,21 @@ export class NavigationComponent implements OnInit {
     this.hamMenu();
   }
   hamMenu(){
-    console.log(this.openMenuIcon);
-    this.openMenuIcon?.addEventListener("click", () => {
-      this.burgerMenu?.classList.toggle('active');
+    const openMenuIcon = document.querySelector(".open-menu");
+    const burgerMenu = document.querySelector(".burger-menu")
+    const closeMenuIcon = document.querySelector(".close-menu");
+    console.log(openMenuIcon);
+    console.log(burgerMenu);
+    console.log(burgerMenu?.childNodes[0]);
+    console.log(closeMenuIcon);
+    openMenuIcon?.addEventListener("click", () => {
+
+      burgerMenu?.classList.toggle('active');
+      console.log('button clicked');
   });
 
-  this.closeMenuIcon?.addEventListener("click", () => {
-      this.burgerMenu?.classList.toggle('active');
+  closeMenuIcon?.addEventListener("click", () => {
+      burgerMenu?.classList.toggle('active');
   });
   }
 

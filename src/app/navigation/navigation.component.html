@@ -6,16 +6,17 @@
 
 
   </div>
-  <div class="open-menu"><fa-icon class="faBars"  [icon]="faBars"></fa-icon></div>
+  <div id="open-menu" class="open-menu"><fa-icon class="faBars"  [icon]="faBars"></fa-icon></div>
 
   <div class="navbar col-md-5 text-uppercase">
     <ul class="burger-menu">
-        <li class="acasa"><a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a></li>
-        <li class="despre"><a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
+        <li class="home"><a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a></li>
+        <li class="places"><a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>
         </li>
-        <li class="galerie"><a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a></li>
-        <li class="servicii"><a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a></li>
+        <li class="events"><a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' | translate }}</a></li>
+        <li class="activities"><a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{ 'LANG.activities' | translate }}</a></li>
     </ul>
+
   </div>
 
   <div class="right-side" style="text-align: center;">
@@ -31,5 +32,5 @@
       {{ weather?.main.temp.toFixed(0) }}°C
     </div>
   </div>
-
+  <div class="close-menu"><fa-icon class="faTimes"  [icon]="faTimes"></fa-icon></div>
 </nav>
