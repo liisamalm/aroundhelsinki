@@ -1,4 +1,4 @@
-.container {
+footer {
   background-color: #c8e3cb;
   color: #680F3D;
   font-weight: bold;
@@ -6,4 +6,21 @@
 
 .nav-link, .copyright {
   color: #680F3D !important;
+}
+
+
+@media all and (max-width: 426px) {
+  footer {
+
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    flex-direction: column-reverse;
+    align-content: center;
+
+  }
+
+  footer img {
+    display: none;
+  }
 }
