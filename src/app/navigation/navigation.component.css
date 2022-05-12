@@ -36,7 +36,6 @@ nav a:before {
 nav a:hover {
   color:white !important;
   font-weight: bold !important;
- /*  background-color: #dff9e2; */
 }
 
 nav.stroke a,
@@ -53,12 +52,12 @@ nav.fill a:after {
   width: 0%;
   content: '.';
   color: transparent;
-  background:  #950555;
+  background:  white;
   height: 1px;
 }
 nav.stroke a:hover:after {
   width: 100%;
 }
 a:active {
-  color: #680F3D !important;
+  border: 2px inset white;
 }
