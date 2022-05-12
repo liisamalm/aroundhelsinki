@@ -1,10 +1,11 @@
-<nav class="navbar ">
+<nav class="navbar stroke">
     <div class="container">
         <div class="col-md-4">
-          <a class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
+          <div class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
               <img src="../../assets/images/logo.png" alt="logo" width="130px">
-          </a>
+          </div>
         </div>
+
         <div class="navbar col-md-6 text-uppercase">
             <a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate }}</a>
             <a class="nav-link fs-6" routerLink="places" (click)="sendPlace()"  href="">{{ 'LANG.places' | translate }}</a>

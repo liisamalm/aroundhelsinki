@@ -23,3 +23,42 @@
   background-color: #680F3D !important;
   color: #F1F8F2 !important;
 }
+
+.navbar-brand {
+  cursor: pointer;
+}
+
+stroke a,
+nav a:after,
+nav a:before {
+  transition: all .2s;
+}
+nav a:hover {
+  color:white !important;
+  font-weight: bold !important;
+ /*  background-color: #dff9e2; */
+}
+
+nav.stroke a,
+nav.fill a {
+  position: relative;
+}
+nav.stroke a:after,
+nav.fill a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background:  #950555;
+  height: 1px;
+}
+nav.stroke a:hover:after {
+  width: 100%;
+}
+a:active {
+  color: #680F3D !important;
+}
