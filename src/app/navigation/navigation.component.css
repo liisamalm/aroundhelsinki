@@ -20,6 +20,7 @@ nav{
   color: #680F3D;
 }
 
+
 nav .logo{
   display: flex;
   align-items: center;
@@ -75,6 +76,8 @@ nav .inside-menu{
   color: #F1F8F2;
 }
 
+
+
 @media all and (max-width: 426px){
   nav .burger-menu{
       flex-direction: column;
@@ -88,7 +91,7 @@ nav .inside-menu{
       left: 0;
       z-index: 10;
       font-size: 1.5rem;
-      background-color: rgb(44, 41, 41);
+      background-color: #680F3D;
       transition: top 1s ease;
       display: none;
       letter-spacing: 1px;
@@ -138,81 +141,3 @@ nav .inside-menu{
       width: 100%;
   }
 }
-
-
-/*
-.navbar{
-  background-color: #c8e3cb;
-  color: #680F3D;
-  font-weight: bold;
-}
-
-.lang{
-  background-color: #680F3D;
-  color: #F1F8F2;
-}
-
-.nav-link{
-  color: #680F3D !important;
-  font-weight: bold;
-}
-
-.dropdown-toggle {
-  background-color: #680F3D !important;
-  color: #F1F8F2 !important;
-}
-
-.dropdown-item {
-  background-color: #680F3D !important;
-  color: #F1F8F2 !important;
-}
-
-nav > div {
-  display: flex;
-  padding: 10px 30px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-nav#navi[data-active="false"] div img {
-  margin-left: 45%;
-}
-
-nav#navi[data-active="false"] fa-icon.faTimes {
-  display: none;
-} */
-
-/* If Menu not opend */
-/*
-nav#navi[data-active="false"] div[role="list-menu"] {
-  display: none;
-} */
-
-/* IF menu is active */
-/*
-nav#navi[data-active="true"] {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #c8e3cb;
-  z-index: 1000000;
-}
-nav#navi[data-active="true"] div img {
-  margin-left: 0;
-}
-
-nav#navi[data-active="true"] fa-icon.faTimes {
-  display: block;
-}
-
-nav#navi[data-active="true"] fa-icon.faBars {
-  display: none;
-}
-
-nav#navi div[role="list-menu"] a {
-  font-size: 26px;
-  padding: 10px 0;
-} */
