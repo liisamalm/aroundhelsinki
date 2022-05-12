@@ -1,9 +1,9 @@
 .map-frame {
-    border: 2px solid #680F3D;
-    height: 100%;
-    width: 100%;
-  }
-  #map {
-    height: 100%;
-    position: sticky !important;
-  }
+  border: 2px solid #680f3d;
+  height: 100%;
+  width: 100%;
+}
+#map {
+  height: 100%;
+  position: sticky !important;
+}
