@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { LeafletEvent } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,7 +7,7 @@ import {
   faLocationCrosshairs,
   faPersonWalking,
   faCalendarCheck,
-  faClone,
+  faAnglesUp
 } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
@@ -18,6 +18,9 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
+  queries: {
+		"tabsContentRef": new ViewChild( "tabsContentRef" )
+	},
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
@@ -46,6 +49,7 @@ export class MainComponent implements OnInit {
   faLocationCrosshairs = faLocationCrosshairs; // place
   faPersonWalking = faPersonWalking; // activity
   faCalendarCheck = faCalendarCheck; // event
+  faAnglesUp = faAnglesUp;
   referenceLocation: any = {
     y: 60.16952,
     x: 24.93545,
@@ -58,11 +62,13 @@ export class MainComponent implements OnInit {
   typeName: any = [];
   currentRoute: any;
 
+  public tabsContentRef!: ElementRef;
+
   constructor(
     private apiService: ApiService,
     public translate: TranslateService,
     private shareService: ShareService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   saveReferenceLocation(): void {
@@ -74,6 +80,7 @@ export class MainComponent implements OnInit {
       this.sortByDistance();
       this.userAddress = true;
       this.showDistance = true;
+      this.scrollToTop();
     });
   }
 
@@ -142,6 +149,10 @@ export class MainComponent implements OnInit {
         this.allList.push(type);
       }
     });
+  }
+
+  scrollToTop() {
+    this.tabsContentRef.nativeElement.scrollTo( 0, 0 );
   }
 
   getAll() {

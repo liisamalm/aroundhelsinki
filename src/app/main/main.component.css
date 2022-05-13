@@ -21,3 +21,14 @@
 fa-icon {
   padding-right: 5px;
 }
+
+button {
+  background-color: #C8E3CB;
+  color: #680f3d;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  border-color: #680f3d;
+  position: relative;
+  padding-right: 1px; 
+}
