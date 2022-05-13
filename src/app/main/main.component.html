@@ -1,7 +1,8 @@
 <div class="d-flex w-100 justify-content-between">
   <div class="map-container">
     <app-map></app-map>
-    <div class="listOfPlaces mb-1 list-group overflow-auto" style="
+
+    <div #tabsContentRef class="listOfPlaces mb-1 list-group overflow-auto" style="
         height: 300px;
         width: 400px;
         border: 2px solid #680f3d;
@@ -52,11 +53,9 @@
               }}</a>
           </small>
         </div>
-        
+        <button (click)="scrollToTop()" class="scroll-to-top"><fa-icon [icon]="faAnglesUp"></fa-icon></button>
       </div>
-      <button [ngClass]="{'show-scroll': showScroll}" (click)="scrollToTop()" class="scroll-to-top">
-        Scroll To Top
-    </button>
+     
     </div>
   </div>
 </div>

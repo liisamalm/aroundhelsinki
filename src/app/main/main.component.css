@@ -21,3 +21,22 @@
 fa-icon {
   padding-right: 5px;
 }
+
+button {
+  
+ align-content: center;
+  background-color: #C8E3CB;
+  color: #680f3d;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  border-color: #680f3d;
+}
+
+.scroll-to-top {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  opacity: 1;
+  transition: all .2s ease-in-out;
+}

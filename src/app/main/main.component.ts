@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { LeafletEvent } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import {
   faPersonWalking,
   faCalendarCheck,
   faClone,
+  faAnglesUp
 } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
@@ -18,6 +19,9 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-main',
+  queries: {
+		"tabsContentRef": new ViewChild( "tabsContentRef" )
+	},
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
@@ -46,6 +50,7 @@ export class MainComponent implements OnInit {
   faLocationCrosshairs = faLocationCrosshairs; // place
   faPersonWalking = faPersonWalking; // activity
   faCalendarCheck = faCalendarCheck; // event
+  faAnglesUp = faAnglesUp;
   referenceLocation: any = {
     y: 60.16952,
     x: 24.93545,
@@ -58,9 +63,7 @@ export class MainComponent implements OnInit {
   typeName: any = [];
   currentRoute: any;
 
-  showScroll: boolean;
-    showScrollHeight = 300;
-    hideScrollHeight = 10;
+  public tabsContentRef!: ElementRef;
 
   constructor(
     private apiService: ApiService,
@@ -69,18 +72,7 @@ export class MainComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() 
-  {
-    if (( window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) > this.showScrollHeight) 
-    {
-        this.showScroll = true;
-    } 
-    else if ( this.showScroll && (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) < this.hideScrollHeight) 
-    { 
-      this.showScroll = false; 
-    }
-  }
+ 
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
@@ -163,14 +155,7 @@ export class MainComponent implements OnInit {
   }
 
   scrollToTop() {
-      (function smoothscroll() 
-      { var currentScroll = document.documentElement.scrollTop || document.body.scrollTop; 
-        if (currentScroll > 0) 
-        {
-          window.requestAnimationFrame(smoothscroll);
-          window.scrollTo(0, currentScroll - (currentScroll / 5));
-        }
-      })();
+    this.tabsContentRef.nativeElement.scrollTo( 0, 0 );
     console.log("skrollaa ylös kun tämä tapahtuu");
   
   }
