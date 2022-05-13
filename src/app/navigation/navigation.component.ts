@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 import { ShareService } from '../services/share.service';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-navigation',
@@ -13,21 +16,45 @@ export class NavigationComponent implements OnInit {
   weather: any;
   iconLink: string = 'http://openweathermap.org/img/w/';
 
+  faBars = faBars;
+  faTimes = faTimes;
+
   showPlace = false;
 
   showEvent = false;
 
   showActivity = false;
 
-  constructor(
-    public translate: TranslateService,
-    public weatherService: WeatherService,
-    private shareService: ShareService
-  ) {}
+
+
+
+
+  constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService) { }
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit);
+    this.hamMenu();
   }
+  hamMenu() {
+    const openMenuIcon = document.querySelector(".open-menu");
+    const burgerMenu = document.querySelector(".burger-menu")
+    const closeMenuIcon = document.querySelector(".close-menu");
+    console.log(openMenuIcon);
+    console.log(burgerMenu);
+    console.log(burgerMenu?.childNodes[0]);
+    console.log(closeMenuIcon);
+    openMenuIcon?.addEventListener("click", () => {
+
+      burgerMenu?.classList.toggle('active');
+      console.log('button clicked');
+    });
+
+    closeMenuIcon?.addEventListener("click", () => {
+      burgerMenu?.classList.toggle('active');
+    });
+  }
+
+
 
   getWeather(cityId: any, unit: string) {
     this.weatherService.getWeather(cityId, unit).subscribe((res) => {

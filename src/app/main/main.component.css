@@ -30,5 +30,15 @@ button {
   border-radius: 4px;
   border-color: #680f3d;
   position: relative;
-  padding-right: 1px; 
+  padding-right: 1px;
+}
+.listOfPlaces {
+  height: 300px;
+  max-width: 320px;
+  border: 2px solid #680f3d;
+  background-color: white;
+  position: absolute;
+  left: 10px;
+  top: 285px;
+  margin-right: 10px;
 }
