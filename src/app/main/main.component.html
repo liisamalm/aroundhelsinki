@@ -1,15 +1,7 @@
 <div class="d-flex w-100 justify-content-between">
   <div class="map-container">
     <app-map></app-map>
-    <div class="listOfPlaces mb-1 list-group overflow-auto" style="
-        height: 300px;
-        width: 400px;
-        border: 2px solid #680f3d;
-        background-color: white;
-        position: absolute;
-        left: 14px;
-        top: 285px;
-      ">
+    <div class="listOfPlaces mb-1 list-group overflow-auto" >
       <div class="checkbox" *ngIf="showCheckbox">
         <ul>
           <li *ngFor="let item of list" class="form-check form-check-inline">
