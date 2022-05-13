@@ -9,7 +9,8 @@ import * as moment from 'moment';
 
 const iconEvent = L.icon({
   iconUrl: '../assets/images/marker_event.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -17,15 +18,13 @@ const iconEvent = L.icon({
   shadowSize: [41, 41],
 });
 
-
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
-  styleUrls: ['./event-detail.component.css']
+  styleUrls: ['./event-detail.component.css'],
 })
 export class EventDetailComponent implements OnInit {
-
-  eventid:any;
+  eventid: any;
   events: any;
   date: Date = new Date();
   faCheck = faCheck;
@@ -33,13 +32,11 @@ export class EventDetailComponent implements OnInit {
   newImageString: string = '';
   private map: L.Map;
 
-
-  constructor(private apiService: ApiService,
+  constructor(
+    private apiService: ApiService,
     public translate: TranslateService,
     private route: ActivatedRoute
-    ) { 
-
-    }
+  ) {}
 
   ngOnInit(): void {
     this.getOneEvent();
@@ -47,8 +44,8 @@ export class EventDetailComponent implements OnInit {
   }
 
   mapInit() {
-    this.apiService.getOneEvent(this.eventid).subscribe(data => {      
-      if(data.id == this.eventid){
+    this.apiService.getOneEvent(this.eventid).subscribe((data) => {
+      if (data.id == this.eventid) {
         this.map = L.map('map', {
           center: [this.events?.location.lat, this.events?.location.lon],
           zoom: 16,
@@ -63,31 +60,38 @@ export class EventDetailComponent implements OnInit {
           }
         );
         tiles.addTo(this.map);
-        const marker = L.marker([this.events?.location.lat, this.events?.location.lon], { icon: iconEvent });
-        marker.addTo(this.map);    
-    }
+        const marker = L.marker(
+          [this.events?.location.lat, this.events?.location.lon],
+          { icon: iconEvent }
+        );
+        marker.addTo(this.map);
+      }
     });
   }
 
   getOneEvent(): void {
-    this.route.paramMap.pipe(switchMap(params => {
-      this.eventid = params.get('id');
-      return this.apiService.getOneEvent(this.eventid)
-    })
-    ).subscribe(data => {
-      if (data.id == this.eventid) {
-        this.events = data;
-      }
-    })
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          this.eventid = params.get('id');
+          return this.apiService.getOneEvent(this.eventid);
+        })
+      )
+      .subscribe((data) => {
+        if (data.id == this.eventid) {
+          this.events = data;
+        }
+      });
   }
 
-  changeImg(event: any){
+  changeImg(event: any) {
     this.newImageString = event.target.getAttribute('src');
-    document.getElementById('view-img')?.setAttribute('src', this.newImageString);
+    document
+      .getElementById('view-img')
+      ?.setAttribute('src', this.newImageString);
   }
 
-  formatDate(date: any){
+  formatDate(date: any) {
     return moment.utc(date).format('DD/MM/YYYY');
   }
-
 }

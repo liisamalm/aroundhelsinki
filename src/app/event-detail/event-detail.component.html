@@ -1,126 +1,109 @@
 <div class="container mb-3">
-    <div class="row">
-      <div class="col-sm-5">
-        <div class="row">
-          <div *ngIf="events?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
-            <div class=>
-              <img
-                width="450px"
-                id="view-img"
-                src="../../assets/images/logo.png"
-                class="mw-100"
-                id="view-img"
-                title="No image"
-                alt="No image"
-              />
-            </div>
-          </div>
-          <ng-template #elseBlock>
-              <img
-                width="450px"
-                id="view-img"
-                src="{{events?.description.images[0]?.url
-                }}"
-                class="mw-100, uusiClass"
-                id="view-img"
-                alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}"
-              />
-              <div class="row">
-                <section
-                  class="show-images col-4 p-3"
-                  *ngFor="let image of events?.description.images">
-                  <figure class="pointer">
-                    <img
-                      (click)="changeImg($event)"
-                      src="{{ image.url }}"
-                      alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}"
-                      class="pointer mw-100"
-                    />
-                  </figure>
-                </section>
-              </div>
-          </ng-template>
-        </div>
-        <div class="row text-center">
-          <div class="map-container">
-            <div class="map-frame">
-              <div id="map"></div>
-            </div>
+  <div class="row">
+    <div class="col-sm-5">
+      <div class="row">
+        <div *ngIf="events?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
+          <div class=>
+            <img width="450px" id="view-img" src="../../assets/images/logo.png" class="mw-100" id="view-img"
+              title="No image" alt="No image" />
           </div>
         </div>
-      </div> 
-      <div class="col-sm-7 ml-5">
-        <div class="pt-5">
-          <div>              
-            <h1 class="">{{  translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi }}</h1>
-            <hr />
-            <strong class="" style="text-align: justify">
-              {{ events?.description.intro }}
-            </strong>
-            <p class="" style="text-align: justify" [innerHTML]="events?.description.body"></p>
+        <ng-template #elseBlock>
+          <img width="450px" id="view-img" src="{{events?.description.images[0]?.url
+                }}" class="mw-100, uusiClass" id="view-img"
+            alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}" />
+          <div class="row">
+            <section class="show-images col-4 p-3" *ngFor="let image of events?.description.images">
+              <figure class="pointer">
+                <img (click)="changeImg($event)" src="{{ image.url }}"
+                  alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}"
+                  class="pointer mw-100" />
+              </figure>
+            </section>
           </div>
+        </ng-template>
+      </div>
+      <div class="row text-center">
+        <div class="map-container">
+          <div class="map-frame">
+            <div id="map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-7 ml-5">
+      <div class="pt-5">
+        <div>
+          <h1 class="">{{ translate.currentLang === 'en' && events.name.en !== null ? events.name.en :
+            translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi }}</h1>
           <hr />
-          <div class="row">
-            <span class="material-icons col-1">home</span>
-            <p class="col-11">
-              {{ events?.location.address.street_address }}
-              {{ events?.location.address.postal_code }} 
-              {{ events?.location.address.locality }}
-            </p>
-          </div>
-          <div class="row">
-            <span class="material-icons col-1">open_in_new</span>
-            <p class="col-11">
-              <a href="{{ events?.info_url }}" target="_blank">{{
-                events?.info_url
+          <strong class="" style="text-align: justify">
+            {{ events?.description.intro }}
+          </strong>
+          <p class="" style="text-align: justify" [innerHTML]="events?.description.body"></p>
+        </div>
+        <hr />
+        <div class="row">
+          <span class="material-icons col-1">home</span>
+          <p class="col-11">
+            {{ events?.location.address.street_address }}
+            {{ events?.location.address.postal_code }}
+            {{ events?.location.address.locality }}
+          </p>
+        </div>
+        <div class="row">
+          <span class="material-icons col-1">open_in_new</span>
+          <p class="col-11">
+            <a href="{{ events?.info_url }}" target="_blank">{{
+              events?.info_url
               }}</a>
-            </p>
+          </p>
+        </div>
+        <div class="row">
+          <div class="row">
+            <span class="material-icons col-1">today</span>
+            <p class="col-11">{{ "LANG.eventdates" | translate }}</p>
           </div>
           <div class="row">
-            <div class="row">
-              <span class="material-icons col-1">today</span>
-              <p class="col-11">{{ "LANG.eventdates" | translate }}</p>
-            </div>
-            <div class="row">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>{{ "LANG.startingday" | translate }}</th>
-                    <th>{{ "LANG.endingday" | translate }}</th>
-                    <th>{{ "LANG.additionalDescription" | translate }}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                      <td>{{ formatDate(events?.event_dates.starting_day) }}</td>
-                      <td>{{ formatDate(events?.event_dates.ending_day) }}</td>
-                      <td>{{ events?.event_dates.additional_description }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="pt-5">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>{{ "LANG.startingday" | translate }}</th>
+                  <th>{{ "LANG.endingday" | translate }}</th>
+                  <th>{{ "LANG.additionalDescription" | translate }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ formatDate(events?.event_dates.starting_day) }}</td>
+                  <td>{{ formatDate(events?.event_dates.ending_day) }}</td>
+                  <td>{{ events?.event_dates.additional_description }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pt-5">
             <hr />
           </div>
-            <div class="row">
-              <span class="material-icons col-1">label</span>
-              <small class="col-2" *ngFor="let tag of events?.tags">{{
-                tag.name | lowercase
+          <div class="row">
+            <span class="material-icons col-1">label</span>
+            <small class="col-2" *ngFor="let tag of events?.tags">{{
+              tag.name | lowercase
               }}</small>
-            </div>
-            <div class="row">
-              <span class="material-icons col-1">sync_alt</span>
-              <small class="col-2">Last update:</small>
-              <small class="col-2">{{ events?.modified_at | slice: 0:10 }}</small>
-            </div>
-            <div class="row" >
-              <span class="material-icons col-1">copyright</span>
-              <small class="col-3">Photo copyright holder: </small>
-              <small class="col-8" *ngIf="events?.description.images != null">{{ events?.description?.images[0]?.copyright_holder }}</small>
-            </div>
+          </div>
+          <div class="row">
+            <span class="material-icons col-1">sync_alt</span>
+            <small class="col-2">Last update:</small>
+            <small class="col-2">{{ events?.modified_at | slice: 0:10 }}</small>
+          </div>
+          <div class="row">
+            <span class="material-icons col-1">copyright</span>
+            <small class="col-3">Photo copyright holder: </small>
+            <small class="col-8" *ngIf="events?.description.images != null">{{
+              events?.description?.images[0]?.copyright_holder }}</small>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
