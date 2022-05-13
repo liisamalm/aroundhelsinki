@@ -34,7 +34,7 @@ button {
 }
 .listOfPlaces {
   height: 300px;
-  max-width: 320px;
+  max-width: 400px;
   border: 2px solid #680f3d;
   background-color: white;
   position: absolute;
