@@ -33,15 +33,40 @@ nav .logo {
 }
 
 
-
+#lang{
+  text-align: center;
+}
 
 .lang {
   background-color: #680f3d;
   color: #f1f8f2;
-  margin-left: 20px;
+}
+
+#lang {
+  text-align: right;
+  padding-right: 10px;
+
+
 }
 
 
+
+#navbarOffcanvasLg {
+
+  background-color: #c8e3cb;
+  width: 250px;
+  height: auto;
+  padding: 10px 15px 0px 15px;
+}
+
+#offcanvasNavbarLabel {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#imageLogo{
+  margin-left: 12%;
+}
 
 .navbar-brand {
   cursor: pointer;
@@ -86,5 +111,5 @@ a:active {
 }
 
 #hambutton {
-  margin-right: 20px;
+  margin-left: 20px;
 }

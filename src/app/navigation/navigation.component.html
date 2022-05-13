@@ -1,10 +1,13 @@
 <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top stroke">
-  <a id="imageLogo" class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
-    <img src="../../assets/images/logo.png" alt="logo" width="130px">
-  </a>
   <button id="hambutton" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div >
+    <a id="imageLogo" class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
+      <img id="logo" src="../../assets/images/logo.png" alt="logo" width="130px">
+    </a>
+  </div>
+
   <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
     <div class="offcanvas-header">
       <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Around Helsinki</h5>
@@ -29,21 +32,23 @@
             'LANG.activities' | translate }}</a>
         </li>
       </ul>
-      <div class="row align-items-center">
-        <div class="col">
-          <label>
-            <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
-              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
-                {{ lang }}</option>
-            </select>
-          </label>
-        </div>
-        <div class="col p-2">
-          <img [src]="getIcon(weather?.weather[0].icon)" alt="">
-          {{ weather?.main.temp.toFixed(0) }}°C
-        </div>
-      </div>
 
+
+    </div>
+
+  </div>
+  <div class="row align-items-center" style="display: flex; flex-direction: column-reverse;">
+    <div class="col" id="lang">
+      <label>
+        <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
+            {{ lang }}</option>
+        </select>
+      </label>
+    </div>
+    <div class="col p-2">
+      <img [src]="getIcon(weather?.weather[0].icon)" alt="">
+      {{ weather?.main.temp.toFixed(0) }}°C
     </div>
   </div>
 </nav>
