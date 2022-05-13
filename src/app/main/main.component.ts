@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { LeafletEvent } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -58,28 +58,29 @@ export class MainComponent implements OnInit {
   typeName: any = [];
   currentRoute: any;
 
-  isShow: boolean;
-  topPosToStartShowing = 100;
+  showScroll: boolean;
+    showScrollHeight = 300;
+    hideScrollHeight = 10;
 
-  @HostListener('window:scroll')
-  checkScroll(){
-    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-
-    console.log('[scroll]', scrollPosition);
-    
-    if (scrollPosition >= this.topPosToStartShowing) {
-      this.isShow = true;
-    } else {
-      this.isShow = false;
-    }
-  
-  }
   constructor(
     private apiService: ApiService,
     public translate: TranslateService,
     private shareService: ShareService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() 
+  {
+    if (( window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) > this.showScrollHeight) 
+    {
+        this.showScroll = true;
+    } 
+    else if ( this.showScroll && (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop) < this.hideScrollHeight) 
+    { 
+      this.showScroll = false; 
+    }
+  }
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
@@ -90,8 +91,7 @@ export class MainComponent implements OnInit {
       this.sortByDistance();
       this.userAddress = true;
       this.showDistance = true;
-     /*  this.isShow = false;
-      this.gotoTop(); */
+      this.scrollToTop();
     });
   }
 
@@ -162,14 +162,17 @@ export class MainComponent implements OnInit {
     });
   }
 
-  gotoTop() {
-    window.scroll({ 
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
-    });
-  
+  scrollToTop() {
+      (function smoothscroll() 
+      { var currentScroll = document.documentElement.scrollTop || document.body.scrollTop; 
+        if (currentScroll > 0) 
+        {
+          window.requestAnimationFrame(smoothscroll);
+          window.scrollTo(0, currentScroll - (currentScroll / 5));
+        }
+      })();
     console.log("skrollaa ylös kun tämä tapahtuu");
+  
   }
 
   getAll() {

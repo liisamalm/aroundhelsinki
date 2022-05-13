@@ -21,7 +21,7 @@
         </ul>
       </div>
 
-      <div *ngFor="let data of sortListByAsc">
+      <div id="top" *ngFor="let data of sortListByAsc">
         <div class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1 fs-6">
@@ -52,7 +52,11 @@
               }}</a>
           </small>
         </div>
+        
       </div>
+      <button [ngClass]="{'show-scroll': showScroll}" (click)="scrollToTop()" class="scroll-to-top">
+        Scroll To Top
+    </button>
     </div>
   </div>
 </div>
