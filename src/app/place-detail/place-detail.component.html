@@ -4,43 +4,25 @@
       <div class="row">
         <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
           <div class=>
-            <img
-              width="450px"
-              id="view-img"
-              src="../../assets/images/logo.png"
-              class="mw-100"
-              id="view-img"
-              title="No image"
-              alt="No image"
-            />
+            <img width="450px" id="view-img" src="../../assets/images/logo.png" class="mw-100" id="view-img"
+              title="No image" alt="No image" />
           </div>
         </div>
         <ng-template #elseBlock>
-            <img
-              width="450px"
-              id="view-img"
-              src="{{
+          <img width="450px" id="view-img" src="{{
                 getImageUrl(places?.description.images[0]?.url)
-              }}"
-              class="mw-100, uusiClass"
-              id="view-img"
-              alt="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
-              title="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
-            />
-            <div class="row">
-              <section
-                class="show-images col-4 p-3"
-                *ngFor="let image of places?.description.images">
-                <figure class="pointer">
-                  <img
-                    (click)="changeImg($event)"
-                    src="{{ getImageUrl(image.url) }}"
-                    alt="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
-                    class="pointer mw-100"
-                  />
-                </figure>
-              </section>
-            </div>
+              }}" class="mw-100, uusiClass" id="view-img"
+            alt="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
+            title="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}" />
+          <div class="row">
+            <section class="show-images col-4 p-3" *ngFor="let image of places?.description.images">
+              <figure class="pointer">
+                <img (click)="changeImg($event)" src="{{ getImageUrl(image.url) }}"
+                  alt="{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}"
+                  class="pointer mw-100" />
+              </figure>
+            </section>
+          </div>
         </ng-template>
       </div>
       <div class="row text-center">
@@ -50,11 +32,12 @@
           </div>
         </div>
       </div>
-    </div> 
+    </div>
     <div class="col-sm-7 ml-5">
       <div class="pt-5">
-        <div>              
-          <h1 class="">{{  translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en : translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}</h1>
+        <div>
+          <h1 class="">{{ translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en :
+            translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}</h1>
           <hr />
           <p class="" style="text-align: justify">
             {{ places?.description.intro }}
@@ -77,7 +60,7 @@
           <p class="col-11">
             <a href="{{ places?.info_url }}" target="_blank">{{
               places?.info_url
-            }}</a>
+              }}</a>
           </p>
         </div>
         <div class="row">
@@ -107,36 +90,37 @@
                     <div *ngIf="hour.opens == null; else elseBlock1">---</div>
                     <ng-template #elseBlock1>{{
                       hour.opens | slice: 0:5
-                    }}</ng-template>
+                      }}</ng-template>
                   </td>
                   <td>
                     <div *ngIf="hour.opens == null; else elseBlock">---</div>
                     <ng-template #elseBlock>{{
                       hour.closes | slice: 0:5
-                    }}</ng-template>
+                      }}</ng-template>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="pt-5">
-          <hr />
-        </div>
+            <hr />
+          </div>
           <div class="row">
             <span class="material-icons col-1">label</span>
             <small class="col-2" *ngFor="let tag of places?.tags">{{
               tag.name | lowercase
-            }}</small>
+              }}</small>
           </div>
           <div class="row">
             <span class="material-icons col-1">sync_alt</span>
             <small class="col-2">Last update:</small>
             <small class="col-2">{{ places?.modified_at | slice: 0:10 }}</small>
           </div>
-          <div class="row" >
+          <div class="row">
             <span class="material-icons col-1">copyright</span>
             <small class="col-3">Photo copyright holder: </small>
-            <small class="col-8" *ngIf="places?.description.images != null">{{ places?.description?.images[0]?.copyright_holder }}</small>
+            <small class="col-8" *ngIf="places?.description.images != null">{{
+              places?.description?.images[0]?.copyright_holder }}</small>
           </div>
         </div>
       </div>

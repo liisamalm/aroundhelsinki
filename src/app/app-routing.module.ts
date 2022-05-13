@@ -19,20 +19,20 @@ const routes: Routes = [
   { path: 'events/place/:id', component: PlaceDetailComponent },
   { path: 'activities/place/:id', component: PlaceDetailComponent },
   { path: 'home/place/:id', component: PlaceDetailComponent },
-  { path: 'places/event/:id', component: EventDetailComponent  },
-  { path: 'events/event/:id', component: EventDetailComponent  },
-  { path: 'activities/event/:id', component: EventDetailComponent  },
-  { path: 'home/event/:id', component: EventDetailComponent  },
+  { path: 'places/event/:id', component: EventDetailComponent },
+  { path: 'events/event/:id', component: EventDetailComponent },
+  { path: 'activities/event/:id', component: EventDetailComponent },
+  { path: 'home/event/:id', component: EventDetailComponent },
   { path: 'places/activity/:id', component: ActivityDetailComponent },
   { path: 'events/activity/:id', component: ActivityDetailComponent },
   { path: 'activities/activity/:id', component: ActivityDetailComponent },
   { path: 'home/activity/:id', component: ActivityDetailComponent },
-  { path: 'aboutus', component: AboutusComponent},
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'aboutus', component: AboutusComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

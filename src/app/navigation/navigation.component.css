@@ -23,11 +23,13 @@ nav .logo {
   display: flex;
   align-items: center;
 }
+
 nav .burger-menu {
   display: flex;
   list-style: none;
 }
-.close-menu{
+
+.close-menu {
   display: none;
 }
 
@@ -98,6 +100,7 @@ nav .inside-menu {
     flex-wrap: nowrap;
     margin-bottom: 15px;
   }
+
   nav .burger-menu {
     flex-direction: column;
     justify-content: center;
@@ -142,6 +145,7 @@ nav .inside-menu {
   .burger-menu {
     display: none;
   }
+
   .close-menu {
     display: none;
   }
@@ -161,4 +165,46 @@ nav .inside-menu {
     font-size: 1.4rem;
     width: 100%;
   }
+}
+
+.navbar-brand {
+  cursor: pointer;
+}
+
+.stroke a,
+nav a:after,
+nav a:before {
+  transition: all .2s;
+}
+
+nav a:hover {
+  color: white !important;
+  font-weight: bold !important;
+}
+
+div.stroke a,
+nav.fill a {
+  position: relative;
+}
+
+nav.stroke a:after,
+nav.fill a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: white;
+  height: 1px;
+}
+
+nav.stroke a:hover:after {
+  width: 100%;
+}
+
+a:active {
+  border: 2px inset white;
 }

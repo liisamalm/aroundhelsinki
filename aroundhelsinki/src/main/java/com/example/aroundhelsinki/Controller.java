@@ -27,7 +27,7 @@ public class Controller {
 
   @GetMapping("/place/{id}")
   private String getPlace(@PathVariable Long id) {
-    String url = "https://open-api.myhelsinki.fi/v1/place/"+ id;
+    String url = "https://open-api.myhelsinki.fi/v1/place/" + id;
     RestTemplate restTemplate = new RestTemplate();
     String result = restTemplate.getForObject(url, String.class);
     return result;
@@ -43,7 +43,7 @@ public class Controller {
 
   @GetMapping("/event/{id}")
   private String getEvent(@PathVariable String id) {
-    String url = "https://open-api.myhelsinki.fi/v1/event/"+ id;
+    String url = "https://open-api.myhelsinki.fi/v1/event/" + id;
     RestTemplate restTemplate = new RestTemplate();
     String result = restTemplate.getForObject(url, String.class);
     return result;
@@ -59,7 +59,7 @@ public class Controller {
 
   @GetMapping("/activity/{id}")
   private String getActivity(@PathVariable String id) {
-    String url = "https://open-api.myhelsinki.fi/v1/activity/"+ id;
+    String url = "https://open-api.myhelsinki.fi/v1/activity/" + id;
     RestTemplate restTemplate = new RestTemplate();
     String result = restTemplate.getForObject(url, String.class);
     return result;

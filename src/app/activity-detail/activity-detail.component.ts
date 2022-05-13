@@ -8,7 +8,8 @@ import { TranslateService } from '@ngx-translate/core';
 
 const iconActivity = L.icon({
   iconUrl: '../assets/images/marker_activity.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  shadowUrl:
+    'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
@@ -19,10 +20,10 @@ const iconActivity = L.icon({
 @Component({
   selector: 'app-activity-detail',
   templateUrl: './activity-detail.component.html',
-  styleUrls: ['./activity-detail.component.css']
+  styleUrls: ['./activity-detail.component.css'],
 })
 export class ActivityDetailComponent implements OnInit {
-  activityid:any;
+  activityid: any;
   activities: any;
   date: Date = new Date();
   faCheck = faCheck;
@@ -31,9 +32,13 @@ export class ActivityDetailComponent implements OnInit {
   newImageString: string = '';
   private map: L.Map;
 
-  constructor(private apiService: ApiService,
+  constructor(
+    private apiService: ApiService,
     public translate: TranslateService,
-    private route: ActivatedRoute) {  this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';}
+    private route: ActivatedRoute
+  ) {
+    this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
+  }
 
   ngOnInit(): void {
     this.getOneActivity();
@@ -41,10 +46,13 @@ export class ActivityDetailComponent implements OnInit {
   }
 
   mapInit() {
-    this.apiService.getOneActivity(this.activityid).subscribe(data => {      
-      if(data.id == this.activityid){
+    this.apiService.getOneActivity(this.activityid).subscribe((data) => {
+      if (data.id == this.activityid) {
         this.map = L.map('map', {
-          center: [this.activities?.location.lat, this.activities?.location.lon],
+          center: [
+            this.activities?.location.lat,
+            this.activities?.location.lon,
+          ],
           zoom: 16,
         });
         const tiles = L.tileLayer(
@@ -57,26 +65,34 @@ export class ActivityDetailComponent implements OnInit {
           }
         );
         tiles.addTo(this.map);
-        const marker = L.marker([this.activities?.location.lat, this.activities?.location.lon], { icon: iconActivity });
-        marker.addTo(this.map);    
-    }
+        const marker = L.marker(
+          [this.activities?.location.lat, this.activities?.location.lon],
+          { icon: iconActivity }
+        );
+        marker.addTo(this.map);
+      }
     });
   }
 
   getOneActivity(): void {
-    this.route.paramMap.pipe(switchMap(params => {
-      this.activityid = params.get('id');
-      return this.apiService.getOneActivity(this.activityid)
-    })
-    ).subscribe(data => {
-      if (data.id == this.activityid) {
-        this.activities = data;
-      }
-    })
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          this.activityid = params.get('id');
+          return this.apiService.getOneActivity(this.activityid);
+        })
+      )
+      .subscribe((data) => {
+        if (data.id == this.activityid) {
+          this.activities = data;
+        }
+      });
   }
 
-  changeImg(event: any){
+  changeImg(event: any) {
     this.newImageString = event.target.getAttribute('src');
-    document.getElementById('view-img')?.setAttribute('src', this.newImageString);
+    document
+      .getElementById('view-img')
+      ?.setAttribute('src', this.newImageString);
   }
 }

@@ -2,73 +2,71 @@
 body {
   max-width: 1280px;
   margin: auto;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   /* font-size: 62.5%; */
 }
 
-
-h5{
-    color: #680F3D;
+h5 {
+  color: #680f3d;
 }
 
-.link{
-	color: #2764ae;
-	font-size: 12px;
+.link {
+  color: #2764ae;
+  font-size: 12px;
 }
 
 /*Control OSMGEocoder Css file*/
 
 .leaflet-control-geocoder a {
-	background-position: 50% 50%;
-	background-repeat: no-repeat;
-	display: block;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  display: block;
 }
 
 .leaflet-control-geocoder {
-	box-shadow: 0 1px 7px #999;
-	background: #f8f8f9;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
-	border-radius: 8px;
+  box-shadow: 0 1px 7px #999;
+  background: #f8f8f9;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
 }
 
 .leaflet-control-geocoder a {
-	background-image: url(/assets/images/geocoder.png);
-	width: 36px;
-	height: 36px;
+  background-image: url(/assets/images/geocoder.png);
+  width: 36px;
+  height: 36px;
 }
 
 .leaflet-touch .leaflet-control-geocoder a {
-	width: 44px;
-	height: 44px;
+  width: 44px;
+  height: 44px;
 }
 
 .leaflet-control-geocoder .leaflet-control-geocoder-form,
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-toggle {
-	display: none;
+  display: none;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
-	display: block;
-	position: relative;
+  display: block;
+  position: relative;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
-	padding: 5px;
+  padding: 5px;
 }
 
-
-a.reset{
-	color: #680F3D;
+a.reset {
+  color: #680f3d;
 }
 
 .leaflet-control-geosearch .results.active:after {
-	content: '';
-	display: block;
-	width: 0;
-	border-left: 2px solid rgba(0, 0, 0, .2);
-	position: relative;
-	left: -2px;
-	bottom: -2px;
-	top: 30px;
-  }
+  content: "";
+  display: block;
+  width: 0;
+  border-left: 2px solid rgba(0, 0, 0, 0.2);
+  position: relative;
+  left: -2px;
+  bottom: -2px;
+  top: 30px;
+}
