@@ -209,8 +209,8 @@ export class MainComponent implements OnInit {
     }
   }
 
-  openMarker(){
-    console.log("hei");
+  openMarker(location: any){
+    MapComponent.map.setView([location.lat, location.lon], 25);  
   }
 
   ngOnInit(): void {
