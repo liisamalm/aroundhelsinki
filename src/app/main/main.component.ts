@@ -209,6 +209,10 @@ export class MainComponent implements OnInit {
     }
   }
 
+  openMarker(){
+    console.log("hei");
+  }
+
   ngOnInit(): void {
     this.getAll();
     this.list = [
