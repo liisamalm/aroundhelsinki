@@ -11,12 +11,6 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class Controller {
 
-  @RequestMapping("/")
-  public String hello() {
-
-    return "Around Helsinki";
-  }
-
   @GetMapping("/v1/places")
   private String getPlaces() {
     String url = "https://open-api.myhelsinki.fi/v1/places/";
