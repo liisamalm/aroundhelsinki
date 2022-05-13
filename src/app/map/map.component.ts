@@ -16,7 +16,6 @@ import { ShareService } from '../services/share.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
-// https://github.com/pointhi/leaflet-color-markers
 const iconPlace = L.icon({
   iconUrl: '../assets/images/marker_place.png',
   shadowUrl:
@@ -57,12 +56,11 @@ const iconActivity = L.icon({
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
-  static router: any;
-  route2: any;
-  showPlaces: boolean = true;
-  showEvents: boolean = true;
-  showActivities: boolean = true;
+  showPlaces:boolean = true;
+  showEvents:boolean = true;
+  showActivities:boolean = true;
   markerCluster = new MarkerClusterGroup();
+
 
   constructor(
     public apiService: ApiService,

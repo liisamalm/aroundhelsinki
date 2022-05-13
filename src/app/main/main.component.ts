@@ -7,7 +7,6 @@ import {
   faLocationCrosshairs,
   faPersonWalking,
   faCalendarCheck,
-  faClone,
   faAnglesUp
 } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
@@ -71,8 +70,6 @@ export class MainComponent implements OnInit {
     private shareService: ShareService,
     private route: ActivatedRoute,
   ) {}
-
- 
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
@@ -156,8 +153,6 @@ export class MainComponent implements OnInit {
 
   scrollToTop() {
     this.tabsContentRef.nativeElement.scrollTo( 0, 0 );
-    console.log("skrollaa ylös kun tämä tapahtuu");
-  
   }
 
   getAll() {
@@ -258,6 +253,10 @@ export class MainComponent implements OnInit {
       this.newArray.push(this.tempArray);
       this.pushToList(this.newArray);
     }
+  }
+
+  openMarker(location: any){
+    MapComponent.map.setView([location.lat, location.lon], 25);  
   }
 
   ngOnInit(): void {

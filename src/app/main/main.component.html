@@ -22,7 +22,7 @@
         </ul>
       </div>
 
-      <div id="top" *ngFor="let data of sortListByAsc">
+      <div *ngFor="let data of sortListByAsc" (click)="openMarker(data.location)">
         <div class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1 fs-6">
@@ -34,7 +34,7 @@
                 translate.currentLang === "se" && data.name.sv !== null ? data.name.sv : data.name.fi }}
               </a>
             </h5>
-            <small id="distance" *ngIf="showDistance">{{ data.distance.toFixed(2) }}km</small>
+            <small id="distance" *ngIf="showDistance">{{data.distance >= 1.0 ? data.distance.toFixed(2) + ' km' :  data.distance.toFixed(3) * 1000 + ' m'}}</small>
           </div>
           <p class="mb-1 ptext">
             {{ data.location.address.street_address }}
@@ -53,9 +53,10 @@
               }}</a>
           </small>
         </div>
-        <button (click)="scrollToTop()" class="scroll-to-top"><fa-icon [icon]="faAnglesUp"></fa-icon></button>
+        
       </div>
-     
+      <button (click)="scrollToTop()"><fa-icon [icon]="faAnglesUp"></fa-icon></button>
     </div>
+    
   </div>
 </div>
