@@ -10,7 +10,7 @@ footer {
 }
 
 
-@media all and (max-width: 426px) {
+@media all and (max-width: 647px) {
   footer {
 
     padding-left: 0;

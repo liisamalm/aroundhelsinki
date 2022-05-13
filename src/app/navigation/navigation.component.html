@@ -1,45 +1,49 @@
-<nav>
-  <div class="logo col-md-5 stroke">
-    <a id="imageLogo" class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
-      <img src="../../assets/images/logo.png" alt="logo" width="130px">
-    </a>
-
-
-  </div>
-  <div id="open-menu" class="open-menu">
-    <fa-icon class="faBars" [icon]="faBars"></fa-icon>
-  </div>
-
-  <div class="navbar col-md-5 text-uppercase">
-    <ul class="burger-menu">
-      <li class="home"><a class="nav-link fs-6" routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate
-          }}</a></li>
-      <li class="places"><a class="nav-link fs-6" routerLink="places" (click)="sendPlace()" href="">{{ 'LANG.places' |
-          translate }}</a>
-      </li>
-      <li class="events"><a class="nav-link fs-6" routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' |
-          translate }}</a></li>
-      <li class="activities"><a class="nav-link fs-6" routerLink="activities" (click)="sendActivity()" href="#">{{
-          'LANG.activities' | translate }}</a></li>
-    </ul>
-
-  </div>
-
-  <div class="right-side" style="text-align: center;">
-    <div class="col-md-1">
-      <label>
-        <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
-          <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
-            {{ lang }}</option>
-        </select>
-      </label>
+<nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top stroke">
+  <a id="imageLogo" class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
+    <img src="../../assets/images/logo.png" alt="logo" width="130px">
+  </a>
+  <button id="hambutton" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Around Helsinki</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="col-md-1 p-2">
-      <img [src]="getIcon(weather?.weather[0].icon)" alt="">
-      {{ weather?.main.temp.toFixed(0) }}°C
+    <div class="offcanvas-body text-uppercase align-items-center">
+      <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate
+          }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"routerLink="places" (click)="sendPlace()" href="">{{ 'LANG.places' |
+            translate }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' |
+            translate }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"routerLink="activities" (click)="sendActivity()" href="#">{{
+            'LANG.activities' | translate }}</a>
+        </li>
+      </ul>
+      <div class="row align-items-center">
+        <div class="col">
+          <label>
+            <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
+                {{ lang }}</option>
+            </select>
+          </label>
+        </div>
+        <div class="col p-2">
+          <img [src]="getIcon(weather?.weather[0].icon)" alt="">
+          {{ weather?.main.temp.toFixed(0) }}°C
+        </div>
+      </div>
+
     </div>
-  </div>
-  <div class="close-menu">
-    <fa-icon class="faTimes" [icon]="faTimes"></fa-icon>
   </div>
 </nav>
