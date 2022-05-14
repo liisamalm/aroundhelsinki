@@ -1,7 +1,7 @@
 <div class="d-flex w-100 justify-content-between">
   <div class="map-container">
     <app-map></app-map>
-    <div class="listOfPlaces mb-1 list-group overflow-auto" >
+    <div #tabsContentRef class="listOfPlaces mb-1 list-group overflow-auto" >
       <div class="checkbox" *ngIf="showCheckbox">
         <ul>
           <li *ngFor="let item of list" class="form-check form-check-inline">
