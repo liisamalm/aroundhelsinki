@@ -7,7 +7,9 @@ import {
   faLocationCrosshairs,
   faPersonWalking,
   faCalendarCheck,
-  faAnglesUp
+  faAnglesUp,
+  faArrowRight,
+  faArrowLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { MapComponent } from '../map/map.component';
 import 'leaflet.markercluster';
@@ -61,6 +63,10 @@ export class MainComponent implements OnInit {
   sortedCollection: any[];
   typeName: any = [];
   currentRoute: any;
+  p: number = 1;
+
+  faArrowRight = faArrowRight;
+  faArrowLeft = faArrowLeft;
 
   public tabsContentRef!: ElementRef;
 
@@ -256,7 +262,7 @@ export class MainComponent implements OnInit {
   }
 
   openMarker(location: any){
-    MapComponent.map.setView([location.lat, location.lon], 25);  
+    MapComponent.map.setView([location.lat, location.lon], 25);
   }
 
   ngOnInit(): void {

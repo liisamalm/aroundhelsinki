@@ -1,19 +1,32 @@
-<div class="d-flex w-100 justify-content-between">
-  <div class="map-container">
-    <app-map></app-map>
-    <div #tabsContentRef class="listOfPlaces mb-1 list-group overflow-auto" >
-      <div class="checkbox" *ngIf="showCheckbox">
-        <ul>
-          <li *ngFor="let item of list" class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" (change)="onChange($event)" value="{{ item.id }}"
-              [(ngModel)]="item.checked" />
-            {{ translate.currentLang === 'en' ? item.titleEn : (translate.currentLang === 'se' ? item.titleSv :
-            item.titleFi) }}
-          </li>
-        </ul>
-      </div>
 
-      <div *ngFor="let data of sortListByAsc" (click)="openMarker(data.location)">
+<div class="offcanvas offcanvas-start" id="demo">
+  <button class="btn  offcanvas-btn position-absolute mt-2 listlink" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+    <span class="btn" style="color: #C8E3CB;">List<fa-icon [icon]="faArrowRight"></fa-icon>  </span><span><fa-icon [icon]="faArrowLeft"></fa-icon></span>
+    </button>
+
+  <div class="offcanvas-header">
+    <h2 class="offcanvas-title">Around Helsinki</h2>
+
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+
+  <div class="checkbox" *ngIf="showCheckbox">
+    <ul>
+      <li *ngFor="let item of list" class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" (change)="onChange($event)" value="{{ item.id }}"
+          [(ngModel)]="item.checked" />
+        {{ translate.currentLang === 'en' ? item.titleEn : (translate.currentLang === 'se' ? item.titleSv :
+        item.titleFi) }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="offcanvas-body">
+
+    <div #tabsContentRef class="listOfPlaces mb-1 list-group overflow-auto" >
+
+
+      <div *ngFor="let data of sortListByAsc | paginate: { itemsPerPage: 7  , currentPage: p }" (click)="openMarker(data.location)">
         <div class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1 fs-6">
@@ -45,7 +58,24 @@
           </small>
         </div>
       </div>
-      <button (click)="scrollToTop()"><fa-icon [icon]="faAnglesUp"></fa-icon></button>
+      <pagination-controls  previousLabel="Prev" nextLabel="Next" [responsive]="true" [maxSize]="5" (pageChange)="p = $event "></pagination-controls>
+      <!-- <button (click)="scrollToTop()"><fa-icon [icon]="faAnglesUp"></fa-icon></button> -->
     </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<div class="d-flex w-100 justify-content-between">
+
+  <div class="map-container">
+
+    <app-map></app-map>
+
+
   </div>
 </div>
