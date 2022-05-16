@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { PopupComponent } from '../popup/popup.component';
-import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
+import { MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import {
   Injector,
