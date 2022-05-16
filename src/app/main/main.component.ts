@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild,  HostListener } from '@angular/core';
 import { LeafletEvent } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -64,6 +64,7 @@ export class MainComponent implements OnInit {
 
   public tabsContentRef!: ElementRef;
 
+ 
   constructor(
     private apiService: ApiService,
     public translate: TranslateService,
@@ -71,6 +72,7 @@ export class MainComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
+  
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
       this.referenceLocation = e.location;
@@ -151,10 +153,11 @@ export class MainComponent implements OnInit {
     });
   }
 
-  scrollToTop() {
+scrollToTop() {
     this.tabsContentRef.nativeElement.scrollTo( 0, 0 );
-  }
+  } 
 
+   
   getAll() {
     this.showPlaces = this.shareService.getData().showPlace;
     this.showEvents = this.shareService.getData().showEvent;
