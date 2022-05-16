@@ -118,3 +118,11 @@ a:active {
 #hambutton {
   margin-left: 20px;
 }
+
+
+#weathercontainer {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}

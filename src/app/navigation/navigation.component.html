@@ -3,9 +3,9 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div >
-    <a id="imageLogo" class="navbar-brand" routerLink="home" (click)="sendAll()" href="">
-      <img id="logo" src="../../assets/images/logo.png" alt="logo" width="130px">
-    </a>
+    <div id="imageLogo" class="navbar-brand"  (click)="sendAll()" href="">
+      <img id="logo" routerLink="home" src="../../assets/images/logo.png" alt="logo" width="130px">
+    </div>
   </div>
 
   <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
@@ -37,7 +37,7 @@
     </div>
 
   </div>
-  <div class="row align-items-center" style="display: flex; flex-direction: column-reverse;">
+  <div id="weathercontainer" class="row align-items-center" >
     <div class="col" id="lang">
       <label>
         <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
