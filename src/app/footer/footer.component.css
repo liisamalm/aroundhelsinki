@@ -2,6 +2,8 @@ footer {
   background-color: #c8e3cb;
   color: #680f3d;
   font-weight: bold;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .nav-link,
@@ -9,16 +11,13 @@ footer {
   color: #680f3d !important;
 }
 
-
 @media all and (max-width: 647px) {
   footer {
-
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
     flex-direction: column-reverse;
     align-content: center;
-
   }
 
   footer img {
