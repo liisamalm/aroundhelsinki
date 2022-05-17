@@ -48,15 +48,6 @@ export class NavigationComponent implements OnInit {
     });
   }
 
- clickLang(lang: any): any{
-  this.list = lang == "en" ? MainComponent.sortInNav.sort(
-      (a: { name: any }, b: { name: any }) => 0 - (a.name.en > b.name.en ? -1 : 1)) : 
-      lang == "fi" ? MainComponent.sortInNav.sort(
-        (a: { name: any }, b: { name: any }) => 0 - (a.name.fi > b.name.fi ? -1 : 1)) : 
-        MainComponent.sortInNav.sort(
-          (a: { name: any }, b: { name: any }) => 0 - (a.name.se > b.name.se ? -1 : 1));
-    
-}
   getWeather(cityId: any, unit: string) {
     this.weatherService.getWeather(cityId, unit).subscribe((res) => {
       this.weather = res;

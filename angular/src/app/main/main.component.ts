@@ -123,9 +123,6 @@ export class MainComponent implements OnInit {
     );
   }
 
-  getClicLang(){
-
-  }
 
   sortByAsc() {
     this.translate.currentLang == "en" ? this.sortListByAsc.sort(
@@ -133,7 +130,7 @@ export class MainComponent implements OnInit {
       this.translate.currentLang == "fi" ? this.sortListByAsc.sort(
         (a: { name: any }, b: { name: any }) => 0 - (a.name.fi > b.name.fi ? -1 : 1)) : 
         this.sortListByAsc.sort(
-          (a: { name: any }, b: { name: any }) => 0 - (a.name.se > b.name.se ? -1 : 1))
+          (a: { name: any }, b: { name: any }) => 0 - (a.name.sv > b.name.sv ? -1 : 1))
   }
 
   getPlacesAll(): void {
@@ -193,7 +190,6 @@ export class MainComponent implements OnInit {
             this.sortListByAsc.push(type);
             this.arrays.push(type);
             this.allList.push(type);
-            MainComponent.sortInNav.push(type);
           }
         }
         this.sortByAsc();
