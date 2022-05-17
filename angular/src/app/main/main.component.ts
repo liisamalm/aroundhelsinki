@@ -40,7 +40,6 @@ export class MainComponent implements OnInit {
   newArray: any = [];
   sortListByAsc: any = [];
   allList: any = [];
-  static sortInNav: any = [];
 
   showPlaces: boolean = true;
   showEvents: boolean = true;
@@ -123,14 +122,13 @@ export class MainComponent implements OnInit {
     );
   }
 
-
   sortByAsc() {
     this.translate.currentLang == "en" ? this.sortListByAsc.sort(
-      (a: { name: any }, b: { name: any }) => 0 - (a.name.en > b.name.en ? -1 : 1)) : 
+      (a: { name: any }, b: { name: any }) => 0 - (a.name.en.trim() > b.name.en.trim() ? -1 : 1)) : 
       this.translate.currentLang == "fi" ? this.sortListByAsc.sort(
-        (a: { name: any }, b: { name: any }) => 0 - (a.name.fi > b.name.fi ? -1 : 1)) : 
+        (a: { name: any }, b: { name: any }) => 0 - (a.name.fi.trim() > b.name.fi.trim() ? -1 : 1)) : 
         this.sortListByAsc.sort(
-          (a: { name: any }, b: { name: any }) => 0 - (a.name.sv > b.name.sv ? -1 : 1))
+          (a: { name: any }, b: { name: any }) => 0 - (a.name.sv.trim() > b.name.sv.trim() ? -1 : 1))
   }
 
   getPlacesAll(): void {
