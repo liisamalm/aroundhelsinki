@@ -3,7 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 import { ShareService } from '../services/share.service';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { MainComponent } from '../main/main.component';
+import { MapComponent } from '../map/map.component';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -23,7 +25,8 @@ export class NavigationComponent implements OnInit {
   showActivity = false;
   @Output() list: any;
 
-  constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService) { }
+  constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService, private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.getWeather(this.location.cityId, this.location.unit);
@@ -56,6 +59,10 @@ export class NavigationComponent implements OnInit {
 
   getIcon(icon: string) {
     return `${this.iconLink}${icon}.png`;
+  }
+
+  reloadMap(){
+      MapComponent.map.setView([60.16952, 24.93545], 12);
   }
 
   sendPlace() {
