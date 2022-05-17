@@ -36,7 +36,7 @@ export class EventDetailComponent implements OnInit {
     private apiService: ApiService,
     public translate: TranslateService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getOneEvent();

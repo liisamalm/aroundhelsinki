@@ -1,14 +1,13 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl, OpenStreetMapProvider } from 'leaflet-geosearch';
 import { PopupComponent } from '../popup/popup.component';
-import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
+import { MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import {
   Injector,
   ApplicationRef,
   ComponentFactoryResolver,
-  Type,
 } from '@angular/core';
 import { MainComponent } from '../main/main.component';
 import 'leaflet.markercluster';
@@ -56,9 +55,9 @@ const iconActivity = L.icon({
 })
 export class MapComponent implements OnInit {
   static map: L.Map;
-  showPlaces:boolean = true;
-  showEvents:boolean = true;
-  showActivities:boolean = true;
+  showPlaces: boolean = true;
+  showEvents: boolean = true;
+  showActivities: boolean = true;
   markerCluster = new MarkerClusterGroup();
 
 
@@ -71,7 +70,7 @@ export class MapComponent implements OnInit {
     private shareService: ShareService,
     public translate: TranslateService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   mapInit() {
     MapComponent.map = L.map('map', {

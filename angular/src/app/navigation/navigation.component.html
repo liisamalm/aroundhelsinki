@@ -1,5 +1,6 @@
 <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top stroke">
-  <button id="hambutton" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+  <button id="hambutton" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div >
@@ -32,12 +33,10 @@
             'LANG.activities' | translate }}</a>
         </li>
       </ul>
-
-
     </div>
 
   </div>
-  <div id="weathercontainer" class="row align-items-center" >
+  <div id="weathercontainer" class="row align-items-center">
     <div class="col" id="lang">
       <label>
         <select class="lang" #langSelect (change)="translate.use(langSelect.value)">

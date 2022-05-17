@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 import { ShareService } from '../services/share.service';
@@ -36,14 +36,10 @@ export class NavigationComponent implements OnInit {
     const openMenuIcon = document.querySelector(".open-menu");
     const burgerMenu = document.querySelector(".burger-menu")
     const closeMenuIcon = document.querySelector(".close-menu");
-    console.log(openMenuIcon);
-    console.log(burgerMenu);
-    console.log(burgerMenu?.childNodes[0]);
-    console.log(closeMenuIcon);
     openMenuIcon?.addEventListener("click", () => {
 
       burgerMenu?.classList.toggle('active');
-      console.log('button clicked');
+
     });
 
     closeMenuIcon?.addEventListener("click", () => {
