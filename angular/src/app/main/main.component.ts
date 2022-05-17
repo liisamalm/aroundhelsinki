@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Output, Input } from '@angular/core';
 import { LeafletEvent } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
@@ -17,6 +17,7 @@ import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
 import { ShareService } from '../services/share.service';
 import { ActivatedRoute } from '@angular/router';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-main',
@@ -39,6 +40,7 @@ export class MainComponent implements OnInit {
   newArray: any = [];
   sortListByAsc: any = [];
   allList: any = [];
+  static sortInNav: any = [];
 
   showPlaces: boolean = true;
   showEvents: boolean = true;
@@ -74,7 +76,7 @@ export class MainComponent implements OnInit {
     private apiService: ApiService,
     public translate: TranslateService,
     private shareService: ShareService,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {}
 
   saveReferenceLocation(): void {
@@ -121,10 +123,17 @@ export class MainComponent implements OnInit {
     );
   }
 
+  getClicLang(){
+
+  }
+
   sortByAsc() {
-    this.sortListByAsc.sort(
-      (a: { name: any }, b: { name: any }) => a.name.fi - b.name.fi
-    );
+    this.translate.currentLang == "en" ? this.sortListByAsc.sort(
+      (a: { name: any }, b: { name: any }) => 0 - (a.name.en > b.name.en ? -1 : 1)) : 
+      this.translate.currentLang == "fi" ? this.sortListByAsc.sort(
+        (a: { name: any }, b: { name: any }) => 0 - (a.name.fi > b.name.fi ? -1 : 1)) : 
+        this.sortListByAsc.sort(
+          (a: { name: any }, b: { name: any }) => 0 - (a.name.se > b.name.se ? -1 : 1))
   }
 
   getPlacesAll(): void {
@@ -184,8 +193,10 @@ export class MainComponent implements OnInit {
             this.sortListByAsc.push(type);
             this.arrays.push(type);
             this.allList.push(type);
+            MainComponent.sortInNav.push(type);
           }
         }
+        this.sortByAsc();
       });
     }
     if (

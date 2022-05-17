@@ -40,9 +40,9 @@
   <div id="weathercontainer" class="row align-items-center" >
     <div class="col" id="lang">
       <label>
-        <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
+        <select class="lang" #langSelect (change)="translate.use(langSelect.value)" (change)="clickLang(langSelect.value)">
           <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">
-            {{ lang }}</option>
+           {{ lang }} </option>
         </select>
       </label>
     </div>

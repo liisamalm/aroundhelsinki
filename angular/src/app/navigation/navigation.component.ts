@@ -3,7 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 import { ShareService } from '../services/share.service';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-
+import { MainComponent } from '../main/main.component';
 
 
 @Component({
@@ -18,16 +18,10 @@ export class NavigationComponent implements OnInit {
 
   faBars = faBars;
   faTimes = faTimes;
-
   showPlace = false;
-
   showEvent = false;
-
   showActivity = false;
-
-
-
-
+  @Output() list: any;
 
   constructor(public translate: TranslateService, public weatherService: WeatherService, private shareService: ShareService) { }
 
@@ -54,8 +48,15 @@ export class NavigationComponent implements OnInit {
     });
   }
 
-
-
+ clickLang(lang: any): any{
+  this.list = lang == "en" ? MainComponent.sortInNav.sort(
+      (a: { name: any }, b: { name: any }) => 0 - (a.name.en > b.name.en ? -1 : 1)) : 
+      lang == "fi" ? MainComponent.sortInNav.sort(
+        (a: { name: any }, b: { name: any }) => 0 - (a.name.fi > b.name.fi ? -1 : 1)) : 
+        MainComponent.sortInNav.sort(
+          (a: { name: any }, b: { name: any }) => 0 - (a.name.se > b.name.se ? -1 : 1));
+    
+}
   getWeather(cityId: any, unit: string) {
     this.weatherService.getWeather(cityId, unit).subscribe((res) => {
       this.weather = res;
