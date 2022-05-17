@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, RoutesRecognized } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { faCheck, faTimes } from '@fortawesome/free-solid-svg-icons';
 import * as L from 'leaflet';
 import { TranslateService } from '@ngx-translate/core';
+import { Location } from '@angular/common';
+import { BackService } from '../services/back.service';
 
 const iconPlace = L.icon({
   iconUrl: '../assets/images/marker_place.png',
@@ -31,8 +33,10 @@ export class PlaceDetailComponent implements OnInit {
   link: string = '';
   newImageString: string = '';
   private map: L.Map;
+  back:any;
 
   constructor(
+   private backService: BackService,
     private apiService: ApiService,
     public translate: TranslateService,
     private route: ActivatedRoute
@@ -43,6 +47,12 @@ export class PlaceDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getOnePlace();
     this.mapInit();
+    this.back = this.backService.back$.getValue() || {};
+  }
+
+  updateFoo(val: any) {
+    this.back.foo = val;
+    this.backService.back$.next(this.back);
   }
 
   mapInit() {
@@ -70,6 +80,7 @@ export class PlaceDetailComponent implements OnInit {
       }
     });
   }
+  
 
   getOnePlace(): void {
     this.route.paramMap
