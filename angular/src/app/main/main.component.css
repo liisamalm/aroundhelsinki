@@ -34,21 +34,16 @@ button {
 }
 
 .listOfPlaces {
-
-  /* max-width: 400px; */
   border: 1px solid #680f3d;
   background-color: white;
-
 }
 
 .listlink {
   z-index: 10000;
   background: #680f3d;
-  /* transform: rotate(90deg); */
   position: fixed;
   color: #C8E3CB;
   top: 400px;
-
 }
 
 #offcanvasExample>* {
@@ -60,7 +55,6 @@ button {
   visibility: visible;
 }
 
-/* optional junk to toggle the button text */
 .offcanvas-btn span:last-child,
 .offcanvas.show .offcanvas-btn span:first-child {
   display: none;

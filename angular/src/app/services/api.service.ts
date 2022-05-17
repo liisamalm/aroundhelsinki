@@ -11,7 +11,6 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  //Places
   getPlacesAll(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/places');
   }
@@ -20,7 +19,6 @@ export class ApiService {
     return this.http.get(this.externalApi + '/place/' + id);
   }
 
-  //Events
   getEventsAll(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/events');
   }
@@ -29,7 +27,6 @@ export class ApiService {
     return this.http.get(this.externalApi + '/event/' + id);
   }
 
-  //Activities
   getActivitiesAll(): Observable<any> {
     return this.http.get(this.externalApi + '/v1/activities');
   }
@@ -37,8 +34,6 @@ export class ApiService {
   public getOneActivity(id: any): Observable<any> {
     return this.http.get(this.externalApi + '/activity/' + id);
   }
-
-  // All in one
 
   getAll(): Observable<Object> {
     let allPlaces = this.http.get(this.externalApi + '/v1/places');

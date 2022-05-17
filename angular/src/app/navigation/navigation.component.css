@@ -24,14 +24,12 @@ nav {
   font-weight: bold;
   margin-left: 20px;
   margin-bottom: 5px;
-
 }
 
 nav .logo {
   display: flex;
   align-items: center;
 }
-
 
 #lang {
   text-align: center;
@@ -45,14 +43,9 @@ nav .logo {
 #lang {
   text-align: right;
   padding-right: 10px;
-
-
 }
 
-
-
 #navbarOffcanvasLg {
-
   background-color: #c8e3cb;
   width: 250px;
   height: auto;
@@ -119,7 +112,6 @@ a:active {
 #hambutton {
   margin-left: 20px;
 }
-
 
 #weathercontainer {
   display: flex;

@@ -16,10 +16,6 @@ export class ShareService {
     this.showActivity = activity;
   }
   getData() {
-    return {
-      showPlace: this.showPlace,
-      showEvent: this.showEvent,
-      showActivity: this.showActivity,
-    };
+    return { showPlace: this.showPlace, showEvent: this.showEvent, showActivity: this.showActivity, };
   }
 }
