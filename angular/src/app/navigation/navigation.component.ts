@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { WeatherService } from '../services/navigation.service';
 import { ShareService } from '../services/share.service';
