@@ -21,8 +21,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-main',
   queries: {
-		"tabsContentRef": new ViewChild( "tabsContentRef" )
-	},
+    "tabsContentRef": new ViewChild("tabsContentRef")
+  },
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css'],
 })
@@ -75,7 +75,7 @@ export class MainComponent implements OnInit {
     public translate: TranslateService,
     private shareService: ShareService,
     private route: ActivatedRoute,
-  ) {}
+  ) { }
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
@@ -102,8 +102,8 @@ export class MainComponent implements OnInit {
     var a =
       Math.pow(Math.sin(dLat / 2.0), 2) +
       Math.cos(userY * degrees) *
-        Math.cos(userX * degrees) *
-        Math.pow(Math.sin(dLon / 2.0), 2);
+      Math.cos(userX * degrees) *
+      Math.pow(Math.sin(dLon / 2.0), 2);
     var b = 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return b;
   }
@@ -158,7 +158,7 @@ export class MainComponent implements OnInit {
   }
 
   scrollToTop() {
-    this.tabsContentRef.nativeElement.scrollTo( 0, 0 );
+    this.tabsContentRef.nativeElement.scrollTo(0, 0);
   }
 
   getAll() {
@@ -261,7 +261,7 @@ export class MainComponent implements OnInit {
     }
   }
 
-  openMarker(location: any){
+  openMarker(location: any) {
     MapComponent.map.setView([location.lat, location.lon], 25);
   }
 

@@ -32,6 +32,7 @@ button {
   position: relative;
   padding-right: 1px;
 }
+
 .listOfPlaces {
 
   /* max-width: 400px; */
@@ -49,7 +50,8 @@ button {
   top: 400px;
 
 }
-#offcanvasExample > *{
+
+#offcanvasExample>* {
   background-color: #C8E3CB;
 }
 

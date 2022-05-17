@@ -19,7 +19,7 @@ export class PopupComponent implements OnInit {
 
   faLocationCrosshairs = faLocationCrosshairs;
 
-  constructor(public translate: TranslateService) {}
+  constructor(public translate: TranslateService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }

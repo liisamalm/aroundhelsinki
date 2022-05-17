@@ -1,9 +1,10 @@
 <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top stroke">
-  <button id="hambutton" class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+  <button id="hambutton" class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div >
-    <div id="imageLogo" class="navbar-brand"  (click)="sendAll()" href="">
+  <div>
+    <div id="imageLogo" class="navbar-brand" (click)="sendAll()" href="">
       <img id="logo" routerLink="home" src="../../assets/images/logo.png" alt="logo" width="130px">
     </div>
   </div>
@@ -16,19 +17,23 @@
     <div class="offcanvas-body text-uppercase align-items-center">
       <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"routerLink="home" (click)="sendAll()" href="">{{ 'LANG.all' | translate
-          }}</a>
+          <a class="nav-link active" aria-current="page" href="#" routerLink="home" (click)="sendAll()" href="">{{
+            'LANG.all' | translate
+            }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"routerLink="places" (click)="sendPlace()" href="">{{ 'LANG.places' |
+          <a class="nav-link active" aria-current="page" href="#" routerLink="places" (click)="sendPlace()" href="">{{
+            'LANG.places' |
             translate }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"routerLink="events" (click)="sendEvent()" href="#">{{ 'LANG.events' |
+          <a class="nav-link active" aria-current="page" href="#" routerLink="events" (click)="sendEvent()" href="#">{{
+            'LANG.events' |
             translate }}</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"routerLink="activities" (click)="sendActivity()" href="#">{{
+          <a class="nav-link active" aria-current="page" href="#" routerLink="activities" (click)="sendActivity()"
+            href="#">{{
             'LANG.activities' | translate }}</a>
         </li>
       </ul>
@@ -37,7 +42,7 @@
     </div>
 
   </div>
-  <div id="weathercontainer" class="row align-items-center" >
+  <div id="weathercontainer" class="row align-items-center">
     <div class="col" id="lang">
       <label>
         <select class="lang" #langSelect (change)="translate.use(langSelect.value)">
