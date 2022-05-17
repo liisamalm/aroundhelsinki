@@ -1,15 +1,15 @@
-
 <div class="offcanvas offcanvas-start" id="demo">
-  <button class="btn  offcanvas-btn position-absolute mt-2 listlink" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-    <span class="btn" style="color: #C8E3CB;">List<fa-icon [icon]="faArrowRight"></fa-icon>  </span><span><fa-icon [icon]="faArrowLeft"></fa-icon></span>
-    </button>
-
+  <button class="btn  offcanvas-btn position-absolute mt-2 listlink" type="button" data-bs-toggle="offcanvas"
+    data-bs-target="#demo">
+    <span class="btn" style="color: #C8E3CB;">{{ 'LANG.list' | translate
+      }}<fa-icon [icon]="faArrowRight"></fa-icon> </span><span>
+      <fa-icon [icon]="faArrowLeft"></fa-icon>
+    </span>
+  </button>
   <div class="offcanvas-header">
     <h2 class="offcanvas-title">Around Helsinki</h2>
-
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-
   <div class="checkbox" *ngIf="showCheckbox">
     <ul>
       <li *ngFor="let item of list" class="form-check form-check-inline">
@@ -20,13 +20,10 @@
       </li>
     </ul>
   </div>
-
   <div class="offcanvas-body">
-
-    <div #tabsContentRef class="listOfPlaces mb-1 list-group overflow-auto" >
-
-
-      <div *ngFor="let data of sortListByAsc | paginate: { itemsPerPage: 7  , currentPage: p }" (click)="openMarker(data.location)">
+    <div class="listOfPlaces mb-1 list-group overflow-auto">
+      <div *ngFor="let data of sortListByAsc | paginate: { itemsPerPage: 7  , currentPage: p }"
+        (click)="openMarker(data.location)">
         <div class="list-group-item list-group-item-action">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1 fs-6">
@@ -38,7 +35,8 @@
                 translate.currentLang === "se" && data.name.sv !== null ? data.name.sv : data.name.fi }}
               </a>
             </h5>
-            <small id="distance" *ngIf="showDistance">{{data.distance >= 1.0 ? data.distance.toFixed(2) + ' km' :  data.distance.toFixed(3) * 1000 + ' m'}}</small>
+            <small id="distance" *ngIf="showDistance">{{data.distance >= 1.0 ? data.distance.toFixed(2) + ' km' :
+              data.distance.toFixed(3) * 1000 + ' m'}}</small>
           </div>
           <p class="mb-1 ptext">
             {{ data.location.address.street_address }}
@@ -58,24 +56,14 @@
           </small>
         </div>
       </div>
-      <pagination-controls  previousLabel="Prev" nextLabel="Next" [responsive]="true" [maxSize]="5" (pageChange)="p = $event "></pagination-controls>
-      <!-- <button (click)="scrollToTop()"><fa-icon [icon]="faAnglesUp"></fa-icon></button> -->
+      <pagination-controls previousLabel="Prev" nextLabel="Next" [responsive]="true" [maxSize]="5"
+        (pageChange)="p = $event "></pagination-controls>
     </div>
-
   </div>
 </div>
 
-
-
-
-
-
 <div class="d-flex w-100 justify-content-between">
-
   <div class="map-container">
-
     <app-map></app-map>
-
-
   </div>
 </div>
