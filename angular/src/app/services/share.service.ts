@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +8,7 @@ export class ShareService {
   showEvent: boolean;
   showActivity: boolean;
 
-  constructor() {}
+  constructor() { }
 
   setData(place: any, event: any, activity: any) {
     this.showPlace = place;
@@ -17,10 +16,6 @@ export class ShareService {
     this.showActivity = activity;
   }
   getData() {
-    return {
-      showPlace: this.showPlace,
-      showEvent: this.showEvent,
-      showActivity: this.showActivity,
-    };
+    return { showPlace: this.showPlace, showEvent: this.showEvent, showActivity: this.showActivity, };
   }
 }

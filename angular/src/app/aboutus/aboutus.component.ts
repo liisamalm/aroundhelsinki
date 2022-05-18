@@ -18,7 +18,7 @@ export class AboutusComponent implements OnInit {
   faGitSquare = faGitSquare;
   faGit = faGit;
 
-  constructor(public translate: TranslateService) {}
+  constructor(public translate: TranslateService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 }
