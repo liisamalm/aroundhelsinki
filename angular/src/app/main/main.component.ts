@@ -19,6 +19,16 @@ import { Activities } from '../interfaces/activities';
 import { ShareService } from '../services/share.service';
 import { ActivatedRoute } from '@angular/router';
 
+const userIcon = L.icon({
+  iconUrl : '../assets/images/marker-icon.png',
+  shadowUrl : '../assets/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+})
+
 @Component({
   selector: 'app-main',
   queries: {
@@ -39,7 +49,6 @@ export class MainComponent implements OnInit {
   allList: any = [];
   all: any;
   list: any[];
-  markerCluster = new MarkerClusterGroup();
 
   showPlaces: boolean = true;
   showEvents: boolean = true;
@@ -62,6 +71,8 @@ export class MainComponent implements OnInit {
   p: number = 1;
 
   public tabsContentRef!: ElementRef;
+  
+  markerCluster = new MarkerClusterGroup();
 
   constructor(
     private apiService: ApiService,
@@ -80,11 +91,8 @@ export class MainComponent implements OnInit {
       this.userAddress = true;
       this.showDistance = true;
       this.scrollToTop();
+      MapComponent.map.addLayer(this.markerCluster.addLayer(L.marker([this.referenceLocation.y, this.referenceLocation.x], {icon: userIcon})));
     });
-  }
-
-  createIcon() {
-    return this.referenceLocation;
   }
 
   calculateDistance(placeLocation: any) {

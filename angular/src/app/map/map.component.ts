@@ -48,6 +48,7 @@ const iconActivity = L.icon({
   shadowSize: [41, 41],
 });
 
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -96,11 +97,6 @@ export class MapComponent implements OnInit {
     tiles.addTo(MapComponent.map);
   }
 
-//  this.markerCluster.addLayer(L.marker([this.referenceLocation.y, this.referenceLocation.x]));
-
-  createUserIcon() {
-    this.mainComponent.createIcon()
-  }
 
   mainPageMap() {
     this.mapInit();

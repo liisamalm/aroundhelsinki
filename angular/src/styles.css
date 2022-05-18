@@ -1,9 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 body {
-  /* max-width: 1280px;
-  margin: auto; */
   font-family: "Roboto", sans-serif;
-  /* font-size: 62.5%; */
 }
 
 h5 {
@@ -14,8 +10,6 @@ h5 {
   color: #2764ae;
   font-size: 12px;
 }
-
-/*Control OSMGEocoder Css file*/
 
 .leaflet-control-geocoder a {
   background-position: 50% 50%;
@@ -54,6 +48,10 @@ h5 {
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
   padding: 5px;
+}
+
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
 }
 
 a.reset {
