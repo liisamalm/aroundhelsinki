@@ -61,6 +61,8 @@ export class MainComponent implements OnInit {
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
 
+  marker: any;
+
   referenceLocation: any = {
     y: 60.16952,
     x: 24.93545,
@@ -83,6 +85,9 @@ export class MainComponent implements OnInit {
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
+      if(MapComponent.map.hasLayer(this.marker)){
+        MapComponent.map.removeLayer(this.marker);
+      }
       this.referenceLocation = e.location;
       this.sortList = this.allList;
       this.updateDistance();
@@ -91,7 +96,8 @@ export class MainComponent implements OnInit {
       this.userAddress = true;
       this.showDistance = true;
       this.scrollToTop();
-      MapComponent.map.addLayer(this.markerCluster.addLayer(L.marker([this.referenceLocation.y, this.referenceLocation.x], {icon: userIcon})));
+      this.marker = L.marker([this.referenceLocation.y, this.referenceLocation.x], {icon: userIcon});
+      MapComponent.map.addLayer(this.markerCluster.addLayer(this.marker));
     });
   }
 
