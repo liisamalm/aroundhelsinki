@@ -11,6 +11,10 @@ h5 {
   font-size: 12px;
 }
 
+.glass {
+  height: 30px !important;
+}
+
 .leaflet-default-icon-path {
   background-image: url(https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png);
 }
