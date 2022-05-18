@@ -5,7 +5,7 @@
         <div *ngIf="places?.description.images?.length == 0; else elseBlock" class="col mt-5 text-center mt-5">
           <div class=>
             <img width="450px" id="view-img" src="../../assets/images/logo.png" class="mw-100" id="view-img"
-              title="No image" alt="No image" />
+              title="No image" alt="Around Helsinki logo" />
           </div>
         </div>
         <ng-template #elseBlock>
@@ -36,13 +36,13 @@
     <div class="col-sm-7 ml-5">
       <div class="pt-5">
         <div>
-          <h1 class="">{{ translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en :
+          <h1>{{ translate.currentLang === 'en' && places?.name.en !== null ? places?.name.en :
             translate.currentLang === 'se' && places?.name.sv !== null ? places?.name.sv : places?.name.fi }}</h1>
           <hr />
-          <p class="" style="text-align: justify">
+          <p style="text-align: justify">
             {{ places?.description.intro }}
           </p>
-          <p class="" style="text-align: justify">
+          <p style="text-align: justify">
             {{ places?.description.body }}
           </p>
         </div>

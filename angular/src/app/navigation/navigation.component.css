@@ -19,12 +19,11 @@ nav {
   color: #680f3d !important;
 }
 
-.navbar-nav li a{
-  color: #680f3d ;
+.navbar-nav li a {
+  color: #680f3d;
   font-weight: bold;
   margin-left: 20px;
   margin-bottom: 5px;
-
 }
 
 nav .logo {
@@ -32,8 +31,7 @@ nav .logo {
   align-items: center;
 }
 
-
-#lang{
+#lang {
   text-align: center;
 }
 
@@ -45,14 +43,9 @@ nav .logo {
 #lang {
   text-align: right;
   padding-right: 10px;
-
-
 }
 
-
-
 #navbarOffcanvasLg {
-
   background-color: #c8e3cb;
   width: 250px;
   height: auto;
@@ -60,15 +53,16 @@ nav .logo {
 }
 
 .dropdown-item {
-  background-color:#AE7127 !important;
+  background-color: #AE7127 !important;
   color: #f1f8f2 !important;
 }
+
 #offcanvasNavbarLabel {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-#imageLogo{
+#imageLogo {
   margin-left: 12%;
 }
 
@@ -83,7 +77,7 @@ nav a:before {
 }
 
 nav a:hover {
-  color:#AE7127 !important;
+  color: #AE7127 !important;
 
   font-weight: bold !important;
 }
@@ -103,7 +97,7 @@ nav.fill a:after {
   width: 0%;
   content: '.';
   color: transparent;
-  background:  #AE7127;
+  background: #AE7127;
   height: 1px;
 }
 
@@ -118,7 +112,6 @@ a:active {
 #hambutton {
   margin-left: 20px;
 }
-
 
 #weathercontainer {
   display: flex;

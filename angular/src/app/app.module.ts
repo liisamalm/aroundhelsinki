@@ -18,7 +18,7 @@ import { MapComponent } from './map/map.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { ActivityDetailComponent } from './activity-detail/activity-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -56,4 +56,4 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

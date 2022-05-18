@@ -25,18 +25,13 @@ const iconPlace = L.icon({
 export class PlaceDetailComponent implements OnInit {
   placeid: any;
   places: any;
-  date: Date = new Date();
   faCheck = faCheck;
   faTimes = faTimes;
   link: string = '';
   newImageString: string = '';
   private map: L.Map;
 
-  constructor(
-    private apiService: ApiService,
-    public translate: TranslateService,
-    private route: ActivatedRoute
-  ) {
+  constructor(private apiService: ApiService, public translate: TranslateService, private route: ActivatedRoute) {
     this.link = 'https://edit.myhelsinki.fi/sites/default/files/styles';
   }
 
