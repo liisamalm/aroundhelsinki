@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { LeafletEvent } from 'leaflet';
+import * as L from 'leaflet';
+import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
@@ -38,6 +39,7 @@ export class MainComponent implements OnInit {
   allList: any = [];
   all: any;
   list: any[];
+  markerCluster = new MarkerClusterGroup();
 
   showPlaces: boolean = true;
   showEvents: boolean = true;
@@ -79,6 +81,10 @@ export class MainComponent implements OnInit {
       this.showDistance = true;
       this.scrollToTop();
     });
+  }
+
+  createIcon() {
+    return this.referenceLocation;
   }
 
   calculateDistance(placeLocation: any) {
