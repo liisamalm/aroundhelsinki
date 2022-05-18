@@ -112,15 +112,6 @@ export class MainComponent implements OnInit {
     );
   }
 
-  sortByAsc() {
-    this.translate.currentLang == "en" ? this.sortList.sort(
-      (a: { name: any }, b: { name: any }) => 0 - (a.name.en.trim() > b.name.en.trim() ? -1 : 1)) :
-      this.translate.currentLang == "fi" ? this.sortList.sort(
-        (a: { name: any }, b: { name: any }) => 0 - (a.name.fi.trim() > b.name.fi.trim() ? -1 : 1)) :
-        this.sortList.sort(
-          (a: { name: any }, b: { name: any }) => 0 - (a.name.sv.trim() > b.name.sv.trim() ? -1 : 1))
-  }
-
   getPlacesAll(): void {
     this.apiService.getPlacesAll().subscribe((res: any) => {
       for (const type of res.data) {
@@ -160,6 +151,7 @@ export class MainComponent implements OnInit {
     this.showEvents = this.shareService.getData().showEvent;
     this.showActivities = this.shareService.getData().showActivity;
     this.showCheckbox = false;
+    let typeName: any;
     if (
       (this.showPlaces == true &&
         this.showEvents == true &&
@@ -178,9 +170,16 @@ export class MainComponent implements OnInit {
             this.sortList.push(type);
             this.arrays.push(type);
             this.allList.push(type);
+            typeName = type.name;
           }
         }
-        this.sortByAsc();
+
+        this.translate.currentLang == "en" ? this.sortList.sort(
+          (a: { name: any }, b: { name: any }) => 0 - ((a.name.en !== null && a.name.en.trim()) > (b.name.en !== null && b.name.en.trim()) ? -1 : 1)) :
+          this.translate.currentLang == "se" && typeName.se !== null ? this.sortList.sort(
+            (a: { name: any }, b: { name: any }) => 0 - ((a.name.sv !== null && a.name.sv.trim()) > (b.name.sv !== null && b.name.sv.trim()) ? -1 : 1)) :
+            this.sortList.sort(
+              (a: { name: any }, b: { name: any }) => 0 - (a.name.fi.trim() > b.name.fi.trim() ? -1 : 1))
       });
     }
     if (

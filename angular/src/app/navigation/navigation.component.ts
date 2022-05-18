@@ -48,7 +48,7 @@ export class NavigationComponent implements OnInit {
   }
 
   getIcon(icon: string) {
-    return `${this.iconLink}${icon}.png`;
+    return icon !== null ? `${this.iconLink}${icon}.png` : "";
   }
 
   reloadMap(){
