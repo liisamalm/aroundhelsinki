@@ -143,7 +143,7 @@ export class MainComponent implements OnInit {
   }
 
   scrollToTop() {
-    this.tabsContentRef.nativeElement.scrollTo(0, 0);
+    this.tabsContentRef?.nativeElement.scrollTo(0, 0);
   }
 
   getAll() {
