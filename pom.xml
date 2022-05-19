@@ -11,7 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>aroundhelsinki</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>frakton</name>
+    <name>aroundhelsinki</name>
     <description>Around Helsinki project</description>
 
     <properties>
