@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+springboot/src/main/resources/static
+angular/node

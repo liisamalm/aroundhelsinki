@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/aroundhelsinki",
+            "outputPath": "../springboot/src/main/resources/static",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -85,7 +85,8 @@
               "browserTarget": "aroundhelsinki:build:production"
             },
             "development": {
-              "browserTarget": "aroundhelsinki:build:development"
+              "browserTarget": "aroundhelsinki:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
