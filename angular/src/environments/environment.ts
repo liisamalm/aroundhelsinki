@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://aroundhelsinki-test.herokuapp.com"
+  baseUrl: "https://around-helsinki.herokuapp.com"
 };
 
 /*
