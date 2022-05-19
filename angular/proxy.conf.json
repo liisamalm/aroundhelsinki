@@ -1,6 +1,6 @@
 {
     "/": {
-        "target": "http://localhost:8080",
+        "target": "https://aroundhelsinki-test.herokuapp.com",
         "secure": false
     }
 }

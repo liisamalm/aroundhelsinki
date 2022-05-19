@@ -15,7 +15,7 @@ export class NavigationComponent implements OnInit {
   
   location = { cityId: 658225, unit: 'metric' };
   weather: any;
-  iconLink: string = 'http://openweathermap.org/img/w/';
+  iconLink: string = 'https://openweathermap.org/img/w/';
   faBars = faBars;
   faTimes = faTimes;
   showPlace = false;

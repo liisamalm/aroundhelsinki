@@ -3,20 +3,25 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.6</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<groupId>com.example</groupId>
+		<artifactId>aroundhelsinki</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>aroundhelsinki</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>aroundhelsinki</name>
-	<description>Demo project for Spring Boot</description>
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+	<artifactId>springboot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>	
+
 	<dependencies>
+	    <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>angular</artifactId>
+            <version>${project.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -37,11 +42,6 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -68,44 +68,6 @@
 						</exclude>
 					</excludes>
 				</configuration>
-			</plugin>
-			<plugin>
- 				<groupId>com.github.eirslett</groupId>
- 				<artifactId>frontend-maven-plugin</artifactId>
-				<version>1.12.1</version>
-				<executions>
-					<execution>
- 						<id>install node and npm</id>
- 						<goals>
- 							<goal>install-node-and-npm</goal>
- 						</goals>
- 					<phase>generate-resources</phase>
- 					</execution>
- 					<execution>
- 						<id>npm install</id>
- 						<goals>
- 							<goal>npm</goal>
- 						</goals>
- 						<configuration>
- 							<arguments>install</arguments>
- 						</configuration>
- 					</execution>
- 					<execution>
- 						<id>build web-app</id>
- 						<phase>generate-resources</phase>
- 						<goals>
- 							<goal>npm</goal>
- 						</goals>
- 						<configuration>
- 							<arguments>run-script build</arguments>
- 						</configuration>
- 					</execution>
- 				</executions>
- 				<configuration>
- 					<nodeVersion>v16.14.2</nodeVersion>
- 					<npmVersion>8.5.5</npmVersion>
- 					<workingDirectory>../angular</workingDirectory>
- 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
