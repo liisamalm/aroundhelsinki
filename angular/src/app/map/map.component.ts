@@ -117,8 +117,9 @@ export class MapComponent implements OnInit {
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
-        (c.instance.ownPage = data.id);
-      c.instance.type = type;
+        (c.instance.ownPage = data.id),
+        (c.instance.type = type),
+        (c.instance.sourceType = data.source_type.id);
     });
     return markerPopup;
   }
@@ -185,8 +186,8 @@ export class MapComponent implements OnInit {
     this.showActivities = this.shareService.getData().showActivity;
 
     if (
-      (this.showPlaces == false &&
-        this.showEvents == true &&
+      (this.showPlaces == true &&
+        this.showEvents == false &&
         this.showActivities == false) ||
       this.route.snapshot.url[0]?.path === 'places'
     ) {
