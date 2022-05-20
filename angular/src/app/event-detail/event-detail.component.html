@@ -17,7 +17,8 @@
             <section class="show-images col-4 p-3" *ngFor="let image of events?.description.images">
               <figure class="pointer">
                 <img (click)="changeImg($event)" src="{{ image.url }}"
-                  alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}"
+                  alt="{{ translate.currentLang === 'en' ? events?.name.en : (translate.currentLang === 'se' &&
+                  events?.name.sv !== null ? events?.name.sv : events?.name.fi) }}"
                   class="pointer mw-100" />
               </figure>
             </section>
