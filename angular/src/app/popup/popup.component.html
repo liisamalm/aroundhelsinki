@@ -1,5 +1,8 @@
 <h5 class="mb-1 fs-6">
-  <fa-icon [icon]="faLocationCrosshairs"></fa-icon> {{ translate.currentLang === 'en' && nameEn !== null ? nameEn :
+  <fa-icon *ngIf="sourceType == 2" [icon]="faLocationCrosshairs"></fa-icon>
+  <fa-icon *ngIf="sourceType == 1" [icon]="faCalendarCheck"></fa-icon>
+  <fa-icon *ngIf="sourceType == 3" [icon]="faPersonWalking"></fa-icon>
+{{ translate.currentLang === 'en' && nameEn !== null ? nameEn :
   (translate.currentLang === 'se' && nameSv !== null ? nameSv : nameFi) }}
 </h5>
 

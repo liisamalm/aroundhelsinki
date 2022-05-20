@@ -117,8 +117,10 @@ export class MapComponent implements OnInit {
         (c.instance.address = data.location.address.street_address),
         (c.instance.postalCode = data.location.address.postal_code),
         (c.instance.locality = data.location.address.locality),
-        (c.instance.ownPage = data.id);
-      c.instance.type = type;
+        (c.instance.ownPage = data.id),
+        (c.instance.type = type),
+        (c.instance.sourceType = data.source_type.id);
+
     });
     return markerPopup;
   }

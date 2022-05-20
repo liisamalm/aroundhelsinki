@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons';
+import { faLocationCrosshairs, faPersonWalking, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-popup',
@@ -16,8 +16,11 @@ export class PopupComponent implements OnInit {
   @Input() locality: String;
   @Input() ownPage: String;
   @Input() type: String;
+  @Input() sourceType: Number;
 
   faLocationCrosshairs = faLocationCrosshairs;
+  faPersonWalking = faPersonWalking;
+  faCalendarCheck = faCalendarCheck; 
 
   constructor(public translate: TranslateService) { }
 
