@@ -1,6 +1,6 @@
 {
     "/": {
-        "target": "https://around-helsinki.herokuapp.com/",
+        "target": "https://around-helsinki.herokuapp.com",
         "secure": false
     }
 }
