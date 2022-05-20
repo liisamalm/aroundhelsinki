@@ -34,8 +34,8 @@
     <div class="col-sm-7 ml-5">
       <div class="pt-5">
         <div>
-          <h1>{{ translate.currentLang === 'en' && events.name.en !== null ? events.name.en :
-            translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi }}</h1>
+          <h1>{{ translate.currentLang === 'en' ? events?.name.en : (translate.currentLang === 'se' &&
+            events?.name.sv !== null ? events?.name.sv : events?.name.fi) }}</h1>
           <hr />
           <strong style="text-align: justify">
             {{ events?.description.intro }}
