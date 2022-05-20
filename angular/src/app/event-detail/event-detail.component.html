@@ -11,7 +11,8 @@
         <ng-template #elseBlock>
           <img width="450px" id="view-img" src="{{events?.description.images[0]?.url
                 }}" class="mw-100, uusiClass" id="view-img"
-            alt="{{translate.currentLang === 'en' && events.name.en !== null ? events.name.en : translate.currentLang === 'se' && events.name.sv !== null ? events.name.sv : events.name.fi}}" />
+            alt="{{ translate.currentLang === 'en' ? events?.name.en : (translate.currentLang === 'se' &&
+            events?.name.sv !== null ? events?.name.sv : events?.name.fi) }}" />
           <div class="row">
             <section class="show-images col-4 p-3" *ngFor="let image of events?.description.images">
               <figure class="pointer">
