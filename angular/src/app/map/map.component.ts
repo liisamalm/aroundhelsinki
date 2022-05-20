@@ -187,8 +187,8 @@ export class MapComponent implements OnInit {
     this.showActivities = this.shareService.getData().showActivity;
 
     if (
-      (this.showPlaces == false &&
-        this.showEvents == true &&
+      (this.showPlaces == true &&
+        this.showEvents == false &&
         this.showActivities == false) ||
       this.route.snapshot.url[0]?.path === 'places'
     ) {
