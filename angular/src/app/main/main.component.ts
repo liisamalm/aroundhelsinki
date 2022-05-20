@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
-import { LeafletEvent } from 'leaflet';
+import * as L from 'leaflet';
+import { LeafletEvent, MarkerClusterGroup } from 'leaflet';
 import { ApiService } from '../services/api.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Places } from '../interfaces/places';
@@ -17,6 +18,16 @@ import { Events } from '../interfaces/events';
 import { Activities } from '../interfaces/activities';
 import { ShareService } from '../services/share.service';
 import { ActivatedRoute } from '@angular/router';
+
+const userIcon = L.icon({
+  iconUrl : '../assets/images/marker-icon.png',
+  shadowUrl : '../assets/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+})
 
 @Component({
   selector: 'app-main',
@@ -50,6 +61,8 @@ export class MainComponent implements OnInit {
   faArrowRight = faArrowRight;
   faArrowLeft = faArrowLeft;
 
+  marker: any;
+
   referenceLocation: any = {
     y: 60.16952,
     x: 24.93545,
@@ -60,6 +73,8 @@ export class MainComponent implements OnInit {
   p: number = 1;
 
   public tabsContentRef!: ElementRef;
+  
+  markerCluster = new MarkerClusterGroup();
 
   constructor(
     private apiService: ApiService,
@@ -70,6 +85,9 @@ export class MainComponent implements OnInit {
 
   saveReferenceLocation(): void {
     MapComponent.map.on('geosearch/showlocation', (e: LeafletEvent | any) => {
+      if(MapComponent.map.hasLayer(this.marker)){
+        MapComponent.map.removeLayer(this.marker);
+      }
       this.referenceLocation = e.location;
       this.sortList = this.allList;
       this.updateDistance();
@@ -78,6 +96,8 @@ export class MainComponent implements OnInit {
       this.userAddress = true;
       this.showDistance = true;
       this.scrollToTop();
+      this.marker = L.marker([this.referenceLocation.y, this.referenceLocation.x], {icon: userIcon});
+      MapComponent.map.addLayer(this.markerCluster.addLayer(this.marker));
     });
   }
 
@@ -143,7 +163,7 @@ export class MainComponent implements OnInit {
   }
 
   scrollToTop() {
-    this.tabsContentRef.nativeElement.scrollTo(0, 0);
+    this.tabsContentRef?.nativeElement.scrollTo(0, 0);
   }
 
   getAll() {
